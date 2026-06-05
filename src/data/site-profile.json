@@ -1,0 +1,20 @@
+{
+  "venueName": "Miss B's Coconut Club",
+  "nicheType": "BarOrPub",
+  "seo": {
+    "latitude": "32.7681",
+    "longitude": "-117.2514",
+    "streetAddress": "3704 Mission Blvd",
+    "addressLocality": "San Diego",
+    "addressRegion": "CA",
+    "postalCode": "92109",
+    "telephone": "(858) 488-7311",
+    "priceRange": "$$"
+  },
+  "designSystem": {
+    "fonts": {
+      "heading": "font-serif tracking-wide",
+      "body": "font-sans font-normal"
+    }
+  }
+}

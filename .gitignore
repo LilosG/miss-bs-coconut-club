@@ -1,0 +1,22 @@
+# Astro build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Vercel CLI artifacts
+.vercel/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor artifacts
+.vscode/
+.idea/
