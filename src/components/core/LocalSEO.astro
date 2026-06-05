@@ -1,0 +1,66 @@
+---
+import siteProfile from '../../data/site-profile.json';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL?: URL;
+}
+
+const {
+  title,
+  description,
+  canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://missbscoconutclub.com'),
+} = Astro.props;
+
+const jsonLD = {
+  "@context": "https://schema.org",
+  "@type": siteProfile.nicheType,
+  "name": siteProfile.venueName,
+  "image": "https://missbscoconutclub.com/assets/og-image.jpg",
+  "telephone": siteProfile.seo.telephone,
+  "priceRange": siteProfile.seo.priceRange,
+  "url": Astro.site?.toString() ?? "https://missbscoconutclub.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": siteProfile.seo.streetAddress,
+    "addressLocality": siteProfile.seo.addressLocality,
+    "addressRegion": siteProfile.seo.addressRegion,
+    "postalCode": siteProfile.seo.postalCode,
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": siteProfile.seo.latitude,
+    "longitude": siteProfile.seo.longitude
+  },
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=" + siteProfile.seo.latitude + "," + siteProfile.seo.longitude
+};
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary SEO -->
+<title>{title} | {siteProfile.venueName}</title>
+<meta name="title" content={`${title} | ${siteProfile.venueName}`} />
+<meta name="description" content={description} />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={`${title} | ${siteProfile.venueName}`} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content="https://missbscoconutclub.com/assets/og-image.jpg" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={`${title} | ${siteProfile.venueName}`} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content="https://missbscoconutclub.com/assets/og-image.jpg" />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLD, null, 2)} />

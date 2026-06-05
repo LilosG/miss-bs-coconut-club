@@ -1,0 +1,81 @@
+---
+const navItems = [
+  { label: "Menu", href: "/menu" },
+  { label: "Brunch", href: "/brunch" },
+  { label: "Space", href: "/space" },
+  { label: "Private Events", href: "/private-events" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+];
+---
+
+<header id="site-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="flex h-20 items-center justify-between">
+      <a href="/" id="nav-logo" class="block">
+        <img
+          src="/images/miss-bs-coconut-club-logo-white.webp"
+          alt="Miss Bs Coconut Club"
+          class="h-12 w-auto transition-all duration-300"
+          id="nav-logo-img"
+        />
+      </a>
+      <nav class="hidden md:flex items-center gap-8">
+        {navItems.map(item => (
+          <a href={item.href} class="nav-link text-xs font-semibold tracking-[0.15em] uppercase text-coastal-bg-pure/80 hover:text-coastal-bg-pure transition-colors duration-200">
+            {item.label}
+          </a>
+        ))}
+      </nav>
+      <div class="hidden md:flex items-center">
+        <a id="nav-cta" href="/order" class="px-5 py-2.5 text-xs font-bold tracking-widest uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-200">
+          Order Online
+        </a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-coastal-bg-pure p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const nav = document.getElementById("site-nav");
+  const logoImg = document.getElementById("nav-logo-img");
+  const cta = document.getElementById("nav-cta");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 80) {
+      nav.classList.remove("bg-transparent");
+      nav.classList.add("bg-coastal-bg-pure", "shadow-sm", "border-b", "border-coastal-text-muted/10");
+      if (logoImg) {
+        logoImg.style.filter = "invert(1)";
+      }
+      navLinks.forEach(a => {
+        a.classList.remove("text-coastal-bg-pure/80", "hover:text-coastal-bg-pure");
+        a.classList.add("text-coastal-text-muted", "hover:text-coastal-text-main");
+      });
+      if (cta) {
+        cta.classList.remove("border-coastal-bg-pure/50", "text-coastal-bg-pure", "hover:bg-coastal-bg-pure", "hover:text-coastal-text-main");
+        cta.classList.add("border-coastal-text-main", "text-coastal-text-main", "hover:bg-coastal-text-main", "hover:text-coastal-bg-pure");
+      }
+    } else {
+      nav.classList.add("bg-transparent");
+      nav.classList.remove("bg-coastal-bg-pure", "shadow-sm", "border-b", "border-coastal-text-muted/10");
+      if (logoImg) {
+        logoImg.style.filter = "invert(0)";
+      }
+      navLinks.forEach(a => {
+        a.classList.add("text-coastal-bg-pure/80", "hover:text-coastal-bg-pure");
+        a.classList.remove("text-coastal-text-muted", "hover:text-coastal-text-main");
+      });
+      if (cta) {
+        cta.classList.add("border-coastal-bg-pure/50", "text-coastal-bg-pure", "hover:bg-coastal-bg-pure", "hover:text-coastal-text-main");
+        cta.classList.remove("border-coastal-text-main", "text-coastal-text-main", "hover:bg-coastal-text-main", "hover:text-coastal-bg-pure");
+      }
+    }
+  });
+</script>
