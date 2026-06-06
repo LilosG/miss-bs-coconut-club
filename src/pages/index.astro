@@ -14,12 +14,12 @@ const cocktailGrid = [
 ];
 
 const foodGrid = [
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-09.webp', name: 'Coconut Club Burger' },
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-13.webp', name: 'Cubano' },
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-17.webp', name: 'Table Spread' },
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-26.webp', name: 'Jerk Plate' },
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-12.webp', name: 'Cubano Stacked' },
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-32.webp', name: 'Nachos' },
+  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-09.webp',  name: 'Coconut Club Burger', tall: true  },
+  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-13.webp',  name: 'Cubano',              tall: false },
+  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-17.webp',  name: 'Table Spread',        tall: false },
+  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-26.webp',  name: 'Jerk Plate',          tall: false },
+  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-12.webp',  name: 'Cubano Stacked',      tall: false },
+  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-32.webp',  name: 'Nachos',              tall: false },
 ];
 ---
 
@@ -85,7 +85,6 @@ const foodGrid = [
   </section>
 
   <!-- ─── EDITORIAL INTRO ───────────────────────────────────────────────── -->
-  <!-- venue-07: full dining room with mural, tropical plants, teal booths -->
   <section class="bg-coastal-bg-pure">
     <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[700px]">
 
@@ -126,7 +125,6 @@ const foodGrid = [
   </section>
 
   <!-- ─── COCKTAIL FEATURE ──────────────────────────────────────────────── -->
-  <!-- cocktail-13: flamingo vessel — full bleed background -->
   <section class="relative overflow-hidden min-h-[680px] flex items-center">
     <img
       src="/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-13.webp"
@@ -134,10 +132,10 @@ const foodGrid = [
       class="absolute inset-0 w-full h-full object-cover object-center"
       loading="lazy"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-coastal-text-main/92 via-coastal-text-main/70 to-coastal-text-main/10"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-coastal-text-main/95 via-coastal-text-main/75 to-coastal-text-main/20"></div>
 
-    <div class="relative z-10 mx-auto max-w-7xl px-6 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <div class="flex flex-col gap-6">
+    <div class="relative z-10 mx-auto max-w-7xl px-6 py-24">
+      <div class="max-w-xl flex flex-col gap-6">
         <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
           Craft Cocktails
         </p>
@@ -145,7 +143,7 @@ const foodGrid = [
           Signature Cocktails<br />in Mission Beach
         </h2>
         <div class="h-px w-16 bg-coastal-coral"></div>
-        <p class="text-coastal-bg-card/80 text-base leading-relaxed max-w-[44ch]">
+        <p class="text-coastal-bg-card/85 text-base leading-relaxed">
           From the flamingo vessel to the frozen mojito, every drink at Miss B's is built for the San Diego sun. Tropical, bold, and entirely unforgettable.
         </p>
         <a href="/menu" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/30 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
@@ -156,8 +154,8 @@ const foodGrid = [
   </section>
 
   <!-- ─── COCKTAIL GRID ─────────────────────────────────────────────────── -->
-  <section class="bg-coastal-bg-pure py-3">
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-1">
+  <section class="bg-coastal-bg-pure">
+    <div class="grid grid-cols-2 md:grid-cols-3">
       {cocktailGrid.map((cocktail) => (
         <div class="group relative overflow-hidden aspect-[4/3]">
           <img
@@ -176,7 +174,6 @@ const foodGrid = [
   </section>
 
   <!-- ─── BRUNCH FEATURE ────────────────────────────────────────────────── -->
-  <!-- venue-17: copper flamingo tap handles close-up — warm atmospheric -->
   <section class="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
 
     <div class="relative min-h-[400px] lg:min-h-full">
@@ -186,7 +183,7 @@ const foodGrid = [
         class="absolute inset-0 w-full h-full object-cover object-center"
         loading="lazy"
       />
-      <div class="absolute inset-0 bg-coastal-text-main/20"></div>
+      <div class="absolute inset-0 bg-coastal-text-main/15"></div>
     </div>
 
     <div class="bg-coastal-coral flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
@@ -231,9 +228,24 @@ const foodGrid = [
         </a>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-        {foodGrid.map((item, i) => (
-          <div class={"group relative overflow-hidden " + (i === 0 ? "md:row-span-2" : "aspect-square")}>
+      <!-- Food grid — burger spans full height left column, 2x2 right -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-2" style="grid-template-rows: auto;">
+        <!-- Tall left item -->
+        <div class="group relative overflow-hidden md:row-span-2 min-h-[400px] md:min-h-0">
+          <img
+            src="/images/food/miss-bs-coconut-club-food-mission-beach-09.webp"
+            alt="Miss B's Coconut Club Coconut Club Burger Mission Beach San Diego"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+            <p class="text-xs font-bold tracking-[0.2em] uppercase text-coastal-bg-pure">Coconut Club Burger</p>
+          </div>
+        </div>
+        <!-- Right grid items — 4 squares in 2x2 -->
+        {foodGrid.slice(1).map((item) => (
+          <div class="group relative overflow-hidden aspect-square">
             <img
               src={item.src}
               alt={"Miss B's Coconut Club " + item.name + " Mission Beach San Diego"}
@@ -252,7 +264,6 @@ const foodGrid = [
   </section>
 
   <!-- ─── PRIVATE EVENTS ────────────────────────────────────────────────── -->
-  <!-- venue-03: outdoor patio, pink umbrellas, "In Love With The Coco" sign -->
   <section class="grid grid-cols-1 lg:grid-cols-2 min-h-[620px]">
 
     <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6 bg-coastal-bg-pure order-2 lg:order-1">
