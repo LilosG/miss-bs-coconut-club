@@ -25,14 +25,14 @@ const foodGrid = [
 
 <Layout
   title="Bar and Brunch on Mission Blvd - Mission Beach San Diego"
-  description="Miss Bs Coconut Club is Mission Beach San Diegos favorite outdoor bar and brunch spot. Craft cocktails, weekend brunch, and private events at 3704 Mission Blvd."
+  description="Miss B's Coconut Club is Mission Beach San Diego's favorite outdoor bar and brunch spot. Craft cocktails, weekend brunch, and private events at 3704 Mission Blvd."
 >
 
   <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
   <section class="relative h-screen min-h-[680px] flex flex-col items-center justify-center overflow-hidden">
     <img
       src="/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp"
-      alt="Miss Bs Coconut Club teal bar open window Mission Beach San Diego"
+      alt="Miss B's Coconut Club teal bar open window Mission Beach San Diego"
       class="absolute inset-0 w-full h-full object-cover object-center"
       loading="eager"
       fetchpriority="high"
@@ -84,21 +84,20 @@ const foodGrid = [
     </div>
   </section>
 
-  <!-- ─── EDITORIAL INTRO — full-height split ───────────────────────────── -->
+  <!-- ─── EDITORIAL INTRO ───────────────────────────────────────────────── -->
+  <!-- venue-07: full dining room with mural, tropical plants, teal booths -->
   <section class="bg-coastal-bg-pure">
     <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[700px]">
 
-      <!-- Image side — full bleed -->
       <div class="relative min-h-[460px] lg:min-h-full order-2 lg:order-1">
         <img
-          src="/images/venue/miss-bs-coconut-club-mission-beach-venue-13.webp"
-          alt="Miss B's Coconut Club open-air teal bar Mission Beach San Diego"
+          src="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
+          alt="Miss B's Coconut Club tropical dining room with mural Mission Beach San Diego"
           class="absolute inset-0 w-full h-full object-cover object-center"
           loading="lazy"
         />
       </div>
 
-      <!-- Copy side -->
       <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 order-1 lg:order-2">
         <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-5">
           Mission Beach, San Diego
@@ -126,7 +125,8 @@ const foodGrid = [
     </div>
   </section>
 
-  <!-- ─── COCKTAIL FEATURE — full-bleed image, copy overlay ────────────── -->
+  <!-- ─── COCKTAIL FEATURE ──────────────────────────────────────────────── -->
+  <!-- cocktail-13: flamingo vessel — full bleed background -->
   <section class="relative overflow-hidden min-h-[680px] flex items-center">
     <img
       src="/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-13.webp"
@@ -175,21 +175,20 @@ const foodGrid = [
     </div>
   </section>
 
-  <!-- ─── BRUNCH FEATURE — split panel ──────────────────────────────────── -->
+  <!-- ─── BRUNCH FEATURE ────────────────────────────────────────────────── -->
+  <!-- venue-17: copper flamingo tap handles close-up — warm atmospheric -->
   <section class="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
 
-    <!-- Image side -->
     <div class="relative min-h-[400px] lg:min-h-full">
       <img
-        src="/images/venue/miss-bs-coconut-club-mission-beach-venue-09.webp"
-        alt="Miss B's Coconut Club copper flamingo tap handles interior Mission Beach"
+        src="/images/venue/miss-bs-coconut-club-mission-beach-venue-17.webp"
+        alt="Miss B's Coconut Club copper flamingo draft tap handles Mission Beach"
         class="absolute inset-0 w-full h-full object-cover object-center"
         loading="lazy"
       />
-      <div class="absolute inset-0 bg-coastal-text-main/25"></div>
+      <div class="absolute inset-0 bg-coastal-text-main/20"></div>
     </div>
 
-    <!-- Copy side — coral panel -->
     <div class="bg-coastal-coral flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
       <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-text-main/60">
         Saturday &amp; Sunday
@@ -234,7 +233,7 @@ const foodGrid = [
 
       <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
         {foodGrid.map((item, i) => (
-          <div class={"group relative overflow-hidden " + (i === 0 ? "row-span-2 aspect-auto" : "aspect-square")}>
+          <div class={"group relative overflow-hidden " + (i === 0 ? "md:row-span-2" : "aspect-square")}>
             <img
               src={item.src}
               alt={"Miss B's Coconut Club " + item.name + " Mission Beach San Diego"}
@@ -252,10 +251,10 @@ const foodGrid = [
     </div>
   </section>
 
-  <!-- ─── PRIVATE EVENTS — split panel ─────────────────────────────────── -->
+  <!-- ─── PRIVATE EVENTS ────────────────────────────────────────────────── -->
+  <!-- venue-03: outdoor patio, pink umbrellas, "In Love With The Coco" sign -->
   <section class="grid grid-cols-1 lg:grid-cols-2 min-h-[620px]">
 
-    <!-- Copy side -->
     <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6 bg-coastal-bg-pure order-2 lg:order-1">
       <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
         Private Events
@@ -280,11 +279,10 @@ const foodGrid = [
       </a>
     </div>
 
-    <!-- Image side -->
     <div class="relative min-h-[460px] lg:min-h-full order-1 lg:order-2">
       <img
-        src="/images/venue/miss-bs-coconut-club-mission-beach-venue-14.webp"
-        alt="Miss B's Coconut Club venue Mission Beach private events San Diego"
+        src="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
+        alt="Miss B's Coconut Club outdoor patio pink umbrellas Mission Beach San Diego private events"
         class="absolute inset-0 w-full h-full object-cover object-center"
         loading="lazy"
       />
