@@ -8,7 +8,7 @@ import siteProfile from '../data/site-profile.json';
   description="Weekend brunch at Miss B's Coconut Club in Mission Beach, San Diego. Saturday and Sunday 10am-3pm. Bottomless mimosas, tropical cocktails, and the best brunch plates on Mission Blvd."
 >
 
-  <!-- HERO — venue-07 tropical dining room, bright and daytime -->
+  <!-- HERO -->
   <section class="relative min-h-[80vh] flex items-end overflow-hidden">
     <img
       src="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
@@ -55,7 +55,7 @@ import siteProfile from '../data/site-profile.json';
     </div>
   </section>
 
-  <!-- BRUNCH EXPERIENCE SPLIT — venue-08 interior daytime -->
+  <!-- BRUNCH EXPERIENCE SPLIT -->
   <section class="bg-coastal-bg-pure">
     <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[660px]">
       <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
@@ -92,40 +92,12 @@ import siteProfile from '../data/site-profile.json';
     </div>
   </section>
 
-  <!-- COCKTAILS FEATURE — cocktail-34: mimosas lined up at flamingo tap bar -->
-  <!-- This is the definitive brunch cocktail image — champagne flutes, daytime, iconic backdrop -->
-  <section class="relative overflow-hidden min-h-[600px] flex items-center">
-    <img
-      src="/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-34.webp"
-      alt="Miss B's Coconut Club bottomless mimosas and brunch cocktails Mission Beach San Diego"
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      loading="lazy"
-    />
-    <div class="absolute inset-0 bg-gradient-to-r from-coastal-text-main/88 via-coastal-text-main/55 to-transparent"></div>
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
-      <div class="max-w-lg flex flex-col gap-6">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
-          Brunch Cocktails
-        </p>
-        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-bg-pure leading-[1.0]">
-          Bottomless Mimosas<br />&amp; Morning Cocktails
-        </h2>
-        <div class="h-px w-16 bg-coastal-coral"></div>
-        <p class="text-coastal-bg-card/85 text-base leading-relaxed">
-          Bottomless mimosas poured in front of 24 copper flamingo taps. Tropical morning cocktails, Bloody Marys, and the full Miss B&apos;s bar program &mdash; all available from 10am every Saturday and Sunday.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- BRUNCH FOOD GRID — all legitimate brunch plates -->
+  <!-- BRUNCH FOOD GRID — 6 unique brunch plates, no duplicates -->
   <section class="bg-coastal-bg-sand py-24 px-6">
     <div class="mx-auto max-w-7xl">
       <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12">
         <div class="flex flex-col gap-4">
-          <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
-            Brunch Menu
-          </p>
+          <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Brunch Menu</p>
           <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]">
             Plates Worth<br />Getting Out of Bed For
           </h2>
@@ -135,15 +107,14 @@ import siteProfile from '../data/site-profile.json';
           Full Menu
         </a>
       </div>
-      <!-- food-42, 41: egg sandwiches | food-20, 19: full breakfast plates | food-15: bacon sandwich | food-09: Coconut Club Burger -->
       <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
         {[
+          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08470.webp', name: 'Brunch Plate' },
+          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08518.webp', name: 'Morning Plate' },
+          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08532.webp', name: 'Brunch Special' },
+          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08554.webp', name: 'Brunch Dish' },
+          { src: '/images/brunch/miss-bs-brunch-mission-beach-veggie-breakfast-sandwich7.webp', name: 'Veggie Breakfast Sandwich' },
           { src: '/images/food/miss-bs-coconut-club-food-mission-beach-42.webp', name: 'Egg Sandwich' },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-20.webp', name: 'Easy Bs Breakfast' },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-41.webp', name: 'Breakfast Sandwich' },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-19.webp', name: 'Full Breakfast Plate' },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-15.webp', name: 'Bacon Sandwich' },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-09.webp', name: 'Coconut Club Burger' },
         ].map((item) => (
           <div class="group relative overflow-hidden aspect-square">
             <img
@@ -159,6 +130,53 @@ import siteProfile from '../data/site-profile.json';
           </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- COCKTAIL FEATURE — cocktail-34: mimosas lined up at flamingo tap bar -->
+  <section class="relative overflow-hidden min-h-[600px] flex items-center">
+    <img
+      src="/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-34.webp"
+      alt="Miss B's Coconut Club bottomless mimosas at flamingo tap bar Mission Beach San Diego"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-coastal-text-main/88 via-coastal-text-main/55 to-transparent"></div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
+      <div class="max-w-lg flex flex-col gap-6">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
+          Brunch Cocktails
+        </p>
+        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-bg-pure leading-[1.0]">
+          Bottomless Mimosas<br />&amp; Morning Cocktails
+        </h2>
+        <div class="h-px w-16 bg-coastal-coral"></div>
+        <p class="text-coastal-bg-card/85 text-base leading-relaxed">
+          Bottomless mimosas poured in front of 24 copper flamingo taps. Tropical morning cocktails, Bloody Marys, and the full Miss B&apos;s bar program available from 10am every Saturday and Sunday.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRUNCH COCKTAIL GRID — 4 brunch drink shots -->
+  <section class="bg-coastal-text-main">
+    <div class="grid grid-cols-2 md:grid-cols-4">
+      {[
+        { src: '/images/brunch/miss-bs-brunch-mission-beach-img-6968.webp',  name: 'Brunch Cocktail' },
+        { src: '/images/brunch/miss-bs-brunch-mission-beach-img-6969.webp',  name: 'Morning Drink' },
+        { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-20.webp', name: 'Rose and Champagne' },
+        { src: '/images/brunch/miss-bs-brunch-mission-beach-img-6982.webp',  name: 'Brunch Cocktail' },
+      ].map((item) => (
+        <div class="group relative overflow-hidden aspect-square">
+          <img
+            src={item.src}
+            alt={"Miss B's Coconut Club " + item.name + " brunch Mission Beach San Diego"}
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+      ))}
     </div>
   </section>
 
