@@ -1,0 +1,206 @@
+---
+import Layout from '../layouts/Layout.astro';
+import siteProfile from '../data/site-profile.json';
+
+const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.seo.streetAddress + " " + siteProfile.seo.addressLocality + " " + siteProfile.seo.addressRegion;
+---
+
+<Layout
+  title="The Space — Bar, Patio & Venue | Miss B's Coconut Club Mission Beach"
+  description="Explore Miss B's Coconut Club in Mission Beach San Diego. An open-air bar, tropical dining room, fire pit patio, and private event space at 3704 Mission Blvd."
+>
+
+  <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
+  <section class="relative min-h-[80vh] flex items-end overflow-hidden">
+    <img
+      src="/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp"
+      alt="Miss B's Coconut Club teal open-air bar Mission Beach San Diego"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/85 via-coastal-text-main/20 to-transparent"></div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:pb-24">
+      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-4">
+        3704 Mission Blvd · Mission Beach, San Diego
+      </p>
+      <h1 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95] mb-4">
+        The Space
+      </h1>
+      <p class="text-coastal-bg-card/80 text-base max-w-xl leading-relaxed">
+        An open-air bar, tropical dining room, fire pit patio, and private event venue — all at 3704 Mission Blvd, steps from the Pacific.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── THE OUTDOOR BAR ───────────────────────────────────────────────── -->
+  <section class="bg-coastal-bg-pure">
+    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[660px]">
+      <div class="relative min-h-[460px] lg:min-h-full">
+        <img
+          src="/images/venue/miss-bs-coconut-club-mission-beach-venue-13.webp"
+          alt="Miss B's Coconut Club open-air teal bar window Mission Beach San Diego"
+          class="absolute inset-0 w-full h-full object-cover object-center"
+          loading="lazy"
+        />
+      </div>
+      <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
+          The Bar
+        </p>
+        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]">
+          The Open-Air Bar
+        </h2>
+        <div class="h-px w-16 bg-coastal-coral"></div>
+        <p class="text-coastal-text-muted text-base leading-relaxed">
+          The centerpiece of Miss B's is the open-air teal bar — a roll-up window that opens the kitchen directly onto the patio, with herringbone tile, copper fixtures, and a full draft system of flamingo tap handles. Pull up a stool. Order something cold.
+        </p>
+        <p class="text-coastal-text-muted text-base leading-relaxed">
+          Walk-ins always welcome at the bar. The full cocktail menu, beer program, and kitchen are available from open to close.
+        </p>
+        <a href="/menu" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+          View the Menu
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── THE DINING ROOM ───────────────────────────────────────────────── -->
+  <section class="bg-coastal-bg-sand">
+    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[660px]">
+      <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6 order-1 lg:order-1">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
+          Inside
+        </p>
+        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]">
+          The Tropical<br />Dining Room
+        </h2>
+        <div class="h-px w-16 bg-coastal-coral"></div>
+        <p class="text-coastal-text-muted text-base leading-relaxed">
+          Inside Miss B's is a full tropical dining room — teal booth seating, the original Miss B's mural, hanging plants cascading from the ceiling, and warm pendant lighting. It's the kind of room that makes a Tuesday feel like a vacation.
+        </p>
+        <p class="text-coastal-text-muted text-base leading-relaxed">
+          Available for private dining and full room buyouts. Seats up to 60 guests.
+        </p>
+        <a href="/private-events" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
+          Private Events
+        </a>
+      </div>
+      <div class="relative min-h-[460px] lg:min-h-full order-2">
+        <img
+          src="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
+          alt="Miss B's Coconut Club tropical dining room mural Mission Beach San Diego"
+          class="absolute inset-0 w-full h-full object-cover object-center"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── THE PATIO ─────────────────────────────────────────────────────── -->
+  <section class="bg-coastal-bg-pure">
+    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[660px]">
+      <div class="relative min-h-[460px] lg:min-h-full">
+        <img
+          src="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
+          alt="Miss B's Coconut Club outdoor patio pink umbrellas Mission Beach San Diego"
+          class="absolute inset-0 w-full h-full object-cover object-top"
+          loading="lazy"
+        />
+      </div>
+      <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
+          Outside
+        </p>
+        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]">
+          The Outdoor Patio
+        </h2>
+        <div class="h-px w-16 bg-coastal-coral"></div>
+        <p class="text-coastal-text-muted text-base leading-relaxed">
+          The outdoor patio at Miss B's is one of Mission Beach's most coveted spots. Pink fringed umbrellas, fire pit seating, and the open-air bar all visible from the street. It's designed for groups, long afternoons, and people who don't want to go home.
+        </p>
+        <p class="text-coastal-text-muted text-base leading-relaxed">
+          Available for full patio buyouts for private events. Accommodates up to 80 guests reception-style.
+        </p>
+        <a href="/private-events" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+          Inquire About a Buyout
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── THE FLAMINGO BAR — feature ───────────────────────────────────── -->
+  <section class="relative overflow-hidden min-h-[560px] flex items-center">
+    <img
+      src="/images/venue/miss-bs-coconut-club-mission-beach-venue-17.webp"
+      alt="Miss B's Coconut Club copper flamingo tap handles Mission Beach"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-coastal-text-main/90 via-coastal-text-main/60 to-transparent"></div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
+      <div class="max-w-lg flex flex-col gap-6">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
+          The Draft System
+        </p>
+        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-bg-pure leading-[1.0]">
+          24 Taps.<br />All Flamingo.
+        </h2>
+        <div class="h-px w-16 bg-coastal-coral"></div>
+        <p class="text-coastal-bg-card/85 text-base leading-relaxed">
+          Miss B's signature copper flamingo tap handles aren't just a design choice — they're the bar's most photographed feature. 24 taps, all flamingo, all the time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SPACE GRID ────────────────────────────────────────────────────── -->
+  <section class="bg-coastal-bg-pure">
+    <div class="grid grid-cols-2 md:grid-cols-4">
+      {[
+        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-01.webp', label: 'The Bar' },
+        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-05.webp', label: 'The Patio' },
+        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-06.webp', label: 'The Dining Room' },
+        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-08.webp', label: 'The Interior' },
+      ].map((item) => (
+        <div class="group relative overflow-hidden aspect-square">
+          <img
+            src={item.src}
+            alt={"Miss B's Coconut Club " + item.label + " Mission Beach San Diego"}
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+            <p class="text-xs font-bold tracking-[0.2em] uppercase text-coastal-bg-pure">{item.label}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ─── LOCATION CTA ──────────────────────────────────────────────────── -->
+  <section class="bg-coastal-text-main py-20 px-6">
+    <div class="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-10">
+      <div class="flex flex-col gap-3 text-center md:text-left">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Come See It</p>
+        <p class="font-serif text-4xl md:text-5xl font-light italic text-coastal-bg-pure">
+          {siteProfile.seo.streetAddress}
+        </p>
+        <p class="text-coastal-text-muted text-sm">
+          {siteProfile.seo.addressLocality}, {siteProfile.seo.addressRegion} {siteProfile.seo.postalCode}
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/private-events" class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
+          Private Events
+        </a>
+        <a href={mapsURL} target="_blank" rel="noopener noreferrer"
+           class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
+          Get Directions
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

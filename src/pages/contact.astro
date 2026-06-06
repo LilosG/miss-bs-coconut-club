@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import siteProfile from '../data/site-profile.json';
+
+const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.seo.streetAddress + " " + siteProfile.seo.addressLocality + " " + siteProfile.seo.addressRegion;
+---
+
+<Layout
+  title="Contact Miss B's Coconut Club | Reservations & Event Inquiries Mission Beach"
+  description="Contact Miss B's Coconut Club in Mission Beach, San Diego. Make a reservation, inquire about private events, or get directions to 3704 Mission Blvd."
+>
+
+  <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
+  <section class="relative min-h-[60vh] flex items-end overflow-hidden">
+    <img
+      src="/images/venue/miss-bs-coconut-club-mission-beach-venue-04.webp"
+      alt="Miss B's Coconut Club Mission Beach San Diego"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/85 via-coastal-text-main/30 to-transparent"></div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:pb-24">
+      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-4">
+        3704 Mission Blvd · Mission Beach, San Diego
+      </p>
+      <h1 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95]">
+        Get in Touch
+      </h1>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT GRID ─────────────────────────────────────────────────── -->
+  <section class="bg-coastal-bg-pure py-24 px-6">
+    <div class="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-px bg-coastal-bg-card">
+
+      <!-- Reservations -->
+      <div class="bg-coastal-bg-pure p-10 flex flex-col gap-5">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Reservations</p>
+        <h2 class="font-serif text-3xl font-light italic text-coastal-text-main leading-[1.0]">
+          Book a Table
+        </h2>
+        <div class="h-px w-12 bg-coastal-coral"></div>
+        <p class="text-coastal-text-muted text-sm leading-relaxed flex-1">
+          Walk-ins are always welcome at the bar. For dining and brunch, reservations are strongly recommended — especially on weekend mornings.
+        </p>
+        <a href={"tel:" + siteProfile.seo.telephone} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+          {siteProfile.seo.telephone}
+        </a>
+      </div>
+
+      <!-- Private Events -->
+      <div class="bg-coastal-bg-pure p-10 flex flex-col gap-5">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Private Events</p>
+        <h2 class="font-serif text-3xl font-light italic text-coastal-text-main leading-[1.0]">
+          Plan Your Event
+        </h2>
+        <div class="h-px w-12 bg-coastal-coral"></div>
+        <p class="text-coastal-text-muted text-sm leading-relaxed flex-1">
+          Birthdays, buyouts, corporate events, and intimate gatherings. Our team responds within 24 hours with availability and a custom proposal.
+        </p>
+        <a href="/private-events" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+          Inquire Now
+        </a>
+      </div>
+
+      <!-- Location -->
+      <div class="bg-coastal-bg-pure p-10 flex flex-col gap-5">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Find Us</p>
+        <h2 class="font-serif text-3xl font-light italic text-coastal-text-main leading-[1.0]">
+          Directions
+        </h2>
+        <div class="h-px w-12 bg-coastal-coral"></div>
+        <address class="not-italic flex flex-col gap-1 text-coastal-text-muted text-sm flex-1">
+          <span>{siteProfile.seo.streetAddress}</span>
+          <span>{siteProfile.seo.addressLocality}, {siteProfile.seo.addressRegion} {siteProfile.seo.postalCode}</span>
+        </address>
+        <a href={mapsURL} target="_blank" rel="noopener noreferrer" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
+          Get Directions
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── HOURS + MAP SPLIT ─────────────────────────────────────────────── -->
+  <section class="bg-coastal-bg-sand">
+    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[500px]">
+
+      <!-- Hours -->
+      <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
+          Hours of Operation
+        </p>
+        <h2 class="font-serif text-4xl md:text-5xl font-light italic text-coastal-text-main leading-[1.0]">
+          When We're Open
+        </h2>
+        <div class="h-px w-16 bg-coastal-coral"></div>
+        <dl class="flex flex-col divide-y divide-coastal-text-muted/10">
+          {[
+            { day: 'Monday – Friday',  hours: '11am – Close' },
+            { day: 'Saturday',         hours: '10am – Close' },
+            { day: 'Sunday',           hours: '10am – Close' },
+          ].map((item) => (
+            <div class="flex justify-between items-center py-4 gap-8">
+              <dt class="text-sm text-coastal-text-muted">{item.day}</dt>
+              <dd class="text-sm font-semibold text-coastal-text-main">{item.hours}</dd>
+            </div>
+          ))}
+        </dl>
+        <div class="pt-2 flex flex-col gap-1">
+          <p class="text-xs text-coastal-coral font-semibold tracking-wide">Brunch: Saturday &amp; Sunday 10am – 3pm</p>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="relative min-h-[360px] lg:min-h-full">
+        <img
+          src="/images/venue/miss-bs-coconut-club-mission-beach-venue-08.webp"
+          alt="Miss B's Coconut Club interior Mission Beach San Diego"
+          class="absolute inset-0 w-full h-full object-cover object-center"
+          loading="lazy"
+        />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── SOCIAL ────────────────────────────────────────────────────────── -->
+  <section class="bg-coastal-text-main py-20 px-6">
+    <div class="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-10">
+      <div class="flex flex-col gap-3 text-center md:text-left">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Follow Along</p>
+        <p class="font-serif text-4xl font-light italic text-coastal-bg-pure">
+          @MissBsCoconutClub
+        </p>
+        <p class="text-coastal-text-muted text-sm">
+          Daily specials, events, and a behind-the-scenes look at Mission Beach's favorite bar.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="https://www.instagram.com/missbscoconutclub" target="_blank" rel="noopener noreferrer"
+           class="px-8 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/missbscoconutclub" target="_blank" rel="noopener noreferrer"
+           class="px-8 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
+          Facebook
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

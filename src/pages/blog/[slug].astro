@@ -1,0 +1,212 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const posts: Record<string, {
+  title: string;
+  metaTitle: string;
+  description: string;
+  category: string;
+  date: string;
+  image: string;
+  imageAlt: string;
+  content: { heading?: string; body: string }[];
+}> = {
+  'best-brunch-mission-beach': {
+    title: 'The Best Brunch in Mission Beach, San Diego',
+    metaTitle: 'Best Brunch Mission Beach San Diego | Miss B\'s Coconut Club',
+    description: 'Mission Beach has no shortage of brunch spots. Here\'s why Miss B\'s Coconut Club consistently earns the top spot — and what to order when you get there.',
+    category: 'Mission Beach Guide',
+    date: '2025-05-10',
+    image: '/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp',
+    imageAlt: 'Miss B\'s Coconut Club brunch Mission Beach San Diego',
+    content: [
+      { body: 'Mission Beach is one of San Diego\'s most visited neighborhoods — which means its brunch scene gets a lot of foot traffic and a lot of competition. Most spots lean on the location and charge accordingly. Miss B\'s Coconut Club is the exception: a venue that would earn its reputation regardless of where it sat.' },
+      { heading: 'What Makes Miss B\'s the Best Brunch in Mission Beach', body: 'The answer is the combination. The open-air teal bar. The tropical dining room with the original mural. The pink umbrella patio. The full kitchen firing from 10am. The copper flamingo taps. Bottomless mimosas available. A menu built for a long Saturday afternoon rather than a 45-minute table turn.' },
+      { heading: 'What to Order', body: 'The Coconut Club Burger is the signature — a properly built burger that holds its own against any in the city. The Ahi Poke is a brunch staple. For cocktails, the Mango Guava Spritz is the morning order, and bottomless mimosas remain the most efficient path to a perfect weekend.' },
+      { heading: 'When to Go', body: 'Brunch runs every Saturday and Sunday from 10am to 3pm at 3704 Mission Blvd in Mission Beach. Reservations are strongly recommended — walk-ins are welcome at the bar but guaranteed seating requires a booking, especially on Sunday mornings.' },
+    ],
+  },
+  'best-bars-mission-beach': {
+    title: 'Best Bars in Mission Beach San Diego',
+    metaTitle: 'Best Bars Mission Beach San Diego | Guide',
+    description: 'A guide to the best bars in Mission Beach — from the boardwalk to Mission Blvd. Miss B\'s Coconut Club leads the list for good reason.',
+    category: 'Mission Beach Guide',
+    date: '2025-04-18',
+    image: '/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp',
+    imageAlt: 'Miss B\'s Coconut Club open-air bar Mission Beach San Diego',
+    content: [
+      { body: 'Mission Beach is a neighborhood built for being outside with a drink in your hand. The boardwalk, the bay, the Pacific — it\'s the backdrop that makes any bar better. But some bars are worth coming to specifically, not just for the setting.' },
+      { heading: 'Miss B\'s Coconut Club — The Standard', body: 'Miss B\'s Coconut Club at 3704 Mission Blvd is the bar that sets the standard for Mission Beach. The open-air teal bar, the 24 copper flamingo taps, the tropical dining room and patio — it\'s a venue with a genuine point of view. The cocktail program is serious, the food is worth ordering, and the atmosphere is unlike anywhere else on Mission Blvd.' },
+      { heading: 'The Full Bar Program', body: 'The Miss B\'s bar program is built on tropical craft cocktails and a 24-tap flamingo draft system. The Caribe Welcome, the Mango Guava Spritz, the Rum Cannonball — every drink has a name and a story. Open daily from 11am on weekdays and 10am on weekends.' },
+      { heading: 'How to Visit', body: 'Walk-ins are always welcome at the bar. For weekend brunch or dining, reservations are recommended. Located at 3704 Mission Blvd, Mission Beach, San Diego, CA 92109.' },
+    ],
+  },
+  'private-events-mission-beach': {
+    title: 'Private Event Venues in Mission Beach: A Complete Guide',
+    metaTitle: 'Private Event Venues Mission Beach San Diego | Guide',
+    description: 'Planning a birthday, bachelorette, or corporate event in Mission Beach? Here\'s everything you need to know — and why Miss B\'s is the obvious choice.',
+    category: 'Private Events',
+    date: '2025-03-22',
+    image: '/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp',
+    imageAlt: 'Miss B\'s Coconut Club private event patio Mission Beach',
+    content: [
+      { body: 'Mission Beach is one of San Diego\'s most sought-after event neighborhoods — the combination of beach access, walkable streets, and the Pacific Ocean backdrop makes it a natural choice for any celebration. But not every venue in the area is worth the booking.' },
+      { heading: 'What to Look for in a Mission Beach Event Venue', body: 'The best private event venues offer a genuinely private space, a kitchen and bar program capable of executing at scale, and an events team that handles the logistics. In Mission Beach, Miss B\'s Coconut Club is the only venue that delivers all three with a space that\'s also genuinely memorable.' },
+      { heading: 'Miss B\'s Coconut Club for Private Events', body: 'Miss B\'s offers three configurable spaces — the open-air bar area, the tropical dining room, and the full outdoor patio with pink fringed umbrellas. Full buyouts accommodate up to 80 guests. The events team builds custom menus and cocktail packages for every event.' },
+      { heading: 'How to Book', body: 'Submit an inquiry at missbscoconutclub.com/private-events. The events team responds within 24 hours. For weekend dates, inquire at least 4–6 weeks in advance.' },
+    ],
+  },
+  'things-to-do-mission-beach': {
+    title: 'Things to Do in Mission Beach San Diego',
+    metaTitle: 'Things to Do Mission Beach San Diego | Local Guide',
+    description: 'A local guide to Mission Beach — what to do, where to eat, where to drink, and why Miss B\'s Coconut Club at 3704 Mission Blvd should be on every itinerary.',
+    category: 'Mission Beach Guide',
+    date: '2025-02-14',
+    image: '/images/venue/miss-bs-coconut-club-mission-beach-venue-04.webp',
+    imageAlt: 'Miss B\'s Coconut Club Mission Beach San Diego',
+    content: [
+      { body: 'Mission Beach is one of San Diego\'s most distinct neighborhoods — a narrow strip of land between the Pacific Ocean and Mission Bay, packed with boardwalk culture, surf shops, beach rentals, and some of the city\'s best casual dining and drinking.' },
+      { heading: 'The Beach and the Boardwalk', body: 'The Mission Beach boardwalk runs the length of the neighborhood along the Pacific side. Bike rentals, rollerblades, and morning runs. Belmont Park\'s vintage Giant Dipper roller coaster is the neighborhood\'s most recognizable landmark and worth a lap.' },
+      { heading: 'Eat and Drink on Mission Blvd', body: 'Mission Blvd is the neighborhood\'s main commercial street with a dense concentration of restaurants, bars, and coffee shops. Miss B\'s Coconut Club at 3704 Mission Blvd is the standout — open daily from 11am, brunch on weekends from 10am.' },
+      { heading: 'Miss B\'s Coconut Club', body: 'No Mission Beach itinerary is complete without a stop at Miss B\'s. The open-air bar, the tropical dining room, the flamingo taps — it\'s the neighborhood\'s most photogenic venue and consistently ranks among the best bars in San Diego.' },
+    ],
+  },
+  'tropical-cocktails-san-diego': {
+    title: 'Best Tropical Cocktail Bars in San Diego',
+    metaTitle: 'Best Tropical Cocktail Bars San Diego | Guide',
+    description: 'San Diego\'s tropical cocktail scene has leveled up. Miss B\'s Coconut Club — with its 24 flamingo taps and Caribbean-rooted drink program — is setting the standard.',
+    category: 'Food and Drink',
+    date: '2025-01-08',
+    image: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-13.webp',
+    imageAlt: 'Miss B\'s Coconut Club tropical cocktails Mission Beach San Diego',
+    content: [
+      { body: 'San Diego has always been a beer city. But the cocktail scene has matured significantly over the past several years, and nowhere is that more visible than in the tropical and rum-forward programs that have taken hold in beach neighborhoods.' },
+      { heading: 'Miss B\'s Coconut Club — Mission Beach', body: 'Miss B\'s Coconut Club is the benchmark for tropical cocktails in San Diego. The flamingo vessel, the 24 copper draft taps, the Caribbean-rooted drink program — every cocktail is built with intention. The Caribe Welcome, the Mango Guava Spritz, and the Rum Cannonball are the signatures. Bayou Hour runs on weekday afternoons.' },
+      { heading: 'The Bar Program', body: 'Miss B\'s approach to tropical cocktails is rooted in the Caribbean tradition — fresh ingredients, quality spirits, and presentations that make every drink feel like a destination. The flamingo tap system is the visual centerpiece; the cocktail menu is what keeps people coming back.' },
+      { heading: 'Where to Find It', body: 'Miss B\'s Coconut Club is located at 3704 Mission Blvd in Mission Beach, San Diego. Open daily — bar from 11am weekdays, 10am weekends during brunch service.' },
+    ],
+  },
+  'bachelorette-party-san-diego': {
+    title: 'Best Bachelorette Party Venues in San Diego',
+    metaTitle: 'Best Bachelorette Party Venues San Diego | Guide',
+    description: 'Planning a bachelorette in San Diego? This guide covers the best venues by neighborhood — with Miss B\'s Coconut Club as the top pick for Mission Beach.',
+    category: 'Private Events',
+    date: '2024-12-05',
+    image: '/images/venue/miss-bs-coconut-club-mission-beach-venue-13.webp',
+    imageAlt: 'Miss B\'s Coconut Club bachelorette party venue Mission Beach San Diego',
+    content: [
+      { body: 'San Diego is one of the top bachelorette destinations on the West Coast — the weather, the beach access, the bar scene, and the short flight from most major California cities make it a natural choice. The venue question is where most groups get stuck.' },
+      { heading: 'What Makes a Great Bachelorette Venue', body: 'The best bachelorette venues have three things: a space that photographs well, a cocktail program worth celebrating with, and an events team that handles the logistics so the group can focus on the celebration. Miss B\'s Coconut Club in Mission Beach delivers all three.' },
+      { heading: 'Miss B\'s Coconut Club for Bachelorettes', body: 'The open-air bar, the copper flamingo taps, the pink fringed umbrellas on the patio, the "In Love With The Coco" sign — Miss B\'s was practically designed for a bachelorette. The tropical cocktail program, the beachside location, and the full private event capabilities make it the top pick for Mission Beach celebrations.' },
+      { heading: 'How to Book a Bachelorette at Miss B\'s', body: 'Submit a private events inquiry at missbscoconutclub.com/private-events. The team will put together a custom proposal with reserved section options, cocktail packages, and pricing. Recommend booking 4–6 weeks in advance for weekend dates.' },
+    ],
+  },
+};
+
+export async function getStaticPaths() {
+  const slugs = [
+    'best-brunch-mission-beach',
+    'best-bars-mission-beach',
+    'private-events-mission-beach',
+    'things-to-do-mission-beach',
+    'tropical-cocktails-san-diego',
+    'bachelorette-party-san-diego',
+  ];
+  return slugs.map((slug) => ({
+    params: { slug },
+    props:  { slug },
+  }));
+}
+
+interface Props { slug: string; }
+const { slug } = Astro.props;
+const post = posts[slug];
+if (!post) return Astro.redirect('/blog');
+---
+
+<Layout
+  title={post.metaTitle}
+  description={post.description}
+>
+
+  <!-- ─── ARTICLE HERO ──────────────────────────────────────────────────── -->
+  <section class="relative min-h-[60vh] flex items-end overflow-hidden">
+    <img
+      src={post.image}
+      alt={post.imageAlt}
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/90 via-coastal-text-main/40 to-transparent"></div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:pb-24">
+      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-3">
+        {post.category}
+      </p>
+      <h1 class="font-serif text-4xl md:text-6xl font-light italic text-coastal-bg-pure leading-[0.95] max-w-3xl">
+        {post.title}
+      </h1>
+      <time datetime={post.date} class="block text-xs text-coastal-bg-card/60 mt-4 tracking-wide">
+        {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+      </time>
+    </div>
+  </section>
+
+  <!-- ─── ARTICLE BODY ──────────────────────────────────────────────────── -->
+  <article class="bg-coastal-bg-pure py-16 px-6">
+    <div class="max-w-[68ch] mx-auto">
+
+      <p class="font-sans text-coastal-text-muted text-base leading-relaxed italic border-b border-coastal-text-muted/10 pb-8 mb-8">
+        {post.description}
+      </p>
+
+      {post.content.map((block) => (
+        <div class="mb-8">
+          {block.heading && (
+            <h2 class="font-serif text-3xl font-light italic text-coastal-text-main mb-4 leading-snug">
+              {block.heading}
+            </h2>
+          )}
+          <p class="font-sans text-coastal-text-muted text-base leading-relaxed">
+            {block.body}
+          </p>
+        </div>
+      ))}
+
+      <div class="pt-10 mt-10 border-t border-coastal-text-muted/10">
+        <a href="/blog" class="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral hover:text-coastal-gold-accent transition-colors duration-200">
+          ← Back to Blog
+        </a>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- ─── CTA ───────────────────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden">
+    <img
+      src="/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp"
+      alt="Miss B's Coconut Club Mission Beach San Diego"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-coastal-text-main/70"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-6 py-20 text-center flex flex-col items-center gap-5">
+      <h2 class="font-serif text-4xl md:text-5xl font-light italic text-coastal-bg-pure leading-[1.0]">
+        Come Experience It in Person
+      </h2>
+      <p class="text-coastal-bg-card/80 text-base max-w-lg leading-relaxed">
+        3704 Mission Blvd, Mission Beach, San Diego. Open daily.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center mt-2">
+        <a href="/contact" class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
+          Make a Reservation
+        </a>
+        <a href="/menu" class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300">
+          View the Menu
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
