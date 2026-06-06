@@ -13,13 +13,12 @@ const cocktailGrid = [
   { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-38.webp', name: 'Spritz and Giggles' },
 ];
 
-const foodGrid = [
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-09.webp',  name: 'Coconut Club Burger', tall: true  },
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-13.webp',  name: 'Cubano',              tall: false },
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-17.webp',  name: 'Table Spread',        tall: false },
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-26.webp',  name: 'Jerk Plate',          tall: false },
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-12.webp',  name: 'Cubano Stacked',      tall: false },
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-32.webp',  name: 'Nachos',              tall: false },
+// 4 items only — burger spans left column full height, 4 squares fill 2x2 right
+const foodRight = [
+  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-13.webp', name: 'Cubano' },
+  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-17.webp', name: 'Table Spread' },
+  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-26.webp', name: 'Jerk Plate' },
+  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-32.webp', name: 'Nachos' },
 ];
 ---
 
@@ -132,15 +131,15 @@ const foodGrid = [
       class="absolute inset-0 w-full h-full object-cover object-center"
       loading="lazy"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-coastal-text-main/95 via-coastal-text-main/75 to-coastal-text-main/20"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-coastal-text-main via-coastal-text-main/85 to-coastal-text-main/10"></div>
 
-    <div class="relative z-10 mx-auto max-w-7xl px-6 py-24">
-      <div class="max-w-xl flex flex-col gap-6">
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24">
+      <div class="max-w-lg flex flex-col gap-6">
         <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
           Craft Cocktails
         </p>
-        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-bg-pure leading-[1.0]">
-          Signature Cocktails<br />in Mission Beach
+        <h2 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95]">
+          Signature<br />Cocktails in<br />Mission Beach
         </h2>
         <div class="h-px w-16 bg-coastal-coral"></div>
         <p class="text-coastal-bg-card/85 text-base leading-relaxed">
@@ -228,10 +227,11 @@ const foodGrid = [
         </a>
       </div>
 
-      <!-- Food grid — burger spans full height left column, 2x2 right -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-2" style="grid-template-rows: auto;">
-        <!-- Tall left item -->
-        <div class="group relative overflow-hidden md:row-span-2 min-h-[400px] md:min-h-0">
+      <!-- Food grid: burger fills full left column, 4 squares in 2x2 right -->
+      <div class="grid grid-cols-3 gap-2">
+
+        <!-- Tall left — burger spans 2 rows -->
+        <div class="group relative overflow-hidden row-span-2">
           <img
             src="/images/food/miss-bs-coconut-club-food-mission-beach-09.webp"
             alt="Miss B's Coconut Club Coconut Club Burger Mission Beach San Diego"
@@ -243,8 +243,9 @@ const foodGrid = [
             <p class="text-xs font-bold tracking-[0.2em] uppercase text-coastal-bg-pure">Coconut Club Burger</p>
           </div>
         </div>
-        <!-- Right grid items — 4 squares in 2x2 -->
-        {foodGrid.slice(1).map((item) => (
+
+        <!-- Right 4 items — each is aspect-square filling one cell -->
+        {foodRight.map((item) => (
           <div class="group relative overflow-hidden aspect-square">
             <img
               src={item.src}
@@ -258,6 +259,7 @@ const foodGrid = [
             </div>
           </div>
         ))}
+
       </div>
 
     </div>
