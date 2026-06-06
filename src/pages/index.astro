@@ -13,7 +13,6 @@ const cocktailGrid = [
   { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-38.webp', name: 'Spritz and Giggles' },
 ];
 
-// 4 items only — burger spans left column full height, 4 squares fill 2x2 right
 const foodRight = [
   { src: '/images/food/miss-bs-coconut-club-food-mission-beach-13.webp', name: 'Cubano' },
   { src: '/images/food/miss-bs-coconut-club-food-mission-beach-17.webp', name: 'Table Spread' },
@@ -86,7 +85,6 @@ const foodRight = [
   <!-- ─── EDITORIAL INTRO ───────────────────────────────────────────────── -->
   <section class="bg-coastal-bg-pure">
     <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[700px]">
-
       <div class="relative min-h-[460px] lg:min-h-full order-2 lg:order-1">
         <img
           src="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
@@ -95,7 +93,6 @@ const foodRight = [
           loading="lazy"
         />
       </div>
-
       <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 order-1 lg:order-2">
         <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-5">
           Mission Beach, San Diego
@@ -119,11 +116,11 @@ const foodRight = [
           </a>
         </div>
       </div>
-
     </div>
   </section>
 
   <!-- ─── COCKTAIL FEATURE ──────────────────────────────────────────────── -->
+  <!-- Gradient lightened: from-coastal-text-main/90 → to-transparent so image breathes on right -->
   <section class="relative overflow-hidden min-h-[680px] flex items-center">
     <img
       src="/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-13.webp"
@@ -131,7 +128,7 @@ const foodRight = [
       class="absolute inset-0 w-full h-full object-cover object-center"
       loading="lazy"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-coastal-text-main via-coastal-text-main/85 to-coastal-text-main/10"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-coastal-text-main/90 via-coastal-text-main/60 to-transparent"></div>
 
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24">
       <div class="max-w-lg flex flex-col gap-6">
@@ -174,7 +171,6 @@ const foodRight = [
 
   <!-- ─── BRUNCH FEATURE ────────────────────────────────────────────────── -->
   <section class="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
-
     <div class="relative min-h-[400px] lg:min-h-full">
       <img
         src="/images/venue/miss-bs-coconut-club-mission-beach-venue-17.webp"
@@ -184,7 +180,6 @@ const foodRight = [
       />
       <div class="absolute inset-0 bg-coastal-text-main/15"></div>
     </div>
-
     <div class="bg-coastal-coral flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
       <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-text-main/60">
         Saturday &amp; Sunday
@@ -205,13 +200,11 @@ const foodRight = [
         </a>
       </div>
     </div>
-
   </section>
 
   <!-- ─── FOOD SECTION ──────────────────────────────────────────────────── -->
   <section class="bg-coastal-bg-sand py-24 px-6">
     <div class="mx-auto max-w-7xl">
-
       <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12">
         <div class="flex flex-col gap-4">
           <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
@@ -227,10 +220,8 @@ const foodRight = [
         </a>
       </div>
 
-      <!-- Food grid: burger fills full left column, 4 squares in 2x2 right -->
       <div class="grid grid-cols-3 gap-2">
-
-        <!-- Tall left — burger spans 2 rows -->
+        <!-- Burger — full left column, spans 2 rows -->
         <div class="group relative overflow-hidden row-span-2">
           <img
             src="/images/food/miss-bs-coconut-club-food-mission-beach-09.webp"
@@ -243,8 +234,7 @@ const foodRight = [
             <p class="text-xs font-bold tracking-[0.2em] uppercase text-coastal-bg-pure">Coconut Club Burger</p>
           </div>
         </div>
-
-        <!-- Right 4 items — each is aspect-square filling one cell -->
+        <!-- Right 4 items — 2x2 -->
         {foodRight.map((item) => (
           <div class="group relative overflow-hidden aspect-square">
             <img
@@ -259,15 +249,12 @@ const foodRight = [
             </div>
           </div>
         ))}
-
       </div>
-
     </div>
   </section>
 
   <!-- ─── PRIVATE EVENTS ────────────────────────────────────────────────── -->
   <section class="grid grid-cols-1 lg:grid-cols-2 min-h-[620px]">
-
     <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6 bg-coastal-bg-pure order-2 lg:order-1">
       <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
         Private Events
@@ -291,16 +278,15 @@ const foodRight = [
         Inquire About Your Event
       </a>
     </div>
-
+    <!-- object-top to show umbrellas + sign rather than cropping to wall -->
     <div class="relative min-h-[460px] lg:min-h-full order-1 lg:order-2">
       <img
         src="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
         alt="Miss B's Coconut Club outdoor patio pink umbrellas Mission Beach San Diego private events"
-        class="absolute inset-0 w-full h-full object-cover object-center"
+        class="absolute inset-0 w-full h-full object-cover object-top"
         loading="lazy"
       />
     </div>
-
   </section>
 
   <!-- ─── LOCATION BAR ──────────────────────────────────────────────────── -->
