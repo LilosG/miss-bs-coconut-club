@@ -1,0 +1,32 @@
+{
+  "main": [
+    { "label": "Menu", "href": "/menu" },
+    { "label": "Brunch", "href": "/brunch" },
+    { "label": "Space", "href": "/space" },
+    { "label": "Private Events", "href": "/private-events" },
+    { "label": "Blog", "href": "/blog" },
+    { "label": "Contact", "href": "/contact" }
+  ],
+  "ctas": [
+    {
+      "label": "Reserve",
+      "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_ss=645fd193-d64d-44ec-9f2e-0fb6b0df119e&toast_src=website_link&utm_medium=toast_sites",
+      "external": true,
+      "style": "primary"
+    },
+    {
+      "label": "Order Online",
+      "href": "https://missbcoconutclub.com/order",
+      "external": false,
+      "style": "secondary"
+    }
+  ],
+  "footer": [
+    { "label": "Menu", "href": "/menu" },
+    { "label": "Brunch", "href": "/brunch" },
+    { "label": "The Space", "href": "/space" },
+    { "label": "Private Events", "href": "/private-events" },
+    { "label": "Blog", "href": "/blog" },
+    { "label": "Contact", "href": "/contact" }
+  ]
+}
