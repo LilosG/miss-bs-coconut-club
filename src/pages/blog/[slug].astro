@@ -2,6 +2,7 @@
 import { getCollection, getEntry, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
+import CtaBand from '../../components/ui/CtaBand.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -61,30 +62,21 @@ const { Content } = await render(post);
   </article>
 
   <!-- ─── CTA ───────────────────────────────────────────────────────────── -->
-  <section class="relative overflow-hidden">
-    <img
-      src="/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp"
-      alt="Miss B's Coconut Club Mission Beach San Diego"
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      loading="lazy"
-    />
-    <div class="absolute inset-0 bg-coastal-text-main/70"></div>
-    <div class="relative z-10 mx-auto max-w-7xl px-6 py-20 text-center flex flex-col items-center gap-5">
-      <h2 class="font-serif text-4xl md:text-5xl font-light italic text-coastal-bg-pure leading-[1.0]">
-        Come Experience It in Person
-      </h2>
-      <p class="text-coastal-bg-card/80 text-base max-w-lg leading-relaxed">
-        3704 Mission Blvd, Mission Beach, San Diego. Open daily.
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center mt-2">
-        <a href="/contact" class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-          Make a Reservation
-        </a>
-        <a href="/menu" class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300">
-          View the Menu
-        </a>
-      </div>
-    </div>
-  </section>
+  <CtaBand
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp"
+    imageAlt="Miss B's Coconut Club Mission Beach San Diego"
+    heading="Come Experience It in Person"
+    body="3704 Mission Blvd, Mission Beach, San Diego. Open daily."
+    headingSize="medium"
+    py="py-20"
+    gap="gap-5"
+  >
+    <a href="/contact" class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
+      Make a Reservation
+    </a>
+    <a href="/menu" class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300">
+      View the Menu
+    </a>
+  </CtaBand>
 
 </Layout>

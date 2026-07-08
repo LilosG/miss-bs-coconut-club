@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import siteProfile from '../data/site-profile.json';
 import SplitSection from '../components/ui/SplitSection.astro';
 import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
+import ChecklistItems from '../components/ui/ChecklistItems.astro';
 
 const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.seo.streetAddress + " " + siteProfile.seo.addressLocality + " " + siteProfile.seo.addressRegion;
 
@@ -237,14 +238,7 @@ const foodRight = [
     <p class="text-coastal-text-muted text-base leading-relaxed max-w-[44ch]">
       Birthdays, buyouts, corporate events, and intimate gatherings. Miss B's Coconut Club is the only open-air bar venue on Mission Blvd — steps from the Pacific.
     </p>
-    <ul class="flex flex-col gap-2.5 mt-2">
-      {["Birthday Parties", "Full and Partial Buyouts", "Corporate Events", "Bachelor and Bachelorette", "Milestone Celebrations"].map((item) => (
-        <li class="flex items-center gap-4 text-sm text-coastal-text-muted">
-          <div class="h-px w-5 bg-coastal-coral shrink-0"></div>
-          {item}
-        </li>
-      ))}
-    </ul>
+    <ChecklistItems items={["Birthday Parties", "Full and Partial Buyouts", "Corporate Events", "Bachelor and Bachelorette", "Milestone Celebrations"]} />
     <a href="/private-events" class="self-start mt-4 px-7 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
       Inquire About Your Event
     </a>

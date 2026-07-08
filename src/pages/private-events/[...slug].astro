@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
 import SplitSection from '../../components/ui/SplitSection.astro';
+import ChecklistItems from '../../components/ui/ChecklistItems.astro';
 
 const events: Record<string, {
   title: string;
@@ -148,14 +149,7 @@ if (!event) return Astro.redirect('/private-events');
           Our events team takes care of every detail so you can focus on your guests.
         </p>
       </div>
-      <ul class="flex flex-col divide-y divide-coastal-text-muted/10">
-        {event.includes.map((item) => (
-          <li class="flex items-center gap-4 py-4 text-sm text-coastal-text-muted">
-            <div class="h-px w-5 bg-coastal-coral shrink-0"></div>
-            {item}
-          </li>
-        ))}
-      </ul>
+      <ChecklistItems items={event.includes} divided={true} />
     </div>
   </section>
 
