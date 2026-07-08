@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import siteProfile from '../data/site-profile.json';
+import PageHero from '../components/ui/PageHero.astro';
 ---
 
 <Layout
@@ -8,28 +9,13 @@ import siteProfile from '../data/site-profile.json';
   description="Weekend brunch at Miss B's Coconut Club in Mission Beach, San Diego. Saturday and Sunday 10am-3pm. Bottomless mimosas, tropical cocktails, and the best brunch plates on Mission Blvd."
 >
 
-  <!-- HERO -->
-  <section class="relative min-h-[80vh] flex items-end overflow-hidden">
-    <img
-      src="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
-      alt="Miss B's Coconut Club brunch Mission Beach San Diego"
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/85 via-coastal-text-main/30 to-transparent"></div>
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:pb-24">
-      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-4">
-        Saturday &amp; Sunday &middot; 10am &ndash; 3pm
-      </p>
-      <h1 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95] mb-4">
-        Weekend Brunch<br />in Mission Beach
-      </h1>
-      <p class="text-coastal-bg-card/80 text-base max-w-xl leading-relaxed">
-        Miss B&apos;s Coconut Club is Mission Beach&apos;s favorite weekend ritual. Open every Saturday and Sunday from 10am to 3pm.
-      </p>
-    </div>
-  </section>
+  <PageHero
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
+    imageAlt="Miss B's Coconut Club brunch Mission Beach San Diego"
+    eyebrow="Saturday &amp; Sunday &middot; 10am &ndash; 3pm"
+    heading="Weekend Brunch<br />in Mission Beach"
+    subheading="Miss B's Coconut Club is Mission Beach's favorite weekend ritual. Open every Saturday and Sunday from 10am to 3pm."
+  />
 
   <!-- STATS -->
   <section class="bg-coastal-text-main">
