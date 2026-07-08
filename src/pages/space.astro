@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import siteProfile from '../data/site-profile.json';
 import PageHero from '../components/ui/PageHero.astro';
 import SplitSection from '../components/ui/SplitSection.astro';
+import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
 
 const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.seo.streetAddress + " " + siteProfile.seo.addressLocality + " " + siteProfile.seo.addressRegion;
 ---
@@ -104,27 +105,14 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
 
   <!-- VENUE PHOTO GRID — 4 images not used in split sections above -->
   <section class="bg-coastal-bg-pure">
-    <div class="grid grid-cols-2 md:grid-cols-4">
-      {[
-        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-02.webp', label: 'The Bar' },
-        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-10.webp', label: 'The Patio' },
-        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-12.webp', label: 'The Dining Room' },
-        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-16.webp', label: 'The Interior' },
-      ].map((item) => (
-        <div class="group relative overflow-hidden aspect-square">
-          <img
-            src={item.src}
-            alt={"Miss B's Coconut Club " + item.label + " Mission Beach San Diego"}
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-            <p class="text-xs font-bold tracking-[0.2em] uppercase text-coastal-bg-pure">{item.label}</p>
-          </div>
-        </div>
-      ))}
-    </div>
+    <HoverImageGrid
+      items={[
+        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-02.webp', name: 'The Bar',         alt: "Miss B's Coconut Club The Bar Mission Beach San Diego" },
+        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-10.webp', name: 'The Patio',       alt: "Miss B's Coconut Club The Patio Mission Beach San Diego" },
+        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-12.webp', name: 'The Dining Room', alt: "Miss B's Coconut Club The Dining Room Mission Beach San Diego" },
+        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-16.webp', name: 'The Interior',    alt: "Miss B's Coconut Club The Interior Mission Beach San Diego" },
+      ]}
+    />
   </section>
 
   <!-- LOCATION CTA -->

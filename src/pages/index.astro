@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import siteProfile from '../data/site-profile.json';
 import SplitSection from '../components/ui/SplitSection.astro';
+import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
 
 const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.seo.streetAddress + " " + siteProfile.seo.addressLocality + " " + siteProfile.seo.addressRegion;
 
@@ -140,22 +141,13 @@ const foodRight = [
 
   <!-- ─── COCKTAIL GRID ─────────────────────────────────────────────────── -->
   <section class="bg-coastal-bg-pure">
-    <div class="grid grid-cols-2 md:grid-cols-3">
-      {cocktailGrid.map((cocktail) => (
-        <div class="group relative overflow-hidden aspect-[4/3]">
-          <img
-            src={cocktail.src}
-            alt={"Miss B's Coconut Club " + cocktail.name + " cocktail Mission Beach San Diego"}
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-            <p class="text-xs font-bold tracking-[0.2em] uppercase text-coastal-bg-pure">{cocktail.name}</p>
-          </div>
-        </div>
-      ))}
-    </div>
+    <HoverImageGrid
+      cols="2x3"
+      aspect="4/3"
+      labelPadding="p-5"
+      gradientFrom="from-coastal-text-main/75"
+      items={cocktailGrid.map((c) => ({ src: c.src, name: c.name, alt: "Miss B's Coconut Club " + c.name + " cocktail Mission Beach San Diego" }))}
+    />
   </section>
 
   <!-- ─── BRUNCH FEATURE ────────────────────────────────────────────────── -->

@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/ui/PageHero.astro';
 import SplitSection from '../components/ui/SplitSection.astro';
+import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
 ---
 
 <Layout
@@ -78,29 +79,18 @@ import SplitSection from '../components/ui/SplitSection.astro';
           Full Menu
         </a>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-        {[
-          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08470.webp', name: 'Brunch Plate' },
-          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08518.webp', name: 'Morning Plate' },
-          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08532.webp', name: 'Brunch Special' },
-          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08554.webp', name: 'Brunch Dish' },
-          { src: '/images/brunch/miss-bs-brunch-mission-beach-veggie-breakfast-sandwich7.webp', name: 'Veggie Breakfast Sandwich' },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-42.webp', name: 'Egg Sandwich' },
-        ].map((item) => (
-          <div class="group relative overflow-hidden aspect-square">
-            <img
-              src={item.src}
-              alt={"Miss B's Coconut Club " + item.name + " brunch Mission Beach San Diego"}
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-              <p class="text-xs font-bold tracking-[0.2em] uppercase text-coastal-bg-pure">{item.name}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <HoverImageGrid
+        cols="2x3"
+        gap={true}
+        items={[
+          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08470.webp', name: 'Brunch Plate', alt: "Miss B's Coconut Club Brunch Plate brunch Mission Beach San Diego" },
+          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08518.webp', name: 'Morning Plate', alt: "Miss B's Coconut Club Morning Plate brunch Mission Beach San Diego" },
+          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08532.webp', name: 'Brunch Special', alt: "Miss B's Coconut Club Brunch Special brunch Mission Beach San Diego" },
+          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08554.webp', name: 'Brunch Dish', alt: "Miss B's Coconut Club Brunch Dish brunch Mission Beach San Diego" },
+          { src: '/images/brunch/miss-bs-brunch-mission-beach-veggie-breakfast-sandwich7.webp', name: 'Veggie Breakfast Sandwich', alt: "Miss B's Coconut Club Veggie Breakfast Sandwich brunch Mission Beach San Diego" },
+          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-42.webp', name: 'Egg Sandwich', alt: "Miss B's Coconut Club Egg Sandwich brunch Mission Beach San Diego" },
+        ]}
+      />
     </div>
   </section>
 
@@ -131,24 +121,15 @@ import SplitSection from '../components/ui/SplitSection.astro';
 
   <!-- BRUNCH COCKTAIL GRID — 4 brunch drink shots -->
   <section class="bg-coastal-text-main">
-    <div class="grid grid-cols-2 md:grid-cols-4">
-      {[
-        { src: '/images/brunch/miss-bs-brunch-mission-beach-img-6968.webp',  name: 'Brunch Cocktail' },
-        { src: '/images/brunch/miss-bs-brunch-mission-beach-img-6969.webp',  name: 'Morning Drink' },
-        { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-20.webp', name: 'Rose and Champagne' },
-        { src: '/images/brunch/miss-bs-brunch-mission-beach-img-6982.webp',  name: 'Brunch Cocktail' },
-      ].map((item) => (
-        <div class="group relative overflow-hidden aspect-square">
-          <img
-            src={item.src}
-            alt={"Miss B's Coconut Club " + item.name + " brunch Mission Beach San Diego"}
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-      ))}
-    </div>
+    <HoverImageGrid
+      showLabel={false}
+      items={[
+        { src: '/images/brunch/miss-bs-brunch-mission-beach-img-6968.webp',  alt: "Miss B's Coconut Club Brunch Cocktail Mission Beach San Diego" },
+        { src: '/images/brunch/miss-bs-brunch-mission-beach-img-6969.webp',  alt: "Miss B's Coconut Club Morning Drink brunch Mission Beach San Diego" },
+        { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-20.webp', alt: "Miss B's Coconut Club Rose and Champagne brunch Mission Beach San Diego" },
+        { src: '/images/brunch/miss-bs-brunch-mission-beach-img-6982.webp',  alt: "Miss B's Coconut Club Brunch Cocktail Mission Beach San Diego" },
+      ]}
+    />
   </section>
 
   <!-- FAQ -->
