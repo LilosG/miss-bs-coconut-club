@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import siteProfile from '../../data/site-profile.json';
+import PageHero from '../../components/ui/PageHero.astro';
+import SplitSection from '../../components/ui/SplitSection.astro';
 
 const events: Record<string, {
   title: string;
@@ -107,57 +108,32 @@ if (!event) return Astro.redirect('/private-events');
   description={event.description}
 >
 
-  <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
-  <section class="relative min-h-[70vh] flex items-end overflow-hidden">
-    <img
-      src="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
-      alt={"Miss B's Coconut Club " + event.title + " Mission Beach San Diego"}
-      class="absolute inset-0 w-full h-full object-cover object-top"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/85 via-coastal-text-main/30 to-transparent"></div>
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:pb-24">
-      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-4">
-        {event.eyebrow}
-      </p>
-      <h1 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95] mb-4">
-        {event.title}
-      </h1>
-      <p class="text-coastal-bg-card/80 text-base max-w-xl leading-relaxed">
-        {event.description}
-      </p>
-    </div>
-  </section>
+  <PageHero
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
+    imageAlt={"Miss B's Coconut Club " + event.title + " Mission Beach San Diego"}
+    eyebrow={event.eyebrow}
+    heading={event.title}
+    subheading={event.description}
+    minHeight="70vh"
+    imagePosition="top"
+  />
 
   <!-- ─── EVENT DETAIL SPLIT ────────────────────────────────────────────── -->
-  <section class="bg-coastal-bg-pure">
-    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[620px]">
-      <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
-          {event.title} at Miss B's
-        </p>
-        <h2 class="font-serif text-4xl md:text-5xl font-light italic text-coastal-text-main leading-[1.0]">
-          Everything You Need<br />for a Perfect Event
-        </h2>
-        <div class="h-px w-16 bg-coastal-coral"></div>
-        {event.body.map((para) => (
-          <p class="text-coastal-text-muted text-base leading-relaxed">{para}</p>
-        ))}
-        <a href="/contact" class="self-start mt-2 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
-          Submit an Inquiry
-        </a>
-      </div>
-      <div class="relative min-h-[460px] lg:min-h-full">
-        <img
-          src="/images/venue/miss-bs-coconut-club-mission-beach-venue-13.webp"
-          alt={"Miss B's Coconut Club " + event.title + " venue space Mission Beach"}
-          class="absolute inset-0 w-full h-full object-cover object-center"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  </section>
+  <SplitSection
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-13.webp"
+    imageAlt={"Miss B's Coconut Club " + event.title + " venue space Mission Beach"}
+    eyebrow={event.title + " at Miss B's"}
+    heading="Everything You Need<br />for a Perfect Event"
+    minHeight="620px"
+    headingSize="medium"
+  >
+    {event.body.map((para) => (
+      <p class="text-coastal-text-muted text-base leading-relaxed">{para}</p>
+    ))}
+    <a href="/contact" class="self-start mt-2 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+      Submit an Inquiry
+    </a>
+  </SplitSection>
 
   <!-- ─── WHAT'S INCLUDED ───────────────────────────────────────────────── -->
   <section class="bg-coastal-bg-sand py-24 px-6">

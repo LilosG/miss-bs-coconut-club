@@ -1,0 +1,67 @@
+---
+interface Props {
+  imageSrc: string
+  imageAlt: string
+  eyebrow: string
+  heading: string         // supports <br> via set:html
+  subheading?: string
+  minHeight?: '60vh' | '70vh' | '80vh'
+  imagePosition?: 'center' | 'top'
+  overlayFrom?: 'from-coastal-text-main/85' | 'from-coastal-text-main/90'
+  overlayVia?: 'via-coastal-text-main/20' | 'via-coastal-text-main/30' | 'via-coastal-text-main/40'
+  headingClass?: string
+  eyebrowMb?: 'mb-3' | 'mb-4'
+}
+
+// Full class strings kept in lookup objects so Tailwind's scanner picks them up statically
+const heightMap = {
+  '60vh': 'min-h-[60vh]',
+  '70vh': 'min-h-[70vh]',
+  '80vh': 'min-h-[80vh]',
+} as const;
+
+const positionMap = {
+  center: 'object-center',
+  top:    'object-top',
+} as const;
+
+const {
+  imageSrc,
+  imageAlt,
+  eyebrow,
+  heading,
+  subheading,
+  minHeight     = '80vh',
+  imagePosition = 'center',
+  overlayFrom   = 'from-coastal-text-main/85',
+  overlayVia    = 'via-coastal-text-main/30',
+  headingClass  = 'text-5xl md:text-7xl',
+  eyebrowMb     = 'mb-4',
+} = Astro.props;
+---
+
+<section class={`relative ${heightMap[minHeight]} flex items-end overflow-hidden`}>
+  <img
+    src={imageSrc}
+    alt={imageAlt}
+    class={`absolute inset-0 w-full h-full object-cover ${positionMap[imagePosition]}`}
+    loading="eager"
+    fetchpriority="high"
+  />
+  <div class={`absolute inset-0 bg-gradient-to-t ${overlayFrom} ${overlayVia} to-transparent`}></div>
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:pb-24">
+    <p class={`text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral ${eyebrowMb}`}
+       set:html={eyebrow}
+    />
+    <h1
+      class={`font-serif ${headingClass} font-light italic text-coastal-bg-pure leading-[0.95]${subheading ? ' mb-4' : ''}`}
+      set:html={heading}
+    />
+    {subheading && (
+      <p class="text-coastal-bg-card/80 text-base max-w-xl leading-relaxed">
+        {subheading}
+      </p>
+    )}
+    <slot />
+  </div>
+</section>

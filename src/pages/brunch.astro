@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import siteProfile from '../data/site-profile.json';
+import PageHero from '../components/ui/PageHero.astro';
+import SplitSection from '../components/ui/SplitSection.astro';
 ---
 
 <Layout
@@ -8,28 +9,13 @@ import siteProfile from '../data/site-profile.json';
   description="Weekend brunch at Miss B's Coconut Club in Mission Beach, San Diego. Saturday and Sunday 10am-3pm. Bottomless mimosas, tropical cocktails, and the best brunch plates on Mission Blvd."
 >
 
-  <!-- HERO -->
-  <section class="relative min-h-[80vh] flex items-end overflow-hidden">
-    <img
-      src="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
-      alt="Miss B's Coconut Club brunch Mission Beach San Diego"
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/85 via-coastal-text-main/30 to-transparent"></div>
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:pb-24">
-      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-4">
-        Saturday &amp; Sunday &middot; 10am &ndash; 3pm
-      </p>
-      <h1 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95] mb-4">
-        Weekend Brunch<br />in Mission Beach
-      </h1>
-      <p class="text-coastal-bg-card/80 text-base max-w-xl leading-relaxed">
-        Miss B&apos;s Coconut Club is Mission Beach&apos;s favorite weekend ritual. Open every Saturday and Sunday from 10am to 3pm.
-      </p>
-    </div>
-  </section>
+  <PageHero
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
+    imageAlt="Miss B's Coconut Club brunch Mission Beach San Diego"
+    eyebrow="Saturday &amp; Sunday &middot; 10am &ndash; 3pm"
+    heading="Weekend Brunch<br />in Mission Beach"
+    subheading="Miss B's Coconut Club is Mission Beach's favorite weekend ritual. Open every Saturday and Sunday from 10am to 3pm."
+  />
 
   <!-- STATS -->
   <section class="bg-coastal-text-main">
@@ -55,42 +41,27 @@ import siteProfile from '../data/site-profile.json';
     </div>
   </section>
 
-  <!-- BRUNCH EXPERIENCE SPLIT -->
-  <section class="bg-coastal-bg-pure">
-    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[660px]">
-      <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
-          The Brunch Experience
-        </p>
-        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]">
-          Mission Beach&apos;s<br />Best Weekend Ritual
-        </h2>
-        <div class="h-px w-16 bg-coastal-coral"></div>
-        <p class="text-coastal-text-muted text-base leading-relaxed">
-          Miss B&apos;s Coconut Club does not do brunch halfway. The full kitchen is open, the bar is pouring, and the outdoor patio is yours. Steps from the Pacific at 3704 Mission Blvd.
-        </p>
-        <p class="text-coastal-text-muted text-base leading-relaxed">
-          Bottomless mimosas, tropical morning cocktails, and a menu built for a long, indulgent weekend afternoon. Walk-ins welcome. Reservations recommended.
-        </p>
-        <div class="flex flex-wrap gap-4 mt-2">
-          <a href="/contact" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
-            Make a Reservation
-          </a>
-          <a href="/menu" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
-            View Brunch Menu
-          </a>
-        </div>
-      </div>
-      <div class="relative min-h-[460px] lg:min-h-full">
-        <img
-          src="/images/venue/miss-bs-coconut-club-mission-beach-venue-08.webp"
-          alt="Miss B's Coconut Club brunch interior Mission Beach San Diego"
-          class="absolute inset-0 w-full h-full object-cover object-center"
-          loading="lazy"
-        />
-      </div>
+  <SplitSection
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-08.webp"
+    imageAlt="Miss B's Coconut Club brunch interior Mission Beach San Diego"
+    eyebrow="The Brunch Experience"
+    heading="Mission Beach&apos;s<br />Best Weekend Ritual"
+  >
+    <p class="text-coastal-text-muted text-base leading-relaxed">
+      Miss B&apos;s Coconut Club does not do brunch halfway. The full kitchen is open, the bar is pouring, and the outdoor patio is yours. Steps from the Pacific at 3704 Mission Blvd.
+    </p>
+    <p class="text-coastal-text-muted text-base leading-relaxed">
+      Bottomless mimosas, tropical morning cocktails, and a menu built for a long, indulgent weekend afternoon. Walk-ins welcome. Reservations recommended.
+    </p>
+    <div class="flex flex-wrap gap-4 mt-2">
+      <a href="/contact" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+        Make a Reservation
+      </a>
+      <a href="/menu" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
+        View Brunch Menu
+      </a>
     </div>
-  </section>
+  </SplitSection>
 
   <!-- BRUNCH FOOD GRID — 6 unique brunch plates, no duplicates -->
   <section class="bg-coastal-bg-sand py-24 px-6">
