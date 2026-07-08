@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/ui/PageHero.astro';
 import SplitSection from '../components/ui/SplitSection.astro';
+import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
 ---
 
 <Layout
@@ -74,31 +75,21 @@ import SplitSection from '../components/ui/SplitSection.astro';
         <h2 class="font-serif text-5xl font-light italic text-coastal-text-main leading-[1.0]">Food</h2>
         <div class="h-px w-16 bg-coastal-coral"></div>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-        {[
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-02.webp', name: 'Ahi Poke Bowl' },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-04.webp', name: 'Coconut Shrimp' },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-06.webp', name: 'Fish and Chips' },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-10.webp', name: 'Jerk Chicken Wrap' },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-15.webp', name: 'Jerk Wings' },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-18.webp', name: 'Nachos' },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-22.webp', name: 'Summer Salad' },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-28.webp', name: 'Vacay Bowl' },
-        ].map((item) => (
-          <div class="group relative overflow-hidden aspect-square">
-            <img
-              src={item.src}
-              alt={"Miss B's Coconut Club " + item.name + " Mission Beach San Diego"}
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-              <p class="text-xs font-bold tracking-[0.15em] uppercase text-coastal-bg-pure">{item.name}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <HoverImageGrid
+        gap={true}
+        labelPadding="p-3"
+        labelTracking="tracking-[0.15em]"
+        items={[
+          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-02.webp', name: 'Ahi Poke Bowl',      alt: "Miss B's Coconut Club Ahi Poke Bowl Mission Beach San Diego" },
+          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-04.webp', name: 'Coconut Shrimp',    alt: "Miss B's Coconut Club Coconut Shrimp Mission Beach San Diego" },
+          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-06.webp', name: 'Fish and Chips',    alt: "Miss B's Coconut Club Fish and Chips Mission Beach San Diego" },
+          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-10.webp', name: 'Jerk Chicken Wrap', alt: "Miss B's Coconut Club Jerk Chicken Wrap Mission Beach San Diego" },
+          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-15.webp', name: 'Jerk Wings',        alt: "Miss B's Coconut Club Jerk Wings Mission Beach San Diego" },
+          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-18.webp', name: 'Nachos',            alt: "Miss B's Coconut Club Nachos Mission Beach San Diego" },
+          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-22.webp', name: 'Summer Salad',      alt: "Miss B's Coconut Club Summer Salad Mission Beach San Diego" },
+          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-28.webp', name: 'Vacay Bowl',        alt: "Miss B's Coconut Club Vacay Bowl Mission Beach San Diego" },
+        ]}
+      />
     </div>
   </section>
 
@@ -110,31 +101,21 @@ import SplitSection from '../components/ui/SplitSection.astro';
         <h2 class="font-serif text-5xl font-light italic text-coastal-bg-pure leading-[1.0]">Cocktails</h2>
         <div class="h-px w-16 bg-coastal-coral"></div>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-        {[
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-30.webp', name: 'Flamingo Bar' },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-03.webp', name: 'Caribe Welcome' },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-20.webp', name: 'Rose and Champagne' },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-12.webp', name: 'Bloody Mary' },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-09.webp', name: 'Watermelon Cocktail' },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-11.webp', name: 'Signature Cocktail' },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-35.webp', name: 'Tropical Cocktail' },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-39.webp', name: 'Craft Cocktail' },
-        ].map((item) => (
-          <div class="group relative overflow-hidden aspect-square">
-            <img
-              src={item.src}
-              alt={"Miss B's Coconut Club " + item.name + " cocktail Mission Beach San Diego"}
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-              <p class="text-xs font-bold tracking-[0.15em] uppercase text-coastal-bg-pure">{item.name}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <HoverImageGrid
+        gap={true}
+        labelPadding="p-3"
+        labelTracking="tracking-[0.15em]"
+        items={[
+          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-30.webp', name: 'Flamingo Bar',        alt: "Miss B's Coconut Club Flamingo Bar cocktail Mission Beach San Diego" },
+          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-03.webp', name: 'Caribe Welcome',     alt: "Miss B's Coconut Club Caribe Welcome cocktail Mission Beach San Diego" },
+          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-20.webp', name: 'Rose and Champagne', alt: "Miss B's Coconut Club Rose and Champagne cocktail Mission Beach San Diego" },
+          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-12.webp', name: 'Bloody Mary',        alt: "Miss B's Coconut Club Bloody Mary cocktail Mission Beach San Diego" },
+          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-09.webp', name: 'Watermelon Cocktail',alt: "Miss B's Coconut Club Watermelon Cocktail Mission Beach San Diego" },
+          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-11.webp', name: 'Signature Cocktail', alt: "Miss B's Coconut Club Signature Cocktail Mission Beach San Diego" },
+          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-35.webp', name: 'Tropical Cocktail',  alt: "Miss B's Coconut Club Tropical Cocktail Mission Beach San Diego" },
+          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-39.webp', name: 'Craft Cocktail',     alt: "Miss B's Coconut Club Craft Cocktail Mission Beach San Diego" },
+        ]}
+      />
     </div>
   </section>
 

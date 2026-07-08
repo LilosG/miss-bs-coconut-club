@@ -1,0 +1,65 @@
+---
+interface Item {
+  src: string
+  alt: string
+  name?: string
+}
+
+interface Props {
+  items: Item[]
+  cols?: '2x3' | '2x4' | '3' | '4'
+  aspect?: 'square' | '4/3' | 'none'
+  gap?: boolean
+  showLabel?: boolean
+  labelPadding?: 'p-3' | 'p-4' | 'p-5'
+  labelTracking?: 'tracking-[0.2em]' | 'tracking-[0.15em]'
+  gradientFrom?: 'from-coastal-text-main/70' | 'from-coastal-text-main/75'
+}
+
+// Full class strings in lookup maps so Tailwind scanner picks them up statically
+const colsMap = {
+  '2x3': 'grid-cols-2 md:grid-cols-3',
+  '2x4': 'grid-cols-2 md:grid-cols-4',
+  '3':   'grid-cols-3',
+  '4':   'grid-cols-4',
+} as const;
+
+const aspectMap = {
+  square: 'aspect-square',
+  '4/3':  'aspect-[4/3]',
+  none:   '',
+} as const;
+
+const {
+  items,
+  cols          = '2x4',
+  aspect        = 'square',
+  gap           = false,
+  showLabel     = true,
+  labelPadding  = 'p-4',
+  labelTracking = 'tracking-[0.2em]',
+  gradientFrom  = 'from-coastal-text-main/70',
+} = Astro.props;
+
+const colsClass   = colsMap[cols];
+const aspectClass = aspectMap[aspect];
+---
+
+<div class={`grid ${colsClass}${gap ? ' gap-2' : ''}`}>
+  {items.map((item) => (
+    <div class={`group relative overflow-hidden${aspectClass ? ` ${aspectClass}` : ''}`}>
+      <img
+        src={item.src}
+        alt={item.alt}
+        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div class={`absolute inset-0 bg-gradient-to-t ${gradientFrom} via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+      {showLabel && item.name && (
+        <div class={`absolute bottom-0 left-0 right-0 ${labelPadding} translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300`}>
+          <p class={`text-xs font-bold ${labelTracking} uppercase text-coastal-bg-pure`}>{item.name}</p>
+        </div>
+      )}
+    </div>
+  ))}
+</div>
