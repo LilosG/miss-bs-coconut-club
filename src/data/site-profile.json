@@ -1,6 +1,29 @@
 {
   "venueName": "Miss B's Coconut Club",
+  "legalName": "Miss B's Coconut Club LLC",
   "nicheType": "BarOrPub",
+  "domain": "https://missbcoconutclub.com",
+  "email": "info@missbcoconutclub.com",
+  "social": {
+    "tiktok": "https://www.tiktok.com/@missbcoconutclub",
+    "instagram": "https://www.instagram.com/missbcoconutclub/",
+    "facebook": "https://www.facebook.com/MissBsCoconutClub/",
+    "linkedin": "https://www.linkedin.com/company/miss-b's-coconut-club-llc"
+  },
+  "hours": {
+    "kitchen": [
+      { "label": "Monday – Friday", "open": "11:00", "display": "11am – Close" },
+      { "label": "Saturday – Sunday", "open": "10:00", "display": "10am – Close" }
+    ],
+    "brunch": [
+      { "label": "Monday – Thursday", "open": "11:00", "close": "14:00", "display": "11am – 2pm" },
+      { "label": "Friday – Sunday", "open": "10:00", "close": "14:00", "display": "10am – 2pm" }
+    ],
+    "happyHour": [
+      { "label": "Monday – Friday", "open": "15:00", "close": "17:00", "display": "3 – 5pm" },
+      { "label": "Saturday – Sunday", "closed": true }
+    ]
+  },
   "seo": {
     "latitude": "32.7681",
     "longitude": "-117.2514",
@@ -8,7 +31,7 @@
     "addressLocality": "San Diego",
     "addressRegion": "CA",
     "postalCode": "92109",
-    "telephone": "(858) 488-7311",
+    "telephone": "(858) 360-1566",
     "priceRange": "$$"
   },
   "designSystem": {

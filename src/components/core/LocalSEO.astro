@@ -10,17 +10,17 @@ interface Props {
 const {
   title,
   description,
-  canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://missbscoconutclub.com'),
+  canonicalURL = new URL(Astro.url.pathname, Astro.site),
 } = Astro.props;
 
 const jsonLD = {
   "@context": "https://schema.org",
   "@type": siteProfile.nicheType,
   "name": siteProfile.venueName,
-  "image": "https://missbscoconutclub.com/assets/og-image.jpg",
+  "image": `${siteProfile.domain}/assets/og-image.jpg`,
   "telephone": siteProfile.seo.telephone,
   "priceRange": siteProfile.seo.priceRange,
-  "url": Astro.site?.toString() ?? "https://missbscoconutclub.com",
+  "url": siteProfile.domain,
   "address": {
     "@type": "PostalAddress",
     "streetAddress": siteProfile.seo.streetAddress,
@@ -54,13 +54,13 @@ const jsonLD = {
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={`${title} | ${siteProfile.venueName}`} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content="https://missbscoconutclub.com/assets/og-image.jpg" />
+<meta property="og:image" content={`${siteProfile.domain}/assets/og-image.jpg`} />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={`${title} | ${siteProfile.venueName}`} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content="https://missbscoconutclub.com/assets/og-image.jpg" />
+<meta name="twitter:image" content={`${siteProfile.domain}/assets/og-image.jpg`} />
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json" set:html={JSON.stringify(jsonLD, null, 2)} />

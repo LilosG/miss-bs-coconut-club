@@ -27,8 +27,11 @@ const navItems = [
           </a>
         ))}
       </nav>
-      <div class="hidden md:flex items-center">
-        <a id="nav-cta" href="/order" class="px-5 py-2.5 text-xs font-bold tracking-widest uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-200">
+      <div class="hidden md:flex items-center gap-2">
+        <a id="nav-cta-reserve" href="https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_ss=645fd193-d64d-44ec-9f2e-0fb6b0df119e&toast_src=website_link&utm_medium=toast_sites" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 text-xs font-bold tracking-widest uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+          Reserve
+        </a>
+        <a id="nav-cta-order" href="https://missbcoconutclub.com/order" class="nav-cta px-5 py-2.5 text-xs font-bold tracking-widest uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-200">
           Order Online
         </a>
       </div>
@@ -44,10 +47,11 @@ const navItems = [
 <script>
   const nav = document.getElementById("site-nav");
   const logoImg = document.getElementById("nav-logo-img");
-  const cta = document.getElementById("nav-cta");
+  const orderCta = document.getElementById("nav-cta-order");
   const navLinks = document.querySelectorAll(".nav-link");
 
   window.addEventListener("scroll", () => {
+    if (!nav) return;
     if (window.scrollY > 80) {
       nav.classList.remove("bg-transparent");
       nav.classList.add("bg-coastal-bg-pure", "shadow-sm", "border-b", "border-coastal-text-muted/10");
@@ -58,9 +62,9 @@ const navItems = [
         a.classList.remove("text-coastal-bg-pure/80", "hover:text-coastal-bg-pure");
         a.classList.add("text-coastal-text-muted", "hover:text-coastal-text-main");
       });
-      if (cta) {
-        cta.classList.remove("border-coastal-bg-pure/50", "text-coastal-bg-pure", "hover:bg-coastal-bg-pure", "hover:text-coastal-text-main");
-        cta.classList.add("border-coastal-text-main", "text-coastal-text-main", "hover:bg-coastal-text-main", "hover:text-coastal-bg-pure");
+      if (orderCta) {
+        orderCta.classList.remove("border-coastal-bg-pure/50", "text-coastal-bg-pure", "hover:bg-coastal-bg-pure", "hover:text-coastal-text-main");
+        orderCta.classList.add("border-coastal-text-main", "text-coastal-text-main", "hover:bg-coastal-text-main", "hover:text-coastal-bg-pure");
       }
     } else {
       nav.classList.add("bg-transparent");
@@ -72,9 +76,9 @@ const navItems = [
         a.classList.add("text-coastal-bg-pure/80", "hover:text-coastal-bg-pure");
         a.classList.remove("text-coastal-text-muted", "hover:text-coastal-text-main");
       });
-      if (cta) {
-        cta.classList.add("border-coastal-bg-pure/50", "text-coastal-bg-pure", "hover:bg-coastal-bg-pure", "hover:text-coastal-text-main");
-        cta.classList.remove("border-coastal-text-main", "text-coastal-text-main", "hover:bg-coastal-text-main", "hover:text-coastal-bg-pure");
+      if (orderCta) {
+        orderCta.classList.add("border-coastal-bg-pure/50", "text-coastal-bg-pure", "hover:bg-coastal-bg-pure", "hover:text-coastal-text-main");
+        orderCta.classList.remove("border-coastal-text-main", "text-coastal-text-main", "hover:bg-coastal-text-main", "hover:text-coastal-bg-pure");
       }
     }
   });
