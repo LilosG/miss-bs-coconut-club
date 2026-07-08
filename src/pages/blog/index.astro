@@ -1,62 +1,9 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
-const posts = [
-  {
-    slug: 'best-brunch-mission-beach',
-    title: 'The Best Brunch in Mission Beach, San Diego',
-    excerpt: 'Mission Beach has no shortage of brunch spots. Here\'s why Miss B\'s Coconut Club consistently earns the top spot — and what to order when you get there.',
-    category: 'Mission Beach Guide',
-    date: '2025-05-10',
-    image: '/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp',
-    imageAlt: 'Miss B\'s Coconut Club brunch Mission Beach San Diego',
-  },
-  {
-    slug: 'best-bars-mission-beach',
-    title: 'Best Bars in Mission Beach San Diego',
-    excerpt: 'A guide to the best bars in Mission Beach — from the boardwalk to Mission Blvd. Miss B\'s Coconut Club leads the list for good reason.',
-    category: 'Mission Beach Guide',
-    date: '2025-04-18',
-    image: '/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp',
-    imageAlt: 'Miss B\'s Coconut Club open-air bar Mission Beach San Diego',
-  },
-  {
-    slug: 'private-events-mission-beach',
-    title: 'Private Event Venues in Mission Beach: A Complete Guide',
-    excerpt: 'Planning a birthday, bachelorette, or corporate event in Mission Beach? Here\'s everything you need to know — and why Miss B\'s is the obvious choice.',
-    category: 'Private Events',
-    date: '2025-03-22',
-    image: '/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp',
-    imageAlt: 'Miss B\'s Coconut Club private event patio Mission Beach',
-  },
-  {
-    slug: 'things-to-do-mission-beach',
-    title: 'Things to Do in Mission Beach San Diego',
-    excerpt: 'A local guide to Mission Beach — what to do, where to eat, where to drink, and why Miss B\'s Coconut Club at 3704 Mission Blvd should be on every itinerary.',
-    category: 'Mission Beach Guide',
-    date: '2025-02-14',
-    image: '/images/venue/miss-bs-coconut-club-mission-beach-venue-04.webp',
-    imageAlt: 'Miss B\'s Coconut Club Mission Beach San Diego',
-  },
-  {
-    slug: 'tropical-cocktails-san-diego',
-    title: 'Best Tropical Cocktail Bars in San Diego',
-    excerpt: 'San Diego\'s tropical cocktail scene has leveled up. Miss B\'s Coconut Club — with its 24 flamingo taps and Caribbean-rooted drink program — is setting the standard.',
-    category: 'Food and Drink',
-    date: '2025-01-08',
-    image: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-13.webp',
-    imageAlt: 'Miss B\'s Coconut Club tropical cocktails Mission Beach San Diego',
-  },
-  {
-    slug: 'bachelorette-party-san-diego',
-    title: 'Best Bachelorette Party Venues in San Diego',
-    excerpt: 'Planning a bachelorette in San Diego? This guide covers the best venues by neighborhood — with Miss B\'s Coconut Club as the top pick for Mission Beach.',
-    category: 'Private Events',
-    date: '2024-12-05',
-    image: '/images/venue/miss-bs-coconut-club-mission-beach-venue-13.webp',
-    imageAlt: 'Miss B\'s Coconut Club bachelorette party venue Mission Beach San Diego',
-  },
-];
+const allPosts = await getCollection('blog');
+const posts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
 
 <Layout
@@ -89,26 +36,26 @@ const posts = [
     <div class="mx-auto max-w-7xl">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-coastal-text-muted/10">
         {posts.map((post) => (
-          <a href={"/blog/" + post.slug} class="group bg-coastal-bg-pure flex flex-col hover:bg-coastal-bg-card transition-colors duration-200">
+          <a href={"/blog/" + post.id} class="group bg-coastal-bg-pure flex flex-col hover:bg-coastal-bg-card transition-colors duration-200">
             <div class="overflow-hidden aspect-[16/10]">
               <img
-                src={post.image}
-                alt={post.imageAlt}
+                src={post.data.image}
+                alt={post.data.imageAlt}
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
             </div>
             <div class="flex flex-col gap-3 p-7 flex-1">
               <div class="flex items-center justify-between gap-4">
-                <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">{post.category}</span>
-                <time datetime={post.date} class="text-xs text-coastal-text-muted">
-                  {new Date(post.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">{post.data.category}</span>
+                <time datetime={post.data.date} class="text-xs text-coastal-text-muted">
+                  {new Date(post.data.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                 </time>
               </div>
               <h2 class="font-serif text-xl font-light italic text-coastal-text-main group-hover:text-coastal-coral transition-colors duration-200 leading-snug flex-1">
-                {post.title}
+                {post.data.title}
               </h2>
-              <p class="text-coastal-text-muted text-sm leading-relaxed">{post.excerpt}</p>
+              <p class="text-coastal-text-muted text-sm leading-relaxed">{post.data.description}</p>
               <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral group-hover:translate-x-1 transition-transform duration-200 inline-block mt-1">
                 Read More →
               </span>
