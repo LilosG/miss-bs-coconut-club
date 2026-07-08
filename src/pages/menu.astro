@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/ui/PageHero.astro';
+import SplitSection from '../components/ui/SplitSection.astro';
 ---
 
 <Layout
@@ -138,31 +139,23 @@ import PageHero from '../components/ui/PageHero.astro';
   </section>
 
   <!-- BRUNCH CTA BAND -->
-  <section class="grid grid-cols-1 lg:grid-cols-2 min-h-[480px]">
-    <div class="relative min-h-[360px] lg:min-h-full">
-      <img
-        src="/images/venue/miss-bs-coconut-club-mission-beach-venue-09.webp"
-        alt="Miss B's Coconut Club brunch bar Mission Beach San Diego"
-        class="absolute inset-0 w-full h-full object-cover object-center"
-        loading="lazy"
-      />
-      <div class="absolute inset-0 bg-coastal-text-main/20"></div>
-    </div>
-    <div class="bg-coastal-coral flex flex-col justify-center px-10 py-16 lg:px-16 xl:px-20 gap-5">
-      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-text-main/60">
-        Saturday &amp; Sunday &middot; 10am &ndash; 3pm
-      </p>
-      <h2 class="font-serif text-4xl md:text-5xl font-light italic text-coastal-text-main leading-[1.0]">
-        Weekend Brunch
-      </h2>
-      <div class="h-px w-16 bg-coastal-text-main/30"></div>
-      <p class="text-coastal-text-main/80 text-base leading-relaxed max-w-[40ch]">
-        Bottomless mimosas, morning cocktails, and the best brunch plates in Mission Beach.
-      </p>
-      <a href="/brunch" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-        Brunch Details
-      </a>
-    </div>
-  </section>
+  <SplitSection
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-09.webp"
+    imageAlt="Miss B's Coconut Club brunch bar Mission Beach San Diego"
+    eyebrow="Saturday &amp; Sunday &middot; 10am &ndash; 3pm"
+    heading="Weekend Brunch"
+    imageLeft={true}
+    imageOverlay={true}
+    minHeight="480px"
+    variant="coral"
+    headingSize="medium"
+  >
+    <p class="text-coastal-text-main/80 text-base leading-relaxed max-w-[40ch]">
+      Bottomless mimosas, morning cocktails, and the best brunch plates in Mission Beach.
+    </p>
+    <a href="/brunch" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
+      Brunch Details
+    </a>
+  </SplitSection>
 
 </Layout>

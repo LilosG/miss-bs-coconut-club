@@ -1,0 +1,106 @@
+---
+interface Props {
+  imageSrc: string
+  imageAlt: string
+  eyebrow: string
+  heading: string          // supports <br> via set:html
+  imageLeft?: boolean
+  imagePosition?: 'center' | 'top'
+  imageOverlay?: boolean
+  minHeight?: '480px' | '500px' | '600px' | '620px' | '660px' | '700px'
+  sectionBg?: 'bg-coastal-bg-pure' | 'bg-coastal-bg-sand'
+  variant?: 'default' | 'coral'
+  headingSize?: 'large' | 'medium'
+}
+
+const minHeightMap = {
+  '480px': 'min-h-[480px]',
+  '500px': 'min-h-[500px]',
+  '600px': 'min-h-[600px]',
+  '620px': 'min-h-[620px]',
+  '660px': 'min-h-[660px]',
+  '700px': 'min-h-[700px]',
+} as const;
+
+const {
+  imageSrc,
+  imageAlt,
+  eyebrow,
+  heading,
+  imageLeft     = false,
+  imagePosition = 'center',
+  imageOverlay  = false,
+  minHeight     = '660px',
+  sectionBg     = 'bg-coastal-bg-pure',
+  variant       = 'default',
+  headingSize   = 'large',
+} = Astro.props;
+
+const contentBg        = variant === 'coral' ? 'bg-coastal-coral'        : sectionBg;
+const eyebrowColor     = variant === 'coral' ? 'text-coastal-text-main/60' : 'text-coastal-coral';
+const headingColor     = variant === 'coral' ? 'text-coastal-text-main'    : 'text-coastal-text-main';
+const dividerColor     = variant === 'coral' ? 'bg-coastal-text-main/30'   : 'bg-coastal-coral';
+const headingSizeClass = headingSize === 'medium' ? 'text-4xl md:text-5xl' : 'text-5xl md:text-6xl';
+const imgPositionClass = imagePosition === 'top' ? 'object-top' : 'object-center';
+const minHeightClass   = minHeightMap[minHeight];
+
+// When imageLeft: image is left on desktop but content appears first on mobile
+// imageLeft=false: content first in DOM (left desktop, top mobile) → no order tricks needed
+// imageLeft=true:  content first in DOM for mobile, but image goes left on desktop via order classes
+const imageOrder   = imageLeft ? 'order-2 lg:order-1' : '';
+const contentOrder = imageLeft ? 'order-1 lg:order-2' : '';
+---
+
+<section class={sectionBg}>
+  <div class={`grid grid-cols-1 lg:grid-cols-2 ${minHeightClass}`}>
+
+    {imageLeft && (
+      <>
+        <!-- Image column (left on desktop) -->
+        <div class={`relative min-h-[460px] lg:min-h-full ${imageOrder}`}>
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            class={`absolute inset-0 w-full h-full object-cover ${imgPositionClass}`}
+            loading="lazy"
+          />
+          {imageOverlay && (
+            <div class="absolute inset-0 bg-coastal-text-main/20"></div>
+          )}
+        </div>
+        <!-- Content column (right on desktop) -->
+        <div class={`${contentBg} flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6 ${contentOrder}`}>
+          <p class={`text-[10px] font-bold tracking-[0.35em] uppercase ${eyebrowColor}`} set:html={eyebrow} />
+          <h2 class={`font-serif ${headingSizeClass} font-light italic ${headingColor} leading-[1.0]`} set:html={heading} />
+          <div class={`h-px w-16 ${dividerColor}`}></div>
+          <slot />
+        </div>
+      </>
+    )}
+
+    {!imageLeft && (
+      <>
+        <!-- Content column (left on desktop, top on mobile) -->
+        <div class={`${contentBg} flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6`}>
+          <p class={`text-[10px] font-bold tracking-[0.35em] uppercase ${eyebrowColor}`} set:html={eyebrow} />
+          <h2 class={`font-serif ${headingSizeClass} font-light italic ${headingColor} leading-[1.0]`} set:html={heading} />
+          <div class={`h-px w-16 ${dividerColor}`}></div>
+          <slot />
+        </div>
+        <!-- Image column (right on desktop) -->
+        <div class="relative min-h-[460px] lg:min-h-full">
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            class={`absolute inset-0 w-full h-full object-cover ${imgPositionClass}`}
+            loading="lazy"
+          />
+          {imageOverlay && (
+            <div class="absolute inset-0 bg-coastal-text-main/20"></div>
+          )}
+        </div>
+      </>
+    )}
+
+  </div>
+</section>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import siteProfile from '../data/site-profile.json';
+import SplitSection from '../components/ui/SplitSection.astro';
 
 const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.seo.streetAddress + " " + siteProfile.seo.addressLocality + " " + siteProfile.seo.addressRegion;
 
@@ -83,41 +84,29 @@ const foodRight = [
   </section>
 
   <!-- ─── EDITORIAL INTRO ───────────────────────────────────────────────── -->
-  <section class="bg-coastal-bg-pure">
-    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[700px]">
-      <div class="relative min-h-[460px] lg:min-h-full order-2 lg:order-1">
-        <img
-          src="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
-          alt="Miss B's Coconut Club tropical dining room with mural Mission Beach San Diego"
-          class="absolute inset-0 w-full h-full object-cover object-center"
-          loading="lazy"
-        />
-      </div>
-      <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 order-1 lg:order-2">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-5">
-          Mission Beach, San Diego
-        </p>
-        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0] mb-5">
-          Where San Diego<br />Comes to Drink Well
-        </h2>
-        <div class="h-px w-16 bg-coastal-coral mb-7"></div>
-        <p class="text-coastal-text-muted text-base leading-relaxed mb-4">
-          Miss B's Coconut Club is the open-air bar and brunch spot that Mission Beach was built for. Pull up a teal stool, order something cold, and let the afternoon go.
-        </p>
-        <p class="text-coastal-text-muted text-base leading-relaxed mb-10">
-          Located at 3704 Mission Blvd — steps from the sand. Come for the craft cocktails. Stay for the brunch. Bring the whole group.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="/menu" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
-            Full Menu
-          </a>
-          <a href="/space" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
-            See the Space
-          </a>
-        </div>
-      </div>
+  <SplitSection
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
+    imageAlt="Miss B's Coconut Club tropical dining room with mural Mission Beach San Diego"
+    eyebrow="Mission Beach, San Diego"
+    heading="Where San Diego<br />Comes to Drink Well"
+    imageLeft={true}
+    minHeight="700px"
+  >
+    <p class="text-coastal-text-muted text-base leading-relaxed">
+      Miss B's Coconut Club is the open-air bar and brunch spot that Mission Beach was built for. Pull up a teal stool, order something cold, and let the afternoon go.
+    </p>
+    <p class="text-coastal-text-muted text-base leading-relaxed">
+      Located at 3704 Mission Blvd — steps from the sand. Come for the craft cocktails. Stay for the brunch. Bring the whole group.
+    </p>
+    <div class="flex flex-wrap gap-4 mt-2">
+      <a href="/menu" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+        Full Menu
+      </a>
+      <a href="/space" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
+        See the Space
+      </a>
     </div>
-  </section>
+  </SplitSection>
 
   <!-- ─── COCKTAIL FEATURE ──────────────────────────────────────────────── -->
   <!-- Gradient lightened: from-coastal-text-main/90 → to-transparent so image breathes on right -->
@@ -170,37 +159,28 @@ const foodRight = [
   </section>
 
   <!-- ─── BRUNCH FEATURE ────────────────────────────────────────────────── -->
-  <section class="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
-    <div class="relative min-h-[400px] lg:min-h-full">
-      <img
-        src="/images/venue/miss-bs-coconut-club-mission-beach-venue-17.webp"
-        alt="Miss B's Coconut Club copper flamingo draft tap handles Mission Beach"
-        class="absolute inset-0 w-full h-full object-cover object-center"
-        loading="lazy"
-      />
-      <div class="absolute inset-0 bg-coastal-text-main/15"></div>
+  <SplitSection
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-17.webp"
+    imageAlt="Miss B's Coconut Club copper flamingo draft tap handles Mission Beach"
+    eyebrow="Saturday &amp; Sunday"
+    heading="Weekend Brunch<br />in Mission Beach"
+    imageLeft={true}
+    imageOverlay={true}
+    minHeight="600px"
+    variant="coral"
+  >
+    <p class="text-coastal-text-main/80 text-base leading-relaxed max-w-[44ch]">
+      Every Saturday and Sunday from 10am to 3pm. Bottomless mimosas, morning cocktails, and the best brunch plates on Mission Blvd.
+    </p>
+    <div class="flex flex-wrap gap-4 mt-2">
+      <a href="/brunch" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
+        Brunch Details
+      </a>
+      <a href="/menu" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/25 text-coastal-text-main hover:bg-coastal-text-main hover:text-coastal-bg-pure transition-all duration-300">
+        Brunch Menu
+      </a>
     </div>
-    <div class="bg-coastal-coral flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
-      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-text-main/60">
-        Saturday &amp; Sunday
-      </p>
-      <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]">
-        Weekend Brunch<br />in Mission Beach
-      </h2>
-      <div class="h-px w-16 bg-coastal-text-main/30"></div>
-      <p class="text-coastal-text-main/80 text-base leading-relaxed max-w-[44ch]">
-        Every Saturday and Sunday from 10am to 3pm. Bottomless mimosas, morning cocktails, and the best brunch plates on Mission Blvd.
-      </p>
-      <div class="flex flex-wrap gap-4 mt-2">
-        <a href="/brunch" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-          Brunch Details
-        </a>
-        <a href="/menu" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/25 text-coastal-text-main hover:bg-coastal-text-main hover:text-coastal-bg-pure transition-all duration-300">
-          Brunch Menu
-        </a>
-      </div>
-    </div>
-  </section>
+  </SplitSection>
 
   <!-- ─── FOOD SECTION ──────────────────────────────────────────────────── -->
   <section class="bg-coastal-bg-sand py-24 px-6">
@@ -254,40 +234,29 @@ const foodRight = [
   </section>
 
   <!-- ─── PRIVATE EVENTS ────────────────────────────────────────────────── -->
-  <section class="grid grid-cols-1 lg:grid-cols-2 min-h-[620px]">
-    <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6 bg-coastal-bg-pure order-2 lg:order-1">
-      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
-        Private Events
-      </p>
-      <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]">
-        Private Events<br />in Mission Beach
-      </h2>
-      <div class="h-px w-16 bg-coastal-coral"></div>
-      <p class="text-coastal-text-muted text-base leading-relaxed max-w-[44ch]">
-        Birthdays, buyouts, corporate events, and intimate gatherings. Miss B's Coconut Club is the only open-air bar venue on Mission Blvd — steps from the Pacific.
-      </p>
-      <ul class="flex flex-col gap-2.5 mt-2">
-        {["Birthday Parties", "Full and Partial Buyouts", "Corporate Events", "Bachelor and Bachelorette", "Milestone Celebrations"].map((item) => (
-          <li class="flex items-center gap-4 text-sm text-coastal-text-muted">
-            <div class="h-px w-5 bg-coastal-coral shrink-0"></div>
-            {item}
-          </li>
-        ))}
-      </ul>
-      <a href="/private-events" class="self-start mt-4 px-7 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-        Inquire About Your Event
-      </a>
-    </div>
-    <!-- object-top to show umbrellas + sign rather than cropping to wall -->
-    <div class="relative min-h-[460px] lg:min-h-full order-1 lg:order-2">
-      <img
-        src="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
-        alt="Miss B's Coconut Club outdoor patio pink umbrellas Mission Beach San Diego private events"
-        class="absolute inset-0 w-full h-full object-cover object-top"
-        loading="lazy"
-      />
-    </div>
-  </section>
+  <SplitSection
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
+    imageAlt="Miss B's Coconut Club outdoor patio pink umbrellas Mission Beach San Diego private events"
+    eyebrow="Private Events"
+    heading="Private Events<br />in Mission Beach"
+    imagePosition="top"
+    minHeight="620px"
+  >
+    <p class="text-coastal-text-muted text-base leading-relaxed max-w-[44ch]">
+      Birthdays, buyouts, corporate events, and intimate gatherings. Miss B's Coconut Club is the only open-air bar venue on Mission Blvd — steps from the Pacific.
+    </p>
+    <ul class="flex flex-col gap-2.5 mt-2">
+      {["Birthday Parties", "Full and Partial Buyouts", "Corporate Events", "Bachelor and Bachelorette", "Milestone Celebrations"].map((item) => (
+        <li class="flex items-center gap-4 text-sm text-coastal-text-muted">
+          <div class="h-px w-5 bg-coastal-coral shrink-0"></div>
+          {item}
+        </li>
+      ))}
+    </ul>
+    <a href="/private-events" class="self-start mt-4 px-7 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
+      Inquire About Your Event
+    </a>
+  </SplitSection>
 
   <!-- ─── LOCATION BAR ──────────────────────────────────────────────────── -->
   <section class="bg-coastal-text-main py-20 px-6">

@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import siteProfile from '../data/site-profile.json';
 import PageHero from '../components/ui/PageHero.astro';
+import SplitSection from '../components/ui/SplitSection.astro';
 
 const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.seo.streetAddress + " " + siteProfile.seo.addressLocality + " " + siteProfile.seo.addressRegion;
 ---
@@ -21,94 +22,62 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
   />
 
   <!-- THE OUTDOOR BAR — venue-13 shows the bar window open -->
-  <section class="bg-coastal-bg-pure">
-    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[660px]">
-      <div class="relative min-h-[460px] lg:min-h-full">
-        <img
-          src="/images/venue/miss-bs-coconut-club-mission-beach-venue-13.webp"
-          alt="Miss B's Coconut Club open-air teal bar window Mission Beach San Diego"
-          class="absolute inset-0 w-full h-full object-cover object-center"
-          loading="lazy"
-        />
-      </div>
-      <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">The Bar</p>
-        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]">
-          The Open-Air Bar
-        </h2>
-        <div class="h-px w-16 bg-coastal-coral"></div>
-        <p class="text-coastal-text-muted text-base leading-relaxed">
-          The centerpiece of Miss B&apos;s is the open-air teal bar &mdash; a roll-up window that opens the kitchen directly onto the patio, with herringbone tile, copper fixtures, and a full draft system of flamingo tap handles.
-        </p>
-        <p class="text-coastal-text-muted text-base leading-relaxed">
-          Walk-ins always welcome at the bar. The full cocktail menu, beer program, and kitchen are available from open to close.
-        </p>
-        <a href="/menu" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
-          View the Menu
-        </a>
-      </div>
-    </div>
-  </section>
+  <SplitSection
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-13.webp"
+    imageAlt="Miss B's Coconut Club open-air teal bar window Mission Beach San Diego"
+    eyebrow="The Bar"
+    heading="The Open-Air Bar"
+    imageLeft={true}
+  >
+    <p class="text-coastal-text-muted text-base leading-relaxed">
+      The centerpiece of Miss B&apos;s is the open-air teal bar &mdash; a roll-up window that opens the kitchen directly onto the patio, with herringbone tile, copper fixtures, and a full draft system of flamingo tap handles.
+    </p>
+    <p class="text-coastal-text-muted text-base leading-relaxed">
+      Walk-ins always welcome at the bar. The full cocktail menu, beer program, and kitchen are available from open to close.
+    </p>
+    <a href="/menu" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+      View the Menu
+    </a>
+  </SplitSection>
 
   <!-- THE DINING ROOM — venue-07 shows mural and tropical interior -->
-  <section class="bg-coastal-bg-sand">
-    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[660px]">
-      <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Inside</p>
-        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]">
-          The Tropical<br />Dining Room
-        </h2>
-        <div class="h-px w-16 bg-coastal-coral"></div>
-        <p class="text-coastal-text-muted text-base leading-relaxed">
-          Inside Miss B&apos;s is a full tropical dining room &mdash; teal booth seating, the original Miss B&apos;s mural, hanging plants from the ceiling, and warm pendant lighting. It&apos;s the kind of room that makes a Tuesday feel like a vacation.
-        </p>
-        <p class="text-coastal-text-muted text-base leading-relaxed">
-          Available for private dining and full room buyouts. Seats up to 60 guests.
-        </p>
-        <a href="/private-events" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
-          Private Events
-        </a>
-      </div>
-      <div class="relative min-h-[460px] lg:min-h-full">
-        <img
-          src="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
-          alt="Miss B's Coconut Club tropical dining room mural Mission Beach San Diego"
-          class="absolute inset-0 w-full h-full object-cover object-center"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  </section>
+  <SplitSection
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
+    imageAlt="Miss B's Coconut Club tropical dining room mural Mission Beach San Diego"
+    eyebrow="Inside"
+    heading="The Tropical<br />Dining Room"
+    sectionBg="bg-coastal-bg-sand"
+  >
+    <p class="text-coastal-text-muted text-base leading-relaxed">
+      Inside Miss B&apos;s is a full tropical dining room &mdash; teal booth seating, the original Miss B&apos;s mural, hanging plants from the ceiling, and warm pendant lighting. It&apos;s the kind of room that makes a Tuesday feel like a vacation.
+    </p>
+    <p class="text-coastal-text-muted text-base leading-relaxed">
+      Available for private dining and full room buyouts. Seats up to 60 guests.
+    </p>
+    <a href="/private-events" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
+      Private Events
+    </a>
+  </SplitSection>
 
   <!-- THE PATIO — venue-03 shows pink umbrellas and exterior -->
-  <section class="bg-coastal-bg-pure">
-    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[660px]">
-      <div class="relative min-h-[460px] lg:min-h-full">
-        <img
-          src="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
-          alt="Miss B's Coconut Club outdoor patio pink umbrellas Mission Beach San Diego"
-          class="absolute inset-0 w-full h-full object-cover object-top"
-          loading="lazy"
-        />
-      </div>
-      <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Outside</p>
-        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]">
-          The Outdoor Patio
-        </h2>
-        <div class="h-px w-16 bg-coastal-coral"></div>
-        <p class="text-coastal-text-muted text-base leading-relaxed">
-          The outdoor patio at Miss B&apos;s is one of Mission Beach&apos;s most coveted spots. Pink fringed umbrellas, fire pit seating, and the open-air bar all visible from the street. Designed for groups, long afternoons, and people who don&apos;t want to go home.
-        </p>
-        <p class="text-coastal-text-muted text-base leading-relaxed">
-          Available for full patio buyouts. Accommodates up to 80 guests reception-style.
-        </p>
-        <a href="/private-events" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
-          Inquire About a Buyout
-        </a>
-      </div>
-    </div>
-  </section>
+  <SplitSection
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
+    imageAlt="Miss B's Coconut Club outdoor patio pink umbrellas Mission Beach San Diego"
+    eyebrow="Outside"
+    heading="The Outdoor Patio"
+    imageLeft={true}
+    imagePosition="top"
+  >
+    <p class="text-coastal-text-muted text-base leading-relaxed">
+      The outdoor patio at Miss B&apos;s is one of Mission Beach&apos;s most coveted spots. Pink fringed umbrellas, fire pit seating, and the open-air bar all visible from the street. Designed for groups, long afternoons, and people who don&apos;t want to go home.
+    </p>
+    <p class="text-coastal-text-muted text-base leading-relaxed">
+      Available for full patio buyouts. Accommodates up to 80 guests reception-style.
+    </p>
+    <a href="/private-events" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+      Inquire About a Buyout
+    </a>
+  </SplitSection>
 
   <!-- THE FLAMINGO BAR FEATURE — venue-17 copper taps -->
   <section class="relative overflow-hidden min-h-[560px] flex items-center">

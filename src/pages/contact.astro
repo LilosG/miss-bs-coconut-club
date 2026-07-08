@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import siteProfile from '../data/site-profile.json';
 import PageHero from '../components/ui/PageHero.astro';
+import SplitSection from '../components/ui/SplitSection.astro';
 
 const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.seo.streetAddress + " " + siteProfile.seo.addressLocality + " " + siteProfile.seo.addressRegion;
 ---
@@ -73,47 +74,31 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
   </section>
 
   <!-- ─── HOURS + MAP SPLIT ─────────────────────────────────────────────── -->
-  <section class="bg-coastal-bg-sand">
-    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[500px]">
-
-      <!-- Hours -->
-      <div class="flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-20 gap-6">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
-          Hours of Operation
-        </p>
-        <h2 class="font-serif text-4xl md:text-5xl font-light italic text-coastal-text-main leading-[1.0]">
-          When We're Open
-        </h2>
-        <div class="h-px w-16 bg-coastal-coral"></div>
-        <dl class="flex flex-col divide-y divide-coastal-text-muted/10">
-          {[
-            { day: 'Monday – Friday',  hours: '11am – Close' },
-            { day: 'Saturday',         hours: '10am – Close' },
-            { day: 'Sunday',           hours: '10am – Close' },
-          ].map((item) => (
-            <div class="flex justify-between items-center py-4 gap-8">
-              <dt class="text-sm text-coastal-text-muted">{item.day}</dt>
-              <dd class="text-sm font-semibold text-coastal-text-main">{item.hours}</dd>
-            </div>
-          ))}
-        </dl>
-        <div class="pt-2 flex flex-col gap-1">
-          <p class="text-xs text-coastal-coral font-semibold tracking-wide">Brunch: Saturday &amp; Sunday 10am – 3pm</p>
+  <SplitSection
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-08.webp"
+    imageAlt="Miss B's Coconut Club interior Mission Beach San Diego"
+    eyebrow="Hours of Operation"
+    heading="When We&apos;re Open"
+    sectionBg="bg-coastal-bg-sand"
+    minHeight="500px"
+    headingSize="medium"
+  >
+    <dl class="flex flex-col divide-y divide-coastal-text-muted/10">
+      {[
+        { day: 'Monday – Friday',  hours: '11am – Close' },
+        { day: 'Saturday',         hours: '10am – Close' },
+        { day: 'Sunday',           hours: '10am – Close' },
+      ].map((item) => (
+        <div class="flex justify-between items-center py-4 gap-8">
+          <dt class="text-sm text-coastal-text-muted">{item.day}</dt>
+          <dd class="text-sm font-semibold text-coastal-text-main">{item.hours}</dd>
         </div>
-      </div>
-
-      <!-- Image -->
-      <div class="relative min-h-[360px] lg:min-h-full">
-        <img
-          src="/images/venue/miss-bs-coconut-club-mission-beach-venue-08.webp"
-          alt="Miss B's Coconut Club interior Mission Beach San Diego"
-          class="absolute inset-0 w-full h-full object-cover object-center"
-          loading="lazy"
-        />
-      </div>
-
+      ))}
+    </dl>
+    <div class="pt-2 flex flex-col gap-1">
+      <p class="text-xs text-coastal-coral font-semibold tracking-wide">Brunch: Saturday &amp; Sunday 10am – 3pm</p>
     </div>
-  </section>
+  </SplitSection>
 
   <!-- ─── SOCIAL ────────────────────────────────────────────────────────── -->
   <section class="bg-coastal-text-main py-20 px-6">
