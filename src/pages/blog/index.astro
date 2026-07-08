@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/ui/PageHero.astro';
 
 const allPosts = await getCollection('blog');
 const posts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
@@ -11,25 +12,13 @@ const posts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date
   description="The Miss B's Coconut Club blog — local guides to Mission Beach dining, San Diego bar recommendations, private event planning tips, and stories from our tropical kitchen and bar."
 >
 
-  <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
-  <section class="relative min-h-[60vh] flex items-end overflow-hidden">
-    <img
-      src="/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp"
-      alt="Miss B's Coconut Club Mission Beach San Diego blog"
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/85 via-coastal-text-main/30 to-transparent"></div>
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:pb-24">
-      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-4">
-        Stories, Guides &amp; Local Tips
-      </p>
-      <h1 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95]">
-        The Blog
-      </h1>
-    </div>
-  </section>
+  <PageHero
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp"
+    imageAlt="Miss B's Coconut Club Mission Beach San Diego blog"
+    eyebrow="Stories, Guides &amp; Local Tips"
+    heading="The Blog"
+    minHeight="60vh"
+  />
 
   <!-- ─── POSTS GRID ────────────────────────────────────────────────────── -->
   <section class="bg-coastal-bg-sand py-24 px-6">

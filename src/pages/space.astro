@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import siteProfile from '../data/site-profile.json';
+import PageHero from '../components/ui/PageHero.astro';
 
 const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.seo.streetAddress + " " + siteProfile.seo.addressLocality + " " + siteProfile.seo.addressRegion;
 ---
@@ -10,28 +11,14 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
   description="Explore Miss B's Coconut Club in Mission Beach San Diego. An open-air bar, tropical dining room, fire pit patio, and private event space at 3704 Mission Blvd."
 >
 
-  <!-- HERO — venue-15 is the established hero for this page -->
-  <section class="relative min-h-[80vh] flex items-end overflow-hidden">
-    <img
-      src="/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp"
-      alt="Miss B's Coconut Club teal open-air bar Mission Beach San Diego"
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/85 via-coastal-text-main/20 to-transparent"></div>
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:pb-24">
-      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-4">
-        3704 Mission Blvd &middot; Mission Beach, San Diego
-      </p>
-      <h1 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95] mb-4">
-        The Space
-      </h1>
-      <p class="text-coastal-bg-card/80 text-base max-w-xl leading-relaxed">
-        An open-air bar, tropical dining room, fire pit patio, and private event venue at 3704 Mission Blvd, steps from the Pacific.
-      </p>
-    </div>
-  </section>
+  <PageHero
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp"
+    imageAlt="Miss B's Coconut Club teal open-air bar Mission Beach San Diego"
+    eyebrow="3704 Mission Blvd &middot; Mission Beach, San Diego"
+    heading="The Space"
+    subheading="An open-air bar, tropical dining room, fire pit patio, and private event venue at 3704 Mission Blvd, steps from the Pacific."
+    overlayVia="via-coastal-text-main/20"
+  />
 
   <!-- THE OUTDOOR BAR — venue-13 shows the bar window open -->
   <section class="bg-coastal-bg-pure">

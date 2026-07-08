@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/ui/PageHero.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -22,27 +23,21 @@ const { Content } = await render(post);
 >
 
   <!-- ─── ARTICLE HERO ──────────────────────────────────────────────────── -->
-  <section class="relative min-h-[60vh] flex items-end overflow-hidden">
-    <img
-      src={post.data.image}
-      alt={post.data.imageAlt}
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/90 via-coastal-text-main/40 to-transparent"></div>
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:pb-24">
-      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-3">
-        {post.data.category}
-      </p>
-      <h1 class="font-serif text-4xl md:text-6xl font-light italic text-coastal-bg-pure leading-[0.95] max-w-3xl">
-        {post.data.title}
-      </h1>
-      <time datetime={post.data.date} class="block text-xs text-coastal-bg-card/60 mt-4 tracking-wide">
-        {new Date(post.data.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-      </time>
-    </div>
-  </section>
+  <PageHero
+    imageSrc={post.data.image}
+    imageAlt={post.data.imageAlt}
+    eyebrow={post.data.category}
+    heading={post.data.title}
+    minHeight="60vh"
+    overlayFrom="from-coastal-text-main/90"
+    overlayVia="via-coastal-text-main/40"
+    headingClass="text-4xl md:text-6xl"
+    eyebrowMb="mb-3"
+  >
+    <time datetime={post.data.date} class="block text-xs text-coastal-bg-card/60 mt-4 tracking-wide">
+      {new Date(post.data.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+    </time>
+  </PageHero>
 
   <!-- ─── ARTICLE BODY ──────────────────────────────────────────────────── -->
   <article class="bg-coastal-bg-pure py-16 px-6">

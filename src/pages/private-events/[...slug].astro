@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import siteProfile from '../../data/site-profile.json';
+import PageHero from '../../components/ui/PageHero.astro';
 
 const events: Record<string, {
   title: string;
@@ -107,28 +107,15 @@ if (!event) return Astro.redirect('/private-events');
   description={event.description}
 >
 
-  <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
-  <section class="relative min-h-[70vh] flex items-end overflow-hidden">
-    <img
-      src="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
-      alt={"Miss B's Coconut Club " + event.title + " Mission Beach San Diego"}
-      class="absolute inset-0 w-full h-full object-cover object-top"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/85 via-coastal-text-main/30 to-transparent"></div>
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:pb-24">
-      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-4">
-        {event.eyebrow}
-      </p>
-      <h1 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95] mb-4">
-        {event.title}
-      </h1>
-      <p class="text-coastal-bg-card/80 text-base max-w-xl leading-relaxed">
-        {event.description}
-      </p>
-    </div>
-  </section>
+  <PageHero
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
+    imageAlt={"Miss B's Coconut Club " + event.title + " Mission Beach San Diego"}
+    eyebrow={event.eyebrow}
+    heading={event.title}
+    subheading={event.description}
+    minHeight="70vh"
+    imagePosition="top"
+  />
 
   <!-- ─── EVENT DETAIL SPLIT ────────────────────────────────────────────── -->
   <section class="bg-coastal-bg-pure">

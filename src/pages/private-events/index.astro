@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import siteProfile from '../../data/site-profile.json';
+import PageHero from '../../components/ui/PageHero.astro';
 
 const eventTypes = [
   {
@@ -47,28 +47,14 @@ const eventTypes = [
   description="Host your private event at Miss B's Coconut Club in Mission Beach, San Diego. Birthday parties, corporate events, bachelorette parties, and full venue buyouts at 3704 Mission Blvd."
 >
 
-  <!-- HERO — venue-03 outdoor patio shot, strong for events context -->
-  <section class="relative min-h-[80vh] flex items-end overflow-hidden">
-    <img
-      src="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
-      alt="Miss B's Coconut Club private events outdoor patio Mission Beach San Diego"
-      class="absolute inset-0 w-full h-full object-cover object-top"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/85 via-coastal-text-main/30 to-transparent"></div>
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 pb-16 md:pb-24">
-      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral mb-4">
-        Mission Beach&apos;s Premier Outdoor Event Venue
-      </p>
-      <h1 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95] mb-4">
-        Private Events
-      </h1>
-      <p class="text-coastal-bg-card/80 text-base max-w-xl leading-relaxed">
-        The only open-air bar venue on Mission Blvd. Steps from the Pacific. Available for buyouts, parties, and corporate events of all sizes.
-      </p>
-    </div>
-  </section>
+  <PageHero
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
+    imageAlt="Miss B's Coconut Club private events outdoor patio Mission Beach San Diego"
+    eyebrow="Mission Beach&apos;s Premier Outdoor Event Venue"
+    heading="Private Events"
+    subheading="The only open-air bar venue on Mission Blvd. Steps from the Pacific. Available for buyouts, parties, and corporate events of all sizes."
+    imagePosition="top"
+  />
 
   <!-- STATS -->
   <section class="bg-coastal-text-main">
