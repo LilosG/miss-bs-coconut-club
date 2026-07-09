@@ -46,7 +46,7 @@ const eventTypes = Object.values(eventsData);
     <p class="text-coastal-text-muted text-base leading-relaxed">
       Our events team handles every detail from first inquiry to last call. Custom menus, cocktail packages, room configuration, and dedicated staff throughout your event.
     </p>
-    <a href="/contact" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+    <a href="#inquiry" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
       Submit an Inquiry
     </a>
   </SplitSection>
@@ -101,20 +101,26 @@ const eventTypes = Object.values(eventsData);
     </div>
   </section>
 
-  <!-- CTA — venue-11 fresh image not used elsewhere -->
-  <CtaBand
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-11.webp"
-    imageAlt="Miss B's Coconut Club private event venue Mission Beach San Diego"
-    eyebrow="Let's Make It Happen"
-    heading="Ready to Plan Your Event?"
-    body="Our events team responds within 24 hours with availability and a custom proposal."
-  >
-    <a href="/contact" class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-      Submit an Inquiry
-    </a>
-    <a href="/space" class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300">
-      View the Space
-    </a>
-  </CtaBand>
+  <!-- EVENT INQUIRY FORM -->
+  <section class="bg-coastal-bg-sand py-24 px-6" id="inquiry">
+    <div class="mx-auto max-w-4xl">
+      <div class="flex flex-col gap-4 mb-10">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Let's Make It Happen</p>
+        <h2 class="font-serif text-5xl font-light italic text-coastal-text-main leading-[1.0]">
+          Submit an Inquiry
+        </h2>
+        <div class="h-px w-16 bg-coastal-coral"></div>
+        <p class="text-coastal-text-muted text-base leading-relaxed max-w-lg">
+          Tell us your date, headcount, and event type. Our team responds within 24 hours with availability and a custom proposal.
+        </p>
+      </div>
+      <iframe
+        src="https://www.toasttab.com/invoice/lead?rx=e5c781b0-3ef7-4e6e-acaa-f50c55b15f70&ot=555d2efd-aea1-4bef-ac04-17793cda7ded&form=1"
+        style="margin:auto;display:block;border:0;width:100%;height:800px"
+        title="Private Event Inquiry Form"
+        loading="lazy"
+      ></iframe>
+    </div>
+  </section>
 
 </Layout>
