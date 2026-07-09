@@ -25,6 +25,31 @@ const { title, description } = Astro.props;
       gtag('js', new Date());
       gtag('config', 'G-YNWNRLB23Q');
     </script>
+    <script is:inline>
+      // Tracks clicks on embedded Toast reservation/order/gift-card links,
+      // since GA4 can't see completions inside Toast's own domain.
+      // This only fires an event on click (intent), not confirmation.
+      document.addEventListener('click', function (e) {
+        const link = e.target.closest('a[href*="toasttab.com"]');
+        if (!link) return;
+
+        let eventName = 'toast_link_click';
+        try {
+          const host = new URL(link.href).hostname;
+          if (host.includes('tables.toasttab.com')) eventName = 'reservation_click';
+          else if (host.includes('order.toasttab.com')) eventName = 'order_click';
+          else if (link.href.includes('invoice/lead')) eventName = 'inquiry_form_click';
+          else if (link.href.toLowerCase().includes('gift')) eventName = 'gift_card_click';
+        } catch (err) {}
+
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, {
+            link_url: link.href,
+            page_path: window.location.pathname,
+          });
+        }
+      }, { passive: true });
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
