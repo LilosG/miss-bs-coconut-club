@@ -4,6 +4,7 @@
     "title": "Birthday Parties",
     "metaTitle": "Birthday Party Venue Mission Beach San Diego | Miss B's Coconut Club",
     "description": "Celebrate your birthday at Miss B's Coconut Club in Mission Beach, San Diego. Full buyouts, patio sections, and custom cocktail packages at 3704 Mission Blvd.",
+    "cardDesc": "Celebrate in the most Mission Beach way possible. Full buyouts, partial sections, or patio-only. Custom cocktail packages available.",
     "eyebrow": "Celebrate in Style",
     "capacity": "Up to 80 guests",
     "body": [
@@ -24,6 +25,7 @@
     "title": "Corporate Events",
     "metaTitle": "Corporate Event Venue Mission Beach San Diego | Miss B's Coconut Club",
     "description": "Corporate events and company outings at Miss B's Coconut Club in Mission Beach, San Diego. The only outdoor bar venue on Mission Blvd for team events and client entertainment.",
+    "cardDesc": "Company outings, client entertainment, team celebrations, and holiday parties. The only outdoor bar venue on Mission Blvd.",
     "eyebrow": "Corporate Events",
     "capacity": "Up to 80 guests",
     "body": [
@@ -44,6 +46,7 @@
     "title": "Bachelorette Parties",
     "metaTitle": "Bachelorette Party Venue Mission Beach San Diego | Miss B's Coconut Club",
     "description": "Bachelorette parties at Miss B's Coconut Club in Mission Beach, San Diego. Tropical cocktails, flamingo taps, pink umbrellas, and a patio steps from the Pacific.",
+    "cardDesc": "Tropical cocktails, flamingo taps, pink umbrellas, and a patio steps from the beach. Miss B's was made for this.",
     "eyebrow": "The Ultimate Bachelorette",
     "capacity": "Groups of any size",
     "body": [
@@ -64,6 +67,7 @@
     "title": "Full Venue Buyouts",
     "metaTitle": "Full Venue Buyout Mission Beach San Diego | Miss B's Coconut Club",
     "description": "Full venue buyout at Miss B's Coconut Club in Mission Beach, San Diego. The entire bar, dining room, and patio exclusively yours for your event.",
+    "cardDesc": "Take over the entire Miss B's Coconut Club — bar, dining room, and patio. The ultimate Mission Beach private event experience.",
     "eyebrow": "Exclusive Access",
     "capacity": "Up to 80 guests",
     "body": [
@@ -84,6 +88,7 @@
     "title": "Rehearsal Dinners",
     "metaTitle": "Rehearsal Dinner Venue Mission Beach San Diego | Miss B's Coconut Club",
     "description": "Rehearsal dinners at Miss B's Coconut Club in Mission Beach, San Diego. Casual-upscale, beach-adjacent, and Caribbean-inspired at 3704 Mission Blvd.",
+    "cardDesc": "Casual-upscale, beach-adjacent, Caribbean-inspired. A rehearsal dinner that your guests will remember as the best meal of the weekend.",
     "eyebrow": "The Night Before",
     "capacity": "Up to 60 seated",
     "body": [
@@ -104,6 +109,7 @@
     "title": "Milestone Celebrations",
     "metaTitle": "Milestone Celebration Venue Mission Beach San Diego | Miss B's Coconut Club",
     "description": "Milestone celebrations at Miss B's Coconut Club in Mission Beach, San Diego. Anniversaries, graduations, retirements, and every reason to celebrate at 3704 Mission Blvd.",
+    "cardDesc": "Anniversaries, retirements, graduations, and every other reason to gather people you love in a room worth being in.",
     "eyebrow": "Every Reason to Celebrate",
     "capacity": "Flexible configurations",
     "body": [

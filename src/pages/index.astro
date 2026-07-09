@@ -7,21 +7,8 @@ import ChecklistItems from '../components/ui/ChecklistItems.astro';
 
 const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.seo.streetAddress + " " + siteProfile.seo.addressLocality + " " + siteProfile.seo.addressRegion;
 
-const cocktailGrid = [
-  { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-03.webp', name: 'Caribe Welcome' },
-  { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-32.webp', name: 'Mango Guava Spritz' },
-  { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-02.webp', name: 'Bird is the Word' },
-  { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-26.webp', name: 'Fiesta Island' },
-  { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-37.webp', name: 'Rum Cannonball' },
-  { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-38.webp', name: 'Spritz and Giggles' },
-];
-
-const foodRight = [
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-13.webp', name: 'Cubano' },
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-17.webp', name: 'Table Spread' },
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-26.webp', name: 'Jerk Plate' },
-  { src: '/images/food/miss-bs-coconut-club-food-mission-beach-32.webp', name: 'Nachos' },
-];
+const cocktailGrid = siteProfile.pageGrids.homepage.cocktails;
+const foodRight    = siteProfile.pageGrids.homepage.food;
 ---
 
 <Layout

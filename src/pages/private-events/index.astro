@@ -4,45 +4,10 @@ import PageHero from '../../components/ui/PageHero.astro';
 import SplitSection from '../../components/ui/SplitSection.astro';
 import CtaBand from '../../components/ui/CtaBand.astro';
 import StatBar from '../../components/ui/StatBar.astro';
+import eventsData from '../../data/events.json';
+import siteProfile from '../../data/site-profile.json';
 
-const eventTypes = [
-  {
-    slug: 'birthday-parties',
-    title: 'Birthday Parties',
-    desc: 'Celebrate in the most Mission Beach way possible. Full buyouts, partial sections, or patio-only. Custom cocktail packages available.',
-    capacity: 'Up to 80 guests',
-  },
-  {
-    slug: 'corporate-events',
-    title: 'Corporate Events',
-    desc: 'Company outings, client entertainment, team celebrations, and holiday parties. The only outdoor bar venue on Mission Blvd.',
-    capacity: 'Up to 80 guests',
-  },
-  {
-    slug: 'bachelorette-parties',
-    title: 'Bachelorette Parties',
-    desc: "Tropical cocktails, flamingo taps, pink umbrellas, and a patio steps from the beach. Miss B's was made for this.",
-    capacity: 'Groups of any size',
-  },
-  {
-    slug: 'full-venue-buyouts',
-    title: 'Full Venue Buyouts',
-    desc: "Take over the entire Miss B's Coconut Club — bar, dining room, and patio. The ultimate Mission Beach private event experience.",
-    capacity: 'Up to 80 guests',
-  },
-  {
-    slug: 'rehearsal-dinners',
-    title: 'Rehearsal Dinners',
-    desc: 'Casual-upscale, beach-adjacent, Caribbean-inspired. A rehearsal dinner that your guests will remember as the best meal of the weekend.',
-    capacity: 'Up to 60 seated',
-  },
-  {
-    slug: 'milestone-celebrations',
-    title: 'Milestone Celebrations',
-    desc: 'Anniversaries, retirements, graduations, and every other reason to gather people you love in a room worth being in.',
-    capacity: 'Flexible configurations',
-  },
-];
+const eventTypes = Object.values(eventsData);
 ---
 
 <Layout
@@ -103,7 +68,7 @@ const eventTypes = [
               {event.title}
             </h3>
             <div class="h-px w-10 bg-coastal-coral"></div>
-            <p class="text-coastal-text-muted text-sm leading-relaxed flex-1">{event.desc}</p>
+            <p class="text-coastal-text-muted text-sm leading-relaxed flex-1">{event.cardDesc}</p>
             <div class="flex items-center justify-between mt-2">
               <span class="text-xs text-coastal-text-muted">{event.capacity}</span>
               <span class="text-xs font-bold tracking-[0.15em] uppercase text-coastal-coral group-hover:translate-x-1 transition-transform duration-200">Learn More &rarr;</span>
@@ -125,16 +90,11 @@ const eventTypes = [
         <div class="h-px w-16 bg-coastal-coral"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-px bg-coastal-bg-pure/10">
-        {[
-          { step: '01', title: 'Submit an Inquiry',      body: 'Tell us your date, headcount, and event type. We respond within 24 hours.' },
-          { step: '02', title: 'Custom Proposal',        body: 'We build a tailored proposal &mdash; menu options, space configuration, cocktail packages, and pricing.' },
-          { step: '03', title: 'Confirm the Details',    body: 'Finalize the agreement and refine every detail &mdash; dietary needs, custom cocktails, room setup.' },
-          { step: '04', title: 'Your Event',             body: 'Show up and enjoy it. Our team handles everything from setup to last call.' },
-        ].map((item) => (
+        {siteProfile.eventProcess.map((item) => (
           <div class="bg-coastal-text-main p-8 flex flex-col gap-4">
             <span class="font-mono text-xs text-coastal-coral/50 tracking-[0.2em]">{item.step}</span>
             <h3 class="font-serif text-2xl font-light italic text-coastal-bg-pure">{item.title}</h3>
-            <p class="text-coastal-text-muted text-sm leading-relaxed">{item.body}</p>
+            <p class="text-coastal-text-muted text-sm leading-relaxed" set:html={item.body} />
           </div>
         ))}
       </div>

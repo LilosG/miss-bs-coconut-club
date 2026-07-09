@@ -5,6 +5,8 @@ import SplitSection from '../components/ui/SplitSection.astro';
 import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
 import CtaBand from '../components/ui/CtaBand.astro';
 import StatBar from '../components/ui/StatBar.astro';
+import siteProfile from '../data/site-profile.json';
+import menuData from '../data/menu.json';
 ---
 
 <Layout
@@ -68,14 +70,7 @@ import StatBar from '../components/ui/StatBar.astro';
       <HoverImageGrid
         cols="2x3"
         gap={true}
-        items={[
-          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08470.webp', name: 'Brunch Plate', alt: "Miss B's Coconut Club Brunch Plate brunch Mission Beach San Diego" },
-          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08518.webp', name: 'Morning Plate', alt: "Miss B's Coconut Club Morning Plate brunch Mission Beach San Diego" },
-          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08532.webp', name: 'Brunch Special', alt: "Miss B's Coconut Club Brunch Special brunch Mission Beach San Diego" },
-          { src: '/images/brunch/miss-bs-brunch-mission-beach-dsc08554.webp', name: 'Brunch Dish', alt: "Miss B's Coconut Club Brunch Dish brunch Mission Beach San Diego" },
-          { src: '/images/brunch/miss-bs-brunch-mission-beach-veggie-breakfast-sandwich7.webp', name: 'Veggie Breakfast Sandwich', alt: "Miss B's Coconut Club Veggie Breakfast Sandwich brunch Mission Beach San Diego" },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-42.webp', name: 'Egg Sandwich', alt: "Miss B's Coconut Club Egg Sandwich brunch Mission Beach San Diego" },
-        ]}
+        items={menuData.brunchPageGrids.food}
       />
     </div>
   </section>
@@ -109,12 +104,7 @@ import StatBar from '../components/ui/StatBar.astro';
   <section class="bg-coastal-text-main">
     <HoverImageGrid
       showLabel={false}
-      items={[
-        { src: '/images/brunch/miss-bs-brunch-mission-beach-img-6968.webp',  alt: "Miss B's Coconut Club Brunch Cocktail Mission Beach San Diego" },
-        { src: '/images/brunch/miss-bs-brunch-mission-beach-img-6969.webp',  alt: "Miss B's Coconut Club Morning Drink brunch Mission Beach San Diego" },
-        { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-20.webp', alt: "Miss B's Coconut Club Rose and Champagne brunch Mission Beach San Diego" },
-        { src: '/images/brunch/miss-bs-brunch-mission-beach-img-6982.webp',  alt: "Miss B's Coconut Club Brunch Cocktail Mission Beach San Diego" },
-      ]}
+      items={menuData.brunchPageGrids.cocktails}
     />
   </section>
 
@@ -130,13 +120,7 @@ import StatBar from '../components/ui/StatBar.astro';
         </p>
       </div>
       <dl class="flex flex-col divide-y divide-coastal-text-muted/10">
-        {[
-          { q: 'What are brunch hours?', a: 'Every Saturday and Sunday from 10am to 3pm. Last seating at 2:30pm.' },
-          { q: 'Do you offer bottomless mimosas?', a: 'Yes. Bottomless mimosas are available during brunch service. Ask your server for details.' },
-          { q: 'Do I need a reservation?', a: 'Walk-ins are welcome but we strongly recommend reservations for weekend brunch, especially on Sundays.' },
-          { q: 'Is the patio open for brunch?', a: 'Yes. The full outdoor patio and bar area is open for brunch service weather permitting.' },
-          { q: 'Is the full bar open during brunch?', a: 'The full bar program is available from 10am including tropical cocktails, Bloody Marys, beer, and wine.' },
-        ].map((faq) => (
+        {siteProfile.brunchFaq.map((faq) => (
           <div class="py-5">
             <dt class="font-sans text-sm font-semibold text-coastal-text-main mb-2">{faq.q}</dt>
             <dd class="font-sans text-sm text-coastal-text-muted leading-relaxed">{faq.a}</dd>

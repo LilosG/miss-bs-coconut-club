@@ -84,14 +84,10 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
     headingSize="medium"
   >
     <dl class="flex flex-col divide-y divide-coastal-text-muted/10">
-      {[
-        { day: 'Monday – Friday',  hours: '11am – Close' },
-        { day: 'Saturday',         hours: '10am – Close' },
-        { day: 'Sunday',           hours: '10am – Close' },
-      ].map((item) => (
+      {siteProfile.hours.kitchen.map((item) => (
         <div class="flex justify-between items-center py-4 gap-8">
-          <dt class="text-sm text-coastal-text-muted">{item.day}</dt>
-          <dd class="text-sm font-semibold text-coastal-text-main">{item.hours}</dd>
+          <dt class="text-sm text-coastal-text-muted">{item.label}</dt>
+          <dd class="text-sm font-semibold text-coastal-text-main">{item.display}</dd>
         </div>
       ))}
     </dl>
@@ -113,11 +109,11 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
         </p>
       </div>
       <div class="flex flex-wrap gap-3 justify-center">
-        <a href="https://www.instagram.com/missbcoconutclub/" target="_blank" rel="noopener noreferrer"
+        <a href={siteProfile.social.instagram} target="_blank" rel="noopener noreferrer"
            class="px-8 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
           Instagram
         </a>
-        <a href="https://www.facebook.com/MissBsCoconutClub/" target="_blank" rel="noopener noreferrer"
+        <a href={siteProfile.social.facebook} target="_blank" rel="noopener noreferrer"
            class="px-8 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
           Facebook
         </a>
