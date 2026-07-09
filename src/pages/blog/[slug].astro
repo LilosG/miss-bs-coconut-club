@@ -1,7 +1,6 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import PageHero from '../../components/ui/PageHero.astro';
 import CtaBand from '../../components/ui/CtaBand.astro';
 
 export async function getStaticPaths() {
@@ -16,6 +15,12 @@ const post = await getEntry('blog', slug);
 if (!post) return Astro.redirect('/blog');
 
 const { Content } = await render(post);
+
+const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+});
 ---
 
 <Layout
@@ -23,41 +28,44 @@ const { Content } = await render(post);
   description={post.data.description}
 >
 
-  <!-- ─── ARTICLE HERO ──────────────────────────────────────────────────── -->
-  <PageHero
-    imageSrc={post.data.image}
-    imageAlt={post.data.imageAlt}
-    eyebrow={post.data.category}
-    heading={post.data.title}
-    minHeight="60vh"
-    overlayFrom="from-coastal-text-main/90"
-    overlayVia="via-coastal-text-main/40"
-    headingClass="text-4xl md:text-6xl"
-    eyebrowMb="mb-3"
-  >
-    <time datetime={post.data.date} class="block text-xs text-coastal-bg-card/60 mt-4 tracking-wide">
-      {new Date(post.data.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-    </time>
-  </PageHero>
+  <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
+  <section class="relative min-h-[60vh] flex flex-col justify-end overflow-hidden">
+    <img
+      src={post.data.image}
+      alt={post.data.imageAlt}
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/95 via-coastal-text-main/50 to-coastal-text-main/10"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-6 pb-16 pt-32 w-full">
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-4">
+          <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-coastal-coral">{post.data.category}</span>
+          <span class="text-coastal-bg-pure/30 text-xs">·</span>
+          <time datetime={post.data.date} class="text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-bg-pure/50">{formattedDate}</time>
+        </div>
+        <h1 class="font-serif text-4xl md:text-6xl font-light italic text-coastal-bg-pure leading-[1.05] max-w-3xl">
+          {post.data.title}
+        </h1>
+        <p class="text-coastal-bg-card/75 text-base leading-relaxed max-w-2xl font-light">
+          {post.data.description}
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- ─── ARTICLE BODY ──────────────────────────────────────────────────── -->
-  <article class="bg-coastal-bg-pure py-16 px-6">
-    <div class="max-w-[68ch] mx-auto">
-
-      <p class="font-sans text-coastal-text-muted text-base leading-relaxed italic border-b border-coastal-text-muted/10 pb-8 mb-8">
-        {post.data.description}
-      </p>
-
-      <div class="prose prose-coastal">
+  <article class="bg-coastal-bg-pure py-20 px-6">
+    <div class="max-w-[72ch] mx-auto">
+      <div class="prose">
         <Content />
       </div>
-
-      <div class="pt-10 mt-10 border-t border-coastal-text-muted/10">
+      <div class="pt-12 mt-12 border-t border-coastal-text-muted/10">
         <a href="/blog" class="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral hover:text-coastal-gold-accent transition-colors duration-200">
           ← Back to Blog
         </a>
       </div>
-
     </div>
   </article>
 

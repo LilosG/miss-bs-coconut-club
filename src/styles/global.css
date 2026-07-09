@@ -13,3 +13,149 @@
   --font-family-serif: 'Cormorant Garamond', Georgia, serif;
   --font-family-sans: 'Plus Jakarta Sans', Inter, sans-serif;
 }
+
+/* ─── Blog prose styles ─────────────────────────────────────────────────── */
+.prose {
+  color: #5D6E6A;
+  font-family: 'Plus Jakarta Sans', Inter, sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.prose p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.prose h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 300;
+  font-style: italic;
+  color: #1C2926;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #F5F1EA;
+}
+
+.prose h3 {
+  font-family: 'Plus Jakarta Sans', Inter, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #F2A191;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h4 {
+  font-family: 'Plus Jakarta Sans', Inter, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1C2926;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose strong {
+  color: #1C2926;
+  font-weight: 600;
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose a {
+  color: #1C2926;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: #F2A191;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.prose a:hover {
+  color: #F2A191;
+  text-decoration-color: #F2A191;
+}
+
+.prose ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.prose ul li {
+  padding-left: 1.25rem;
+  position: relative;
+  color: #5D6E6A;
+}
+
+.prose ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #F2A191;
+  font-weight: 300;
+}
+
+.prose ol {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  counter-reset: prose-counter;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.prose ol li {
+  padding-left: 1.75rem;
+  position: relative;
+  counter-increment: prose-counter;
+  color: #5D6E6A;
+}
+
+.prose ol li::before {
+  content: counter(prose-counter) '.';
+  position: absolute;
+  left: 0;
+  color: #F2A191;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  top: 0.15rem;
+}
+
+.prose blockquote {
+  border-left: 2px solid #F2A191;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #1C2926;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid #F5F1EA;
+  margin: 2.5rem 0;
+}
+
+.prose :first-child {
+  margin-top: 0;
+}
+
+.prose :last-child {
+  margin-bottom: 0;
+}
