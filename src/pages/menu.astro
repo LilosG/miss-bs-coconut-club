@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/ui/PageHero.astro';
 import SplitSection from '../components/ui/SplitSection.astro';
 import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
+import menuData from '../data/menu.json';
 ---
 
 <Layout
@@ -32,26 +33,7 @@ import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
         <div class="h-px w-16 bg-coastal-coral"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-coastal-bg-card">
-        {[
-          {
-            label: 'Food',
-            desc: 'Caribbean-inspired plates built for sharing. Coconut shrimp, jerk chicken, the Coconut Club Burger, and a rotating selection of seasonal plates.',
-            image: '/images/food/miss-bs-coconut-club-food-mission-beach-09.webp',
-            alt: "Miss B's Coconut Club food menu Mission Beach San Diego",
-          },
-          {
-            label: 'Cocktails',
-            desc: 'Tropical craft cocktails from our full bar program. The Caribe Welcome, Mango Guava Spritz, Rum Cannonball, and 24 flamingo draft taps.',
-            image: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-13.webp',
-            alt: "Miss B's Coconut Club craft cocktails Mission Beach San Diego",
-          },
-          {
-            label: 'Brunch',
-            desc: 'Weekend brunch every Saturday and Sunday from 10am to 3pm. Bottomless mimosas, morning cocktails, and brunch plates worth getting out of bed for.',
-            image: '/images/food/miss-bs-coconut-club-food-mission-beach-20.webp',
-            alt: "Miss B's Coconut Club brunch Mission Beach San Diego",
-          },
-        ].map((cat) => (
+        {menuData.categories.map((cat) => (
           <div class="bg-coastal-bg-pure flex flex-col">
             <div class="relative overflow-hidden aspect-[4/3]">
               <img src={cat.image} alt={cat.alt} class="w-full h-full object-cover" loading="lazy" />
@@ -79,16 +61,7 @@ import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
         gap={true}
         labelPadding="p-3"
         labelTracking="tracking-[0.15em]"
-        items={[
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-02.webp', name: 'Ahi Poke Bowl',      alt: "Miss B's Coconut Club Ahi Poke Bowl Mission Beach San Diego" },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-04.webp', name: 'Coconut Shrimp',    alt: "Miss B's Coconut Club Coconut Shrimp Mission Beach San Diego" },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-06.webp', name: 'Fish and Chips',    alt: "Miss B's Coconut Club Fish and Chips Mission Beach San Diego" },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-10.webp', name: 'Jerk Chicken Wrap', alt: "Miss B's Coconut Club Jerk Chicken Wrap Mission Beach San Diego" },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-15.webp', name: 'Jerk Wings',        alt: "Miss B's Coconut Club Jerk Wings Mission Beach San Diego" },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-18.webp', name: 'Nachos',            alt: "Miss B's Coconut Club Nachos Mission Beach San Diego" },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-22.webp', name: 'Summer Salad',      alt: "Miss B's Coconut Club Summer Salad Mission Beach San Diego" },
-          { src: '/images/food/miss-bs-coconut-club-food-mission-beach-28.webp', name: 'Vacay Bowl',        alt: "Miss B's Coconut Club Vacay Bowl Mission Beach San Diego" },
-        ]}
+        items={menuData.menuPageGrids.food}
       />
     </div>
   </section>
@@ -105,16 +78,7 @@ import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
         gap={true}
         labelPadding="p-3"
         labelTracking="tracking-[0.15em]"
-        items={[
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-30.webp', name: 'Flamingo Bar',        alt: "Miss B's Coconut Club Flamingo Bar cocktail Mission Beach San Diego" },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-03.webp', name: 'Caribe Welcome',     alt: "Miss B's Coconut Club Caribe Welcome cocktail Mission Beach San Diego" },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-20.webp', name: 'Rose and Champagne', alt: "Miss B's Coconut Club Rose and Champagne cocktail Mission Beach San Diego" },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-12.webp', name: 'Bloody Mary',        alt: "Miss B's Coconut Club Bloody Mary cocktail Mission Beach San Diego" },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-09.webp', name: 'Watermelon Cocktail',alt: "Miss B's Coconut Club Watermelon Cocktail Mission Beach San Diego" },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-11.webp', name: 'Signature Cocktail', alt: "Miss B's Coconut Club Signature Cocktail Mission Beach San Diego" },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-35.webp', name: 'Tropical Cocktail',  alt: "Miss B's Coconut Club Tropical Cocktail Mission Beach San Diego" },
-          { src: '/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-39.webp', name: 'Craft Cocktail',     alt: "Miss B's Coconut Club Craft Cocktail Mission Beach San Diego" },
-        ]}
+        items={menuData.menuPageGrids.cocktails}
       />
     </div>
   </section>

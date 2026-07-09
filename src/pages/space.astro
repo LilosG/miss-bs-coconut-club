@@ -105,14 +105,7 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
 
   <!-- VENUE PHOTO GRID — 4 images not used in split sections above -->
   <section class="bg-coastal-bg-pure">
-    <HoverImageGrid
-      items={[
-        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-02.webp', name: 'The Bar',         alt: "Miss B's Coconut Club The Bar Mission Beach San Diego" },
-        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-10.webp', name: 'The Patio',       alt: "Miss B's Coconut Club The Patio Mission Beach San Diego" },
-        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-12.webp', name: 'The Dining Room', alt: "Miss B's Coconut Club The Dining Room Mission Beach San Diego" },
-        { src: '/images/venue/miss-bs-coconut-club-mission-beach-venue-16.webp', name: 'The Interior',    alt: "Miss B's Coconut Club The Interior Mission Beach San Diego" },
-      ]}
-    />
+    <HoverImageGrid items={siteProfile.pageGrids.space.venue} />
   </section>
 
   <!-- LOCATION CTA -->

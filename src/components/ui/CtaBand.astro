@@ -1,0 +1,60 @@
+---
+interface Props {
+  imageSrc: string
+  imageAlt: string
+  heading: string
+  body: string
+  eyebrow?: string
+  imagePosition?: 'center' | 'top'
+  headingSize?: 'large' | 'medium'
+  py?: 'py-20' | 'py-24'
+  gap?: 'gap-5' | 'gap-6'
+}
+
+const imagePositionMap = {
+  center: 'object-center',
+  top:    'object-top',
+} as const;
+
+const headingSizeMap = {
+  large:  'text-5xl md:text-6xl',
+  medium: 'text-4xl md:text-5xl',
+} as const;
+
+const {
+  imageSrc,
+  imageAlt,
+  heading,
+  body,
+  eyebrow,
+  imagePosition = 'center',
+  headingSize   = 'large',
+  py            = 'py-24',
+  gap           = 'gap-6',
+} = Astro.props;
+
+const imgPositionClass  = imagePositionMap[imagePosition];
+const headingSizeClass  = headingSizeMap[headingSize];
+---
+
+<section class="relative overflow-hidden">
+  <img
+    src={imageSrc}
+    alt={imageAlt}
+    class={`absolute inset-0 w-full h-full object-cover ${imgPositionClass}`}
+    loading="lazy"
+  />
+  <div class="absolute inset-0 bg-coastal-text-main/70"></div>
+  <div class={`relative z-10 mx-auto max-w-7xl px-6 ${py} text-center flex flex-col items-center ${gap}`}>
+    {eyebrow && (
+      <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
+        {eyebrow}
+      </p>
+    )}
+    <h2 class={`font-serif ${headingSizeClass} font-light italic text-coastal-bg-pure leading-[1.0]`} set:html={heading} />
+    <p class="text-coastal-bg-card/80 text-base max-w-lg leading-relaxed">{body}</p>
+    <div class="flex flex-wrap gap-4 justify-center mt-2">
+      <slot />
+    </div>
+  </div>
+</section>

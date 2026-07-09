@@ -1,0 +1,28 @@
+---
+interface Props {
+  items: string[]
+  divided?: boolean
+}
+
+const { items, divided = false } = Astro.props;
+---
+
+{divided ? (
+  <ul class="flex flex-col divide-y divide-coastal-text-muted/10">
+    {items.map((item) => (
+      <li class="flex items-center gap-4 py-4 text-sm text-coastal-text-muted">
+        <div class="h-px w-5 bg-coastal-coral shrink-0"></div>
+        {item}
+      </li>
+    ))}
+  </ul>
+) : (
+  <ul class="flex flex-col gap-2.5 mt-2">
+    {items.map((item) => (
+      <li class="flex items-center gap-4 text-sm text-coastal-text-muted">
+        <div class="h-px w-5 bg-coastal-coral shrink-0"></div>
+        {item}
+      </li>
+    ))}
+  </ul>
+)}
