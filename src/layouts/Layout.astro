@@ -1,7 +1,7 @@
 ---
 import LocalSEO from '../components/core/LocalSEO.astro';
 import Navigation from '../components/ui/Navigation.astro';
-import siteProfile from '../data/site-profile.json';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -10,15 +10,6 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-
-const footerLinks = [
-  { label: 'Menu', href: '/menu' },
-  { label: 'Brunch', href: '/brunch' },
-  { label: 'The Space', href: '/space' },
-  { label: 'Private Events', href: '/private-events' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
-];
 ---
 
 <!DOCTYPE html>
@@ -44,69 +35,7 @@ const footerLinks = [
       <slot />
     </main>
 
-    <footer class="bg-coastal-text-main text-coastal-bg-sand">
-
-      <!-- Gold rule top -->
-      <div class="h-px bg-gradient-to-r from-transparent via-coastal-coral/40 to-transparent"></div>
-
-      <div class="mx-auto max-w-7xl px-6 py-16">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-coastal-text-muted/20">
-
-          <!-- Brand column -->
-          <div class="flex flex-col gap-4">
-            <a href="/" class="block w-fit">
-              <img
-                src="/images/miss-bs-coconut-club-logo-white.webp"
-                alt="Miss B's Coconut Club"
-                class="h-14 w-auto"
-              />
-            </a>
-            <p class="text-sm text-coastal-text-muted leading-relaxed max-w-[28ch]">
-              San Diego's open-air bar and brunch destination on Mission Blvd. Steps from the Pacific.
-            </p>
-            <a href={"tel:" + siteProfile.seo.telephone} class="text-sm text-coastal-gold-accent hover:text-coastal-bg-sand transition-colors duration-200 w-fit">
-              {siteProfile.seo.telephone}
-            </a>
-          </div>
-
-          <!-- Nav column -->
-          <nav class="flex flex-col gap-3">
-            <p class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-coral mb-1">Explore</p>
-            {footerLinks.map(item => (
-              <a href={item.href} class="text-sm text-coastal-text-muted hover:text-coastal-gold-accent transition-colors duration-200 w-fit">
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <!-- Hours + Address column -->
-          <div class="flex flex-col gap-3">
-            <p class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-coral mb-1">Visit Us</p>
-            <address class="not-italic flex flex-col gap-1">
-              <span class="text-sm text-coastal-bg-sand">{siteProfile.seo.streetAddress}</span>
-              <span class="text-sm text-coastal-text-muted">{siteProfile.seo.addressLocality}, {siteProfile.seo.addressRegion} {siteProfile.seo.postalCode}</span>
-            </address>
-            <div class="flex flex-col gap-1 mt-2">
-              <span class="text-sm text-coastal-text-muted">Mon – Fri: 11am to Close</span>
-              <span class="text-sm text-coastal-text-muted">Sat – Sun: 10am to Close</span>
-              <span class="text-xs text-coastal-coral/80 mt-1">Brunch: Sat &amp; Sun 10am – 3pm</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Bottom bar -->
-        <div class="pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p class="text-xs text-coastal-text-muted">
-            &copy; {new Date().getFullYear()} Miss B's Coconut Club. All rights reserved.
-          </p>
-          <p class="text-xs text-coastal-text-muted">
-            3704 Mission Blvd · Mission Beach, San Diego
-          </p>
-        </div>
-
-      </div>
-    </footer>
+    <Footer />
 
   </body>
 </html>

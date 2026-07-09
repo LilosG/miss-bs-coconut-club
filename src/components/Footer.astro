@@ -1,0 +1,99 @@
+---
+import siteProfile from '../data/site-profile.json';
+import { GPH_NETWORK, GRIND_AND_PROSPER_URL } from '../data/gphNetwork';
+
+const footerLinks = [
+  { label: 'Menu', href: '/menu' },
+  { label: 'Brunch', href: '/brunch' },
+  { label: 'The Space', href: '/space' },
+  { label: 'Private Events', href: '/private-events' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
+---
+
+<footer class="bg-coastal-text-main text-coastal-bg-sand">
+
+  <!-- Gold rule top -->
+  <div class="h-px bg-gradient-to-r from-transparent via-coastal-coral/40 to-transparent"></div>
+
+  <div class="mx-auto max-w-7xl px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-coastal-text-muted/20">
+
+      <!-- Brand column -->
+      <div class="flex flex-col gap-4">
+        <a href="/" class="block w-fit">
+          <img
+            src="/images/miss-bs-coconut-club-logo-white.webp"
+            alt="Miss B's Coconut Club"
+            class="h-14 w-auto"
+          />
+        </a>
+        <p class="text-sm text-coastal-text-muted leading-relaxed max-w-[28ch]">
+          San Diego's open-air bar and brunch destination on Mission Blvd. Steps from the Pacific.
+        </p>
+        <a href={"tel:" + siteProfile.seo.telephone} class="text-sm text-coastal-gold-accent hover:text-coastal-bg-sand transition-colors duration-200 w-fit">
+          {siteProfile.seo.telephone}
+        </a>
+      </div>
+
+      <!-- Nav column -->
+      <nav class="flex flex-col gap-3">
+        <p class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-coral mb-1">Explore</p>
+        {footerLinks.map(item => (
+          <a href={item.href} class="text-sm text-coastal-text-muted hover:text-coastal-gold-accent transition-colors duration-200 w-fit">
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Hours + Address column -->
+      <div class="flex flex-col gap-3">
+        <p class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-coral mb-1">Visit Us</p>
+        <address class="not-italic flex flex-col gap-1">
+          <span class="text-sm text-coastal-bg-sand">{siteProfile.seo.streetAddress}</span>
+          <span class="text-sm text-coastal-text-muted">{siteProfile.seo.addressLocality}, {siteProfile.seo.addressRegion} {siteProfile.seo.postalCode}</span>
+        </address>
+        <div class="flex flex-col gap-1 mt-2">
+          <span class="text-sm text-coastal-text-muted">Mon – Fri: 11am to Close</span>
+          <span class="text-sm text-coastal-text-muted">Sat – Sun: 10am to Close</span>
+          <span class="text-xs text-coastal-coral/80 mt-1">Brunch: Sat &amp; Sun 10am – 3pm</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GPH Network row -->
+    <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 pt-6 pb-6 border-b border-coastal-text-muted/20">
+      <a href={GRIND_AND_PROSPER_URL} target="_blank" rel="noopener noreferrer"
+        class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-text-muted/60 hover:text-coastal-gold-accent transition-colors whitespace-nowrap">
+        Grind &amp; Prosper Hospitality
+      </a>
+      <div class="flex flex-wrap gap-x-6 gap-y-2">
+        {portfolio.map((v) => (
+          <a href={v.url} target="_blank" rel="noopener noreferrer"
+            class="text-xs text-coastal-text-muted/50 hover:text-coastal-bg-sand transition-colors">
+            {v.name}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-coastal-text-muted">
+        &copy; {new Date().getFullYear()} Miss B's Coconut Club. All rights reserved.
+      </p>
+      <p class="text-xs text-coastal-text-muted">
+        3704 Mission Blvd · Mission Beach, San Diego
+      </p>
+      <a href="https://lilosgrowth.com" target="_blank" rel="noopener noreferrer"
+        class="text-[13px] text-coastal-text-muted hover:text-coastal-gold-accent transition-colors">
+        Website by Lilos Growth
+      </a>
+    </div>
+
+  </div>
+</footer>
