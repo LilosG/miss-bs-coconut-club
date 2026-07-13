@@ -11,17 +11,21 @@
     "linkedin": "https://www.linkedin.com/company/miss-b's-coconut-club-llc"
   },
   "hours": {
+    "general": [
+      { "label": "Monday – Friday", "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "open": "10:00", "close": "22:00", "display": "10am – 10pm" },
+      { "label": "Saturday – Sunday", "days": ["Saturday", "Sunday"], "open": "09:00", "close": "22:00", "display": "9am – 10pm" }
+    ],
     "kitchen": [
-      { "label": "Monday – Friday", "open": "11:00", "display": "11am – Close" },
-      { "label": "Saturday – Sunday", "open": "10:00", "display": "10am – Close" }
+      { "label": "Monday – Thursday", "days": ["Monday", "Tuesday", "Wednesday", "Thursday"], "open": "11:00", "close": "21:00", "display": "11am – 9pm" },
+      { "label": "Friday – Sunday", "days": ["Friday", "Saturday", "Sunday"], "open": "10:00", "close": "21:00", "display": "10am – 9pm" }
     ],
     "brunch": [
-      { "label": "Monday – Thursday", "open": "11:00", "close": "14:00", "display": "11am – 2pm" },
-      { "label": "Friday – Sunday", "open": "10:00", "close": "14:00", "display": "10am – 2pm" }
+      { "label": "Monday – Thursday", "days": ["Monday", "Tuesday", "Wednesday", "Thursday"], "open": "11:00", "close": "14:00", "display": "11am – 2pm" },
+      { "label": "Friday – Sunday", "days": ["Friday", "Saturday", "Sunday"], "open": "10:00", "close": "14:00", "display": "10am – 2pm" }
     ],
     "happyHour": [
-      { "label": "Monday – Friday", "open": "15:00", "close": "17:00", "display": "3 – 5pm" },
-      { "label": "Saturday – Sunday", "closed": true }
+      { "label": "Monday – Friday", "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "open": "15:00", "close": "17:00", "display": "3 – 5pm" },
+      { "label": "Saturday – Sunday", "days": ["Saturday", "Sunday"], "closed": true }
     ]
   },
   "seo": {
@@ -41,11 +45,11 @@
     }
   },
   "brunchFaq": [
-    { "q": "What are brunch hours?", "a": "Every Saturday and Sunday from 10am to 3pm. Last seating at 2:30pm." },
-    { "q": "Do you offer bottomless mimosas?", "a": "Yes. Bottomless mimosas are available during brunch service. Ask your server for details." },
-    { "q": "Do I need a reservation?", "a": "Walk-ins are welcome but we strongly recommend reservations for weekend brunch, especially on Sundays." },
+    { "q": "What are brunch hours?", "a": "Brunch is served daily. Monday through Thursday from 11am to 2pm, and Friday through Sunday from 10am to 2pm." },
+    { "q": "Do you offer bottomless mimosas?", "a": "Yes. Bottomless mimosas are available daily during brunch service. Ask your server for details." },
+    { "q": "Do I need a reservation?", "a": "Walk-ins are welcome but we strongly recommend reservations for brunch, especially on weekends." },
     { "q": "Is the patio open for brunch?", "a": "Yes. The full outdoor patio and bar area is open for brunch service weather permitting." },
-    { "q": "Is the full bar open during brunch?", "a": "The full bar program is available from 10am including tropical cocktails, Bloody Marys, beer, and wine." }
+    { "q": "Is the full bar open during brunch?", "a": "The full bar program is available during brunch hours, including tropical cocktails, Bloody Marys, beer, and wine." }
   ],
   "eventProcess": [
     { "step": "01", "title": "Submit an Inquiry", "body": "Tell us your date, headcount, and event type. We respond within 24 hours." },

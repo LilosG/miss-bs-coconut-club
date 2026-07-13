@@ -13,20 +13,12 @@ const {
   canonicalURL = new URL(Astro.url.pathname, Astro.site),
 } = Astro.props;
 
-const openingHoursSpecification = [
-  {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    "opens": "11:00",
-    "closes": "23:59"
-  },
-  {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Saturday", "Sunday"],
-    "opens": "10:00",
-    "closes": "23:59"
-  }
-];
+const openingHoursSpecification = siteProfile.hours.general.map((h) => ({
+  "@type": "OpeningHoursSpecification",
+  "dayOfWeek": h.days,
+  "opens": h.open,
+  "closes": h.close
+}));
 
 const jsonLD = {
   "@context": "https://schema.org",

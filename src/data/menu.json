@@ -17,7 +17,7 @@
     {
       "slug": "brunch",
       "label": "Brunch",
-      "desc": "Weekend brunch every Saturday and Sunday from 10am to 3pm. Bottomless mimosas, morning cocktails, and brunch plates worth getting out of bed for.",
+      "desc": "Brunch served daily until 2pm. Bottomless mimosas, morning cocktails, and brunch plates worth getting out of bed for.",
       "image": "/images/food/miss-bs-coconut-club-food-mission-beach-20.webp",
       "alt": "Miss B's Coconut Club brunch Mission Beach San Diego"
     }
@@ -305,7 +305,7 @@
       "slug": "bottomless-mimosas",
       "category": "cocktails",
       "name": "Bottomless Mimosas",
-      "description": "Available during weekend brunch. The most efficient path to a perfect Saturday morning.",
+      "description": "Available daily during brunch. The most efficient path to a perfect morning.",
       "image": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-04.webp",
       "alt": "Bottomless mimosas at Miss B's Coconut Club"
     }

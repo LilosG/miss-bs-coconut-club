@@ -106,7 +106,7 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
     headingSize="medium"
   >
     <dl class="flex flex-col divide-y divide-coastal-text-muted/10">
-      {siteProfile.hours.kitchen.map((item) => (
+      {siteProfile.hours.general.map((item) => (
         <div class="flex justify-between items-center py-4 gap-8">
           <dt class="text-sm text-coastal-text-muted">{item.label}</dt>
           <dd class="text-sm font-semibold text-coastal-text-main">{item.display}</dd>
@@ -114,7 +114,8 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
       ))}
     </dl>
     <div class="pt-2 flex flex-col gap-1">
-      <p class="text-xs text-coastal-coral font-semibold tracking-wide">Brunch: Saturday &amp; Sunday 10am – 3pm</p>
+      <p class="text-xs text-coastal-coral font-semibold tracking-wide">Kitchen closes at 9pm daily</p>
+      <p class="text-xs text-coastal-coral font-semibold tracking-wide">Brunch: Daily until 2pm</p>
     </div>
   </SplitSection>
 
