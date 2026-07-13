@@ -46,11 +46,11 @@
   },
   "brunchPageGrids": {
     "food": [
-      { "src": "/images/brunch/miss-bs-brunch-mission-beach-dsc08470.webp",                       "name": "Brunch Plate",              "alt": "Miss B's Coconut Club Brunch Plate brunch Mission Beach San Diego" },
-      { "src": "/images/brunch/miss-bs-brunch-mission-beach-dsc08518.webp",                       "name": "Morning Plate",             "alt": "Miss B's Coconut Club Morning Plate brunch Mission Beach San Diego" },
-      { "src": "/images/brunch/miss-bs-brunch-mission-beach-dsc08532.webp",                       "name": "Brunch Special",            "alt": "Miss B's Coconut Club Brunch Special brunch Mission Beach San Diego" },
-      { "src": "/images/brunch/miss-bs-brunch-mission-beach-dsc08554.webp",                       "name": "Brunch Dish",               "alt": "Miss B's Coconut Club Brunch Dish brunch Mission Beach San Diego" },
-      { "src": "/images/brunch/miss-bs-brunch-mission-beach-veggie-breakfast-sandwich7.webp",     "name": "Veggie Breakfast Sandwich", "alt": "Miss B's Coconut Club Veggie Breakfast Sandwich brunch Mission Beach San Diego" },
+      { "src": "/images/brunch/miss-bs-brunch-mission-beach-coco-acai-bowl.webp",                  "name": "Coco Açaí Bowl",            "alt": "Miss B's Coconut Club Coco Açaí Bowl brunch Mission Beach San Diego" },
+      { "src": "/images/brunch/miss-bs-brunch-mission-beach-easy-bs-breakfast.webp",              "name": "Easy B's Breakfast",        "alt": "Miss B's Coconut Club Easy B's Breakfast brunch Mission Beach San Diego" },
+      { "src": "/images/brunch/miss-bs-brunch-mission-beach-dsc08532.webp",                       "name": "Pete's Biscuits and Gravy", "alt": "Miss B's Coconut Club Pete's Biscuits and Gravy brunch Mission Beach San Diego" },
+      { "src": "/images/brunch/miss-bs-brunch-mission-beach-breakfast-tacos.webp",                 "name": "Breakfast Tacos",            "alt": "Miss B's Coconut Club Breakfast Tacos brunch Mission Beach San Diego" },
+      { "src": "/images/brunch/miss-bs-brunch-mission-beach-french-toast.webp",                    "name": "French Toast",              "alt": "Miss B's Coconut Club French Toast brunch Mission Beach San Diego" },
       { "src": "/images/food/miss-bs-coconut-club-food-mission-beach-42.webp",                    "name": "Egg Sandwich",              "alt": "Miss B's Coconut Club Egg Sandwich brunch Mission Beach San Diego" }
     ],
     "cocktails": [
