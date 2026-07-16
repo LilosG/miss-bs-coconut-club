@@ -1,12 +1,8 @@
 ---
-const navItems = [
-  { label: "Menu", href: "/menu" },
-  { label: "Brunch", href: "/brunch" },
-  { label: "Space", href: "/space" },
-  { label: "Private Events", href: "/private-events" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
-];
+import navData from '../../data/nav.json';
+
+const navItems = navData.main;
+const ctas = navData.ctas;
 ---
 
 <header id="site-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
@@ -20,7 +16,7 @@ const navItems = [
           id="nav-logo-img"
         />
       </a>
-      <nav class="hidden md:flex items-center gap-8">
+      <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
         {navItems.map(item => (
           <a href={item.href} class="nav-link text-xs font-semibold tracking-[0.15em] uppercase text-coastal-bg-pure/80 hover:text-coastal-bg-pure transition-colors duration-200">
             {item.label}
@@ -28,14 +24,25 @@ const navItems = [
         ))}
       </nav>
       <div class="hidden md:flex items-center gap-2">
-        <a id="nav-cta-reserve" href="https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_ss=645fd193-d64d-44ec-9f2e-0fb6b0df119e&toast_src=website_link&utm_medium=toast_sites" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 text-xs font-bold tracking-widest uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
-          Reserve
-        </a>
-        <a id="nav-cta-order" href="https://order.toasttab.com/online/miss-bs-coconut-club" target="_blank" rel="noopener noreferrer" class="nav-cta px-5 py-2.5 text-xs font-bold tracking-widest uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-200">
-          Order Online
-        </a>
+        {ctas.map(cta => (
+          cta.style === 'secondary' ? (
+            <a id="nav-cta-order" href={cta.href} target={cta.external ? '_blank' : undefined} rel={cta.external ? 'noopener noreferrer' : undefined} class="nav-cta px-5 py-2.5 text-xs font-bold tracking-widest uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-200">
+              {cta.label}
+            </a>
+          ) : (
+            <a id="nav-cta-reserve" href={cta.href} target={cta.external ? '_blank' : undefined} rel={cta.external ? 'noopener noreferrer' : undefined} class="px-5 py-2.5 text-xs font-bold tracking-widest uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+              {cta.label}
+            </a>
+          )
+        ))}
       </div>
-      <button id="mobile-menu-btn" class="md:hidden text-coastal-bg-pure p-2">
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden text-coastal-bg-pure p-2"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
@@ -43,6 +50,39 @@ const navItems = [
     </div>
   </div>
 </header>
+
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-[60] bg-coastal-bg-sand flex flex-col items-center justify-center gap-7 translate-x-full transition-transform duration-300 md:hidden"
+  aria-hidden="true"
+>
+  <button id="mobile-menu-close" class="absolute top-6 right-6 text-coastal-text-main p-2" aria-label="Close menu">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  <img src="/images/miss-bs-coconut-club-logo-white.webp" alt="Miss B's Coconut Club" class="h-12 w-auto mb-4 invert" />
+  <nav class="flex flex-col items-center gap-6" aria-label="Mobile navigation">
+    {navItems.map(item => (
+      <a href={item.href} class="text-2xl font-semibold tracking-[0.1em] uppercase text-coastal-text-main hover:text-coastal-coral transition-colors duration-200">
+        {item.label}
+      </a>
+    ))}
+  </nav>
+  <div class="flex flex-col gap-3 mt-4 w-48">
+    {ctas.map(cta => (
+      cta.style === 'secondary' ? (
+        <a href={cta.href} target={cta.external ? '_blank' : undefined} rel={cta.external ? 'noopener noreferrer' : undefined} class="text-center px-5 py-3 text-xs font-bold tracking-widest uppercase border border-coastal-text-main/40 text-coastal-text-main hover:bg-coastal-text-main hover:text-coastal-bg-pure transition-all duration-200">
+          {cta.label}
+        </a>
+      ) : (
+        <a href={cta.href} target={cta.external ? '_blank' : undefined} rel={cta.external ? 'noopener noreferrer' : undefined} class="text-center px-5 py-3 text-xs font-bold tracking-widest uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+          {cta.label}
+        </a>
+      )
+    ))}
+  </div>
+</div>
 
 <script>
   const nav = document.getElementById("site-nav");
@@ -78,4 +118,28 @@ const navItems = [
       }
     }
   });
+
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const closeBtn = document.getElementById("mobile-menu-close");
+  const menu = document.getElementById("mobile-menu");
+
+  function openMenu() {
+    menu?.classList.remove("translate-x-full");
+    menu?.setAttribute("aria-hidden", "false");
+    menuBtn?.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    menu?.classList.add("translate-x-full");
+    menu?.setAttribute("aria-hidden", "true");
+    menuBtn?.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  menuBtn?.addEventListener("click", openMenu);
+  closeBtn?.addEventListener("click", closeMenu);
+  menu?.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
 </script>
+
