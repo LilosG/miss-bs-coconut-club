@@ -9,6 +9,9 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
 
 const cocktailGrid = siteProfile.pageGrids.homepage.cocktails;
 const foodRight    = siteProfile.pageGrids.homepage.food;
+
+const happyHourActive = siteProfile.hours.happyHour.find((h) => !h.closed);
+const happyHourOffDays = siteProfile.hours.happyHour.find((h) => h.closed);
 ---
 
 <Layout
@@ -137,6 +140,27 @@ const foodRight    = siteProfile.pageGrids.homepage.food;
       items={cocktailGrid.map((c) => ({ src: c.src, name: c.name, alt: "Miss B's Coconut Club " + c.name + " cocktail Mission Beach San Diego" }))}
     />
   </section>
+
+  <!-- ─── HAPPY HOUR ─────────────────────────────────────────────────────── -->
+  <SplitSection
+    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-05.webp"
+    imageAlt="Miss B's Coconut Club open-air bar during happy hour Mission Beach San Diego"
+    eyebrow={happyHourActive.label}
+    heading="Happy Hour<br />in Mission Beach"
+    minHeight="600px"
+  >
+    <p class="text-coastal-text-muted text-base leading-relaxed max-w-[44ch]">
+      Happy hour runs {happyHourActive.display}, {happyHourActive.label}, on the full open-air bar and patio. {happyHourOffDays && `Not running ${happyHourOffDays.label}.`}
+    </p>
+    <div class="flex flex-wrap gap-4 mt-2">
+      <a href="/menu" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
+        View Drink Menu
+      </a>
+      <a href="/faq" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/25 text-coastal-text-main hover:bg-coastal-text-main hover:text-coastal-bg-pure transition-all duration-300">
+        Happy Hour FAQ
+      </a>
+    </div>
+  </SplitSection>
 
   <!-- ─── BRUNCH FEATURE ────────────────────────────────────────────────── -->
   <SplitSection
