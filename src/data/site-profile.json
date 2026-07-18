@@ -12,20 +12,102 @@
   },
   "hours": {
     "general": [
-      { "label": "Monday – Friday", "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "open": "10:00", "close": "22:00", "display": "10am – 10pm" },
-      { "label": "Saturday – Sunday", "days": ["Saturday", "Sunday"], "open": "09:00", "close": "22:00", "display": "9am – 10pm" }
+      {
+        "label": "Monday \u2013 Friday",
+        "days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "open": "10:00",
+        "close": "22:00",
+        "display": "10am \u2013 10pm"
+      },
+      {
+        "label": "Saturday \u2013 Sunday",
+        "days": [
+          "Saturday",
+          "Sunday"
+        ],
+        "open": "09:00",
+        "close": "22:00",
+        "display": "9am \u2013 10pm"
+      }
     ],
     "kitchen": [
-      { "label": "Monday – Thursday", "days": ["Monday", "Tuesday", "Wednesday", "Thursday"], "open": "11:00", "close": "21:00", "display": "11am – 9pm" },
-      { "label": "Friday – Sunday", "days": ["Friday", "Saturday", "Sunday"], "open": "10:00", "close": "21:00", "display": "10am – 9pm" }
+      {
+        "label": "Monday \u2013 Thursday",
+        "days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday"
+        ],
+        "open": "11:00",
+        "close": "21:00",
+        "display": "11am \u2013 9pm"
+      },
+      {
+        "label": "Friday \u2013 Sunday",
+        "days": [
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "open": "10:00",
+        "close": "21:00",
+        "display": "10am \u2013 9pm"
+      }
     ],
     "brunch": [
-      { "label": "Monday – Thursday", "days": ["Monday", "Tuesday", "Wednesday", "Thursday"], "open": "11:00", "close": "14:00", "display": "11am – 2pm" },
-      { "label": "Friday – Sunday", "days": ["Friday", "Saturday", "Sunday"], "open": "10:00", "close": "14:00", "display": "10am – 2pm" }
+      {
+        "label": "Monday \u2013 Friday",
+        "days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "open": "10:00",
+        "close": "14:00",
+        "display": "10am \u2013 2pm"
+      },
+      {
+        "label": "Saturday \u2013 Sunday",
+        "days": [
+          "Saturday",
+          "Sunday"
+        ],
+        "open": "09:00",
+        "close": "14:00",
+        "display": "9am \u2013 2pm"
+      }
     ],
     "happyHour": [
-      { "label": "Monday – Friday", "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "open": "15:00", "close": "17:00", "display": "3 – 5pm" },
-      { "label": "Saturday – Sunday", "days": ["Saturday", "Sunday"], "closed": true }
+      {
+        "label": "Monday \u2013 Friday",
+        "days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "open": "15:00",
+        "close": "17:00",
+        "display": "3 \u2013 5pm"
+      },
+      {
+        "label": "Saturday \u2013 Sunday",
+        "days": [
+          "Saturday",
+          "Sunday"
+        ],
+        "closed": true
+      }
     ]
   },
   "seo": {
@@ -45,41 +127,118 @@
     }
   },
   "brunchFaq": [
-    { "q": "What are brunch hours?", "a": "Brunch is served daily. Monday through Thursday from 11am to 2pm, and Friday through Sunday from 10am to 2pm." },
-    { "q": "Do you offer bottomless mimosas?", "a": "Yes. Bottomless mimosas are available daily during brunch service. Ask your server for details." },
-    { "q": "Do I need a reservation?", "a": "Walk-ins are welcome but we strongly recommend reservations for brunch, especially on weekends." },
-    { "q": "Is the patio open for brunch?", "a": "Yes. The full outdoor patio and bar area is open for brunch service weather permitting." },
-    { "q": "Is the full bar open during brunch?", "a": "The full bar program is available during brunch hours, including tropical cocktails, Bloody Marys, beer, and wine." }
+    {
+      "q": "What are brunch hours?",
+      "a": "Brunch is served daily. Monday through Friday from 10am to 2pm, and Saturday and Sunday from 9am to 2pm."
+    },
+    {
+      "q": "Are mimosas available during brunch?",
+      "a": "Yes. Mimosas are poured from our 24 copper flamingo taps and available by the glass throughout brunch service."
+    },
+    {
+      "q": "Do I need a reservation?",
+      "a": "Walk-ins are welcome but we strongly recommend reservations for brunch, especially on weekends."
+    },
+    {
+      "q": "Is the patio open for brunch?",
+      "a": "Yes. The full outdoor patio and bar area is open for brunch service weather permitting."
+    },
+    {
+      "q": "Is the full bar open during brunch?",
+      "a": "The full bar program is available during brunch hours, including tropical cocktails, Bloody Marys, beer, and wine."
+    }
   ],
   "eventProcess": [
-    { "step": "01", "title": "Submit an Inquiry", "body": "Tell us your date, headcount, and event type. We respond within 24 hours." },
-    { "step": "02", "title": "Custom Proposal", "body": "We build a tailored proposal — menu options, space configuration, cocktail packages, and pricing." },
-    { "step": "03", "title": "Confirm the Details", "body": "Finalize the agreement and refine every detail — dietary needs, custom cocktails, room setup." },
-    { "step": "04", "title": "Your Event", "body": "Show up and enjoy it. Our team handles everything from setup to last call." }
+    {
+      "step": "01",
+      "title": "Submit an Inquiry",
+      "body": "Tell us your date, headcount, and event type. We respond within 24 hours."
+    },
+    {
+      "step": "02",
+      "title": "Custom Proposal",
+      "body": "We build a tailored proposal \u2014 menu options, space configuration, cocktail packages, and pricing."
+    },
+    {
+      "step": "03",
+      "title": "Confirm the Details",
+      "body": "Finalize the agreement and refine every detail \u2014 dietary needs, custom cocktails, room setup."
+    },
+    {
+      "step": "04",
+      "title": "Your Event",
+      "body": "Show up and enjoy it. Our team handles everything from setup to last call."
+    }
   ],
   "pageGrids": {
     "homepage": {
       "cocktails": [
-        { "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-03.webp", "name": "Caribe Welcome" },
-        { "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-32.webp", "name": "Mango Guava Spritz" },
-        { "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-02.webp", "name": "Bird is the Word" },
-        { "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-26.webp", "name": "Fiesta Island" },
-        { "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-37.webp", "name": "Rum Cannonball" },
-        { "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-38.webp", "name": "Spritz and Giggles" }
+        {
+          "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-03.webp",
+          "name": "Caribe Welcome"
+        },
+        {
+          "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-32.webp",
+          "name": "Mango Guava Spritz"
+        },
+        {
+          "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-02.webp",
+          "name": "Bird is the Word"
+        },
+        {
+          "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-26.webp",
+          "name": "Fiesta Island"
+        },
+        {
+          "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-37.webp",
+          "name": "Rum Cannonball"
+        },
+        {
+          "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-38.webp",
+          "name": "Spritz and Giggles"
+        }
       ],
       "food": [
-        { "src": "/images/food/miss-bs-coconut-club-food-mission-beach-13.webp", "name": "Cubano" },
-        { "src": "/images/food/miss-bs-coconut-club-food-mission-beach-17.webp", "name": "Table Spread" },
-        { "src": "/images/food/miss-bs-coconut-club-food-mission-beach-26.webp", "name": "Jerk Plate" },
-        { "src": "/images/food/miss-bs-coconut-club-food-mission-beach-32.webp", "name": "Nachos" }
+        {
+          "src": "/images/food/miss-bs-coconut-club-food-mission-beach-13.webp",
+          "name": "Cubano"
+        },
+        {
+          "src": "/images/food/miss-bs-coconut-club-food-mission-beach-17.webp",
+          "name": "Table Spread"
+        },
+        {
+          "src": "/images/food/miss-bs-coconut-club-food-mission-beach-26.webp",
+          "name": "Jerk Plate"
+        },
+        {
+          "src": "/images/food/miss-bs-coconut-club-food-mission-beach-32.webp",
+          "name": "Nachos"
+        }
       ]
     },
     "space": {
       "venue": [
-        { "src": "/images/venue/miss-bs-coconut-club-mission-beach-venue-02.webp", "name": "The Bar",         "alt": "Miss B's Coconut Club The Bar Mission Beach San Diego" },
-        { "src": "/images/venue/miss-bs-coconut-club-mission-beach-venue-10.webp", "name": "The Patio",       "alt": "Miss B's Coconut Club The Patio Mission Beach San Diego" },
-        { "src": "/images/venue/miss-bs-coconut-club-mission-beach-venue-12.webp", "name": "The Dining Room", "alt": "Miss B's Coconut Club The Dining Room Mission Beach San Diego" },
-        { "src": "/images/venue/miss-bs-coconut-club-mission-beach-venue-16.webp", "name": "The Interior",    "alt": "Miss B's Coconut Club The Interior Mission Beach San Diego" }
+        {
+          "src": "/images/venue/miss-bs-coconut-club-mission-beach-venue-02.webp",
+          "name": "The Bar",
+          "alt": "Miss B's Coconut Club The Bar Mission Beach San Diego"
+        },
+        {
+          "src": "/images/venue/miss-bs-coconut-club-mission-beach-venue-10.webp",
+          "name": "The Patio",
+          "alt": "Miss B's Coconut Club The Patio Mission Beach San Diego"
+        },
+        {
+          "src": "/images/venue/miss-bs-coconut-club-mission-beach-venue-12.webp",
+          "name": "The Dining Room",
+          "alt": "Miss B's Coconut Club The Dining Room Mission Beach San Diego"
+        },
+        {
+          "src": "/images/venue/miss-bs-coconut-club-mission-beach-venue-16.webp",
+          "name": "The Interior",
+          "alt": "Miss B's Coconut Club The Interior Mission Beach San Diego"
+        }
       ]
     }
   }
