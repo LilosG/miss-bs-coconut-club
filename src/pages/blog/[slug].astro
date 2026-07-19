@@ -15,6 +15,7 @@ const post = await getEntry('blog', slug);
 if (!post) return Astro.redirect('/blog');
 
 const { Content } = await render(post);
+const page = (await getEntry('blogIndexPage', 'blog'))!.data;
 
 const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
   month: 'long',
@@ -62,29 +63,23 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
         <Content />
       </div>
       <div class="pt-12 mt-12 border-t border-coastal-text-muted/10">
-        <a href="/blog" class="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral hover:text-coastal-gold-accent transition-colors duration-200">
-          ← Back to Blog
-        </a>
+        <a href="/blog" class="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral hover:text-coastal-gold-accent transition-colors duration-200" set:html={`\n${page.postCta.backLabel}\n`} />
       </div>
     </div>
   </article>
 
   <!-- ─── CTA ───────────────────────────────────────────────────────────── -->
   <CtaBand
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp"
-    imageAlt="Miss B's Coconut Club Mission Beach San Diego"
-    heading="Come Experience It in Person"
-    body="3704 Mission Blvd, Mission Beach, San Diego. Open daily."
+    imageSrc={page.postCta.imageSrc}
+    imageAlt={page.postCta.imageAlt}
+    heading={page.postCta.heading}
+    body={page.postCta.body}
     headingSize="medium"
     py="py-20"
     gap="gap-5"
   >
-    <a href="/contact" class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-      Make a Reservation
-    </a>
-    <a href="/menu" class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300">
-      View the Menu
-    </a>
+    <a href={page.postCta.links[0].href} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.postCta.links[0].label}\n`} />
+    <a href={page.postCta.links[1].href} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300" set:html={`\n${page.postCta.links[1].label}\n`} />
   </CtaBand>
 
 </Layout>

@@ -5,50 +5,39 @@ import SplitSection from '../components/ui/SplitSection.astro';
 import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
 import CtaBand from '../components/ui/CtaBand.astro';
 import StatBar from '../components/ui/StatBar.astro';
-import siteProfile from '../data/site-profile.json';
-import menuData from '../data/menu.json';
+import { getCollection, getEntry } from 'astro:content';
+
+const page = (await getEntry('brunchPage', 'brunch'))!.data;
+const brunchFaqs = (await getCollection('brunchFaqs')).map((entry) => entry.data);
 ---
 
 <Layout
-  title="Brunch in Mission Beach San Diego | Miss B's Coconut Club"
-  description="Brunch at Miss B's Coconut Club in Mission Beach, San Diego. Served daily until 2pm. Mimosas from the flamingo tap wall, tropical cocktails, and the best brunch plates on Mission Blvd."
+  title={page.seo.title}
+  description={page.seo.description}
 >
 
   <PageHero
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
-    imageAlt="Miss B's Coconut Club brunch Mission Beach San Diego"
-    eyebrow="Served Daily &middot; Until 2pm"
-    heading="Brunch<br />in Mission Beach"
-    subheading="Miss B's Coconut Club serves brunch every day of the week. Doors open at 9am Saturday and Sunday, 10am Monday through Friday, and brunch service runs until 2pm."
+    imageSrc={page.hero.imageSrc}
+    imageAlt={page.hero.imageAlt}
+    eyebrow={page.hero.eyebrow}
+    heading={page.hero.heading}
+    subheading={page.hero.subheading}
   />
 
   <!-- STATS -->
-  <StatBar items={[
-    { value: '9/10am',     label: 'Doors Open' },
-    { value: '2pm',        label: 'Last Call' },
-    { value: 'Daily',      label: 'Every Day' },
-    { value: '24 Taps',    label: 'Flamingo Bar' },
-  ]} />
+  <StatBar items={page.stats} />
 
   <SplitSection
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-08.webp"
-    imageAlt="Miss B's Coconut Club brunch interior Mission Beach San Diego"
-    eyebrow="The Brunch Experience"
-    heading="Mission Beach&apos;s<br />Best Weekend Ritual"
+    imageSrc={page.experience.imageSrc}
+    imageAlt={page.experience.imageAlt}
+    eyebrow={page.experience.eyebrow}
+    heading={page.experience.heading}
   >
-    <p class="text-coastal-text-muted text-base leading-relaxed">
-      Miss B&apos;s Coconut Club does not do brunch halfway. The full kitchen is open, the bar is pouring, and the outdoor patio is yours. Steps from the Pacific at 3704 Mission Blvd.
-    </p>
-    <p class="text-coastal-text-muted text-base leading-relaxed">
-      Mimosas from the flamingo tap wall, tropical morning cocktails, and a menu built for a long, indulgent afternoon. Walk-ins welcome. Reservations recommended.
-    </p>
+    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.experience.body[0]}\n`} />
+    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.experience.body[1]}\n`} />
     <div class="flex flex-wrap gap-4 mt-2">
-      <a href="/contact" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
-        Make a Reservation
-      </a>
-      <a href="/menu" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
-        View Brunch Menu
-      </a>
+      <a href={page.experience.ctas[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.experience.ctas[0].label}\n`} />
+      <a href={page.experience.ctas[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.experience.ctas[1].label}\n`} />
     </div>
   </SplitSection>
 
@@ -57,20 +46,16 @@ import menuData from '../data/menu.json';
     <div class="mx-auto max-w-7xl">
       <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12">
         <div class="flex flex-col gap-4">
-          <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Brunch Menu</p>
-          <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]">
-            Plates Worth<br />Getting Out of Bed For
-          </h2>
+          <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">{page.food.eyebrow}</p>
+          <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.food.heading.replaceAll('<br />', '<br>')}\n`} />
           <div class="h-px w-16 bg-coastal-coral"></div>
         </div>
-        <a href="/menu" class="shrink-0 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
-          Full Menu
-        </a>
+        <a href={page.food.cta.href} class="shrink-0 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.food.cta.label}\n`} />
       </div>
       <HoverImageGrid
         cols="2x3"
         gap={true}
-        items={menuData.brunchPageGrids.food}
+        items={page.food.grid}
       />
     </div>
   </section>
@@ -78,24 +63,18 @@ import menuData from '../data/menu.json';
   <!-- COCKTAIL FEATURE — cocktail-34: mimosas lined up at flamingo tap bar -->
   <section class="relative overflow-hidden min-h-[600px] flex items-center">
     <img
-      src="/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-34.webp"
-      alt="Miss B's Coconut Club mimosas at flamingo tap bar Mission Beach San Diego"
+      src={page.cocktails.imageSrc}
+      alt={page.cocktails.imageAlt}
       class="absolute inset-0 w-full h-full object-cover object-center"
       loading="lazy"
     />
     <div class="absolute inset-0 bg-gradient-to-r from-coastal-text-main/88 via-coastal-text-main/55 to-transparent"></div>
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
       <div class="max-w-lg flex flex-col gap-6">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
-          Brunch Cocktails
-        </p>
-        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-bg-pure leading-[1.0]">
-          Mimosas &amp; Morning<br />Cocktails on Tap
-        </h2>
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral" set:html={`\n${page.cocktails.eyebrow}\n`} />
+        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-bg-pure leading-[1.0]" set:html={`\n${page.cocktails.heading.replaceAll('<br />', '<br>')}\n`} />
         <div class="h-px w-16 bg-coastal-coral"></div>
-        <p class="text-coastal-bg-card/85 text-base leading-relaxed">
-          Mimosas poured in front of 24 copper flamingo taps. Tropical morning cocktails, Bloody Marys, and the full Miss B&apos;s bar program available daily during brunch hours.
-        </p>
+        <p class="text-coastal-bg-card/85 text-base leading-relaxed" set:html={`\n${page.cocktails.body}\n`} />
       </div>
     </div>
   </section>
@@ -104,7 +83,7 @@ import menuData from '../data/menu.json';
   <section class="bg-coastal-text-main">
     <HoverImageGrid
       showLabel={false}
-      items={menuData.brunchPageGrids.cocktails}
+      items={page.cocktails.grid}
     />
   </section>
 
@@ -112,15 +91,13 @@ import menuData from '../data/menu.json';
   <section class="bg-coastal-bg-pure py-24 px-6">
     <div class="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
       <div class="flex flex-col gap-4">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Good to Know</p>
-        <h2 class="font-serif text-5xl font-light italic text-coastal-text-main leading-[1.0]">Brunch FAQ</h2>
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">{page.faq.eyebrow}</p>
+        <h2 class="font-serif text-5xl font-light italic text-coastal-text-main leading-[1.0]">{page.faq.heading}</h2>
         <div class="h-px w-16 bg-coastal-coral"></div>
-        <p class="text-coastal-text-muted text-base leading-relaxed mt-2">
-          Everything you need to know before you show up.
-        </p>
+        <p class="text-coastal-text-muted text-base leading-relaxed mt-2" set:html={`\n${page.faq.body}\n`} />
       </div>
       <dl class="flex flex-col divide-y divide-coastal-text-muted/10">
-        {siteProfile.brunchFaq.map((faq) => (
+        {brunchFaqs.map((faq) => (
           <div class="py-5">
             <dt class="font-sans text-sm font-semibold text-coastal-text-main mb-2">{faq.q}</dt>
             <dd class="font-sans text-sm text-coastal-text-muted leading-relaxed">{faq.a}</dd>
@@ -132,19 +109,15 @@ import menuData from '../data/menu.json';
 
   <!-- CTA BAND -->
   <CtaBand
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
-    imageAlt="Miss B's Coconut Club outdoor patio Mission Beach San Diego"
+    imageSrc={page.cta.imageSrc}
+    imageAlt={page.cta.imageAlt}
     imagePosition="top"
-    eyebrow="Served Daily"
-    heading="Brunch, Every Day"
-    body="3704 Mission Blvd, Mission Beach, San Diego. Walk-ins welcome. Reservations recommended."
+    eyebrow={page.cta.eyebrow}
+    heading={page.cta.heading}
+    body={page.cta.body}
   >
-    <a href="/contact" class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-      Reserve a Table
-    </a>
-    <a href="/menu" class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300">
-      View the Menu
-    </a>
+    <a href={page.cta.links[0].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.cta.links[0].label}\n`} />
+    <a href={page.cta.links[1].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300" set:html={`\n${page.cta.links[1].label}\n`} />
   </CtaBand>
 
 </Layout>

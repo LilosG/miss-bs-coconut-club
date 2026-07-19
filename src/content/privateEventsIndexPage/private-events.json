@@ -1,0 +1,85 @@
+{
+  "seo": {
+    "title": "Private Events and Venue Buyouts in Mission Beach | Miss B's Coconut Club",
+    "description": "Host your private event at Miss B's Coconut Club in Mission Beach, San Diego. Birthday parties, corporate events, bachelorette parties, and full venue buyouts at 3704 Mission Blvd."
+  },
+  "hero": {
+    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp",
+    "imageAlt": "Miss B's Coconut Club private events outdoor patio Mission Beach San Diego",
+    "eyebrow": "Mission Beach's Premier Outdoor Event Venue",
+    "heading": "Private Events",
+    "subheading": "The only open-air bar venue on Mission Blvd. Steps from the Pacific. Available for buyouts, parties, and corporate events of all sizes."
+  },
+  "stats": [
+    {
+      "value": "80+",
+      "label": "Max Capacity"
+    },
+    {
+      "value": "3 Spaces",
+      "label": "Configurable Areas"
+    },
+    {
+      "value": "Custom",
+      "label": "Menu Options"
+    },
+    {
+      "value": "24hr",
+      "label": "Response Time"
+    }
+  ],
+  "why": {
+    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-14.webp",
+    "imageAlt": "Miss B's Coconut Club private event space Mission Beach San Diego",
+    "eyebrow": "Why Miss B's",
+    "heading": "A Venue Worth<br />Showing Off",
+    "body": [
+      "Miss B&apos;s Coconut Club is not a banquet room. It&apos;s a genuinely memorable space &mdash; the open-air teal bar, the copper flamingo taps, the tropical dining room, the patio with pink fringed umbrellas. Your guests will be talking about the venue before they even get to the food.",
+      "Our events team handles every detail from first inquiry to last call. Custom menus, cocktail packages, room configuration, and dedicated staff throughout your event."
+    ],
+    "cta": {
+      "label": "Submit an Inquiry",
+      "href": "#inquiry"
+    }
+  },
+  "types": {
+    "eyebrow": "Browse by Event Type",
+    "heading": "Every Occasion,<br />Handled",
+    "learnMore": "Learn More &rarr;",
+    "order": [
+      "birthday-parties",
+      "corporate-events",
+      "bachelorette-parties",
+      "full-venue-buyouts",
+      "rehearsal-dinners",
+      "milestone-celebrations"
+    ]
+  },
+  "process": {
+    "eyebrow": "How It Works",
+    "heading": "From Inquiry<br />to Your Event"
+  },
+  "inquiry": {
+    "eyebrow": "Let's Make It Happen",
+    "heading": "Submit an Inquiry",
+    "body": "Tell us your date, headcount, and event type. Our team responds within 24 hours with availability and a custom proposal.",
+    "iframeSrc": "https://www.toasttab.com/invoice/lead?rx=e5c781b0-3ef7-4e6e-acaa-f50c55b15f70&ot=555d2efd-aea1-4bef-ac04-17793cda7ded&form=1",
+    "iframeTitle": "Private Event Inquiry Form"
+  },
+  "detail": {
+    "heroImage": "/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp",
+    "splitImage": "/images/venue/miss-bs-coconut-club-mission-beach-venue-13.webp",
+    "splitHeading": "Everything You Need<br />for a Perfect Event",
+    "submitLabel": "Submit an Inquiry",
+    "submitHref": "#inquiry",
+    "includedEyebrow": "What's Included",
+    "includedHeading": "Everything Handled",
+    "includedBody": "Our events team takes care of every detail so you can focus on your guests.",
+    "bookPrefix": "Book Your ",
+    "inquiryBody": "Tell us your date, headcount, and any details. Our team responds within 24 hours with availability and a custom proposal.",
+    "allEventsLabel": "← All Event Types",
+    "allEventsHref": "/private-events",
+    "viewSpaceLabel": "View the Space",
+    "viewSpaceHref": "/space"
+  }
+}

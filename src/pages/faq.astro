@@ -1,77 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/ui/PageHero.astro';
-import siteProfile from '../data/site-profile.json';
+import { getCollection, getEntry } from 'astro:content';
 
-const happyHourActive = siteProfile.hours.happyHour.find((h) => !h.closed);
-const happyHourOffDays = siteProfile.hours.happyHour.find((h) => h.closed);
-
-const faqs = [
-  {
-    q: "What are Miss B's Coconut Club hours?",
-    a: "Miss B's is open Monday through Friday from 10am to 10pm, and Saturday and Sunday from 9am to 10pm. The kitchen closes at 9pm daily, and brunch is served daily until 2pm."
-  },
-  {
-    q: "Do you take walk-ins?",
-    a: "Yes. Walk-ins are always welcome at the bar and patio. We strongly recommend reservations for brunch and for groups of 6 or more."
-  },
-  {
-    q: "What are the brunch hours?",
-    a: "Brunch is served daily — Monday through Friday from 10am to 2pm, and Saturday and Sunday from 9am to 2pm."
-  },
-  {
-    q: "Does Miss B's have a happy hour?",
-    a: `Yes. Happy hour runs ${happyHourActive.display}, ${happyHourActive.label}, on the full open-air bar and patio.${happyHourOffDays ? ` It does not run ${happyHourOffDays.label}.` : ""}`
-  },
-  {
-    q: "Are mimosas available during brunch?",
-    a: "Yes. Mimosas are poured from our 24 copper flamingo taps and available by the glass throughout brunch service."
-  },
-  {
-    q: "Is the outdoor patio open year-round?",
-    a: "The outdoor patio and open-air bar are open year-round, weather permitting. Mission Beach's mild climate means the patio is comfortable most of the year."
-  },
-  {
-    q: "Where is Miss B's Coconut Club located?",
-    a: "Miss B's Coconut Club is located at 3704 Mission Blvd, Mission Beach, San Diego, CA 92109 — steps from the Pacific Ocean."
-  },
-  {
-    q: "Is there parking near Miss B's?",
-    a: "Street parking is available on Mission Blvd and surrounding streets. Mission Beach is a walkable neighborhood — many guests bike or walk from nearby rentals. Paid lots are also available nearby."
-  },
-  {
-    q: "Can I host a private event at Miss B's?",
-    a: "Yes. Miss B's Coconut Club offers full and partial venue buyouts for birthday parties, corporate events, bachelorette parties, rehearsal dinners, and milestone celebrations. The indoor dining room seats up to 60 guests; the outdoor patio accommodates up to 80 guests reception-style."
-  },
-  {
-    q: "How do I book a private event?",
-    a: "Submit an inquiry through our contact page. Our events team responds within 24 hours with availability and a custom proposal tailored to your date, headcount, and event type."
-  },
-  {
-    q: "Is Miss B's dog-friendly?",
-    a: "Dogs are welcome on the outdoor patio. We love our four-legged guests."
-  },
-  {
-    q: "Is Miss B's kid-friendly?",
-    a: "Yes. Families are welcome. Kids are allowed on the patio and in the dining room during daytime service."
-  },
-  {
-    q: "What kind of food does Miss B's serve?",
-    a: "Miss B's serves Caribbean-inspired food including tacos, burgers, salads, and brunch plates. The kitchen is open from the start of service through close."
-  },
-  {
-    q: "What cocktails does Miss B's have?",
-    a: "Miss B's is known for tropical signature cocktails, frozen drinks, and a 24-tap draft beer system with copper flamingo handles. The full bar program includes craft cocktails, beer, wine, and spirits."
-  },
-  {
-    q: "What is the best bar in Mission Beach?",
-    a: "Miss B's Coconut Club is Mission Beach's only open-air bar venue with a full kitchen, outdoor patio, and private event space — all at 3704 Mission Blvd, steps from the Pacific."
-  },
-  {
-    q: "What is the best brunch in Mission Beach?",
-    a: "Miss B's brunch is consistently voted one of the best in Mission Beach and Pacific Beach. Mimosas from the flamingo tap wall, tropical cocktails, and a full brunch menu served daily until 2pm."
-  }
-];
+const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
+const page = (await getEntry('faqPage', 'faq'))!.data;
+const happyHourActive = siteProfile.hours.happyHour.find((h: { closed?: boolean }) => !h.closed);
+const happyHourOffDays = siteProfile.hours.happyHour.find((h: { closed?: boolean }) => h.closed);
+const faqs = (await getCollection('generalFaqs'))
+  .sort((a, b) => a.id.localeCompare(b.id))
+  .map((entry) => entry.data);
+const happyHourFaq = faqs.find((faq) => faq.q === page.happyHour.question);
+if (happyHourFaq) {
+  happyHourFaq.a = happyHourActive
+    ? `${page.happyHour.prefix}${happyHourActive.display}, ${happyHourActive.label}${page.happyHour.middle}${happyHourOffDays ? `${page.happyHour.offDaysPrefix}${happyHourOffDays.label}.` : ''}`
+    : page.happyHour.closedAnswer;
+}
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -88,26 +32,26 @@ const faqSchema = {
 ---
 
 <Layout
-  title="FAQ - Hours, Brunch, Private Events &amp; More | Miss B's Coconut Club Mission Beach"
-  description="Frequently asked questions about Miss B's Coconut Club in Mission Beach, San Diego. Hours, brunch details, parking, private events, and more."
+  title={page.seo.title}
+  description={page.seo.description}
 >
 
   <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema, null, 2)} slot="head" />
 
   <PageHero
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp"
-    imageAlt="Miss B's Coconut Club teal open-air bar Mission Beach San Diego"
-    eyebrow="Everything You Need to Know"
-    heading="FAQ"
-    subheading="Hours, brunch, private events, parking, and more — answered."
+    imageSrc={page.hero.imageSrc}
+    imageAlt={page.hero.imageAlt}
+    eyebrow={page.hero.eyebrow}
+    heading={page.hero.heading}
+    subheading={page.hero.subheading}
     minHeight="60vh"
   />
 
   <section class="bg-coastal-bg-pure py-24 px-6">
     <div class="mx-auto max-w-4xl">
       <div class="flex flex-col gap-4 mb-14">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Common Questions</p>
-        <h2 class="font-serif text-5xl font-light italic text-coastal-text-main leading-[1.0]">Frequently Asked</h2>
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">{page.list.eyebrow}</p>
+        <h2 class="font-serif text-5xl font-light italic text-coastal-text-main leading-[1.0]">{page.list.heading}</h2>
         <div class="h-px w-16 bg-coastal-coral"></div>
       </div>
 
@@ -129,16 +73,12 @@ const faqSchema = {
   <section class="bg-coastal-text-main py-20 px-6">
     <div class="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="flex flex-col gap-3 text-center md:text-left">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Still Have Questions?</p>
-        <p class="font-serif text-4xl font-light italic text-coastal-bg-pure">We're here to help.</p>
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">{page.cta.eyebrow}</p>
+        <p class="font-serif text-4xl font-light italic text-coastal-bg-pure" set:html={page.cta.heading} />
       </div>
       <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/contact" class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-          Contact Us
-        </a>
-        <a href="/private-events" class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
-          Private Events
-        </a>
+        <a href={page.cta.links[0].href} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.cta.links[0].label}\n`} />
+        <a href={page.cta.links[1].href} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.cta.links[1].label}\n`} />
       </div>
     </div>
   </section>

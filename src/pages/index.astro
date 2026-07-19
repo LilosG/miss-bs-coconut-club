@@ -1,29 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import siteProfile from '../data/site-profile.json';
+import { getEntry } from 'astro:content';
 import SplitSection from '../components/ui/SplitSection.astro';
 import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
 import ChecklistItems from '../components/ui/ChecklistItems.astro';
 
-const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.seo.streetAddress + " " + siteProfile.seo.addressLocality + " " + siteProfile.seo.addressRegion;
+const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
+const page = (await getEntry('home', 'home'))!.data;
+const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.address.streetAddress + " " + siteProfile.address.addressLocality + " " + siteProfile.address.addressRegion;
 
-const cocktailGrid = siteProfile.pageGrids.homepage.cocktails;
-const foodRight    = siteProfile.pageGrids.homepage.food;
+const cocktailGrid = page.cocktailGrid;
+const foodRight    = page.food.grid;
 
-const happyHourActive = siteProfile.hours.happyHour.find((h) => !h.closed);
-const happyHourOffDays = siteProfile.hours.happyHour.find((h) => h.closed);
+const happyHourActive = siteProfile.hours.happyHour.find((h: { closed?: boolean }) => !h.closed);
+const happyHourOffDays = siteProfile.hours.happyHour.find((h: { closed?: boolean }) => h.closed);
 ---
 
 <Layout
-  title="Bar and Brunch on Mission Blvd - Mission Beach San Diego"
-  description="Miss B's Coconut Club is Mission Beach San Diego's favorite outdoor bar and brunch spot. Craft cocktails, daily brunch, and private events at 3704 Mission Blvd."
+  title={page.seo.title}
+  description={page.seo.description}
 >
 
   <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
   <section class="relative h-screen min-h-[680px] flex flex-col items-center justify-center overflow-hidden">
     <img
-      src="/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp"
-      alt="Miss B's Coconut Club teal bar open window Mission Beach San Diego"
+      src={page.hero.imageSrc}
+      alt={page.hero.imageAlt}
       class="absolute inset-0 w-full h-full object-cover object-center"
       loading="eager"
       fetchpriority="high"
@@ -31,23 +33,12 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h) => h.closed);
     <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-black/15 to-black/45"></div>
 
     <div class="relative z-10 mx-auto max-w-5xl px-6 text-center flex flex-col items-center gap-7">
-      <p class="text-xs font-bold tracking-[0.35em] uppercase text-coastal-coral">
-        3704 Mission Blvd · Mission Beach, San Diego
-      </p>
-      <h1 class="font-serif text-5xl md:text-7xl font-light leading-[0.9] tracking-tight text-coastal-bg-pure italic">
-        Miss B's<br />
-        <span class="italic text-coastal-coral">Coconut Club</span>
-      </h1>
-      <p class="max-w-lg text-base text-coastal-bg-card/90 leading-relaxed font-light tracking-wide">
-        San Diego's open-air bar and brunch destination. Steps from the Pacific on Mission Blvd.
-      </p>
+      <p class="text-xs font-bold tracking-[0.35em] uppercase text-coastal-coral" set:html={`\n${page.hero.eyebrow}\n`} />
+      <h1 class="font-serif text-5xl md:text-7xl font-light leading-[0.9] tracking-tight text-coastal-bg-pure italic" set:html={`\n${page.hero.heading}<br> <span class="italic text-coastal-coral">${page.hero.headingAccent}</span> `} />
+      <p class="max-w-lg text-base text-coastal-bg-card/90 leading-relaxed font-light tracking-wide" set:html={`\n${page.hero.subheading}\n`} />
       <div class="flex flex-wrap items-center justify-center gap-4 mt-2">
-        <a href="/menu" class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-          View the Menu
-        </a>
-        <a href="/brunch" class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/60 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300">
-          Brunch
-        </a>
+        <a href={page.hero.ctas[0].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.hero.ctas[0].label}\n`} />
+        <a href={page.hero.ctas[1].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/60 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300" set:html={`\n${page.hero.ctas[1].label}\n`} />
       </div>
     </div>
 
@@ -55,20 +46,20 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h) => h.closed);
       <div class="mx-auto max-w-7xl">
         <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-coastal-bg-pure/10">
           <div class="flex flex-col items-center justify-center py-5 px-4 gap-1">
-            <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">Hours</span>
-            <span class="text-xs text-coastal-bg-card text-center leading-relaxed">Open Daily &middot; Until 10pm</span>
+            <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">{page.hero.stats[0].label}</span>
+            <span class="text-xs text-coastal-bg-card text-center leading-relaxed" set:html={page.hero.stats[0].value} />
           </div>
           <div class="flex flex-col items-center justify-center py-5 px-4 gap-1">
-            <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">Brunch</span>
-            <span class="text-xs text-coastal-bg-card text-center leading-relaxed">Daily until 2pm</span>
+            <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">{page.hero.stats[1].label}</span>
+            <span class="text-xs text-coastal-bg-card text-center leading-relaxed">{page.hero.stats[1].value}</span>
           </div>
           <div class="flex flex-col items-center justify-center py-5 px-4 gap-1">
-            <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">Find Us</span>
-            <span class="text-xs text-coastal-bg-card text-center leading-relaxed">Mission Beach, San Diego</span>
+            <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">{page.hero.stats[2].label}</span>
+            <span class="text-xs text-coastal-bg-card text-center leading-relaxed">{page.hero.stats[2].value}</span>
           </div>
           <div class="flex flex-col items-center justify-center py-5 px-4 gap-1">
-            <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">Reserve</span>
-            <a href="/contact" class="text-xs text-coastal-gold-accent hover:text-coastal-bg-pure transition-colors tracking-wide">Book a Table</a>
+            <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">{page.hero.stats[3].label}</span>
+            <a href={page.hero.stats[3].href} class="text-xs text-coastal-gold-accent hover:text-coastal-bg-pure transition-colors tracking-wide">{page.hero.stats[3].value}</a>
           </div>
         </div>
       </div>
@@ -77,26 +68,18 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h) => h.closed);
 
   <!-- ─── EDITORIAL INTRO ───────────────────────────────────────────────── -->
   <SplitSection
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp"
-    imageAlt="Miss B's Coconut Club tropical dining room with mural Mission Beach San Diego"
-    eyebrow="Mission Beach, San Diego"
-    heading="Where San Diego<br />Comes to Drink Well"
+    imageSrc={page.intro.imageSrc}
+    imageAlt={page.intro.imageAlt}
+    eyebrow={page.intro.eyebrow}
+    heading={page.intro.heading}
     imageLeft={true}
     minHeight="700px"
   >
-    <p class="text-coastal-text-muted text-base leading-relaxed">
-      Miss B's Coconut Club is the open-air bar and brunch spot that Mission Beach was built for. Pull up a teal stool, order something cold, and let the afternoon go.
-    </p>
-    <p class="text-coastal-text-muted text-base leading-relaxed">
-      Located at 3704 Mission Blvd — steps from the sand. Come for the craft cocktails. Stay for the brunch. Bring the whole group.
-    </p>
+    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.intro.body[0]}\n`} />
+    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.intro.body[1]}\n`} />
     <div class="flex flex-wrap gap-4 mt-2">
-      <a href="/menu" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
-        Full Menu
-      </a>
-      <a href="/space" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
-        See the Space
-      </a>
+      <a href={page.intro.ctas[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.intro.ctas[0].label}\n`} />
+      <a href={page.intro.ctas[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.intro.ctas[1].label}\n`} />
     </div>
   </SplitSection>
 
@@ -104,8 +87,8 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h) => h.closed);
   <!-- Gradient lightened: from-coastal-text-main/90 → to-transparent so image breathes on right -->
   <section class="relative overflow-hidden min-h-[680px] flex items-center">
     <img
-      src="/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-13.webp"
-      alt="Miss B's Coconut Club signature flamingo cocktail vessel Mission Beach"
+      src={page.cocktailFeature.imageSrc}
+      alt={page.cocktailFeature.imageAlt}
       class="absolute inset-0 w-full h-full object-cover object-center"
       loading="lazy"
     />
@@ -113,19 +96,11 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h) => h.closed);
 
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24">
       <div class="max-w-lg flex flex-col gap-6">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
-          Craft Cocktails
-        </p>
-        <h2 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95]">
-          Signature<br />Cocktails in<br />Mission Beach
-        </h2>
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral" set:html={`\n${page.cocktailFeature.eyebrow}\n`} />
+        <h2 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95]" set:html={`\n${page.cocktailFeature.heading.replaceAll('<br />', '<br>')}\n`} />
         <div class="h-px w-16 bg-coastal-coral"></div>
-        <p class="text-coastal-bg-card/85 text-base leading-relaxed">
-          From the flamingo vessel to the frozen mojito, every drink at Miss B's is built for the San Diego sun. Tropical, bold, and entirely unforgettable.
-        </p>
-        <a href="/menu" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/30 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
-          Full Drink Menu
-        </a>
+        <p class="text-coastal-bg-card/85 text-base leading-relaxed" set:html={`\n${page.cocktailFeature.body}\n`} />
+        <a href={page.cocktailFeature.cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/30 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.cocktailFeature.cta.label}\n`} />
       </div>
     </div>
   </section>
@@ -137,52 +112,40 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h) => h.closed);
       aspect="4/3"
       labelPadding="p-5"
       gradientFrom="from-coastal-text-main/75"
-      items={cocktailGrid.map((c) => ({ src: c.src, name: c.name, alt: "Miss B's Coconut Club " + c.name + " cocktail Mission Beach San Diego" }))}
+      items={cocktailGrid.map((c: { src: string; name: string }) => ({ src: c.src, name: c.name, alt: "Miss B's Coconut Club " + c.name + " cocktail Mission Beach San Diego" }))}
     />
   </section>
 
   <!-- ─── HAPPY HOUR ─────────────────────────────────────────────────────── -->
   <SplitSection
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-05.webp"
-    imageAlt="Miss B's Coconut Club open-air bar during happy hour Mission Beach San Diego"
-    eyebrow={happyHourActive.label}
-    heading="Happy Hour<br />in Mission Beach"
+    imageSrc={page.happyHour.imageSrc}
+    imageAlt={page.happyHour.imageAlt}
+    eyebrow={happyHourActive?.label ?? ''}
+    heading={page.happyHour.heading}
     minHeight="600px"
   >
-    <p class="text-coastal-text-muted text-base leading-relaxed max-w-[44ch]">
-      Happy hour runs {happyHourActive.display}, {happyHourActive.label}, on the full open-air bar and patio. {happyHourOffDays && `Not running ${happyHourOffDays.label}.`}
-    </p>
+    <p class="text-coastal-text-muted text-base leading-relaxed max-w-[44ch]" set:html={`\n${happyHourActive ? `${page.happyHour.bodyPrefix}${happyHourActive.display}, ${happyHourActive.label}${page.happyHour.bodyMiddle}${happyHourOffDays ? `${page.happyHour.offDaysPrefix}${happyHourOffDays.label}.` : ''}` : ''} `} />
     <div class="flex flex-wrap gap-4 mt-2">
-      <a href="/menu" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-        View Drink Menu
-      </a>
-      <a href="/faq" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/25 text-coastal-text-main hover:bg-coastal-text-main hover:text-coastal-bg-pure transition-all duration-300">
-        Happy Hour FAQ
-      </a>
+      <a href={page.happyHour.ctas[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.happyHour.ctas[0].label}\n`} />
+      <a href={page.happyHour.ctas[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/25 text-coastal-text-main hover:bg-coastal-text-main hover:text-coastal-bg-pure transition-all duration-300" set:html={`\n${page.happyHour.ctas[1].label}\n`} />
     </div>
   </SplitSection>
 
   <!-- ─── BRUNCH FEATURE ────────────────────────────────────────────────── -->
   <SplitSection
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-17.webp"
-    imageAlt="Miss B's Coconut Club copper flamingo draft tap handles Mission Beach"
-    eyebrow="Served Daily"
-    heading="Brunch<br />in Mission Beach"
+    imageSrc={page.brunch.imageSrc}
+    imageAlt={page.brunch.imageAlt}
+    eyebrow={page.brunch.eyebrow}
+    heading={page.brunch.heading}
     imageLeft={true}
     imageOverlay={true}
     minHeight="600px"
     variant="coral"
   >
-    <p class="text-coastal-text-main/80 text-base leading-relaxed max-w-[44ch]">
-      Served daily until 2pm. Mimosas from the flamingo tap wall, morning cocktails, and the best brunch plates on Mission Blvd.
-    </p>
+    <p class="text-coastal-text-main/80 text-base leading-relaxed max-w-[44ch]" set:html={`\n${page.brunch.body}\n`} />
     <div class="flex flex-wrap gap-4 mt-2">
-      <a href="/brunch" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-        Brunch Details
-      </a>
-      <a href="/menu" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/25 text-coastal-text-main hover:bg-coastal-text-main hover:text-coastal-bg-pure transition-all duration-300">
-        Brunch Menu
-      </a>
+      <a href={page.brunch.ctas[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.brunch.ctas[0].label}\n`} />
+      <a href={page.brunch.ctas[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/25 text-coastal-text-main hover:bg-coastal-text-main hover:text-coastal-bg-pure transition-all duration-300" set:html={`\n${page.brunch.ctas[1].label}\n`} />
     </div>
   </SplitSection>
 
@@ -191,35 +154,29 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h) => h.closed);
     <div class="mx-auto max-w-7xl">
       <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12">
         <div class="flex flex-col gap-4">
-          <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
-            The Kitchen
-          </p>
-          <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]">
-            Food Worth<br />Staying For
-          </h2>
+          <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral" set:html={`\n${page.food.eyebrow}\n`} />
+          <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.food.heading.replaceAll('<br />', '<br>')}\n`} />
           <div class="h-px w-16 bg-coastal-coral"></div>
         </div>
-        <a href="/menu" class="shrink-0 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
-          View Full Menu
-        </a>
+        <a href={page.food.cta.href} class="shrink-0 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.food.cta.label}\n`} />
       </div>
 
       <div class="grid grid-cols-3 gap-2">
         <!-- Burger — full left column, spans 2 rows -->
         <div class="group relative overflow-hidden row-span-2">
           <img
-            src="/images/food/miss-bs-coconut-club-food-mission-beach-09.webp"
-            alt="Miss B's Coconut Club Coconut Club Burger Mission Beach San Diego"
+            src={page.food.featured.src}
+            alt={page.food.featured.alt}
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-            <p class="text-xs font-bold tracking-[0.2em] uppercase text-coastal-bg-pure">Coconut Club Burger</p>
+            <p class="text-xs font-bold tracking-[0.2em] uppercase text-coastal-bg-pure">{page.food.featured.name}</p>
           </div>
         </div>
         <!-- Right 4 items — 2x2 -->
-        {foodRight.map((item) => (
+        {foodRight.map((item: { src: string; name: string }) => (
           <div class="group relative overflow-hidden aspect-square">
             <img
               src={item.src}
@@ -239,44 +196,36 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h) => h.closed);
 
   <!-- ─── PRIVATE EVENTS ────────────────────────────────────────────────── -->
   <SplitSection
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
-    imageAlt="Miss B's Coconut Club outdoor patio pink umbrellas Mission Beach San Diego private events"
-    eyebrow="Private Events"
-    heading="Private Events<br />in Mission Beach"
+    imageSrc={page.privateEvents.imageSrc}
+    imageAlt={page.privateEvents.imageAlt}
+    eyebrow={page.privateEvents.eyebrow}
+    heading={page.privateEvents.heading}
     imagePosition="top"
     minHeight="620px"
   >
-    <p class="text-coastal-text-muted text-base leading-relaxed max-w-[44ch]">
-      Birthdays, buyouts, corporate events, and intimate gatherings. Miss B's Coconut Club is the only open-air bar venue on Mission Blvd — steps from the Pacific.
-    </p>
-    <ChecklistItems items={["Birthday Parties", "Full and Partial Buyouts", "Corporate Events", "Bachelor and Bachelorette", "Milestone Celebrations"]} />
-    <a href="/private-events" class="self-start mt-4 px-7 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-      Inquire About Your Event
-    </a>
+    <p class="text-coastal-text-muted text-base leading-relaxed max-w-[44ch]" set:html={`\n${page.privateEvents.body}\n`} />
+    <ChecklistItems items={page.privateEvents.items} />
+    <a href={page.privateEvents.cta.href} class="self-start mt-4 px-7 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.privateEvents.cta.label}\n`} />
   </SplitSection>
 
   <!-- ─── LOCATION BAR ──────────────────────────────────────────────────── -->
   <section class="bg-coastal-text-main py-20 px-6">
     <div class="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-10">
       <div class="flex flex-col gap-3 text-center md:text-left">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Find Us</p>
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">{page.location.eyebrow}</p>
         <p class="font-serif text-4xl md:text-5xl font-light italic text-coastal-bg-pure tracking-tight">
-          {siteProfile.seo.streetAddress}
+          {siteProfile.address.streetAddress}
         </p>
         <p class="text-coastal-text-muted text-sm tracking-wide">
-          {siteProfile.seo.addressLocality}, {siteProfile.seo.addressRegion} {siteProfile.seo.postalCode}
+          {siteProfile.address.addressLocality}, {siteProfile.address.addressRegion} {siteProfile.address.postalCode}
         </p>
       </div>
       <div class="flex flex-wrap gap-3 justify-center">
-        <a href={"tel:" + siteProfile.seo.telephone} class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
-          {siteProfile.seo.telephone}
+        <a href={"tel:" + siteProfile.phone} class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
+          {siteProfile.phone}
         </a>
-        <a href="/contact" class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
-          Make a Reservation
-        </a>
-        <a href={mapsURL} target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-          Get Directions
-        </a>
+        <a href={page.location.reservation.href} class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.location.reservation.label}\n`} />
+        <a href={mapsURL} target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.location.directionsLabel}\n`} />
       </div>
     </div>
   </section>

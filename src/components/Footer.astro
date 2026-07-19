@@ -1,15 +1,10 @@
 ---
-import siteProfile from '../data/site-profile.json';
+import { getEntry } from 'astro:content';
 import { GPH_NETWORK, GRIND_AND_PROSPER_URL } from '../data/gphNetwork';
 
-const footerLinks = [
-  { label: 'Menu', href: '/menu' },
-  { label: 'Brunch', href: '/brunch' },
-  { label: 'The Space', href: '/space' },
-  { label: 'Private Events', href: '/private-events' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
-];
+const footer = (await getEntry('footer', 'footer'))!.data;
+const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
+const footerLinks = footer.links;
 
 const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
 ---
@@ -26,23 +21,21 @@ const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
       <div class="flex flex-col gap-4">
         <a href="/" class="block w-fit">
           <img
-            src="/images/miss-bs-coconut-club-logo-white.webp"
-            alt="Miss B's Coconut Club"
+            src={footer.logo.src}
+            alt={footer.logo.alt}
             class="h-14 w-auto"
           />
         </a>
-        <p class="text-sm text-coastal-text-muted leading-relaxed max-w-[28ch]">
-          San Diego's open-air bar and brunch destination on Mission Blvd. Steps from the Pacific.
-        </p>
-        <a href={"tel:" + siteProfile.seo.telephone} class="text-sm text-coastal-gold-accent hover:text-coastal-bg-sand transition-colors duration-200 w-fit">
-          {siteProfile.seo.telephone}
+        <p class="text-sm text-coastal-text-muted leading-relaxed max-w-[28ch]" set:html={`\n${footer.description}\n`} />
+        <a href={"tel:" + siteProfile.phone} class="text-sm text-coastal-gold-accent hover:text-coastal-bg-sand transition-colors duration-200 w-fit">
+          {siteProfile.phone}
         </a>
       </div>
 
       <!-- Nav column -->
       <nav class="flex flex-col gap-3">
-        <p class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-coral mb-1">Explore</p>
-        {footerLinks.map(item => (
+        <p class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-coral mb-1">{footer.exploreHeading}</p>
+        {footerLinks.map((item: { label: string; href: string }) => (
           <a href={item.href} class="text-sm text-coastal-text-muted hover:text-coastal-gold-accent transition-colors duration-200 w-fit">
             {item.label}
           </a>
@@ -51,16 +44,16 @@ const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
 
       <!-- Hours + Address column -->
       <div class="flex flex-col gap-3">
-        <p class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-coral mb-1">Visit Us</p>
+        <p class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-coral mb-1">{footer.visitHeading}</p>
         <address class="not-italic flex flex-col gap-1">
-          <span class="text-sm text-coastal-bg-sand">{siteProfile.seo.streetAddress}</span>
-          <span class="text-sm text-coastal-text-muted">{siteProfile.seo.addressLocality}, {siteProfile.seo.addressRegion} {siteProfile.seo.postalCode}</span>
+          <span class="text-sm text-coastal-bg-sand">{siteProfile.address.streetAddress}</span>
+          <span class="text-sm text-coastal-text-muted">{siteProfile.address.addressLocality}, {siteProfile.address.addressRegion} {siteProfile.address.postalCode}</span>
         </address>
         <div class="flex flex-col gap-1 mt-2">
-          {siteProfile.hours.general.map((h) => (
+          {siteProfile.hours.general.map((h: { label: string; display: string }) => (
             <span class="text-sm text-coastal-text-muted">{h.label}: {h.display}</span>
           ))}
-          <span class="text-xs text-coastal-coral/80 mt-1">Brunch: Daily until 2pm</span>
+          <span class="text-xs text-coastal-coral/80 mt-1">{footer.brunchHours}</span>
         </div>
       </div>
 
@@ -69,9 +62,9 @@ const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
     <!-- GPH Network row -->
     <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 pt-6 pb-6 border-b border-coastal-text-muted/20">
       <a href={GRIND_AND_PROSPER_URL} target="_blank" rel="noopener noreferrer"
-        class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-text-muted/60 hover:text-coastal-gold-accent transition-colors whitespace-nowrap">
-        Grind &amp; Prosper Hospitality
-      </a>
+        class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-text-muted/60 hover:text-coastal-gold-accent transition-colors whitespace-nowrap"
+        set:html={`\n${footer.hospitalityLabel}\n`}
+      />
       <div class="flex flex-wrap gap-x-6 gap-y-2">
         {portfolio.map((v) => (
           <a href={v.url} target="_blank" rel="noopener noreferrer"
@@ -84,16 +77,12 @@ const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
 
     <!-- Bottom bar -->
     <div class="pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-xs text-coastal-text-muted">
-        &copy; {new Date().getFullYear()} Miss B's Coconut Club. All rights reserved.
-      </p>
-      <p class="text-xs text-coastal-text-muted">
-        3704 Mission Blvd · Mission Beach, San Diego
-      </p>
-      <a href="https://lilosgrowth.com" target="_blank" rel="noopener noreferrer"
-        class="text-[13px] text-coastal-text-muted hover:text-coastal-gold-accent transition-colors">
-        Website by Lilos Growth
-      </a>
+      <p class="text-xs text-coastal-text-muted" set:html={`\n&copy; ${new Date().getFullYear()} ${footer.copyrightName}\n`} />
+      <p class="text-xs text-coastal-text-muted" set:html={`\n${siteProfile.address.streetAddress} · Mission Beach, ${siteProfile.address.addressLocality}\n`} />
+      <a href={footer.credit.href} target="_blank" rel="noopener noreferrer"
+        class="text-[13px] text-coastal-text-muted hover:text-coastal-gold-accent transition-colors"
+        set:html={`\n${footer.credit.label}\n`}
+      />
     </div>
 
   </div>

@@ -1,0 +1,192 @@
+{
+  "seo": {
+    "title": "Bar and Brunch on Mission Blvd - Mission Beach San Diego",
+    "description": "Miss B's Coconut Club is Mission Beach San Diego's favorite outdoor bar and brunch spot. Craft cocktails, daily brunch, and private events at 3704 Mission Blvd."
+  },
+  "hero": {
+    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp",
+    "imageAlt": "Miss B's Coconut Club teal bar open window Mission Beach San Diego",
+    "eyebrow": "3704 Mission Blvd · Mission Beach, San Diego",
+    "heading": "Miss B's",
+    "headingAccent": "Coconut Club",
+    "subheading": "San Diego's open-air bar and brunch destination. Steps from the Pacific on Mission Blvd.",
+    "ctas": [
+      {
+        "label": "View the Menu",
+        "href": "/menu"
+      },
+      {
+        "label": "Brunch",
+        "href": "/brunch"
+      }
+    ],
+    "stats": [
+      {
+        "label": "Hours",
+        "value": "Open Daily &middot; Until 10pm"
+      },
+      {
+        "label": "Brunch",
+        "value": "Daily until 2pm"
+      },
+      {
+        "label": "Find Us",
+        "value": "Mission Beach, San Diego"
+      },
+      {
+        "label": "Reserve",
+        "value": "Book a Table",
+        "href": "/contact"
+      }
+    ]
+  },
+  "intro": {
+    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp",
+    "imageAlt": "Miss B's Coconut Club tropical dining room with mural Mission Beach San Diego",
+    "eyebrow": "Mission Beach, San Diego",
+    "heading": "Where San Diego<br />Comes to Drink Well",
+    "body": [
+      "Miss B's Coconut Club is the open-air bar and brunch spot that Mission Beach was built for. Pull up a teal stool, order something cold, and let the afternoon go.",
+      "Located at 3704 Mission Blvd — steps from the sand. Come for the craft cocktails. Stay for the brunch. Bring the whole group."
+    ],
+    "ctas": [
+      {
+        "label": "Full Menu",
+        "href": "/menu"
+      },
+      {
+        "label": "See the Space",
+        "href": "/space"
+      }
+    ]
+  },
+  "cocktailFeature": {
+    "imageSrc": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-13.webp",
+    "imageAlt": "Miss B's Coconut Club signature flamingo cocktail vessel Mission Beach",
+    "eyebrow": "Craft Cocktails",
+    "heading": "Signature<br />Cocktails in<br />Mission Beach",
+    "body": "From the flamingo vessel to the frozen mojito, every drink at Miss B's is built for the San Diego sun. Tropical, bold, and entirely unforgettable.",
+    "cta": {
+      "label": "Full Drink Menu",
+      "href": "/menu"
+    }
+  },
+  "cocktailGrid": [
+    {
+      "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-03.webp",
+      "name": "Caribe Welcome"
+    },
+    {
+      "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-32.webp",
+      "name": "Mango Guava Spritz"
+    },
+    {
+      "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-02.webp",
+      "name": "Bird is the Word"
+    },
+    {
+      "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-26.webp",
+      "name": "Fiesta Island"
+    },
+    {
+      "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-37.webp",
+      "name": "Rum Cannonball"
+    },
+    {
+      "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-38.webp",
+      "name": "Spritz and Giggles"
+    }
+  ],
+  "happyHour": {
+    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-05.webp",
+    "imageAlt": "Miss B's Coconut Club open-air bar during happy hour Mission Beach San Diego",
+    "heading": "Happy Hour<br />in Mission Beach",
+    "bodyPrefix": "Happy hour runs ",
+    "bodyMiddle": ", on the full open-air bar and patio. ",
+    "offDaysPrefix": "Not running ",
+    "ctas": [
+      {
+        "label": "View Drink Menu",
+        "href": "/menu"
+      },
+      {
+        "label": "Happy Hour FAQ",
+        "href": "/faq"
+      }
+    ]
+  },
+  "brunch": {
+    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-17.webp",
+    "imageAlt": "Miss B's Coconut Club copper flamingo draft tap handles Mission Beach",
+    "eyebrow": "Served Daily",
+    "heading": "Brunch<br />in Mission Beach",
+    "body": "Served daily until 2pm. Mimosas from the flamingo tap wall, morning cocktails, and the best brunch plates on Mission Blvd.",
+    "ctas": [
+      {
+        "label": "Brunch Details",
+        "href": "/brunch"
+      },
+      {
+        "label": "Brunch Menu",
+        "href": "/menu"
+      }
+    ]
+  },
+  "food": {
+    "eyebrow": "The Kitchen",
+    "heading": "Food Worth<br />Staying For",
+    "cta": {
+      "label": "View Full Menu",
+      "href": "/menu"
+    },
+    "featured": {
+      "src": "/images/food/miss-bs-coconut-club-food-mission-beach-09.webp",
+      "name": "Coconut Club Burger",
+      "alt": "Miss B's Coconut Club Coconut Club Burger Mission Beach San Diego"
+    },
+    "grid": [
+      {
+        "src": "/images/food/miss-bs-coconut-club-food-mission-beach-13.webp",
+        "name": "Cubano"
+      },
+      {
+        "src": "/images/food/miss-bs-coconut-club-food-mission-beach-17.webp",
+        "name": "Table Spread"
+      },
+      {
+        "src": "/images/food/miss-bs-coconut-club-food-mission-beach-26.webp",
+        "name": "Jerk Plate"
+      },
+      {
+        "src": "/images/food/miss-bs-coconut-club-food-mission-beach-32.webp",
+        "name": "Nachos"
+      }
+    ]
+  },
+  "privateEvents": {
+    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp",
+    "imageAlt": "Miss B's Coconut Club outdoor patio pink umbrellas Mission Beach San Diego private events",
+    "eyebrow": "Private Events",
+    "heading": "Private Events<br />in Mission Beach",
+    "body": "Birthdays, buyouts, corporate events, and intimate gatherings. Miss B's Coconut Club is the only open-air bar venue on Mission Blvd — steps from the Pacific.",
+    "items": [
+      "Birthday Parties",
+      "Full and Partial Buyouts",
+      "Corporate Events",
+      "Bachelor and Bachelorette",
+      "Milestone Celebrations"
+    ],
+    "cta": {
+      "label": "Inquire About Your Event",
+      "href": "/private-events"
+    }
+  },
+  "location": {
+    "eyebrow": "Find Us",
+    "reservation": {
+      "label": "Make a Reservation",
+      "href": "/contact"
+    },
+    "directionsLabel": "Get Directions"
+  }
+}

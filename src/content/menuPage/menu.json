@@ -1,0 +1,125 @@
+{
+  "seo": {
+    "title": "Menu - Food, Cocktails and Brunch | Miss B's Coconut Club Mission Beach",
+    "description": "The full menu at Miss B's Coconut Club in Mission Beach, San Diego. Craft cocktails, Caribbean-inspired food, brunch plates, and more at 3704 Mission Blvd."
+  },
+  "hero": {
+    "imageSrc": "/images/food/miss-bs-coconut-club-food-mission-beach-17.webp",
+    "imageAlt": "Miss B's Coconut Club food spread Mission Beach San Diego",
+    "eyebrow": "Food · Cocktails · Brunch",
+    "heading": "The Menu",
+    "subheading": "Caribbean-inspired plates, craft cocktails, and daily brunch at 3704 Mission Blvd, Mission Beach."
+  },
+  "categories": {
+    "eyebrow": "What We&apos;re Serving",
+    "heading": "Explore the Menu",
+    "order": [
+      "food",
+      "cocktails",
+      "brunch"
+    ]
+  },
+  "food": {
+    "eyebrow": "The Kitchen",
+    "heading": "Food",
+    "grid": [
+      {
+        "src": "/images/food/miss-bs-coconut-club-food-mission-beach-02.webp",
+        "name": "Ahi Poke Bowl",
+        "alt": "Miss B's Coconut Club Ahi Poke Bowl Mission Beach San Diego"
+      },
+      {
+        "src": "/images/food/miss-bs-coconut-club-food-mission-beach-club-burger.webp",
+        "name": "Club Burger",
+        "alt": "Miss B's Coconut Club Club Burger Mission Beach San Diego"
+      },
+      {
+        "src": "/images/food/miss-bs-coconut-club-food-mission-beach-jerk-chicken-wrap.webp",
+        "name": "Jerk Chicken Wrap",
+        "alt": "Miss B's Coconut Club Jerk Chicken Wrap Mission Beach San Diego"
+      },
+      {
+        "src": "/images/food/miss-bs-coconut-club-food-mission-beach-10.webp",
+        "name": "Coconut Shrimp",
+        "alt": "Miss B's Coconut Club Coconut Shrimp Mission Beach San Diego"
+      },
+      {
+        "src": "/images/food/miss-bs-coconut-club-food-mission-beach-el-cubano-sandwich.webp",
+        "name": "El Cubano Sandwich",
+        "alt": "Miss B's Coconut Club El Cubano Sandwich Mission Beach San Diego"
+      },
+      {
+        "src": "/images/food/miss-bs-coconut-club-food-mission-beach-nachos.webp",
+        "name": "Nachos",
+        "alt": "Miss B's Coconut Club Nachos Mission Beach San Diego"
+      },
+      {
+        "src": "/images/food/miss-bs-coconut-club-food-mission-beach-22.webp",
+        "name": "Fish n Chips",
+        "alt": "Miss B's Coconut Club Fish n Chips Mission Beach San Diego"
+      },
+      {
+        "src": "/images/food/miss-bs-coconut-club-food-mission-beach-miss-bs-favorites-tacos.webp",
+        "name": "Miss B's Favorites (2 Tacos)",
+        "alt": "Miss B's Coconut Club Miss B's Favorites 2 Tacos Mission Beach San Diego"
+      }
+    ]
+  },
+  "cocktails": {
+    "eyebrow": "The Bar",
+    "heading": "Cocktails",
+    "grid": [
+      {
+        "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-bloody-mary.webp",
+        "name": "Bloody Mary",
+        "alt": "Miss B's Coconut Club Bloody Mary cocktail Mission Beach San Diego"
+      },
+      {
+        "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-03.webp",
+        "name": "Caribe Welcome",
+        "alt": "Miss B's Coconut Club Caribe Welcome cocktail Mission Beach San Diego"
+      },
+      {
+        "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-20.webp",
+        "name": "Rose and Champagne",
+        "alt": "Miss B's Coconut Club Rose and Champagne cocktail Mission Beach San Diego"
+      },
+      {
+        "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-capri-son.webp",
+        "name": "Capri, Son!",
+        "alt": "Miss B's Coconut Club Capri, Son! cocktail Mission Beach San Diego"
+      },
+      {
+        "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-09.webp",
+        "name": "Watermelon Shuga",
+        "alt": "Miss B's Coconut Club Watermelon Shuga cocktail Mission Beach San Diego"
+      },
+      {
+        "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-coconut-margarita.webp",
+        "name": "Coconut Margarita",
+        "alt": "Miss B's Coconut Club Coconut Margarita cocktail Mission Beach San Diego"
+      },
+      {
+        "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-mimosas.webp",
+        "name": "Mimosas",
+        "alt": "Miss B's Coconut Club Mimosas cocktail Mission Beach San Diego"
+      },
+      {
+        "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-tree-mimosa.webp",
+        "name": "Tree Mimosa",
+        "alt": "Miss B's Coconut Club Tree Mimosa cocktail Mission Beach San Diego"
+      }
+    ]
+  },
+  "brunch": {
+    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-09.webp",
+    "imageAlt": "Miss B's Coconut Club brunch bar Mission Beach San Diego",
+    "eyebrow": "Served Daily · Until 2pm",
+    "heading": "Brunch",
+    "body": "Mimosas from the flamingo tap wall, morning cocktails, and the best brunch plates in Mission Beach.",
+    "cta": {
+      "label": "Brunch Details",
+      "href": "/brunch"
+    }
+  }
+}
