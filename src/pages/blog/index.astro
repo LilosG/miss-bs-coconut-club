@@ -1,22 +1,23 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
 
 const allPosts = await getCollection('blog');
 const posts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const page = (await getEntry('blogIndexPage', 'blog'))!.data;
 ---
 
 <Layout
-  title="Blog — Mission Beach Guides, Events & Local Tips | Miss B's Coconut Club"
-  description="The Miss B's Coconut Club blog — local guides to Mission Beach dining, San Diego bar recommendations, private event planning tips, and stories from our tropical kitchen and bar."
+  title={page.seo.title}
+  description={page.seo.description}
 >
 
   <PageHero
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp"
-    imageAlt="Miss B's Coconut Club Mission Beach San Diego blog"
-    eyebrow="Stories, Guides &amp; Local Tips"
-    heading="The Blog"
+    imageSrc={page.hero.imageSrc}
+    imageAlt={page.hero.imageAlt}
+    eyebrow={page.hero.eyebrow}
+    heading={page.hero.heading}
     minHeight="60vh"
   />
 
@@ -45,9 +46,7 @@ const posts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date
                 {post.data.title}
               </h2>
               <p class="text-coastal-text-muted text-sm leading-relaxed">{post.data.description}</p>
-              <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral group-hover:translate-x-1 transition-transform duration-200 inline-block mt-1">
-                Read More →
-              </span>
+              <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral group-hover:translate-x-1 transition-transform duration-200 inline-block mt-1" set:html={`\n${page.readMore}\n`} />
             </div>
           </a>
         ))}
@@ -59,19 +58,13 @@ const posts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date
   <section class="bg-coastal-text-main py-20 px-6">
     <div class="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-10">
       <div class="flex flex-col gap-3">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Come Experience It</p>
-        <p class="font-serif text-4xl font-light italic text-coastal-bg-pure">
-          Miss B's Coconut Club
-        </p>
-        <p class="text-coastal-text-muted text-sm">3704 Mission Blvd · Mission Beach, San Diego</p>
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">{page.cta.eyebrow}</p>
+        <p class="font-serif text-4xl font-light italic text-coastal-bg-pure" set:html={`\n${page.cta.heading}\n`} />
+        <p class="text-coastal-text-muted text-sm">{page.cta.body}</p>
       </div>
       <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/contact" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
-          Make a Reservation
-        </a>
-        <a href="/menu" class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-          View the Menu
-        </a>
+        <a href={page.cta.links[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.cta.links[0].label}\n`} />
+        <a href={page.cta.links[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.cta.links[1].label}\n`} />
       </div>
     </div>
   </section>

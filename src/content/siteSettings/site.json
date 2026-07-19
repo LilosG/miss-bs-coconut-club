@@ -1,0 +1,125 @@
+{
+  "venueName": "Miss B's Coconut Club",
+  "legalName": "Miss B's Coconut Club LLC",
+  "nicheType": "BarOrPub",
+  "domain": "https://missbcoconutclub.com",
+  "email": "info@missbcoconutclub.com",
+  "social": {
+    "tiktok": "https://www.tiktok.com/@missbcoconutclub",
+    "instagram": "https://www.instagram.com/missbcoconutclub/",
+    "facebook": "https://www.facebook.com/MissBsCoconutClub/",
+    "linkedin": "https://www.linkedin.com/company/miss-b's-coconut-club-llc"
+  },
+  "hours": {
+    "general": [
+      {
+        "label": "Monday – Friday",
+        "days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "open": "10:00",
+        "close": "22:00",
+        "display": "10am – 10pm"
+      },
+      {
+        "label": "Saturday – Sunday",
+        "days": [
+          "Saturday",
+          "Sunday"
+        ],
+        "open": "09:00",
+        "close": "22:00",
+        "display": "9am – 10pm"
+      }
+    ],
+    "kitchen": [
+      {
+        "label": "Monday – Thursday",
+        "days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday"
+        ],
+        "open": "11:00",
+        "close": "21:00",
+        "display": "11am – 9pm"
+      },
+      {
+        "label": "Friday – Sunday",
+        "days": [
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "open": "10:00",
+        "close": "21:00",
+        "display": "10am – 9pm"
+      }
+    ],
+    "brunch": [
+      {
+        "label": "Monday – Friday",
+        "days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "open": "10:00",
+        "close": "14:00",
+        "display": "10am – 2pm"
+      },
+      {
+        "label": "Saturday – Sunday",
+        "days": [
+          "Saturday",
+          "Sunday"
+        ],
+        "open": "09:00",
+        "close": "14:00",
+        "display": "9am – 2pm"
+      }
+    ],
+    "happyHour": [
+      {
+        "label": "Monday – Friday",
+        "days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "open": "15:00",
+        "close": "17:00",
+        "display": "3 – 5pm"
+      },
+      {
+        "label": "Saturday – Sunday",
+        "days": [
+          "Saturday",
+          "Sunday"
+        ],
+        "closed": true
+      }
+    ]
+  },
+  "address": {
+    "streetAddress": "3704 Mission Blvd",
+    "addressLocality": "San Diego",
+    "addressRegion": "CA",
+    "postalCode": "92109"
+  },
+  "phone": "(858) 360-1566",
+  "coordinates": {
+    "latitude": "32.7681",
+    "longitude": "-117.2514"
+  },
+  "priceRange": "$$"
+}

@@ -3,16 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
 import SplitSection from '../../components/ui/SplitSection.astro';
 import ChecklistItems from '../../components/ui/ChecklistItems.astro';
-import eventsData from '../../data/events.json';
+import { getCollection, getEntry } from 'astro:content';
 
 export async function getStaticPaths() {
-  return Object.keys(eventsData).map((slug) => ({ params: { slug } }));
+  const events = await getCollection('privateEventTypes');
+  return events.map((event) => ({ params: { slug: event.data.slug }, props: { event: event.data } }));
 }
 
-const { slug } = Astro.params;
-const event = eventsData[slug as keyof typeof eventsData];
-
-if (!event) return Astro.redirect('/private-events');
+const { event } = Astro.props;
+const page = (await getEntry('privateEventsIndexPage', 'private-events'))!.data;
 ---
 
 <Layout
@@ -21,7 +20,7 @@ if (!event) return Astro.redirect('/private-events');
 >
 
   <PageHero
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp"
+    imageSrc={page.detail.heroImage}
     imageAlt={"Miss B's Coconut Club " + event.title + " Mission Beach San Diego"}
     eyebrow={event.eyebrow}
     heading={event.title}
@@ -32,33 +31,27 @@ if (!event) return Astro.redirect('/private-events');
 
   <!-- ─── EVENT DETAIL SPLIT ────────────────────────────────────────────── -->
   <SplitSection
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-13.webp"
+    imageSrc={page.detail.splitImage}
     imageAlt={"Miss B's Coconut Club " + event.title + " venue space Mission Beach"}
     eyebrow={event.title + " at Miss B's"}
-    heading="Everything You Need<br />for a Perfect Event"
+    heading={page.detail.splitHeading}
     minHeight="620px"
     headingSize="medium"
   >
     {event.body.map((para) => (
       <p class="text-coastal-text-muted text-base leading-relaxed">{para}</p>
     ))}
-    <a href="#inquiry" class="self-start mt-2 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
-      Submit an Inquiry
-    </a>
+    <a href={page.detail.submitHref} class="self-start mt-2 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.detail.submitLabel}\n`} />
   </SplitSection>
 
   <!-- ─── WHAT'S INCLUDED ───────────────────────────────────────────────── -->
   <section class="bg-coastal-bg-sand py-24 px-6">
     <div class="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
       <div class="flex flex-col gap-4">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">What's Included</p>
-        <h2 class="font-serif text-4xl md:text-5xl font-light italic text-coastal-text-main leading-[1.0]">
-          Everything Handled
-        </h2>
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral" set:html={page.detail.includedEyebrow} />
+        <h2 class="font-serif text-4xl md:text-5xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.detail.includedHeading}\n`} />
         <div class="h-px w-16 bg-coastal-coral"></div>
-        <p class="text-coastal-text-muted text-base leading-relaxed mt-2">
-          Our events team takes care of every detail so you can focus on your guests.
-        </p>
+        <p class="text-coastal-text-muted text-base leading-relaxed mt-2" set:html={`\n${page.detail.includedBody}\n`} />
       </div>
       <ChecklistItems items={event.includes} divided={true} />
     </div>
@@ -68,19 +61,15 @@ if (!event) return Astro.redirect('/private-events');
   <section class="bg-coastal-bg-sand py-24 px-6" id="inquiry">
     <div class="mx-auto max-w-4xl">
       <div class="flex flex-col gap-4 mb-10">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">Book Your {event.title}</p>
-        <h2 class="font-serif text-5xl font-light italic text-coastal-text-main leading-[1.0]">
-          Submit an Inquiry
-        </h2>
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">{page.detail.bookPrefix}{event.title}</p>
+        <h2 class="font-serif text-5xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.detail.submitLabel}\n`} />
         <div class="h-px w-16 bg-coastal-coral"></div>
-        <p class="text-coastal-text-muted text-base leading-relaxed max-w-lg">
-          Tell us your date, headcount, and any details. Our team responds within 24 hours with availability and a custom proposal.
-        </p>
+        <p class="text-coastal-text-muted text-base leading-relaxed max-w-lg" set:html={`\n${page.detail.inquiryBody}\n`} />
       </div>
       <iframe
         src="https://www.toasttab.com/invoice/lead?rx=e5c781b0-3ef7-4e6e-acaa-f50c55b15f70&ot=555d2efd-aea1-4bef-ac04-17793cda7ded&form=1"
         style="margin:auto;display:block;border:0;width:100%;height:800px"
-        title="Private Event Inquiry Form"
+        title={page.inquiry.iframeTitle}
         loading="lazy"
       ></iframe>
     </div>
@@ -89,16 +78,10 @@ if (!event) return Astro.redirect('/private-events');
   <!-- ─── BACK + CTA ────────────────────────────────────────────────────── -->
   <section class="bg-coastal-text-main py-20 px-6">
     <div class="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8">
-      <a href="/private-events" class="text-xs font-bold tracking-[0.2em] uppercase text-coastal-text-muted hover:text-coastal-bg-pure transition-colors duration-200">
-        ← All Event Types
-      </a>
+      <a href={page.detail.allEventsHref} class="text-xs font-bold tracking-[0.2em] uppercase text-coastal-text-muted hover:text-coastal-bg-pure transition-colors duration-200" set:html={`\n${page.detail.allEventsLabel}\n`} />
       <div class="flex flex-wrap gap-3 justify-center">
-        <a href="#inquiry" class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-          Submit an Inquiry
-        </a>
-        <a href="/space" class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
-          View the Space
-        </a>
+        <a href={page.detail.submitHref} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.detail.submitLabel}\n`} />
+        <a href={page.detail.viewSpaceHref} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.detail.viewSpaceLabel}\n`} />
       </div>
     </div>
   </section>

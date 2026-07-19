@@ -1,5 +1,5 @@
 ---
-import siteProfile from '../../data/site-profile.json';
+import { getEntry } from 'astro:content';
 
 interface Props {
   title: string;
@@ -13,7 +13,9 @@ const {
   canonicalURL = new URL(Astro.url.pathname, Astro.site),
 } = Astro.props;
 
-const openingHoursSpecification = siteProfile.hours.general.map((h) => ({
+const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
+
+const openingHoursSpecification = siteProfile.hours.general.map((h: { days: string[]; open: string; close: string }) => ({
   "@type": "OpeningHoursSpecification",
   "dayOfWeek": h.days,
   "opens": h.open,
@@ -26,23 +28,23 @@ const jsonLD = {
   "name": siteProfile.venueName,
   "legalName": siteProfile.legalName,
   "image": `${siteProfile.domain}/og-image.jpg`,
-  "telephone": siteProfile.seo.telephone,
-  "priceRange": siteProfile.seo.priceRange,
+  "telephone": siteProfile.phone,
+  "priceRange": siteProfile.priceRange,
   "url": siteProfile.domain,
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": siteProfile.seo.streetAddress,
-    "addressLocality": siteProfile.seo.addressLocality,
-    "addressRegion": siteProfile.seo.addressRegion,
-    "postalCode": siteProfile.seo.postalCode,
+    "streetAddress": siteProfile.address.streetAddress,
+    "addressLocality": siteProfile.address.addressLocality,
+    "addressRegion": siteProfile.address.addressRegion,
+    "postalCode": siteProfile.address.postalCode,
     "addressCountry": "US"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": siteProfile.seo.latitude,
-    "longitude": siteProfile.seo.longitude
+    "latitude": siteProfile.coordinates.latitude,
+    "longitude": siteProfile.coordinates.longitude
   },
-  "hasMap": "https://www.google.com/maps/search/?api=1&query=" + siteProfile.seo.latitude + "," + siteProfile.seo.longitude,
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=" + siteProfile.coordinates.latitude + "," + siteProfile.coordinates.longitude,
   "openingHoursSpecification": openingHoursSpecification,
   "sameAs": [
     siteProfile.social.instagram,

@@ -3,20 +3,25 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/ui/PageHero.astro';
 import SplitSection from '../components/ui/SplitSection.astro';
 import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
-import menuData from '../data/menu.json';
+import { getCollection, getEntry } from 'astro:content';
+
+const page = (await getEntry('menuPage', 'menu'))!.data;
+const categories = (await getCollection('menuCategoryCards'))
+  .map((entry) => entry.data)
+  .sort((a, b) => page.categories.order.indexOf(a.slug) - page.categories.order.indexOf(b.slug));
 ---
 
 <Layout
-  title="Menu - Food, Cocktails and Brunch | Miss B's Coconut Club Mission Beach"
-  description="The full menu at Miss B's Coconut Club in Mission Beach, San Diego. Craft cocktails, Caribbean-inspired food, brunch plates, and more at 3704 Mission Blvd."
+  title={page.seo.title}
+  description={page.seo.description}
 >
 
   <PageHero
-    imageSrc="/images/food/miss-bs-coconut-club-food-mission-beach-17.webp"
-    imageAlt="Miss B's Coconut Club food spread Mission Beach San Diego"
-    eyebrow="Food &middot; Cocktails &middot; Brunch"
-    heading="The Menu"
-    subheading="Caribbean-inspired plates, craft cocktails, and daily brunch at 3704 Mission Blvd, Mission Beach."
+    imageSrc={page.hero.imageSrc}
+    imageAlt={page.hero.imageAlt}
+    eyebrow={page.hero.eyebrow}
+    heading={page.hero.heading}
+    subheading={page.hero.subheading}
     minHeight="70vh"
   />
 
@@ -24,16 +29,12 @@ import menuData from '../data/menu.json';
   <section class="bg-coastal-bg-pure py-24 px-6">
     <div class="mx-auto max-w-7xl">
       <div class="flex flex-col gap-4 mb-14">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">
-          What We&apos;re Serving
-        </p>
-        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]">
-          Explore the Menu
-        </h2>
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral" set:html={`\n${page.categories.eyebrow}\n`} />
+        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.categories.heading}\n`} />
         <div class="h-px w-16 bg-coastal-coral"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-coastal-bg-card">
-        {menuData.categories.map((cat) => (
+        {categories.map((cat) => (
           <div class="bg-coastal-bg-pure flex flex-col">
             <div class="relative overflow-hidden aspect-[4/3]">
               <img src={cat.image} alt={cat.alt} class="w-full h-full object-cover" loading="lazy" />
@@ -53,15 +54,15 @@ import menuData from '../data/menu.json';
   <section class="bg-coastal-bg-sand py-24 px-6">
     <div class="mx-auto max-w-7xl">
       <div class="flex flex-col gap-4 mb-12">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">The Kitchen</p>
-        <h2 class="font-serif text-5xl font-light italic text-coastal-text-main leading-[1.0]">Food</h2>
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">{page.food.eyebrow}</p>
+        <h2 class="font-serif text-5xl font-light italic text-coastal-text-main leading-[1.0]">{page.food.heading}</h2>
         <div class="h-px w-16 bg-coastal-coral"></div>
       </div>
       <HoverImageGrid
         gap={true}
         labelPadding="p-3"
         labelTracking="tracking-[0.15em]"
-        items={menuData.menuPageGrids.food}
+        items={page.food.grid}
       />
     </div>
   </section>
@@ -70,37 +71,33 @@ import menuData from '../data/menu.json';
   <section class="bg-coastal-text-main py-24 px-6">
     <div class="mx-auto max-w-7xl">
       <div class="flex flex-col gap-4 mb-12">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">The Bar</p>
-        <h2 class="font-serif text-5xl font-light italic text-coastal-bg-pure leading-[1.0]">Cocktails</h2>
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">{page.cocktails.eyebrow}</p>
+        <h2 class="font-serif text-5xl font-light italic text-coastal-bg-pure leading-[1.0]">{page.cocktails.heading}</h2>
         <div class="h-px w-16 bg-coastal-coral"></div>
       </div>
       <HoverImageGrid
         gap={true}
         labelPadding="p-3"
         labelTracking="tracking-[0.15em]"
-        items={menuData.menuPageGrids.cocktails}
+        items={page.cocktails.grid}
       />
     </div>
   </section>
 
   <!-- BRUNCH CTA BAND -->
   <SplitSection
-    imageSrc="/images/venue/miss-bs-coconut-club-mission-beach-venue-09.webp"
-    imageAlt="Miss B's Coconut Club brunch bar Mission Beach San Diego"
-    eyebrow="Served Daily &middot; Until 2pm"
-    heading="Brunch"
+    imageSrc={page.brunch.imageSrc}
+    imageAlt={page.brunch.imageAlt}
+    eyebrow={page.brunch.eyebrow}
+    heading={page.brunch.heading}
     imageLeft={true}
     imageOverlay={true}
     minHeight="480px"
     variant="coral"
     headingSize="medium"
   >
-    <p class="text-coastal-text-main/80 text-base leading-relaxed max-w-[40ch]">
-      Mimosas from the flamingo tap wall, morning cocktails, and the best brunch plates in Mission Beach.
-    </p>
-    <a href="/brunch" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300">
-      Brunch Details
-    </a>
+    <p class="text-coastal-text-main/80 text-base leading-relaxed max-w-[40ch]" set:html={`\n${page.brunch.body}\n`} />
+    <a href={page.brunch.cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.brunch.cta.label}\n`} />
   </SplitSection>
 
 </Layout>

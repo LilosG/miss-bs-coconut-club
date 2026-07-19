@@ -1,10 +1,11 @@
 ---
-import navData from '../../data/nav.json';
-import siteProfile from '../../data/site-profile.json';
+import { getEntry } from 'astro:content';
 
+const navData = (await getEntry('navigation', 'navigation'))!.data;
+const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
 const navItems = navData.main;
 const ctas = navData.ctas;
-const phoneDisplay = siteProfile.seo.telephone;
+const phoneDisplay = siteProfile.phone;
 const phoneHref = `tel:+1${phoneDisplay.replace(/\D/g, '')}`;
 ---
 
@@ -20,7 +21,7 @@ const phoneHref = `tel:+1${phoneDisplay.replace(/\D/g, '')}`;
         />
       </a>
       <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
-        {navItems.map(item => (
+        {navItems.map((item: { label: string; href: string }) => (
           <a href={item.href} class="nav-link text-xs font-semibold tracking-[0.15em] uppercase text-coastal-bg-pure/80 hover:text-coastal-bg-pure transition-colors duration-200">
             {item.label}
           </a>
@@ -30,7 +31,7 @@ const phoneHref = `tel:+1${phoneDisplay.replace(/\D/g, '')}`;
         <a href={phoneHref} class="nav-link text-xs font-semibold tracking-[0.15em] uppercase text-coastal-bg-pure/80 hover:text-coastal-bg-pure transition-colors duration-200">
           {phoneDisplay}
         </a>
-        {ctas.map(cta => (
+        {ctas.map((cta: { label: string; href: string; external: boolean; style: string }) => (
           cta.style === 'secondary' ? (
             <a id="nav-cta-order" href={cta.href} target={cta.external ? '_blank' : undefined} rel={cta.external ? 'noopener noreferrer' : undefined} class="nav-cta px-5 py-2.5 text-xs font-bold tracking-widest uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-200">
               {cta.label}
@@ -69,14 +70,14 @@ const phoneHref = `tel:+1${phoneDisplay.replace(/\D/g, '')}`;
   </button>
   <img src="/images/miss-bs-coconut-club-logo-white.webp" alt="Miss B's Coconut Club" class="h-12 w-auto mb-4 invert" />
   <nav class="flex flex-col items-center gap-6" aria-label="Mobile navigation">
-    {navItems.map(item => (
+    {navItems.map((item: { label: string; href: string }) => (
       <a href={item.href} class="text-2xl font-semibold tracking-[0.1em] uppercase text-coastal-text-main hover:text-coastal-coral transition-colors duration-200">
         {item.label}
       </a>
     ))}
   </nav>
   <div class="flex flex-col gap-3 mt-4 w-48">
-    {ctas.map(cta => (
+    {ctas.map((cta: { label: string; href: string; external: boolean; style: string }) => (
       cta.style === 'secondary' ? (
         <a href={cta.href} target={cta.external ? '_blank' : undefined} rel={cta.external ? 'noopener noreferrer' : undefined} class="text-center px-5 py-3 text-xs font-bold tracking-widest uppercase border border-coastal-text-main/40 text-coastal-text-main hover:bg-coastal-text-main hover:text-coastal-bg-pure transition-all duration-200">
           {cta.label}
@@ -154,4 +155,3 @@ const phoneHref = `tel:+1${phoneDisplay.replace(/\D/g, '')}`;
   menu?.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
 </script>
-

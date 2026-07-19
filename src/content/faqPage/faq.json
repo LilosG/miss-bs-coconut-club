@@ -1,0 +1,38 @@
+{
+  "seo": {
+    "title": "FAQ - Hours, Brunch, Private Events & More | Miss B's Coconut Club Mission Beach",
+    "description": "Frequently asked questions about Miss B's Coconut Club in Mission Beach, San Diego. Hours, brunch details, parking, private events, and more."
+  },
+  "hero": {
+    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp",
+    "imageAlt": "Miss B's Coconut Club teal open-air bar Mission Beach San Diego",
+    "eyebrow": "Everything You Need to Know",
+    "heading": "FAQ",
+    "subheading": "Hours, brunch, private events, parking, and more — answered."
+  },
+  "list": {
+    "eyebrow": "Common Questions",
+    "heading": "Frequently Asked"
+  },
+  "happyHour": {
+    "question": "Does Miss B's have a happy hour?",
+    "prefix": "Yes. Happy hour runs ",
+    "middle": ", on the full open-air bar and patio.",
+    "offDaysPrefix": " It does not run ",
+    "closedAnswer": "Happy hour is not currently available."
+  },
+  "cta": {
+    "eyebrow": "Still Have Questions?",
+    "heading": "We're here to help.",
+    "links": [
+      {
+        "label": "Contact Us",
+        "href": "/contact"
+      },
+      {
+        "label": "Private Events",
+        "href": "/private-events"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "links": [
+    {
+      "label": "Menu",
+      "href": "/menu"
+    },
+    {
+      "label": "Brunch",
+      "href": "/brunch"
+    },
+    {
+      "label": "The Space",
+      "href": "/space"
+    },
+    {
+      "label": "Private Events",
+      "href": "/private-events"
+    },
+    {
+      "label": "Blog",
+      "href": "/blog"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
+    }
+  ],
+  "logo": {
+    "src": "/images/miss-bs-coconut-club-logo-white.webp",
+    "alt": "Miss B's Coconut Club"
+  },
+  "description": "San Diego's open-air bar and brunch destination on Mission Blvd. Steps from the Pacific.",
+  "exploreHeading": "Explore",
+  "visitHeading": "Visit Us",
+  "brunchHours": "Brunch: Daily until 2pm",
+  "hospitalityLabel": "Grind &amp; Prosper Hospitality",
+  "copyrightName": "Miss B's Coconut Club. All rights reserved.",
+  "locationLine": "3704 Mission Blvd · Mission Beach, San Diego",
+  "credit": {
+    "label": "Website by Lilos Growth",
+    "href": "https://lilosgrowth.com"
+  }
+}

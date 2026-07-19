@@ -1,0 +1,68 @@
+{
+  "seo": {
+    "title": "Contact Miss B's Coconut Club | Reservations & Event Inquiries Mission Beach",
+    "description": "Contact Miss B's Coconut Club in Mission Beach, San Diego. Make a reservation, inquire about private events, or get directions to 3704 Mission Blvd."
+  },
+  "hero": {
+    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-04.webp",
+    "imageAlt": "Miss B's Coconut Club Mission Beach San Diego",
+    "eyebrow": "3704 Mission Blvd · Mission Beach, San Diego",
+    "heading": "Get in Touch"
+  },
+  "cards": [
+    {
+      "eyebrow": "Reservations",
+      "heading": "Book a Table",
+      "body": "Walk-ins are always welcome at the bar. For dining and brunch, reservations are strongly recommended — especially on weekend mornings.",
+      "cta": "phone"
+    },
+    {
+      "eyebrow": "Private Events",
+      "heading": "Plan Your Event",
+      "body": "Birthdays, buyouts, corporate events, and intimate gatherings. Our team responds within 24 hours with availability and a custom proposal.",
+      "cta": {
+        "label": "Inquire Now",
+        "href": "#inquiry"
+      }
+    },
+    {
+      "eyebrow": "Find Us",
+      "heading": "Directions",
+      "cta": {
+        "label": "Get Directions"
+      }
+    }
+  ],
+  "inquiry": {
+    "eyebrow": "Private Events",
+    "heading": "Submit an Inquiry",
+    "body": "Birthdays, buyouts, corporate events, and intimate gatherings. Tell us about your event and we'll respond within 24 hours.",
+    "iframeSrc": "https://www.toasttab.com/invoice/lead?rx=e5c781b0-3ef7-4e6e-acaa-f50c55b15f70&ot=555d2efd-aea1-4bef-ac04-17793cda7ded&form=1",
+    "iframeTitle": "Private Event Inquiry Form"
+  },
+  "hours": {
+    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-08.webp",
+    "imageAlt": "Miss B's Coconut Club interior Mission Beach San Diego",
+    "eyebrow": "Hours of Operation",
+    "heading": "When We're Open",
+    "notes": [
+      "Kitchen closes at 9pm daily",
+      "Brunch: Daily until 2pm"
+    ]
+  },
+  "social": {
+    "eyebrow": "Follow Along",
+    "heading": "@MissBsCoconutClub",
+    "body": "Daily specials, events, and a behind-the-scenes look at Mission Beach's favorite bar.",
+    "links": [
+      {
+        "label": "Instagram",
+        "network": "instagram"
+      },
+      {
+        "label": "Facebook",
+        "network": "facebook"
+      }
+    ]
+  }
+}
