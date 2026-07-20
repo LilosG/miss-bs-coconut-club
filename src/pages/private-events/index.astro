@@ -6,9 +6,10 @@ import StatBar from '../../components/ui/StatBar.astro';
 import { getCollection, getEntry } from 'astro:content';
 
 const page = (await getEntry('privateEventsIndexPage', 'private-events'))!.data;
+const eventTypeOrder = page.types?.order ?? [];
 const eventTypes = (await getCollection('privateEventTypes'))
   .map((entry) => entry.data)
-  .sort((a, b) => page.types.order.indexOf(a.slug) - page.types.order.indexOf(b.slug));
+  .sort((a, b) => eventTypeOrder.indexOf(a.slug) - eventTypeOrder.indexOf(b.slug));
 const processSteps = (await getCollection('privateEventsProcessSteps')).sort((a, b) => a.data.step.localeCompare(b.data.step)).map((entry) => entry.data);
 ---
 
@@ -27,7 +28,7 @@ const processSteps = (await getCollection('privateEventsProcessSteps')).sort((a,
   />
 
   <!-- STATS -->
-  <StatBar items={page.stats} />
+  <StatBar items={page.stats ?? []} />
 
   <!-- WHY MISS B'S — venue-14 fresh image -->
   <SplitSection
@@ -37,9 +38,9 @@ const processSteps = (await getCollection('privateEventsProcessSteps')).sort((a,
     heading={page.why.heading}
     imageLeft={true}
   >
-    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.why.body[0]}\n`} />
-    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.why.body[1]}\n`} />
-    <a href={page.why.cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.why.cta.label}\n`} />
+    {page.why.body?.[0] && <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.why.body[0]}\n`} />}
+    {page.why.body?.[1] && <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.why.body[1]}\n`} />}
+    {page.why.cta && <a href={page.why.cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.why.cta.label}\n`} />}
   </SplitSection>
 
   <!-- EVENT TYPES GRID -->

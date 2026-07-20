@@ -4,7 +4,7 @@
     "description": "The Miss B's Coconut Club blog — local guides to Mission Beach dining, San Diego bar recommendations, private event planning tips, and stories from our tropical kitchen and bar."
   },
   "hero": {
-    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp",
+    "imageSrc": "/images/keystatic/blog-index-hero/miss-bs-coconut-club-mission-beach-venue-15.webp",
     "imageAlt": "Miss B's Coconut Club Mission Beach San Diego blog",
     "eyebrow": "Stories, Guides & Local Tips",
     "heading": "The Blog"
@@ -26,7 +26,7 @@
     ]
   },
   "postCta": {
-    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp",
+    "imageSrc": "/images/keystatic/blog-post-cta/miss-bs-coconut-club-mission-beach-venue-15.webp",
     "imageAlt": "Miss B's Coconut Club Mission Beach San Diego",
     "heading": "Come Experience It in Person",
     "body": "3704 Mission Blvd, Mission Beach, San Diego. Open daily.",

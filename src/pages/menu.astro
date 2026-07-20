@@ -6,9 +6,10 @@ import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
 import { getCollection, getEntry } from 'astro:content';
 
 const page = (await getEntry('menuPage', 'menu'))!.data;
+const categoryOrder = page.categories?.order ?? [];
 const categories = (await getCollection('menuCategoryCards'))
   .map((entry) => entry.data)
-  .sort((a, b) => page.categories.order.indexOf(a.slug) - page.categories.order.indexOf(b.slug));
+  .sort((a, b) => categoryOrder.indexOf(a.slug) - categoryOrder.indexOf(b.slug));
 ---
 
 <Layout
@@ -62,7 +63,7 @@ const categories = (await getCollection('menuCategoryCards'))
         gap={true}
         labelPadding="p-3"
         labelTracking="tracking-[0.15em]"
-        items={page.food.grid}
+        items={page.food.grid ?? []}
       />
     </div>
   </section>
@@ -79,7 +80,7 @@ const categories = (await getCollection('menuCategoryCards'))
         gap={true}
         labelPadding="p-3"
         labelTracking="tracking-[0.15em]"
-        items={page.cocktails.grid}
+        items={page.cocktails.grid ?? []}
       />
     </div>
   </section>
@@ -97,7 +98,7 @@ const categories = (await getCollection('menuCategoryCards'))
     headingSize="medium"
   >
     <p class="text-coastal-text-main/80 text-base leading-relaxed max-w-[40ch]" set:html={`\n${page.brunch.body}\n`} />
-    <a href={page.brunch.cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.brunch.cta.label}\n`} />
+    {page.brunch.cta && <a href={page.brunch.cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.brunch.cta.label}\n`} />}
   </SplitSection>
 
 </Layout>

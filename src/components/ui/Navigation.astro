@@ -3,8 +3,8 @@ import { getEntry } from 'astro:content';
 
 const navData = (await getEntry('navigation', 'navigation'))!.data;
 const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
-const navItems = navData.main;
-const ctas = navData.ctas;
+const navItems = navData.main ?? [];
+const ctas = navData.ctas ?? [];
 const phoneDisplay = siteProfile.phone;
 const phoneHref = `tel:+1${phoneDisplay.replace(/\D/g, '')}`;
 ---

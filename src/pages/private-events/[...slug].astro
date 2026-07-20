@@ -38,7 +38,7 @@ const page = (await getEntry('privateEventsIndexPage', 'private-events'))!.data;
     minHeight="620px"
     headingSize="medium"
   >
-    {event.body.map((para) => (
+    {(event.body ?? []).map((para) => (
       <p class="text-coastal-text-muted text-base leading-relaxed">{para}</p>
     ))}
     <a href={page.detail.submitHref} class="self-start mt-2 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.detail.submitLabel}\n`} />
@@ -53,7 +53,7 @@ const page = (await getEntry('privateEventsIndexPage', 'private-events'))!.data;
         <div class="h-px w-16 bg-coastal-coral"></div>
         <p class="text-coastal-text-muted text-base leading-relaxed mt-2" set:html={`\n${page.detail.includedBody}\n`} />
       </div>
-      <ChecklistItems items={event.includes} divided={true} />
+      <ChecklistItems items={event.includes ?? []} divided={true} />
     </div>
   </section>
 

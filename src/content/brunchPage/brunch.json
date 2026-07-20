@@ -4,7 +4,7 @@
     "description": "Brunch at Miss B's Coconut Club in Mission Beach, San Diego. Served daily until 2pm. Mimosas from the flamingo tap wall, tropical cocktails, and the best brunch plates on Mission Blvd."
   },
   "hero": {
-    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp",
+    "imageSrc": "/images/keystatic/brunch-page-hero/miss-bs-coconut-club-mission-beach-venue-07.webp",
     "imageAlt": "Miss B's Coconut Club brunch Mission Beach San Diego",
     "eyebrow": "Served Daily · Until 2pm",
     "heading": "Brunch<br />in Mission Beach",
@@ -29,7 +29,7 @@
     }
   ],
   "experience": {
-    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-08.webp",
+    "imageSrc": "/images/keystatic/brunch-page-experience/miss-bs-coconut-club-mission-beach-venue-08.webp",
     "imageAlt": "Miss B's Coconut Club brunch interior Mission Beach San Diego",
     "eyebrow": "The Brunch Experience",
     "heading": "Mission Beach's<br />Best Weekend Ritual",
@@ -57,58 +57,58 @@
     },
     "grid": [
       {
-        "src": "/images/brunch/miss-bs-brunch-mission-beach-coco-acai-bowl.webp",
+        "src": "/images/keystatic/brunch-page-food-grid/miss-bs-brunch-mission-beach-coco-acai-bowl.webp",
         "name": "Coco Açaí Bowl",
         "alt": "Miss B's Coconut Club Coco Açaí Bowl brunch Mission Beach San Diego"
       },
       {
-        "src": "/images/brunch/miss-bs-brunch-mission-beach-easy-bs-breakfast.webp",
+        "src": "/images/keystatic/brunch-page-food-grid/miss-bs-brunch-mission-beach-easy-bs-breakfast.webp",
         "name": "Easy B's Breakfast",
         "alt": "Miss B's Coconut Club Easy B's Breakfast brunch Mission Beach San Diego"
       },
       {
-        "src": "/images/brunch/miss-bs-brunch-mission-beach-dsc08532.webp",
+        "src": "/images/keystatic/brunch-page-food-grid/miss-bs-brunch-mission-beach-dsc08532.webp",
         "name": "Pete's Biscuits and Gravy",
         "alt": "Miss B's Coconut Club Pete's Biscuits and Gravy brunch Mission Beach San Diego"
       },
       {
-        "src": "/images/brunch/miss-bs-brunch-mission-beach-breakfast-tacos.webp",
+        "src": "/images/keystatic/brunch-page-food-grid/miss-bs-brunch-mission-beach-breakfast-tacos.webp",
         "name": "Breakfast Tacos",
         "alt": "Miss B's Coconut Club Breakfast Tacos brunch Mission Beach San Diego"
       },
       {
-        "src": "/images/brunch/miss-bs-brunch-mission-beach-french-toast.webp",
+        "src": "/images/keystatic/brunch-page-food-grid/miss-bs-brunch-mission-beach-french-toast.webp",
         "name": "French Toast",
         "alt": "Miss B's Coconut Club French Toast brunch Mission Beach San Diego"
       },
       {
-        "src": "/images/food/miss-bs-coconut-club-food-mission-beach-42.webp",
+        "src": "/images/keystatic/brunch-page-food-grid/miss-bs-coconut-club-food-mission-beach-42.webp",
         "name": "Egg Sandwich",
         "alt": "Miss B's Coconut Club Egg Sandwich brunch Mission Beach San Diego"
       }
     ]
   },
   "cocktails": {
-    "imageSrc": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-34.webp",
+    "imageSrc": "/images/keystatic/brunch-page-cocktails-feature/miss-bs-coconut-club-cocktail-mission-beach-34.webp",
     "imageAlt": "Miss B's Coconut Club mimosas at flamingo tap bar Mission Beach San Diego",
     "eyebrow": "Brunch Cocktails",
     "heading": "Mimosas &amp; Morning<br />Cocktails on Tap",
     "body": "Mimosas poured in front of 24 copper flamingo taps. Tropical morning cocktails, Bloody Marys, and the full Miss B&apos;s bar program available daily during brunch hours.",
     "grid": [
       {
-        "src": "/images/brunch/miss-bs-brunch-mission-beach-img-6968.webp",
+        "src": "/images/keystatic/brunch-page-cocktails-grid/miss-bs-brunch-mission-beach-img-6968.webp",
         "alt": "Miss B's Coconut Club Brunch Cocktail Mission Beach San Diego"
       },
       {
-        "src": "/images/brunch/miss-bs-brunch-mission-beach-img-6969.webp",
+        "src": "/images/keystatic/brunch-page-cocktails-grid/miss-bs-brunch-mission-beach-img-6969.webp",
         "alt": "Miss B's Coconut Club Morning Drink brunch Mission Beach San Diego"
       },
       {
-        "src": "/images/cocktails/miss-bs-coconut-club-cocktail-mission-beach-20.webp",
+        "src": "/images/keystatic/brunch-page-cocktails-grid/miss-bs-coconut-club-cocktail-mission-beach-20.webp",
         "alt": "Miss B's Coconut Club Rose and Champagne brunch Mission Beach San Diego"
       },
       {
-        "src": "/images/brunch/miss-bs-brunch-mission-beach-img-6982.webp",
+        "src": "/images/keystatic/brunch-page-cocktails-grid/miss-bs-brunch-mission-beach-img-6982.webp",
         "alt": "Miss B's Coconut Club Brunch Cocktail Mission Beach San Diego"
       }
     ]
@@ -119,7 +119,7 @@
     "body": "Everything you need to know before you show up."
   },
   "cta": {
-    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp",
+    "imageSrc": "/images/keystatic/brunch-page-cta/miss-bs-coconut-club-mission-beach-venue-03.webp",
     "imageAlt": "Miss B's Coconut Club outdoor patio Mission Beach San Diego",
     "eyebrow": "Served Daily",
     "heading": "Brunch, Every Day",

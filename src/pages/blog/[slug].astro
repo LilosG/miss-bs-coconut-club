@@ -78,8 +78,8 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
     py="py-20"
     gap="gap-5"
   >
-    <a href={page.postCta.links[0].href} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.postCta.links[0].label}\n`} />
-    <a href={page.postCta.links[1].href} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300" set:html={`\n${page.postCta.links[1].label}\n`} />
+    {page.postCta.links?.[0] && <a href={page.postCta.links[0].href} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.postCta.links[0].label}\n`} />}
+    {page.postCta.links?.[1] && <a href={page.postCta.links[1].href} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300" set:html={`\n${page.postCta.links[1].label}\n`} />}
   </CtaBand>
 
 </Layout>

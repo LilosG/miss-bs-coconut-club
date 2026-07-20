@@ -4,7 +4,7 @@ interface Props {
   divided?: boolean
 }
 
-const { items, divided = false } = Astro.props;
+const { items = [], divided = false } = Astro.props;
 ---
 
 {divided ? (

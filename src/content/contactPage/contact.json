@@ -4,7 +4,7 @@
     "description": "Contact Miss B's Coconut Club in Mission Beach, San Diego. Make a reservation, inquire about private events, or get directions to 3704 Mission Blvd."
   },
   "hero": {
-    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-04.webp",
+    "imageSrc": "/images/keystatic/contact-page-hero/miss-bs-coconut-club-mission-beach-venue-04.webp",
     "imageAlt": "Miss B's Coconut Club Mission Beach San Diego",
     "eyebrow": "3704 Mission Blvd · Mission Beach, San Diego",
     "heading": "Get in Touch"
@@ -41,7 +41,7 @@
     "iframeTitle": "Private Event Inquiry Form"
   },
   "hours": {
-    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-08.webp",
+    "imageSrc": "/images/keystatic/contact-page-hours/miss-bs-coconut-club-mission-beach-venue-08.webp",
     "imageAlt": "Miss B's Coconut Club interior Mission Beach San Diego",
     "eyebrow": "Hours of Operation",
     "heading": "When We're Open",

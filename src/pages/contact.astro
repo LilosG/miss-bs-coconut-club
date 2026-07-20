@@ -27,27 +27,27 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
     <div class="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-px bg-coastal-bg-card">
 
       <!-- Reservations -->
-      <div class="bg-coastal-bg-pure p-10 flex flex-col gap-5">
+      {page.cards?.[0] && <div class="bg-coastal-bg-pure p-10 flex flex-col gap-5">
         <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">{page.cards[0].eyebrow}</p>
         <h2 class="font-serif text-3xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.cards[0].heading}\n`} />
         <div class="h-px w-12 bg-coastal-coral"></div>
-        <p class="text-coastal-text-muted text-sm leading-relaxed flex-1" set:html={`\n${page.cards[0].body}\n`} />
+        {page.cards[0].body && <p class="text-coastal-text-muted text-sm leading-relaxed flex-1" set:html={`\n${page.cards[0].body}\n`} />}
         <a href={"tel:" + siteProfile.phone} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
           {siteProfile.phone}
         </a>
-      </div>
+      </div>}
 
       <!-- Private Events -->
-      <div class="bg-coastal-bg-pure p-10 flex flex-col gap-5">
+      {page.cards?.[1] && <div class="bg-coastal-bg-pure p-10 flex flex-col gap-5">
         <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">{page.cards[1].eyebrow}</p>
         <h2 class="font-serif text-3xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.cards[1].heading}\n`} />
         <div class="h-px w-12 bg-coastal-coral"></div>
-        <p class="text-coastal-text-muted text-sm leading-relaxed flex-1" set:html={`\n${page.cards[1].body}\n`} />
-        <a href={page.cards[1].cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.cards[1].cta.label}\n`} />
-      </div>
+        {page.cards[1].body && <p class="text-coastal-text-muted text-sm leading-relaxed flex-1" set:html={`\n${page.cards[1].body}\n`} />}
+        {typeof page.cards[1].cta === 'object' && page.cards[1].cta && <a href={page.cards[1].cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.cards[1].cta.label}\n`} />}
+      </div>}
 
       <!-- Location -->
-      <div class="bg-coastal-bg-pure p-10 flex flex-col gap-5">
+      {page.cards?.[2] && <div class="bg-coastal-bg-pure p-10 flex flex-col gap-5">
         <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">{page.cards[2].eyebrow}</p>
         <h2 class="font-serif text-3xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.cards[2].heading}\n`} />
         <div class="h-px w-12 bg-coastal-coral"></div>
@@ -55,8 +55,8 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
           <span>{siteProfile.address.streetAddress}</span>
           <span>{siteProfile.address.addressLocality}, {siteProfile.address.addressRegion} {siteProfile.address.postalCode}</span>
         </address>
-        <a href={mapsURL} target="_blank" rel="noopener noreferrer" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.cards[2].cta.label}\n`} />
-      </div>
+        {typeof page.cards[2].cta === 'object' && page.cards[2].cta && <a href={mapsURL} target="_blank" rel="noopener noreferrer" class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.cards[2].cta.label}\n`} />}
+      </div>}
 
     </div>
   </section>
@@ -90,7 +90,7 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
     headingSize="medium"
   >
     <dl class="flex flex-col divide-y divide-coastal-text-muted/10">
-      {siteProfile.hours.general.map((item: { label: string; display: string }) => (
+      {(siteProfile.hours?.general ?? []).map((item: { label: string; display: string }) => (
         <div class="flex justify-between items-center py-4 gap-8">
           <dt class="text-sm text-coastal-text-muted">{item.label}</dt>
           <dd class="text-sm font-semibold text-coastal-text-main">{item.display}</dd>
@@ -98,8 +98,8 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
       ))}
     </dl>
     <div class="pt-2 flex flex-col gap-1">
-      <p class="text-xs text-coastal-coral font-semibold tracking-wide">{page.hours.notes[0]}</p>
-      <p class="text-xs text-coastal-coral font-semibold tracking-wide">{page.hours.notes[1]}</p>
+      {page.hours.notes?.[0] && <p class="text-xs text-coastal-coral font-semibold tracking-wide">{page.hours.notes[0]}</p>}
+      {page.hours.notes?.[1] && <p class="text-xs text-coastal-coral font-semibold tracking-wide">{page.hours.notes[1]}</p>}
     </div>
   </SplitSection>
 
@@ -112,14 +112,14 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
         <p class="text-coastal-text-muted text-sm" set:html={`\n${page.social.body}\n`} />
       </div>
       <div class="flex flex-wrap gap-3 justify-center">
-        <a href={siteProfile.social.instagram} target="_blank" rel="noopener noreferrer"
+        {page.social.links?.[0] && <a href={siteProfile.social.instagram} target="_blank" rel="noopener noreferrer"
            class="px-8 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200"
            set:html={`\n${page.social.links[0].label}\n`}
-        />
-        <a href={siteProfile.social.facebook} target="_blank" rel="noopener noreferrer"
+        />}
+        {page.social.links?.[1] && <a href={siteProfile.social.facebook} target="_blank" rel="noopener noreferrer"
            class="px-8 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200"
            set:html={`\n${page.social.links[1].label}\n`}
-        />
+        />}
       </div>
     </div>
   </section>
