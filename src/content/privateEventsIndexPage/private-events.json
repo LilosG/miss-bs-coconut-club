@@ -4,7 +4,7 @@
     "description": "Host your private event at Miss B's Coconut Club in Mission Beach, San Diego. Birthday parties, corporate events, bachelorette parties, and full venue buyouts at 3704 Mission Blvd."
   },
   "hero": {
-    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp",
+    "imageSrc": "/images/keystatic/private-events-index-hero/miss-bs-coconut-club-mission-beach-venue-03.webp",
     "imageAlt": "Miss B's Coconut Club private events outdoor patio Mission Beach San Diego",
     "eyebrow": "Mission Beach's Premier Outdoor Event Venue",
     "heading": "Private Events",
@@ -29,7 +29,7 @@
     }
   ],
   "why": {
-    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-14.webp",
+    "imageSrc": "/images/keystatic/private-events-index-why/miss-bs-coconut-club-mission-beach-venue-14.webp",
     "imageAlt": "Miss B's Coconut Club private event space Mission Beach San Diego",
     "eyebrow": "Why Miss B's",
     "heading": "A Venue Worth<br />Showing Off",
@@ -67,8 +67,8 @@
     "iframeTitle": "Private Event Inquiry Form"
   },
   "detail": {
-    "heroImage": "/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp",
-    "splitImage": "/images/venue/miss-bs-coconut-club-mission-beach-venue-13.webp",
+    "heroImage": "/images/keystatic/private-events-detail-hero/miss-bs-coconut-club-mission-beach-venue-03.webp",
+    "splitImage": "/images/keystatic/private-events-detail-split/miss-bs-coconut-club-mission-beach-venue-13.webp",
     "splitHeading": "Everything You Need<br />for a Perfect Event",
     "submitLabel": "Submit an Inquiry",
     "submitHref": "#inquiry",

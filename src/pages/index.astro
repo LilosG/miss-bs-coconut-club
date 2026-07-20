@@ -9,11 +9,11 @@ const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
 const page = (await getEntry('home', 'home'))!.data;
 const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.address.streetAddress + " " + siteProfile.address.addressLocality + " " + siteProfile.address.addressRegion;
 
-const cocktailGrid = page.cocktailGrid;
-const foodRight    = page.food.grid;
+const cocktailGrid = page.cocktailGrid ?? [];
+const foodRight    = page.food?.grid ?? [];
 
-const happyHourActive = siteProfile.hours.happyHour.find((h: { closed?: boolean }) => !h.closed);
-const happyHourOffDays = siteProfile.hours.happyHour.find((h: { closed?: boolean }) => h.closed);
+const happyHourActive = siteProfile.hours?.happyHour?.find((h: { closed?: boolean }) => !h.closed);
+const happyHourOffDays = siteProfile.hours?.happyHour?.find((h: { closed?: boolean }) => h.closed);
 ---
 
 <Layout
@@ -37,30 +37,32 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h: { closed?: boolean
       <h1 class="font-serif text-5xl md:text-7xl font-light leading-[0.9] tracking-tight text-coastal-bg-pure italic" set:html={`\n${page.hero.heading}<br> <span class="italic text-coastal-coral">${page.hero.headingAccent}</span> `} />
       <p class="max-w-lg text-base text-coastal-bg-card/90 leading-relaxed font-light tracking-wide" set:html={`\n${page.hero.subheading}\n`} />
       <div class="flex flex-wrap items-center justify-center gap-4 mt-2">
-        <a href={page.hero.ctas[0].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.hero.ctas[0].label}\n`} />
-        <a href={page.hero.ctas[1].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/60 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300" set:html={`\n${page.hero.ctas[1].label}\n`} />
+        {page.hero.ctas?.[0] && <a href={page.hero.ctas[0].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.hero.ctas[0].label}\n`} />}
+        {page.hero.ctas?.[1] && <a href={page.hero.ctas[1].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/60 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300" set:html={`\n${page.hero.ctas[1].label}\n`} />}
       </div>
     </div>
 
     <div class="absolute bottom-0 left-0 right-0 z-10 bg-coastal-text-main/80 backdrop-blur-md border-t border-coastal-bg-pure/10">
       <div class="mx-auto max-w-7xl">
         <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-coastal-bg-pure/10">
-          <div class="flex flex-col items-center justify-center py-5 px-4 gap-1">
+          {page.hero.stats?.[0] && <div class="flex flex-col items-center justify-center py-5 px-4 gap-1">
             <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">{page.hero.stats[0].label}</span>
             <span class="text-xs text-coastal-bg-card text-center leading-relaxed" set:html={page.hero.stats[0].value} />
-          </div>
-          <div class="flex flex-col items-center justify-center py-5 px-4 gap-1">
+          </div>}
+          {page.hero.stats?.[1] && <div class="flex flex-col items-center justify-center py-5 px-4 gap-1">
             <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">{page.hero.stats[1].label}</span>
             <span class="text-xs text-coastal-bg-card text-center leading-relaxed">{page.hero.stats[1].value}</span>
-          </div>
-          <div class="flex flex-col items-center justify-center py-5 px-4 gap-1">
+          </div>}
+          {page.hero.stats?.[2] && <div class="flex flex-col items-center justify-center py-5 px-4 gap-1">
             <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">{page.hero.stats[2].label}</span>
             <span class="text-xs text-coastal-bg-card text-center leading-relaxed">{page.hero.stats[2].value}</span>
-          </div>
-          <div class="flex flex-col items-center justify-center py-5 px-4 gap-1">
+          </div>}
+          {page.hero.stats?.[3] && <div class="flex flex-col items-center justify-center py-5 px-4 gap-1">
             <span class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral">{page.hero.stats[3].label}</span>
-            <a href={page.hero.stats[3].href} class="text-xs text-coastal-gold-accent hover:text-coastal-bg-pure transition-colors tracking-wide">{page.hero.stats[3].value}</a>
-          </div>
+            {page.hero.stats[3].href
+              ? <a href={page.hero.stats[3].href} class="text-xs text-coastal-gold-accent hover:text-coastal-bg-pure transition-colors tracking-wide">{page.hero.stats[3].value}</a>
+              : <span class="text-xs text-coastal-bg-card text-center leading-relaxed">{page.hero.stats[3].value}</span>}
+          </div>}
         </div>
       </div>
     </div>
@@ -75,11 +77,11 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h: { closed?: boolean
     imageLeft={true}
     minHeight="700px"
   >
-    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.intro.body[0]}\n`} />
-    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.intro.body[1]}\n`} />
+    {page.intro.body?.[0] && <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.intro.body[0]}\n`} />}
+    {page.intro.body?.[1] && <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.intro.body[1]}\n`} />}
     <div class="flex flex-wrap gap-4 mt-2">
-      <a href={page.intro.ctas[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.intro.ctas[0].label}\n`} />
-      <a href={page.intro.ctas[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.intro.ctas[1].label}\n`} />
+      {page.intro.ctas?.[0] && <a href={page.intro.ctas[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.intro.ctas[0].label}\n`} />}
+      {page.intro.ctas?.[1] && <a href={page.intro.ctas[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.intro.ctas[1].label}\n`} />}
     </div>
   </SplitSection>
 
@@ -100,7 +102,7 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h: { closed?: boolean
         <h2 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95]" set:html={`\n${page.cocktailFeature.heading.replaceAll('<br />', '<br>')}\n`} />
         <div class="h-px w-16 bg-coastal-coral"></div>
         <p class="text-coastal-bg-card/85 text-base leading-relaxed" set:html={`\n${page.cocktailFeature.body}\n`} />
-        <a href={page.cocktailFeature.cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/30 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.cocktailFeature.cta.label}\n`} />
+        {page.cocktailFeature.cta && <a href={page.cocktailFeature.cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/30 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.cocktailFeature.cta.label}\n`} />}
       </div>
     </div>
   </section>
@@ -126,8 +128,8 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h: { closed?: boolean
   >
     <p class="text-coastal-text-muted text-base leading-relaxed max-w-[44ch]" set:html={`\n${happyHourActive ? `${page.happyHour.bodyPrefix}${happyHourActive.display}, ${happyHourActive.label}${page.happyHour.bodyMiddle}${happyHourOffDays ? `${page.happyHour.offDaysPrefix}${happyHourOffDays.label}.` : ''}` : ''} `} />
     <div class="flex flex-wrap gap-4 mt-2">
-      <a href={page.happyHour.ctas[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.happyHour.ctas[0].label}\n`} />
-      <a href={page.happyHour.ctas[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/25 text-coastal-text-main hover:bg-coastal-text-main hover:text-coastal-bg-pure transition-all duration-300" set:html={`\n${page.happyHour.ctas[1].label}\n`} />
+      {page.happyHour.ctas?.[0] && <a href={page.happyHour.ctas[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.happyHour.ctas[0].label}\n`} />}
+      {page.happyHour.ctas?.[1] && <a href={page.happyHour.ctas[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/25 text-coastal-text-main hover:bg-coastal-text-main hover:text-coastal-bg-pure transition-all duration-300" set:html={`\n${page.happyHour.ctas[1].label}\n`} />}
     </div>
   </SplitSection>
 
@@ -144,8 +146,8 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h: { closed?: boolean
   >
     <p class="text-coastal-text-main/80 text-base leading-relaxed max-w-[44ch]" set:html={`\n${page.brunch.body}\n`} />
     <div class="flex flex-wrap gap-4 mt-2">
-      <a href={page.brunch.ctas[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.brunch.ctas[0].label}\n`} />
-      <a href={page.brunch.ctas[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/25 text-coastal-text-main hover:bg-coastal-text-main hover:text-coastal-bg-pure transition-all duration-300" set:html={`\n${page.brunch.ctas[1].label}\n`} />
+      {page.brunch.ctas?.[0] && <a href={page.brunch.ctas[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.brunch.ctas[0].label}\n`} />}
+      {page.brunch.ctas?.[1] && <a href={page.brunch.ctas[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/25 text-coastal-text-main hover:bg-coastal-text-main hover:text-coastal-bg-pure transition-all duration-300" set:html={`\n${page.brunch.ctas[1].label}\n`} />}
     </div>
   </SplitSection>
 
@@ -158,7 +160,7 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h: { closed?: boolean
           <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.food.heading.replaceAll('<br />', '<br>')}\n`} />
           <div class="h-px w-16 bg-coastal-coral"></div>
         </div>
-        <a href={page.food.cta.href} class="shrink-0 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.food.cta.label}\n`} />
+        {page.food.cta && <a href={page.food.cta.href} class="shrink-0 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.food.cta.label}\n`} />}
       </div>
 
       <div class="grid grid-cols-3 gap-2">
@@ -204,8 +206,8 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h: { closed?: boolean
     minHeight="620px"
   >
     <p class="text-coastal-text-muted text-base leading-relaxed max-w-[44ch]" set:html={`\n${page.privateEvents.body}\n`} />
-    <ChecklistItems items={page.privateEvents.items} />
-    <a href={page.privateEvents.cta.href} class="self-start mt-4 px-7 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.privateEvents.cta.label}\n`} />
+    <ChecklistItems items={page.privateEvents.items ?? []} />
+    {page.privateEvents.cta && <a href={page.privateEvents.cta.href} class="self-start mt-4 px-7 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.privateEvents.cta.label}\n`} />}
   </SplitSection>
 
   <!-- ─── LOCATION BAR ──────────────────────────────────────────────────── -->
@@ -224,7 +226,7 @@ const happyHourOffDays = siteProfile.hours.happyHour.find((h: { closed?: boolean
         <a href={"tel:" + siteProfile.phone} class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200">
           {siteProfile.phone}
         </a>
-        <a href={page.location.reservation.href} class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.location.reservation.label}\n`} />
+        {page.location.reservation && <a href={page.location.reservation.href} class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.location.reservation.label}\n`} />}
         <a href={mapsURL} target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.location.directionsLabel}\n`} />
       </div>
     </div>

@@ -9,7 +9,7 @@ interface Props {
   cellPy?: 'py-5' | 'py-8'
 }
 
-const { items, cellPy = 'py-8' } = Astro.props;
+const { items = [], cellPy = 'py-8' } = Astro.props;
 
 const cellPyMap = {
   'py-5': 'py-5',

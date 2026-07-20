@@ -63,8 +63,8 @@ const page = (await getEntry('blogIndexPage', 'blog'))!.data;
         <p class="text-coastal-text-muted text-sm">{page.cta.body}</p>
       </div>
       <div class="flex flex-wrap gap-3 justify-center">
-        <a href={page.cta.links[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.cta.links[0].label}\n`} />
-        <a href={page.cta.links[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.cta.links[1].label}\n`} />
+        {page.cta.links?.[0] && <a href={page.cta.links[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.cta.links[0].label}\n`} />}
+        {page.cta.links?.[1] && <a href={page.cta.links[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.cta.links[1].label}\n`} />}
       </div>
     </div>
   </section>

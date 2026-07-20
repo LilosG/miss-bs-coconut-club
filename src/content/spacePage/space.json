@@ -4,7 +4,7 @@
     "description": "Explore Miss B's Coconut Club in Mission Beach San Diego. An open-air bar, tropical dining room, fire pit patio, and private event space at 3704 Mission Blvd."
   },
   "hero": {
-    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-15.webp",
+    "imageSrc": "/images/keystatic/space-page-hero/miss-bs-coconut-club-mission-beach-venue-15.webp",
     "imageAlt": "Miss B's Coconut Club teal open-air bar Mission Beach San Diego",
     "eyebrow": "3704 Mission Blvd · Mission Beach, San Diego",
     "heading": "The Space",
@@ -12,7 +12,7 @@
   },
   "sections": [
     {
-      "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-13.webp",
+      "imageSrc": "/images/keystatic/space-page-sections/miss-bs-coconut-club-mission-beach-venue-13.webp",
       "imageAlt": "Miss B's Coconut Club open-air teal bar window Mission Beach San Diego",
       "eyebrow": "The Bar",
       "heading": "The Open-Air Bar",
@@ -26,7 +26,7 @@
       }
     },
     {
-      "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-07.webp",
+      "imageSrc": "/images/keystatic/space-page-sections/miss-bs-coconut-club-mission-beach-venue-07.webp",
       "imageAlt": "Miss B's Coconut Club tropical dining room mural Mission Beach San Diego",
       "eyebrow": "Inside",
       "heading": "The Tropical<br />Dining Room",
@@ -40,7 +40,7 @@
       }
     },
     {
-      "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-03.webp",
+      "imageSrc": "/images/keystatic/space-page-sections/miss-bs-coconut-club-mission-beach-venue-03.webp",
       "imageAlt": "Miss B's Coconut Club outdoor patio pink umbrellas Mission Beach San Diego",
       "eyebrow": "Outside",
       "heading": "The Outdoor Patio",
@@ -55,7 +55,7 @@
     }
   ],
   "taps": {
-    "imageSrc": "/images/venue/miss-bs-coconut-club-mission-beach-venue-17.webp",
+    "imageSrc": "/images/keystatic/space-page-taps/miss-bs-coconut-club-mission-beach-venue-17.webp",
     "imageAlt": "Miss B's Coconut Club copper flamingo tap handles Mission Beach",
     "eyebrow": "The Draft System",
     "heading": "24 Taps.<br />All Flamingo.",
@@ -63,22 +63,22 @@
   },
   "gallery": [
     {
-      "src": "/images/venue/miss-bs-coconut-club-mission-beach-venue-02.webp",
+      "src": "/images/keystatic/space-page-gallery/miss-bs-coconut-club-mission-beach-venue-02.webp",
       "name": "The Bar",
       "alt": "Miss B's Coconut Club The Bar Mission Beach San Diego"
     },
     {
-      "src": "/images/venue/miss-bs-coconut-club-mission-beach-venue-10.webp",
+      "src": "/images/keystatic/space-page-gallery/miss-bs-coconut-club-mission-beach-venue-10.webp",
       "name": "The Patio",
       "alt": "Miss B's Coconut Club The Patio Mission Beach San Diego"
     },
     {
-      "src": "/images/venue/miss-bs-coconut-club-mission-beach-venue-12.webp",
+      "src": "/images/keystatic/space-page-gallery/miss-bs-coconut-club-mission-beach-venue-12.webp",
       "name": "The Dining Room",
       "alt": "Miss B's Coconut Club The Dining Room Mission Beach San Diego"
     },
     {
-      "src": "/images/venue/miss-bs-coconut-club-mission-beach-venue-16.webp",
+      "src": "/images/keystatic/space-page-gallery/miss-bs-coconut-club-mission-beach-venue-16.webp",
       "name": "The Interior",
       "alt": "Miss B's Coconut Club The Interior Mission Beach San Diego"
     }

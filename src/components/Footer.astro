@@ -4,7 +4,7 @@ import { GPH_NETWORK, GRIND_AND_PROSPER_URL } from '../data/gphNetwork';
 
 const footer = (await getEntry('footer', 'footer'))!.data;
 const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
-const footerLinks = footer.links;
+const footerLinks = footer.links ?? [];
 
 const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
 ---
@@ -50,7 +50,7 @@ const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
           <span class="text-sm text-coastal-text-muted">{siteProfile.address.addressLocality}, {siteProfile.address.addressRegion} {siteProfile.address.postalCode}</span>
         </address>
         <div class="flex flex-col gap-1 mt-2">
-          {siteProfile.hours.general.map((h: { label: string; display: string }) => (
+          {(siteProfile.hours?.general ?? []).map((h: { label: string; display: string }) => (
             <span class="text-sm text-coastal-text-muted">{h.label}: {h.display}</span>
           ))}
           <span class="text-xs text-coastal-coral/80 mt-1">{footer.brunchHours}</span>

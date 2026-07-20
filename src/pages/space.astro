@@ -24,45 +24,33 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
     overlayVia="via-coastal-text-main/20"
   />
 
-  <!-- THE OUTDOOR BAR — venue-13 shows the bar window open -->
-  <SplitSection
-    imageSrc={page.sections[0].imageSrc}
-    imageAlt={page.sections[0].imageAlt}
-    eyebrow={page.sections[0].eyebrow}
-    heading={page.sections[0].heading}
-    imageLeft={true}
-  >
-    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.sections[0].body[0]}\n`} />
-    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.sections[0].body[1]}\n`} />
-    <a href={page.sections[0].cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.sections[0].cta.label}\n`} />
-  </SplitSection>
-
-  <!-- THE DINING ROOM — venue-07 shows mural and tropical interior -->
-  <SplitSection
-    imageSrc={page.sections[1].imageSrc}
-    imageAlt={page.sections[1].imageAlt}
-    eyebrow={page.sections[1].eyebrow}
-    heading={page.sections[1].heading}
-    sectionBg="bg-coastal-bg-sand"
-  >
-    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.sections[1].body[0]}\n`} />
-    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.sections[1].body[1]}\n`} />
-    <a href={page.sections[1].cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.sections[1].cta.label}\n`} />
-  </SplitSection>
-
-  <!-- THE PATIO — venue-03 shows pink umbrellas and exterior -->
-  <SplitSection
-    imageSrc={page.sections[2].imageSrc}
-    imageAlt={page.sections[2].imageAlt}
-    eyebrow={page.sections[2].eyebrow}
-    heading={page.sections[2].heading}
-    imageLeft={true}
-    imagePosition="top"
-  >
-    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.sections[2].body[0]}\n`} />
-    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.sections[2].body[1]}\n`} />
-    <a href={page.sections[2].cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.sections[2].cta.label}\n`} />
-  </SplitSection>
+  {(page.sections ?? []).map((section, index) => (
+    <SplitSection
+      imageSrc={section.imageSrc}
+      imageAlt={section.imageAlt}
+      eyebrow={section.eyebrow}
+      heading={section.heading}
+      imageLeft={index !== 1}
+      sectionBg={index === 1 ? 'bg-coastal-bg-sand' : undefined}
+      imagePosition={index === 2 ? 'top' : undefined}
+    >
+      {(section.body ?? []).map((paragraph) => (
+        <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${paragraph}\n`} />
+      ))}
+      {section.cta && <a
+        href={section.cta.href}
+        class:list={[
+          'self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200',
+          index === 1
+            ? 'border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral'
+            : index === 2
+              ? 'bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent'
+              : 'bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent',
+        ]}
+        set:html={`\n${section.cta.label}\n`}
+      />}
+    </SplitSection>
+  ))}
 
   <!-- THE FLAMINGO BAR FEATURE — venue-17 copper taps -->
   <section class="relative overflow-hidden min-h-[560px] flex items-center">
@@ -85,7 +73,7 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
 
   <!-- VENUE PHOTO GRID — 4 images not used in split sections above -->
   <section class="bg-coastal-bg-pure">
-    <HoverImageGrid items={page.gallery} />
+    <HoverImageGrid items={page.gallery ?? []} />
   </section>
 
   <!-- LOCATION CTA -->
@@ -101,8 +89,8 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
         </p>
       </div>
       <div class="flex flex-wrap gap-3 justify-center">
-        <a href={page.location.ctas[0].href} class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.location.ctas[0].label}\n`} />
-        <a href={mapsURL} target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.location.ctas[1].label}\n`} />
+        {page.location.ctas?.[0] && <a href={page.location.ctas[0].href} class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/20 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.location.ctas[0].label}\n`} />}
+        {page.location.ctas?.[1] && <a href={mapsURL} target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.location.ctas[1].label}\n`} />}
       </div>
     </div>
   </section>

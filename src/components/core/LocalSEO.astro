@@ -15,9 +15,9 @@ const {
 
 const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
 
-const openingHoursSpecification = siteProfile.hours.general.map((h: { days: string[]; open: string; close: string }) => ({
+const openingHoursSpecification = (siteProfile.hours?.general ?? []).map((h: { days?: string[]; open?: string; close?: string }) => ({
   "@type": "OpeningHoursSpecification",
-  "dayOfWeek": h.days,
+  "dayOfWeek": h.days ?? [],
   "opens": h.open,
   "closes": h.close
 }));

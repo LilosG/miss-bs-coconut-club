@@ -25,7 +25,7 @@ const brunchFaqs = (await getCollection('brunchFaqs')).map((entry) => entry.data
   />
 
   <!-- STATS -->
-  <StatBar items={page.stats} />
+  <StatBar items={page.stats ?? []} />
 
   <SplitSection
     imageSrc={page.experience.imageSrc}
@@ -33,11 +33,11 @@ const brunchFaqs = (await getCollection('brunchFaqs')).map((entry) => entry.data
     eyebrow={page.experience.eyebrow}
     heading={page.experience.heading}
   >
-    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.experience.body[0]}\n`} />
-    <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.experience.body[1]}\n`} />
+    {page.experience.body?.[0] && <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.experience.body[0]}\n`} />}
+    {page.experience.body?.[1] && <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.experience.body[1]}\n`} />}
     <div class="flex flex-wrap gap-4 mt-2">
-      <a href={page.experience.ctas[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.experience.ctas[0].label}\n`} />
-      <a href={page.experience.ctas[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.experience.ctas[1].label}\n`} />
+      {page.experience.ctas?.[0] && <a href={page.experience.ctas[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.experience.ctas[0].label}\n`} />}
+      {page.experience.ctas?.[1] && <a href={page.experience.ctas[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.experience.ctas[1].label}\n`} />}
     </div>
   </SplitSection>
 
@@ -50,12 +50,12 @@ const brunchFaqs = (await getCollection('brunchFaqs')).map((entry) => entry.data
           <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.food.heading.replaceAll('<br />', '<br>')}\n`} />
           <div class="h-px w-16 bg-coastal-coral"></div>
         </div>
-        <a href={page.food.cta.href} class="shrink-0 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.food.cta.label}\n`} />
+        {page.food.cta && <a href={page.food.cta.href} class="shrink-0 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.food.cta.label}\n`} />}
       </div>
       <HoverImageGrid
         cols="2x3"
         gap={true}
-        items={page.food.grid}
+        items={page.food.grid ?? []}
       />
     </div>
   </section>
@@ -83,7 +83,7 @@ const brunchFaqs = (await getCollection('brunchFaqs')).map((entry) => entry.data
   <section class="bg-coastal-text-main">
     <HoverImageGrid
       showLabel={false}
-      items={page.cocktails.grid}
+      items={page.cocktails.grid ?? []}
     />
   </section>
 
@@ -116,8 +116,8 @@ const brunchFaqs = (await getCollection('brunchFaqs')).map((entry) => entry.data
     heading={page.cta.heading}
     body={page.cta.body}
   >
-    <a href={page.cta.links[0].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.cta.links[0].label}\n`} />
-    <a href={page.cta.links[1].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300" set:html={`\n${page.cta.links[1].label}\n`} />
+    {page.cta.links?.[0] && <a href={page.cta.links[0].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.cta.links[0].label}\n`} />}
+    {page.cta.links?.[1] && <a href={page.cta.links[1].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300" set:html={`\n${page.cta.links[1].label}\n`} />}
   </CtaBand>
 
 </Layout>
