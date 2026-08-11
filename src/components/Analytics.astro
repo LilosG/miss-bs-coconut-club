@@ -1,0 +1,69 @@
+---
+const GA_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+---
+{GA_ID && (
+  <script is:inline define:vars={{ GA_ID }}>
+    (function () {
+      var STORAGE_KEY = 'lilos-consent-v1';
+      var MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
+
+      function readStoredConsent() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return null;
+          var parsed = JSON.parse(raw);
+          if (!parsed || typeof parsed.ts !== 'number') return null;
+          if (Date.now() - parsed.ts > MAX_AGE_MS) return null;
+          return parsed;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function initAnalytics() {
+        if (window.__lilosGA4Loaded) return;
+        window.__lilosGA4Loaded = true;
+
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+        document.head.appendChild(s);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+
+        // Toast click-tracking — unchanged from prior implementation.
+        document.addEventListener('click', function (e) {
+          const link = e.target.closest('a[href*="toasttab.com"]');
+          if (!link) return;
+
+          let eventName = 'toast_link_click';
+          try {
+            const host = new URL(link.href).hostname;
+            if (host.includes('tables.toasttab.com')) eventName = 'reservation_click';
+            else if (host.includes('order.toasttab.com')) eventName = 'order_click';
+            else if (link.href.includes('invoice/lead')) eventName = 'inquiry_form_click';
+            else if (link.href.toLowerCase().includes('gift')) eventName = 'gift_card_click';
+          } catch (err) {}
+
+          if (typeof gtag === 'function') {
+            gtag('event', eventName, {
+              link_url: link.href,
+              page_path: window.location.pathname,
+            });
+          }
+        }, { passive: true });
+      }
+
+      var stored = readStoredConsent();
+      if (stored && stored.analytics) {
+        initAnalytics();
+      }
+
+      window.addEventListener('lilos-consent-accepted', initAnalytics);
+    })();
+  </script>
+)}

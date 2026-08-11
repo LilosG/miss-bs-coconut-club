@@ -1,0 +1,281 @@
+---
+// src/components/ConsentBanner.astro
+//
+// LILOs Growth shared consent banner. Blocks GA4 until the visitor accepts,
+// honors Global Privacy Control (GPC) automatically, and stores the choice
+// in localStorage. Zero dependencies, no third-party service, no recurring cost.
+//
+// USAGE — drop into BaseLayout.astro, inside <body>, once per site:
+//
+//   ---
+//   import ConsentBanner from '../components/ConsentBanner.astro';
+//   ---
+//   <ConsentBanner ga4Id="G-XXXXXXXXXX" siteName="Wheyland Electric" />
+//
+// The component owns GA4 loading entirely. Do NOT also paste Google's
+// gtag.js snippet elsewhere in the site — this component is the only
+// place GA4 should be initialized.
+
+interface Props {
+  /**
+   * GA4 Measurement ID, e.g. "G-ABC1234567" — OPTIONAL.
+   * Only pass this if the site has no separate Analytics.astro component
+   * of its own. If omitted, this banner does NOT load GA4 itself — it only
+   * manages consent state and dispatches a 'lilos-consent-accepted' event
+   * on window, which the site's own Analytics.astro should listen for
+   * before initializing anything. This is the GPH pattern: each site's
+   * Analytics.astro already owns its own click-tracking logic, so consent
+   * management and GA4 loading are kept separate rather than duplicated.
+   */
+  ga4Id?: string;
+  /** Used in the banner copy, e.g. "Wheyland Electric" */
+  siteName: string;
+  /** Path to the privacy policy page */
+  privacyPolicyUrl?: string;
+  /** How many days a stored consent choice is valid before re-asking */
+  consentDays?: number;
+}
+
+const {
+  ga4Id = '',
+  siteName,
+  privacyPolicyUrl = '/privacy',
+  consentDays = 365,
+} = Astro.props;
+---
+
+<div id="lilos-consent-banner" class="lilos-consent-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+  <div class="lilos-consent-inner">
+    <p class="lilos-consent-text">
+      {siteName} uses Google Analytics to understand site traffic. We only load it if you agree.
+      No data is shared with advertisers. See our <a href={privacyPolicyUrl}>Privacy Policy</a> for details.
+    </p>
+    <div class="lilos-consent-actions">
+      <button type="button" id="lilos-consent-reject" class="lilos-btn lilos-btn-secondary">Reject</button>
+      <button type="button" id="lilos-consent-accept" class="lilos-btn lilos-btn-primary">Accept</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .lilos-consent-banner {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: var(--consent-bg, #14161a);
+    color: var(--consent-text, #f4f4f5);
+    border-top: 1px solid var(--consent-border, rgba(255, 255, 255, 0.1));
+    padding: 1rem 1.25rem;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(0);
+    transition: transform 0.25s ease-out;
+  }
+
+  .lilos-consent-banner[hidden] {
+    display: none;
+  }
+
+  .lilos-consent-inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .lilos-consent-text {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    max-width: 48rem;
+    color: var(--consent-text, #f4f4f5);
+  }
+
+  .lilos-consent-text a {
+    color: var(--consent-accent, #7dd3fc);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .lilos-consent-actions {
+    display: flex;
+    gap: 0.625rem;
+    flex-shrink: 0;
+  }
+
+  .lilos-btn {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.5rem 1.125rem;
+    border-radius: 0.375rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+
+  .lilos-btn:hover {
+    opacity: 0.85;
+  }
+
+  .lilos-btn:focus-visible {
+    outline: 2px solid var(--consent-accent, #7dd3fc);
+    outline-offset: 2px;
+  }
+
+  .lilos-btn-primary {
+    background: var(--consent-accent, #f4f4f5);
+    color: var(--consent-bg, #14161a);
+  }
+
+  .lilos-btn-secondary {
+    background: transparent;
+    color: var(--consent-text, #f4f4f5);
+    border-color: var(--consent-border, rgba(255, 255, 255, 0.3));
+  }
+
+  @media (max-width: 640px) {
+    .lilos-consent-inner {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .lilos-consent-actions {
+      justify-content: flex-end;
+    }
+  }
+</style>
+
+<script is:inline define:vars={{ ga4Id, consentDays }}>
+  (function () {
+    var STORAGE_KEY = 'lilos-consent-v1';
+    var maxAgeMs = consentDays * 24 * 60 * 60 * 1000;
+
+    function readStoredConsent() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return null;
+        var parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed.ts !== 'number') return null;
+        if (Date.now() - parsed.ts > maxAgeMs) return null; // expired, re-ask
+        return parsed;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function storeConsent(analytics) {
+      var record = { analytics: !!analytics, ts: Date.now() };
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(record));
+      } catch (e) {
+        /* localStorage unavailable — consent still applied for this session */
+      }
+      return record;
+    }
+
+    function loadGA4Directly() {
+      // Only used when this banner is the sole owner of GA4 (no site-specific
+      // Analytics.astro exists). GPH sites don't use this path — see applyConsent.
+      if (!ga4Id || window.__lilosGA4Loaded) return;
+      window.__lilosGA4Loaded = true;
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(ga4Id);
+      document.head.appendChild(script);
+    }
+
+    function applyConsent(analytics) {
+      if (!analytics) return;
+      // Always dispatch — a site's own Analytics.astro listens for this
+      // and owns its own GA4 init + click-tracking (the GPH pattern).
+      window.dispatchEvent(new Event('lilos-consent-accepted'));
+      // Fallback for sites with no separate Analytics.astro of their own.
+      loadGA4Directly();
+    }
+
+    function showBanner() {
+      var el = document.getElementById('lilos-consent-banner');
+      if (el) el.hidden = false;
+    }
+
+    function hideBanner() {
+      var el = document.getElementById('lilos-consent-banner');
+      if (el) el.hidden = true;
+    }
+
+    function hasGPC() {
+      return (
+        navigator.globalPrivacyControl === true ||
+        (window.doNotTrack === '1') ||
+        (navigator.doNotTrack === '1')
+      );
+    }
+
+    function init() {
+      var stored = readStoredConsent();
+
+      if (stored) {
+        applyConsent(stored.analytics);
+        return; // choice already made and still valid — no banner
+      }
+
+      if (hasGPC()) {
+        // Honor the signal automatically: store a denial, no banner needed.
+        storeConsent(false);
+        return;
+      }
+
+      showBanner();
+
+      var acceptBtn = document.getElementById('lilos-consent-accept');
+      var rejectBtn = document.getElementById('lilos-consent-reject');
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', function () {
+          storeConsent(true);
+          applyConsent(true);
+          hideBanner();
+        });
+      }
+
+      if (rejectBtn) {
+        rejectBtn.addEventListener('click', function () {
+          storeConsent(false);
+          applyConsent(false);
+          hideBanner();
+        });
+      }
+    }
+
+    // Expose a small runtime API so a footer "Privacy Choices" link
+    // can let visitors change their mind later.
+    window.lilosConsent = {
+      get: readStoredConsent,
+      reset: function () {
+        try {
+          localStorage.removeItem(STORAGE_KEY);
+        } catch (e) {}
+        window.__lilosGA4Loaded = false;
+        showBanner();
+      },
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
