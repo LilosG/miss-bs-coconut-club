@@ -10,21 +10,13 @@ const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
 ---
 
 <footer class="bg-coastal-text-main text-coastal-bg-sand">
-
-  <!-- Gold rule top -->
   <div class="h-px bg-gradient-to-r from-transparent via-coastal-coral/40 to-transparent"></div>
 
   <div class="mx-auto max-w-7xl px-6 py-16">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-coastal-text-muted/20">
-
-      <!-- Brand column -->
       <div class="flex flex-col gap-4">
         <a href="/" class="block w-fit">
-          <img
-            src={footer.logo.src}
-            alt={footer.logo.alt}
-            class="h-14 w-auto"
-          />
+          <img src={footer.logo.src} alt={footer.logo.alt} class="h-14 w-auto" />
         </a>
         <p class="text-sm text-coastal-text-muted leading-relaxed max-w-[28ch]" set:html={`\n${footer.description}\n`} />
         <a href={"tel:" + siteProfile.phone} class="text-sm text-coastal-gold-accent hover:text-coastal-bg-sand transition-colors duration-200 w-fit">
@@ -32,7 +24,6 @@ const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
         </a>
       </div>
 
-      <!-- Nav column -->
       <nav class="flex flex-col gap-3">
         <p class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-coral mb-1">{footer.exploreHeading}</p>
         {footerLinks.map((item: { label: string; href: string }) => (
@@ -42,7 +33,6 @@ const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
         ))}
       </nav>
 
-      <!-- Hours + Address column -->
       <div class="flex flex-col gap-3">
         <p class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-coral mb-1">{footer.visitHeading}</p>
         <address class="not-italic flex flex-col gap-1">
@@ -56,10 +46,8 @@ const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
           <span class="text-xs text-coastal-coral/80 mt-1">{footer.brunchHours}</span>
         </div>
       </div>
-
     </div>
 
-    <!-- GPH Network row -->
     <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 pt-6 pb-6 border-b border-coastal-text-muted/20">
       <a href={GRIND_AND_PROSPER_URL} target="_blank" rel="noopener noreferrer"
         class="text-[10px] font-bold tracking-[0.28em] uppercase text-coastal-text-muted/60 hover:text-coastal-gold-accent transition-colors whitespace-nowrap"
@@ -75,15 +63,18 @@ const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
       </div>
     </div>
 
-    <!-- Bottom bar -->
     <div class="pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
       <p class="text-xs text-coastal-text-muted" set:html={`\n&copy; ${new Date().getFullYear()} ${footer.copyrightName}\n`} />
-      <p class="text-xs text-coastal-text-muted" set:html={`\n${siteProfile.address.streetAddress} · Mission Beach, ${siteProfile.address.addressLocality}\n`} />
+      <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+        <p class="text-xs text-coastal-text-muted" set:html={`\n${siteProfile.address.streetAddress} · Mission Beach, ${siteProfile.address.addressLocality}\n`} />
+        <a href="/privacy#choices" class="text-xs text-coastal-text-muted hover:text-coastal-gold-accent transition-colors duration-200">
+          Your Privacy Choices
+        </a>
+      </div>
       <a href={footer.credit.href} target="_blank" rel="noopener noreferrer"
         class="text-[13px] text-coastal-text-muted hover:text-coastal-gold-accent transition-colors"
         set:html={`\n${footer.credit.label}\n`}
       />
     </div>
-
   </div>
 </footer>

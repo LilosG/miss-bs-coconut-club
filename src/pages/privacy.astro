@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getEntry } from 'astro:content';
+
+const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
+---
+
+<Layout
+  title="Privacy Policy | Miss B's Coconut Club"
+  description="Miss B's Coconut Club privacy policy, notice at collection, and analytics privacy choices."
+>
+  <section class="mx-auto max-w-3xl px-6 py-24">
+    <p class="text-xs font-bold tracking-[0.28em] uppercase text-coastal-coral mb-4">Mission Beach, San Diego</p>
+    <h1 class="font-serif text-5xl md:text-6xl text-coastal-text-main mb-10">Privacy Policy</h1>
+
+    <h2 class="font-serif text-3xl text-coastal-text-main mt-12 mb-4">Notice at Collection</h2>
+    <p class="text-coastal-text-muted leading-relaxed mb-5">
+      When you visit this website, Google Analytics may collect internet and network activity information on our behalf, including pages viewed, referring website, approximate location derived from IP address, device and browser information, and online identifiers such as analytics cookie IDs.
+    </p>
+    <p class="text-coastal-text-muted leading-relaxed mb-5">
+      We use this information to measure site traffic, understand how visitors use the website, and improve the experience. Google Analytics is configured with advertising storage, ad user data, ad personalization, Google Signals, and ads personalization signals disabled.
+    </p>
+    <p class="text-coastal-text-muted leading-relaxed mb-5">
+      We do not use this website analytics data for cross-context behavioral advertising. You can opt out of Google Analytics measurement on this site at any time using the control below.
+    </p>
+
+    <h2 id="choices" class="font-serif text-3xl text-coastal-text-main mt-16 mb-4">Your Privacy Choices</h2>
+    <p class="text-coastal-text-muted leading-relaxed mb-6">
+      Your preference is stored locally in this browser and does not expire. If your browser sends a Global Privacy Control signal, Google Analytics is not loaded.
+    </p>
+
+    <div id="privacy-choices-panel" class="border border-coastal-text-muted/20 bg-coastal-bg-card p-6 rounded-sm">
+      <p id="privacy-status" class="text-sm text-coastal-text-muted mb-4">Checking your current preference…</p>
+      <button
+        id="privacy-toggle-btn"
+        type="button"
+        class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold tracking-[0.18em] uppercase bg-coastal-coral text-white hover:opacity-90 transition-opacity"
+      >
+        Loading…
+      </button>
+    </div>
+
+    <h2 class="font-serif text-3xl text-coastal-text-main mt-16 mb-4">Contact</h2>
+    <address class="not-italic text-coastal-text-muted leading-relaxed">
+      {siteProfile.venueName}<br />
+      {siteProfile.address.streetAddress}<br />
+      {siteProfile.address.addressLocality}, {siteProfile.address.addressRegion} {siteProfile.address.postalCode}<br />
+      <a href={`tel:${siteProfile.phone}`} class="text-coastal-coral hover:underline">{siteProfile.phone}</a>
+    </address>
+  </section>
+</Layout>
+
+<script is:inline>
+  (function () {
+    var STORAGE_KEY = 'lilos-privacy-v1';
+
+    function isOptedOut() {
+      if (window.lilosPrivacy && typeof window.lilosPrivacy.isOptedOut === 'function') {
+        return window.lilosPrivacy.isOptedOut();
+      }
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return false;
+        var parsed = JSON.parse(raw);
+        return !!(parsed && parsed.optOut);
+      } catch (e) { return false; }
+    }
+
+    function updateUI() {
+      var status = document.getElementById('privacy-status');
+      var btn = document.getElementById('privacy-toggle-btn');
+      if (!status || !btn) return;
+
+      if (navigator.globalPrivacyControl === true) {
+        status.textContent = 'Your browser sends a Global Privacy Control signal. Google Analytics is not loaded for this browser.';
+        btn.style.display = 'none';
+        return;
+      }
+
+      if (isOptedOut()) {
+        status.textContent = 'You are currently opted out. Google Analytics is disabled for this browser.';
+        btn.textContent = 'Opt back in';
+        btn.onclick = function () {
+          if (window.lilosPrivacy && typeof window.lilosPrivacy.optIn === 'function') {
+            window.lilosPrivacy.optIn();
+          } else {
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ optOut: false, ts: Date.now() })); } catch (e) {}
+          }
+          updateUI();
+        };
+      } else {
+        status.textContent = 'You are currently opted in. Google Analytics is active for this browser.';
+        btn.textContent = 'Opt out';
+        btn.onclick = function () {
+          if (window.lilosPrivacy && typeof window.lilosPrivacy.optOut === 'function') {
+            window.lilosPrivacy.optOut();
+          } else {
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ optOut: true, ts: Date.now() })); } catch (e) {}
+          }
+          updateUI();
+        };
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateUI);
+    } else {
+      updateUI();
+    }
+  })();
+</script>
