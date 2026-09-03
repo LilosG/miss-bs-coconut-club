@@ -40,11 +40,11 @@
     "ctas": [
       {
         "label": "Make a Reservation",
-        "href": "/contact"
+        "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link&utm_source=undefined&utm_content=home&utm_medium=toast_sites&utm_term=nav&partySize=2&date=2026-09-03&time=now"
       },
       {
-        "label": "View Brunch Menu",
-        "href": "/menu"
+        "label": "View Full Menu",
+        "href": "https://missbcoconutclub.com/order"
       }
     ]
   },
@@ -52,8 +52,8 @@
     "eyebrow": "Brunch Menu",
     "heading": "Plates Worth<br />Getting Out of Bed For",
     "cta": {
-      "label": "Full Menu",
-      "href": "/menu"
+      "label": "View Full Menu",
+      "href": "https://missbcoconutclub.com/order"
     },
     "grid": [
       {
@@ -127,11 +127,11 @@
     "links": [
       {
         "label": "Reserve a Table",
-        "href": "/contact"
+        "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link&utm_source=undefined&utm_content=home&utm_medium=toast_sites&utm_term=nav&partySize=2&date=2026-09-03&time=now"
       },
       {
-        "label": "View the Menu",
-        "href": "/menu"
+        "label": "View Full Menu",
+        "href": "https://missbcoconutclub.com/order"
       }
     ]
   }
