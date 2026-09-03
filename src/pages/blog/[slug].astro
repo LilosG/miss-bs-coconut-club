@@ -3,12 +3,11 @@ import { getCollection, getEntry, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import CtaBand from '../../components/ui/CtaBand.astro';
 import TrustBar from '../../components/ui/TrustBar.astro';
+import { resolveBlogImage } from '../../lib/blog-images';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map((post) => ({
-    params: { slug: post.id },
-  }));
+  return posts.map((post) => ({ params: { slug: post.id } }));
 }
 
 const { slug } = Astro.params;
@@ -19,24 +18,20 @@ const { Content } = await render(post);
 const page = (await getEntry('blogIndexPage', 'blog'))!.data;
 const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
 const allPosts = await getCollection('blog');
+const { image, imageAlt } = resolveBlogImage(post);
 
 const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
-  month: 'long',
-  day: 'numeric',
-  year: 'numeric',
+  month: 'long', day: 'numeric', year: 'numeric',
 });
 const formattedUpdated = post.data.updatedDate
-  ? new Date(post.data.updatedDate).toLocaleDateString('en-US', {
-      month: 'long', day: 'numeric', year: 'numeric',
-    })
+  ? new Date(post.data.updatedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
   : null;
 
 const siteUrl = siteProfile.domain.replace(/\/$/, '');
 const canonical = `${siteUrl}/blog/${post.id}`;
-const imageUrl = post.data.image.startsWith('http') ? post.data.image : `${siteUrl}${post.data.image}`;
+const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 const businessId = `${siteUrl}/#restaurant`;
 const seoTitle = post.data.metaTitle ?? post.data.title;
-const imageAlt = post.data.imageAlt ?? post.data.title;
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -68,8 +63,7 @@ const faqSchema = post.data.faqs?.length ? {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: post.data.faqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
+    '@type': 'Question', name: faq.question,
     acceptedAnswer: { '@type': 'Answer', text: faq.answer },
   })),
 } : null;
@@ -82,33 +76,17 @@ const relatedPageMap: Record<string, { label: string; href: string }> = {
   contact: { label: 'Hours, Directions & Reservations', href: '/contact' },
   faq: { label: 'Mission Beach FAQ', href: '/faq' },
 };
-const relatedPages = (post.data.relatedServices ?? [])
-  .map((key) => relatedPageMap[key])
-  .filter(Boolean);
-
-const relatedPosts = allPosts
-  .filter((candidate) => candidate.id !== post.id && candidate.data.category === post.data.category)
-  .slice(0, 3);
+const relatedPages = (post.data.relatedServices ?? []).map((key) => relatedPageMap[key]).filter(Boolean);
+const relatedPosts = allPosts.filter((candidate) => candidate.id !== post.id && candidate.data.category === post.data.category).slice(0, 3);
 ---
 
-<Layout
-  title={seoTitle}
-  description={post.data.description}
-  canonical={canonical}
-  ogImage={post.data.image}
->
+<Layout title={seoTitle} description={post.data.description} canonical={canonical} ogImage={image}>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} slot="head" />
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
   {faqSchema && <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} slot="head" />}
 
   <section class="relative min-h-[60vh] flex flex-col justify-end overflow-hidden">
-    <img
-      src={post.data.image}
-      alt={imageAlt}
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      loading="eager"
-      fetchpriority="high"
-    />
+    <img src={image} alt={imageAlt} class="absolute inset-0 w-full h-full object-cover object-center" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/95 via-coastal-text-main/50 to-coastal-text-main/10"></div>
     <div class="relative z-10 max-w-4xl mx-auto px-6 pb-16 pt-32 w-full">
       <div class="flex flex-col gap-4">
@@ -117,12 +95,8 @@ const relatedPosts = allPosts
           <span class="text-coastal-bg-pure/30 text-xs">·</span>
           <time datetime={post.data.date} class="text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-bg-pure/50">{formattedDate}</time>
         </div>
-        <h1 class="font-serif text-4xl md:text-6xl font-light italic text-coastal-bg-pure leading-[1.05] max-w-3xl">
-          {post.data.title}
-        </h1>
-        <p class="text-coastal-bg-card/75 text-base leading-relaxed max-w-2xl font-light">
-          {post.data.description}
-        </p>
+        <h1 class="font-serif text-4xl md:text-6xl font-light italic text-coastal-bg-pure leading-[1.05] max-w-3xl">{post.data.title}</h1>
+        <p class="text-coastal-bg-card/75 text-base leading-relaxed max-w-2xl font-light">{post.data.description}</p>
         {formattedUpdated && <p class="text-coastal-bg-pure/45 text-xs">Updated {formattedUpdated}</p>}
       </div>
     </div>
@@ -141,9 +115,7 @@ const relatedPosts = allPosts
 
   <article class="bg-coastal-bg-pure py-20 px-6">
     <div class="max-w-[72ch] mx-auto">
-      <div class="prose">
-        <Content />
-      </div>
+      <div class="prose"><Content /></div>
 
       {post.data.faqs?.length && (
         <section class="mt-16 pt-12 border-t border-coastal-text-muted/10">
@@ -187,15 +159,7 @@ const relatedPosts = allPosts
     </div>
   </article>
 
-  <CtaBand
-    imageSrc={page.postCta.imageSrc}
-    imageAlt={page.postCta.imageAlt}
-    heading={page.postCta.heading}
-    body={page.postCta.body}
-    headingSize="medium"
-    py="py-20"
-    gap="gap-5"
-  >
+  <CtaBand imageSrc={page.postCta.imageSrc} imageAlt={page.postCta.imageAlt} heading={page.postCta.heading} body={page.postCta.body} headingSize="medium" py="py-20" gap="gap-5">
     {page.postCta.links?.[0] && <a href={page.postCta.links[0].href} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.postCta.links[0].label}\n`} />}
     {page.postCta.links?.[1] && <a href={page.postCta.links[1].href} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300" set:html={`\n${page.postCta.links[1].label}\n`} />}
   </CtaBand>
