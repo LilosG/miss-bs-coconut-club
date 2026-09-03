@@ -1,0 +1,9 @@
+---
+import { getEntry } from 'astro:content';
+import StatBar from './StatBar.astro';
+
+const home = (await getEntry('home', 'home'))!.data;
+const items = home.hero.stats ?? [];
+---
+
+<StatBar items={items} cellPy="py-5" />

@@ -1,4 +1,6 @@
 ---
+import TrustBar from './TrustBar.astro';
+
 interface Props {
   imageSrc: string
   imageAlt: string
@@ -11,6 +13,7 @@ interface Props {
   overlayVia?: 'via-coastal-text-main/20' | 'via-coastal-text-main/30' | 'via-coastal-text-main/40'
   headingClass?: string
   eyebrowMb?: 'mb-3' | 'mb-4'
+  showTrustBar?: boolean
 }
 
 // Full class strings kept in lookup objects so Tailwind's scanner picks them up statically
@@ -37,6 +40,7 @@ const {
   overlayVia    = 'via-coastal-text-main/30',
   headingClass  = 'text-5xl md:text-7xl',
   eyebrowMb     = 'mb-4',
+  showTrustBar  = true,
 } = Astro.props;
 ---
 
@@ -65,3 +69,5 @@ const {
     <slot />
   </div>
 </section>
+
+{showTrustBar && <TrustBar />}

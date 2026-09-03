@@ -2,6 +2,7 @@
 import { getCollection, getEntry, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import CtaBand from '../../components/ui/CtaBand.astro';
+import TrustBar from '../../components/ui/TrustBar.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -55,6 +56,8 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
       </div>
     </div>
   </section>
+
+  <TrustBar />
 
   <!-- ─── ARTICLE BODY ──────────────────────────────────────────────────── -->
   <article class="bg-coastal-bg-pure py-20 px-6">
