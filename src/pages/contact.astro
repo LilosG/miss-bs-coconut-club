@@ -6,6 +6,8 @@ import SplitSection from '../components/ui/SplitSection.astro';
 
 const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
 const page = (await getEntry('contactPage', 'contact'))!.data;
+const navData = (await getEntry('navigation', 'navigation'))!.data;
+const reservationCta = (navData.ctas ?? []).find((cta: { style?: string }) => cta.style === 'primary');
 const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.address.streetAddress + " " + siteProfile.address.addressLocality + " " + siteProfile.address.addressRegion;
 ---
 
@@ -32,9 +34,9 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
         <h2 class="font-serif text-3xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.cards[0].heading}\n`} />
         <div class="h-px w-12 bg-coastal-coral"></div>
         {page.cards[0].body && <p class="text-coastal-text-muted text-sm leading-relaxed flex-1" set:html={`\n${page.cards[0].body}\n`} />}
-        <a href={"tel:" + siteProfile.phone} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
-          {siteProfile.phone}
-        </a>
+        {reservationCta && <a href={reservationCta.href} target={reservationCta.external ? '_blank' : undefined} rel={reservationCta.external ? 'noopener noreferrer' : undefined} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">
+          Reserve a Table
+        </a>}
       </div>}
 
       <!-- Private Events -->
