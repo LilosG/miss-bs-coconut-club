@@ -6,6 +6,8 @@ import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
 import { getCollection, getEntry } from 'astro:content';
 
 const page = (await getEntry('menuPage', 'menu'))!.data;
+const navData = (await getEntry('navigation', 'navigation'))!.data;
+const orderCta = (navData.ctas ?? []).find((cta: { style?: string }) => cta.style === 'secondary');
 const categoryOrder = page.categories?.order ?? [];
 const categories = (await getCollection('menuCategoryCards'))
   .map((entry) => entry.data)
@@ -29,10 +31,13 @@ const categories = (await getCollection('menuCategoryCards'))
   <!-- CATEGORY CARDS -->
   <section class="bg-coastal-bg-pure py-24 px-6">
     <div class="mx-auto max-w-7xl">
-      <div class="flex flex-col gap-4 mb-14">
-        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral" set:html={`\n${page.categories.eyebrow}\n`} />
-        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.categories.heading}\n`} />
-        <div class="h-px w-16 bg-coastal-coral"></div>
+      <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-14">
+        <div class="flex flex-col gap-4">
+          <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral" set:html={`\n${page.categories.eyebrow}\n`} />
+          <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.categories.heading}\n`} />
+          <div class="h-px w-16 bg-coastal-coral"></div>
+        </div>
+        {orderCta && <a href={orderCta.href} class="shrink-0 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200">View Full Menu</a>}
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-coastal-bg-card">
         {categories.map((cat) => (
