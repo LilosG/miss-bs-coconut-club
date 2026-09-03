@@ -1,98 +1,68 @@
 {
   "seo": {
-    "title": "The Space - Bar, Patio and Venue | Miss B's Coconut Club Mission Beach",
-    "description": "Explore Miss B's Coconut Club in Mission Beach San Diego. An open-air bar, tropical dining room, fire pit patio, and private event space at 3704 Mission Blvd."
+    "title": "Open-Air Bar & Patio in Mission Beach",
+    "description": "Explore Miss B's Coconut Club in Mission Beach, San Diego: an open-air bar, tropical dining room, outdoor patio and private event space at 3704 Mission Blvd."
   },
   "hero": {
     "imageSrc": "/images/keystatic/space-page-hero/miss-bs-coconut-club-mission-beach-venue-15.webp",
     "imageAlt": "Miss B's Coconut Club teal open-air bar Mission Beach San Diego",
     "eyebrow": "3704 Mission Blvd · Mission Beach, San Diego",
-    "heading": "The Space",
-    "subheading": "An open-air bar, tropical dining room, fire pit patio, and private event venue at 3704 Mission Blvd, steps from the Pacific."
+    "heading": "Open-Air Bar &amp; Patio in Mission Beach",
+    "subheading": "Explore the open-air bar, tropical dining room and outdoor patio at Miss B's Coconut Club, steps from the Pacific in Mission Beach."
   },
   "sections": [
     {
       "imageSrc": "/images/keystatic/space-page-sections/miss-bs-coconut-club-mission-beach-venue-13.webp",
       "imageAlt": "Miss B's Coconut Club open-air teal bar window Mission Beach San Diego",
       "eyebrow": "The Bar",
-      "heading": "The Open-Air Bar",
+      "heading": "Open-Air Bar on Mission Blvd",
       "body": [
-        "The centerpiece of Miss B&apos;s is the open-air teal bar &mdash; a roll-up window that opens the kitchen directly onto the patio, with herringbone tile, copper fixtures, and a full draft system of flamingo tap handles.",
-        "Walk-ins always welcome at the bar. The full cocktail menu, beer program, and kitchen are available from open to close."
+        "The open-air teal bar is the centerpiece of Miss B&apos;s Coconut Club, connecting the indoor space with the Mission Beach patio and creating an easy indoor-outdoor setting steps from the Pacific.",
+        "The full cocktail, beer and food menus are available during service. Walk-ins are welcome at the bar."
       ],
-      "cta": {
-        "label": "View the Menu",
-        "href": "/menu"
-      }
+      "cta": { "label": "View the Menu", "href": "/menu" }
     },
     {
       "imageSrc": "/images/keystatic/space-page-sections/miss-bs-coconut-club-mission-beach-venue-07.webp",
       "imageAlt": "Miss B's Coconut Club tropical dining room mural Mission Beach San Diego",
       "eyebrow": "Inside",
-      "heading": "The Tropical<br />Dining Room",
+      "heading": "Tropical Dining Room",
       "body": [
-        "Inside Miss B&apos;s is a full tropical dining room &mdash; teal booth seating, the original Miss B&apos;s mural, hanging plants from the ceiling, and warm pendant lighting. It&apos;s the kind of room that makes a Tuesday feel like a vacation.",
-        "Available for private dining and full room buyouts. Seats up to 60 guests."
+        "Inside Miss B&apos;s, the tropical dining room combines teal booth seating, the original mural, hanging plants and warm pendant lighting for seated meals, brunch and group gatherings.",
+        "The dining room can also be used for private dining and event configurations for groups up to 60 seated guests."
       ],
-      "cta": {
-        "label": "Private Events",
-        "href": "/private-events"
-      }
+      "cta": { "label": "Private Events", "href": "/private-events" }
     },
     {
       "imageSrc": "/images/keystatic/space-page-sections/miss-bs-coconut-club-mission-beach-venue-03.webp",
       "imageAlt": "Miss B's Coconut Club outdoor patio pink umbrellas Mission Beach San Diego",
       "eyebrow": "Outside",
-      "heading": "The Outdoor Patio",
+      "heading": "Outdoor Patio in Mission Beach",
       "body": [
-        "The outdoor patio at Miss B&apos;s is one of Mission Beach&apos;s most coveted spots. Pink fringed umbrellas, fire pit seating, and the open-air bar all visible from the street. Designed for groups, long afternoons, and people who don&apos;t want to go home.",
-        "Available for full patio buyouts. Accommodates up to 80 guests reception-style."
+        "The outdoor patio brings the Mission Beach setting into the restaurant with pink fringed umbrellas, fire pit seating and direct access to the open-air bar.",
+        "The patio is available for private-event configurations and can accommodate groups up to 80 guests reception-style."
       ],
-      "cta": {
-        "label": "Inquire About a Buyout",
-        "href": "/private-events"
-      }
+      "cta": { "label": "Inquire About an Event", "href": "/private-events" }
     }
   ],
   "taps": {
     "imageSrc": "/images/keystatic/space-page-taps/miss-bs-coconut-club-mission-beach-venue-17.webp",
     "imageAlt": "Miss B's Coconut Club copper flamingo tap handles Mission Beach",
     "eyebrow": "The Draft System",
-    "heading": "24 Taps.<br />All Flamingo.",
-    "body": "Miss B&apos;s signature copper flamingo tap handles are the bar&apos;s most photographed feature. 24 taps, all flamingo, all the time."
+    "heading": "24 Copper<br />Flamingo Taps",
+    "body": "Miss B&apos;s signature draft wall features 24 copper flamingo tap handles behind the Mission Beach bar."
   },
   "gallery": [
-    {
-      "src": "/images/keystatic/space-page-gallery/miss-bs-coconut-club-mission-beach-venue-02.webp",
-      "name": "The Bar",
-      "alt": "Miss B's Coconut Club The Bar Mission Beach San Diego"
-    },
-    {
-      "src": "/images/keystatic/space-page-gallery/miss-bs-coconut-club-mission-beach-venue-10.webp",
-      "name": "The Patio",
-      "alt": "Miss B's Coconut Club The Patio Mission Beach San Diego"
-    },
-    {
-      "src": "/images/keystatic/space-page-gallery/miss-bs-coconut-club-mission-beach-venue-12.webp",
-      "name": "The Dining Room",
-      "alt": "Miss B's Coconut Club The Dining Room Mission Beach San Diego"
-    },
-    {
-      "src": "/images/keystatic/space-page-gallery/miss-bs-coconut-club-mission-beach-venue-16.webp",
-      "name": "The Interior",
-      "alt": "Miss B's Coconut Club The Interior Mission Beach San Diego"
-    }
+    { "src": "/images/keystatic/space-page-gallery/miss-bs-coconut-club-mission-beach-venue-02.webp", "name": "The Bar", "alt": "Miss B's Coconut Club open-air bar Mission Beach San Diego" },
+    { "src": "/images/keystatic/space-page-gallery/miss-bs-coconut-club-mission-beach-venue-10.webp", "name": "The Patio", "alt": "Miss B's Coconut Club outdoor patio Mission Beach San Diego" },
+    { "src": "/images/keystatic/space-page-gallery/miss-bs-coconut-club-mission-beach-venue-12.webp", "name": "The Dining Room", "alt": "Miss B's Coconut Club tropical dining room Mission Beach San Diego" },
+    { "src": "/images/keystatic/space-page-gallery/miss-bs-coconut-club-mission-beach-venue-16.webp", "name": "The Interior", "alt": "Miss B's Coconut Club interior Mission Beach San Diego" }
   ],
   "location": {
-    "eyebrow": "Come See It",
+    "eyebrow": "Visit 3704 Mission Blvd",
     "ctas": [
-      {
-        "label": "Private Events",
-        "href": "/private-events"
-      },
-      {
-        "label": "Get Directions"
-      }
+      { "label": "Private Events", "href": "/private-events" },
+      { "label": "Get Directions" }
     ]
   }
 }

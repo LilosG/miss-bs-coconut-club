@@ -9,15 +9,24 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description: string;
+  canonical?: string | URL;
+  ogImage?: string;
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, canonical, ogImage, noindex = false } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth bg-coastal-bg-sand text-coastal-text-main">
   <head>
-    <LocalSEO title={title} description={description} />
+    <LocalSEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+      noindex={noindex}
+    />
     <slot name="head" />
     <Analytics />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,6 +42,5 @@ const { title, description } = Astro.props;
     <Footer />
 
     <ConsentBanner siteName="Miss B's Coconut Club" />
-
   </body>
 </html>

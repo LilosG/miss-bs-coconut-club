@@ -1,7 +1,7 @@
 {
   "seo": {
-    "title": "Bar and Brunch on Mission Blvd - Mission Beach San Diego",
-    "description": "Miss B's Coconut Club is Mission Beach San Diego's favorite outdoor bar and brunch spot. Craft cocktails, daily brunch, and private events at 3704 Mission Blvd."
+    "title": "Mission Beach Bar, Brunch & Cocktails",
+    "description": "Miss B's Coconut Club is an open-air bar and restaurant in Mission Beach, San Diego serving daily brunch, tropical cocktails, happy hour and private events on Mission Blvd."
   },
   "hero": {
     "imageSrc": "/images/keystatic/home-hero/miss-bs-coconut-club-mission-beach-venue-15.webp",
@@ -9,34 +9,19 @@
     "eyebrow": "3704 Mission Blvd · Mission Beach, San Diego",
     "heading": "Miss B's",
     "headingAccent": "Coconut Club",
-    "subheading": "San Diego's open-air bar and brunch destination. Steps from the Pacific on Mission Blvd.",
+    "subheading": "Open-air bar, restaurant and daily brunch in Mission Beach, San Diego — steps from the Pacific on Mission Blvd.",
     "ctas": [
-      {
-        "label": "View Menu",
-        "href": "/menu"
-      },
-      {
-        "label": "Brunch",
-        "href": "/brunch"
-      }
+      { "label": "View Menu", "href": "/menu" },
+      { "label": "Brunch", "href": "/brunch" }
     ],
     "stats": [
-      {
-        "label": "Hours",
-        "value": "Open Daily &middot; Until 10pm"
-      },
-      {
-        "label": "Brunch",
-        "value": "Daily until 2pm"
-      },
-      {
-        "label": "Find Us",
-        "value": "Mission Beach, San Diego"
-      },
+      { "label": "Hours", "value": "Open Daily &middot; Until 10pm" },
+      { "label": "Brunch", "value": "Daily until 2pm" },
+      { "label": "Find Us", "value": "Mission Beach, San Diego" },
       {
         "label": "Reserve",
         "value": "Book a Table",
-        "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link&utm_source=undefined&utm_content=home&utm_medium=toast_sites&utm_term=nav&partySize=2&date=2026-09-03&time=now"
+        "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link"
       }
     ]
   },
@@ -44,20 +29,14 @@
     "imageSrc": "/images/keystatic/home-intro/miss-bs-coconut-club-mission-beach-venue-07.webp",
     "imageAlt": "Miss B's Coconut Club tropical dining room with mural Mission Beach San Diego",
     "eyebrow": "Mission Beach, San Diego",
-    "heading": "Where San Diego<br />Comes to Drink Well",
+    "heading": "Open-Air Bar &amp;<br />Restaurant in Mission Beach",
     "body": [
-      "Miss B's Coconut Club is the open-air bar and brunch spot that Mission Beach was built for. Pull up a teal stool, order something cold, and let the afternoon go.",
-      "Located at 3704 Mission Blvd — steps from the sand. Come for the craft cocktails. Stay for the brunch. Bring the whole group."
+      "Miss B's Coconut Club is an open-air Mission Beach restaurant and bar built for long afternoons, tropical cocktails, daily brunch, and relaxed meals steps from the Pacific.",
+      "Find us at 3704 Mission Blvd for Caribbean-inspired food, a full cocktail program, happy hour, brunch, and group gatherings in the tropical dining room and outdoor patio."
     ],
     "ctas": [
-      {
-        "label": "View Menu",
-        "href": "/menu"
-      },
-      {
-        "label": "See the Space",
-        "href": "/space"
-      }
+      { "label": "View Menu", "href": "/menu" },
+      { "label": "See the Space", "href": "/space" }
     ]
   },
   "cocktailFeature": {
@@ -65,37 +44,16 @@
     "imageAlt": "Miss B's Coconut Club signature flamingo cocktail vessel Mission Beach",
     "eyebrow": "Craft Cocktails",
     "heading": "Signature<br />Cocktails in<br />Mission Beach",
-    "body": "From the flamingo vessel to the frozen mojito, every drink at Miss B's is built for the San Diego sun. Tropical, bold, and entirely unforgettable.",
-    "cta": {
-      "label": "View Menu",
-      "href": "/menu"
-    }
+    "body": "Tropical cocktails, spritzes, mimosas, beer and a full bar program built for the Mission Beach setting — served steps from the Pacific.",
+    "cta": { "label": "View Menu", "href": "/menu" }
   },
   "cocktailGrid": [
-    {
-      "src": "/images/keystatic/home-cocktail-grid/miss-bs-coconut-club-cocktail-mission-beach-03.webp",
-      "name": "Caribe Welcome"
-    },
-    {
-      "src": "/images/keystatic/home-cocktail-grid/miss-bs-coconut-club-cocktail-mission-beach-32.webp",
-      "name": "Mango Guava Spritz"
-    },
-    {
-      "src": "/images/keystatic/home-cocktail-grid/miss-bs-coconut-club-cocktail-mission-beach-02.webp",
-      "name": "Bird is the Word"
-    },
-    {
-      "src": "/images/keystatic/home-cocktail-grid/miss-bs-coconut-club-cocktail-mission-beach-26.webp",
-      "name": "Fiesta Island"
-    },
-    {
-      "src": "/images/keystatic/home-cocktail-grid/miss-bs-coconut-club-cocktail-mission-beach-37.webp",
-      "name": "Rum Cannonball"
-    },
-    {
-      "src": "/images/keystatic/home-cocktail-grid/miss-bs-coconut-club-cocktail-mission-beach-38.webp",
-      "name": "Spritz and Giggles"
-    }
+    { "src": "/images/keystatic/home-cocktail-grid/miss-bs-coconut-club-cocktail-mission-beach-03.webp", "name": "Caribe Welcome" },
+    { "src": "/images/keystatic/home-cocktail-grid/miss-bs-coconut-club-cocktail-mission-beach-32.webp", "name": "Mango Guava Spritz" },
+    { "src": "/images/keystatic/home-cocktail-grid/miss-bs-coconut-club-cocktail-mission-beach-02.webp", "name": "Bird is the Word" },
+    { "src": "/images/keystatic/home-cocktail-grid/miss-bs-coconut-club-cocktail-mission-beach-26.webp", "name": "Fiesta Island" },
+    { "src": "/images/keystatic/home-cocktail-grid/miss-bs-coconut-club-cocktail-mission-beach-37.webp", "name": "Rum Cannonball" },
+    { "src": "/images/keystatic/home-cocktail-grid/miss-bs-coconut-club-cocktail-mission-beach-38.webp", "name": "Spritz and Giggles" }
   ],
   "happyHour": {
     "imageSrc": "/images/keystatic/home-happy-hour/miss-bs-coconut-club-mission-beach-venue-05.webp",
@@ -105,14 +63,8 @@
     "bodyMiddle": ", on the full open-air bar and patio. ",
     "offDaysPrefix": "Not running ",
     "ctas": [
-      {
-        "label": "View Menu",
-        "href": "/menu"
-      },
-      {
-        "label": "Happy Hour FAQ",
-        "href": "/faq"
-      }
+      { "label": "View Menu", "href": "/menu" },
+      { "label": "Happy Hour FAQ", "href": "/faq" }
     ]
   },
   "brunch": {
@@ -120,47 +72,26 @@
     "imageAlt": "Miss B's Coconut Club copper flamingo draft tap handles Mission Beach",
     "eyebrow": "Served Daily",
     "heading": "Brunch<br />in Mission Beach",
-    "body": "Served daily until 2pm. Mimosas from the flamingo tap wall, morning cocktails, and the best brunch plates on Mission Blvd.",
+    "body": "Brunch is served daily until 2pm with breakfast favorites, mimosas, morning cocktails and the full Mission Beach atmosphere at 3704 Mission Blvd.",
     "ctas": [
-      {
-        "label": "Brunch Details",
-        "href": "/brunch"
-      },
-      {
-        "label": "View Menu",
-        "href": "/menu"
-      }
+      { "label": "Brunch Details", "href": "/brunch" },
+      { "label": "View Menu", "href": "/menu" }
     ]
   },
   "food": {
     "eyebrow": "The Kitchen",
-    "heading": "Food Worth<br />Staying For",
-    "cta": {
-      "label": "View Menu",
-      "href": "/menu"
-    },
+    "heading": "Caribbean-Inspired<br />Food in Mission Beach",
+    "cta": { "label": "View Menu", "href": "/menu" },
     "featured": {
       "src": "/images/keystatic/home-food-featured/miss-bs-coconut-club-food-mission-beach-09.webp",
       "name": "Coconut Club Burger",
       "alt": "Miss B's Coconut Club Coconut Club Burger Mission Beach San Diego"
     },
     "grid": [
-      {
-        "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-food-mission-beach-13.webp",
-        "name": "Cubano"
-      },
-      {
-        "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-food-mission-beach-17.webp",
-        "name": "Table Spread"
-      },
-      {
-        "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-food-mission-beach-26.webp",
-        "name": "Jerk Plate"
-      },
-      {
-        "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-food-mission-beach-32.webp",
-        "name": "Nachos"
-      }
+      { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-food-mission-beach-13.webp", "name": "Cubano" },
+      { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-food-mission-beach-17.webp", "name": "Table Spread" },
+      { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-food-mission-beach-26.webp", "name": "Jerk Plate" },
+      { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-food-mission-beach-32.webp", "name": "Nachos" }
     ]
   },
   "privateEvents": {
@@ -168,24 +99,21 @@
     "imageAlt": "Miss B's Coconut Club outdoor patio pink umbrellas Mission Beach San Diego private events",
     "eyebrow": "Private Events",
     "heading": "Private Events<br />in Mission Beach",
-    "body": "Birthdays, buyouts, corporate events, and intimate gatherings. Miss B's Coconut Club is the only open-air bar venue on Mission Blvd — steps from the Pacific.",
+    "body": "Host birthdays, corporate events, bachelorette parties, rehearsal dinners and venue buyouts at Miss B's Coconut Club, with indoor and outdoor event spaces steps from the Pacific.",
     "items": [
       "Birthday Parties",
       "Full and Partial Buyouts",
       "Corporate Events",
-      "Bachelor and Bachelorette",
+      "Bachelorette Parties",
       "Milestone Celebrations"
     ],
-    "cta": {
-      "label": "Inquire About Your Event",
-      "href": "/private-events"
-    }
+    "cta": { "label": "Inquire About Your Event", "href": "/private-events" }
   },
   "location": {
     "eyebrow": "Find Us",
     "reservation": {
       "label": "Make a Reservation",
-      "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link&utm_source=undefined&utm_content=home&utm_medium=toast_sites&utm_term=nav&partySize=2&date=2026-09-03&time=now"
+      "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link"
     },
     "directionsLabel": "Get Directions"
   }

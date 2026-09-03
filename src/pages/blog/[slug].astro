@@ -17,20 +17,88 @@ if (!post) return Astro.redirect('/blog');
 
 const { Content } = await render(post);
 const page = (await getEntry('blogIndexPage', 'blog'))!.data;
+const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
+const allPosts = await getCollection('blog');
 
 const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
   month: 'long',
   day: 'numeric',
   year: 'numeric',
 });
+const formattedUpdated = post.data.updatedDate
+  ? new Date(post.data.updatedDate).toLocaleDateString('en-US', {
+      month: 'long', day: 'numeric', year: 'numeric',
+    })
+  : null;
+
+const siteUrl = siteProfile.domain.replace(/\/$/, '');
+const canonical = `${siteUrl}/blog/${post.id}`;
+const imageUrl = post.data.image.startsWith('http') ? post.data.image : `${siteUrl}${post.data.image}`;
+const businessId = `${siteUrl}/#restaurant`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  '@id': `${canonical}#article`,
+  headline: post.data.title,
+  description: post.data.description,
+  image: imageUrl,
+  datePublished: new Date(post.data.date).toISOString(),
+  dateModified: new Date(post.data.updatedDate ?? post.data.date).toISOString(),
+  author: { '@type': 'Organization', '@id': businessId, name: siteProfile.venueName },
+  publisher: { '@type': 'Organization', '@id': businessId, name: siteProfile.venueName },
+  mainEntityOfPage: canonical,
+  articleSection: post.data.category,
+  keywords: post.data.tags,
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+    { '@type': 'ListItem', position: 2, name: 'Mission Beach Guides', item: `${siteUrl}/blog` },
+    { '@type': 'ListItem', position: 3, name: post.data.title, item: canonical },
+  ],
+};
+
+const faqSchema = post.data.faqs?.length ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: post.data.faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+} : null;
+
+const relatedPageMap: Record<string, { label: string; href: string }> = {
+  menu: { label: 'Food & Drink Menu', href: '/menu' },
+  brunch: { label: 'Daily Brunch in Mission Beach', href: '/brunch' },
+  space: { label: 'Open-Air Bar & Patio', href: '/space' },
+  'private-events': { label: 'Private Events in Mission Beach', href: '/private-events' },
+  contact: { label: 'Hours, Directions & Reservations', href: '/contact' },
+  faq: { label: 'Mission Beach FAQ', href: '/faq' },
+};
+const relatedPages = (post.data.relatedServices ?? [])
+  .map((key) => relatedPageMap[key])
+  .filter(Boolean);
+
+const relatedPosts = allPosts
+  .filter((candidate) => candidate.id !== post.id && candidate.data.category === post.data.category)
+  .slice(0, 3);
 ---
 
 <Layout
   title={post.data.metaTitle}
   description={post.data.description}
+  canonical={canonical}
+  ogImage={post.data.image}
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} slot="head" />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
+  {faqSchema && <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} slot="head" />}
 
-  <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
   <section class="relative min-h-[60vh] flex flex-col justify-end overflow-hidden">
     <img
       src={post.data.image}
@@ -53,25 +121,70 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
         <p class="text-coastal-bg-card/75 text-base leading-relaxed max-w-2xl font-light">
           {post.data.description}
         </p>
+        {formattedUpdated && <p class="text-coastal-bg-pure/45 text-xs">Updated {formattedUpdated}</p>}
       </div>
     </div>
   </section>
 
   <TrustBar />
 
-  <!-- ─── ARTICLE BODY ──────────────────────────────────────────────────── -->
+  {post.data.answerSummary && (
+    <section class="bg-coastal-bg-sand px-6 pt-12">
+      <div class="max-w-[72ch] mx-auto border-l-2 border-coastal-coral bg-coastal-bg-pure p-6">
+        {post.data.answerTarget && <p class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral mb-2">{post.data.answerTarget}</p>}
+        <p class="text-coastal-text-main text-base leading-relaxed">{post.data.answerSummary}</p>
+      </div>
+    </section>
+  )}
+
   <article class="bg-coastal-bg-pure py-20 px-6">
     <div class="max-w-[72ch] mx-auto">
       <div class="prose">
         <Content />
       </div>
+
+      {post.data.faqs?.length && (
+        <section class="mt-16 pt-12 border-t border-coastal-text-muted/10">
+          <h2 class="font-serif text-4xl font-light italic text-coastal-text-main mb-8">Common Questions</h2>
+          <div class="divide-y divide-coastal-text-muted/10">
+            {post.data.faqs.map((faq) => (
+              <div class="py-5">
+                <h3 class="font-sans text-base font-semibold text-coastal-text-main mb-2">{faq.question}</h3>
+                <p class="text-coastal-text-muted text-sm leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {relatedPages.length > 0 && (
+        <aside class="mt-14 bg-coastal-bg-sand p-6">
+          <p class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral mb-4">Plan Your Visit</p>
+          <div class="flex flex-wrap gap-x-6 gap-y-3">
+            {relatedPages.map((item) => (
+              <a href={item.href} class="text-sm font-semibold text-coastal-text-main underline decoration-coastal-coral/40 underline-offset-4 hover:text-coastal-coral">{item.label}</a>
+            ))}
+          </div>
+        </aside>
+      )}
+
+      {relatedPosts.length > 0 && (
+        <aside class="mt-12 pt-10 border-t border-coastal-text-muted/10">
+          <p class="text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral mb-5">Related Mission Beach Guides</p>
+          <div class="grid gap-4">
+            {relatedPosts.map((related) => (
+              <a href={`/blog/${related.id}`} class="font-serif text-xl italic text-coastal-text-main hover:text-coastal-coral transition-colors">{related.data.title}</a>
+            ))}
+          </div>
+        </aside>
+      )}
+
       <div class="pt-12 mt-12 border-t border-coastal-text-muted/10">
         <a href="/blog" class="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.25em] uppercase text-coastal-coral hover:text-coastal-gold-accent transition-colors duration-200" set:html={`\n${page.postCta.backLabel}\n`} />
       </div>
     </div>
   </article>
 
-  <!-- ─── CTA ───────────────────────────────────────────────────────────── -->
   <CtaBand
     imageSrc={page.postCta.imageSrc}
     imageAlt={page.postCta.imageAlt}
@@ -84,5 +197,4 @@ const formattedDate = new Date(post.data.date).toLocaleDateString('en-US', {
     {page.postCta.links?.[0] && <a href={page.postCta.links[0].href} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.postCta.links[0].label}\n`} />}
     {page.postCta.links?.[1] && <a href={page.postCta.links[1].href} class="px-8 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300" set:html={`\n${page.postCta.links[1].label}\n`} />}
   </CtaBand>
-
 </Layout>

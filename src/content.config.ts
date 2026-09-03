@@ -9,8 +9,17 @@ const blog = defineCollection({
     description: z.string(),
     category: z.string(),
     date: z.string(),
+    updatedDate: z.string().optional(),
     image: z.string(),
     imageAlt: z.string(),
+    answerTarget: z.string().optional(),
+    answerSummary: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    relatedServices: z.array(z.string()).max(4).optional(),
+    faqs: z.array(z.object({
+      question: z.string(),
+      answer: z.string(),
+    })).optional(),
   }),
 });
 

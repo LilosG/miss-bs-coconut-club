@@ -5,59 +5,106 @@ import { getGoogleMapsPlace } from '../../lib/googleMaps';
 interface Props {
   title: string;
   description: string;
-  canonicalURL?: URL;
+  canonical?: string | URL;
+  ogImage?: string;
+  noindex?: boolean;
 }
-
-const {
-  title,
-  description,
-  canonicalURL = new URL(Astro.url.pathname, Astro.site),
-} = Astro.props;
 
 const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
 const googleMaps = await getGoogleMapsPlace(siteProfile);
 
-const openingHoursSpecification = (siteProfile.hours?.general ?? []).map((h: { days?: string[]; open?: string; close?: string }) => ({
-  "@type": "OpeningHoursSpecification",
-  "dayOfWeek": h.days ?? [],
-  "opens": h.open,
-  "closes": h.close
-}));
+const {
+  title,
+  description,
+  canonical,
+  ogImage = '/og-image.jpg',
+  noindex = false,
+} = Astro.props;
 
-const jsonLD = {
-  "@context": "https://schema.org",
-  "@type": siteProfile.nicheType,
-  "name": siteProfile.venueName,
-  "legalName": siteProfile.legalName,
-  "image": `${siteProfile.domain}/og-image.jpg`,
-  "telephone": siteProfile.phone,
-  "priceRange": siteProfile.priceRange,
-  "url": siteProfile.domain,
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": siteProfile.address.streetAddress,
-    "addressLocality": siteProfile.address.addressLocality,
-    "addressRegion": siteProfile.address.addressRegion,
-    "postalCode": siteProfile.address.postalCode,
-    "addressCountry": "US"
+const siteUrl = siteProfile.domain.replace(/\/$/, '');
+const canonicalUrl = canonical
+  ? canonical.toString()
+  : new URL(Astro.url.pathname, `${siteUrl}/`).href;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+const businessId = `${siteUrl}/#restaurant`;
+const websiteId = `${siteUrl}/#website`;
+const isHomePage = Astro.url.pathname === '/';
+
+const normalizedTitle = title.toLowerCase();
+const includesBrand =
+  normalizedTitle.includes("miss b's") ||
+  normalizedTitle.includes('miss bs') ||
+  normalizedTitle.includes('miss b’s');
+const fullTitle = includesBrand ? title : `${title} | Miss B's`;
+
+const businessDescription = "Open-air restaurant and bar in Mission Beach, San Diego serving daily brunch, Caribbean-inspired food, tropical cocktails, happy hour, and private events steps from the Pacific.";
+const reservationsUrl = 'https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link';
+const servesCuisine = ['Caribbean', 'American'];
+const amenities = ['Outdoor Seating', 'Full Bar', 'Private Event Space'];
+
+const openingHoursSpecification = (siteProfile.hours?.general ?? []).map(
+  (h: { days?: string[]; open?: string; close?: string }) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: h.days ?? [],
+    opens: h.open,
+    closes: h.close,
+  }),
+);
+
+const businessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['Restaurant', 'BarOrPub'],
+  '@id': businessId,
+  name: siteProfile.venueName,
+  legalName: siteProfile.legalName,
+  description: businessDescription,
+  url: siteUrl,
+  image: `${siteUrl}/og-image.jpg`,
+  telephone: siteProfile.phone,
+  email: siteProfile.email,
+  priceRange: siteProfile.priceRange,
+  servesCuisine,
+  acceptsReservations: reservationsUrl,
+  hasMenu: `${siteUrl}/menu`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteProfile.address.streetAddress,
+    addressLocality: siteProfile.address.addressLocality,
+    addressRegion: siteProfile.address.addressRegion,
+    postalCode: siteProfile.address.postalCode,
+    addressCountry: 'US',
   },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": siteProfile.coordinates.latitude,
-    "longitude": siteProfile.coordinates.longitude
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: Number(siteProfile.coordinates.latitude),
+    longitude: Number(siteProfile.coordinates.longitude),
   },
-  "hasMap": googleMaps.placeUrl,
-  "openingHoursSpecification": openingHoursSpecification,
-  "sameAs": [
+  hasMap: googleMaps.placeUrl,
+  openingHoursSpecification,
+  amenityFeature: amenities.map((name) => ({
+    '@type': 'LocationFeatureSpecification',
+    name,
+    value: true,
+  })),
+  sameAs: [
     siteProfile.social.instagram,
     siteProfile.social.facebook,
     siteProfile.social.tiktok,
-    siteProfile.social.linkedin
-  ]
+    siteProfile.social.linkedin,
+  ].filter(Boolean),
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': websiteId,
+  url: `${siteUrl}/`,
+  name: siteProfile.venueName,
+  alternateName: "Miss B's",
+  publisher: { '@id': businessId },
 };
 ---
 
-<!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -67,27 +114,31 @@ const jsonLD = {
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
 <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-<link rel="canonical" href={canonicalURL} />
 
-<!-- Primary SEO -->
-<title>{title} | {siteProfile.venueName}</title>
-<meta name="title" content={`${title} | ${siteProfile.venueName}`} />
+<title>{fullTitle}</title>
 <meta name="description" content={description} />
+<meta
+  name="robots"
+  content={noindex
+    ? 'noindex, nofollow'
+    : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+/>
+<link rel="canonical" href={canonicalUrl} />
 
-<!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={`${title} | ${siteProfile.venueName}`} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={`${siteProfile.domain}/og-image.jpg`} />
+<meta property="og:image" content={ogImageUrl} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
+<meta property="og:site_name" content={siteProfile.venueName} />
+<meta property="og:locale" content="en_US" />
 
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={`${title} | ${siteProfile.venueName}`} />
+<meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={`${siteProfile.domain}/og-image.jpg`} />
+<meta name="twitter:image" content={ogImageUrl} />
 
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLD, null, 2)} />
+<script type="application/ld+json" is:inline set:html={JSON.stringify(businessSchema)} />
+{isHomePage && <script type="application/ld+json" is:inline set:html={JSON.stringify(websiteSchema)} />}

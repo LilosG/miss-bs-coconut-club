@@ -1,42 +1,37 @@
 {
   "seo": {
-    "title": "Contact Miss B's Coconut Club | Reservations & Event Inquiries Mission Beach",
-    "description": "Contact Miss B's Coconut Club in Mission Beach, San Diego. Make a reservation, inquire about private events, or get directions to 3704 Mission Blvd."
+    "title": "Mission Beach Hours, Directions & Reservations",
+    "description": "Visit Miss B's Coconut Club at 3704 Mission Blvd in Mission Beach, San Diego. Find current hours, directions, reservations, phone information and private event inquiries."
   },
   "hero": {
     "imageSrc": "/images/keystatic/contact-page-hero/miss-bs-coconut-club-mission-beach-venue-04.webp",
     "imageAlt": "Miss B's Coconut Club Mission Beach San Diego",
     "eyebrow": "3704 Mission Blvd · Mission Beach, San Diego",
-    "heading": "Get in Touch"
+    "heading": "Visit Miss B's in Mission Beach"
   },
   "cards": [
     {
       "eyebrow": "Reservations",
       "heading": "Book a Table",
-      "body": "Walk-ins are always welcome at the bar. For dining and brunch, reservations are strongly recommended — especially on weekend mornings.",
+      "body": "Walk-ins are welcome at the bar. Reservations are recommended for dining and brunch, especially during busy weekend periods.",
       "cta": "phone"
     },
     {
       "eyebrow": "Private Events",
       "heading": "Plan Your Event",
-      "body": "Birthdays, buyouts, corporate events, and intimate gatherings. Our team responds within 24 hours with availability and a custom proposal.",
-      "cta": {
-        "label": "Inquire Now",
-        "href": "#inquiry"
-      }
+      "body": "Planning a birthday, corporate event, bachelorette party, rehearsal dinner or venue buyout? Send your date and headcount to the Miss B's events team.",
+      "cta": { "label": "Inquire Now", "href": "#inquiry" }
     },
     {
-      "eyebrow": "Find Us",
-      "heading": "Directions",
-      "cta": {
-        "label": "Get Directions"
-      }
+      "eyebrow": "Mission Beach",
+      "heading": "Directions to 3704 Mission Blvd",
+      "cta": { "label": "Get Directions" }
     }
   ],
   "inquiry": {
     "eyebrow": "Private Events",
-    "heading": "Submit an Inquiry",
-    "body": "Birthdays, buyouts, corporate events, and intimate gatherings. Tell us about your event and we'll respond within 24 hours.",
+    "heading": "Private Event Inquiry",
+    "body": "Tell us your event date, approximate headcount and what you're planning. Our events team will follow up with availability and options for the space.",
     "iframeSrc": "https://www.toasttab.com/invoice/lead?rx=e5c781b0-3ef7-4e6e-acaa-f50c55b15f70&ot=555d2efd-aea1-4bef-ac04-17793cda7ded&form=1",
     "iframeTitle": "Private Event Inquiry Form"
   },
@@ -44,25 +39,16 @@
     "imageSrc": "/images/keystatic/contact-page-hours/miss-bs-coconut-club-mission-beach-venue-08.webp",
     "imageAlt": "Miss B's Coconut Club interior Mission Beach San Diego",
     "eyebrow": "Hours of Operation",
-    "heading": "When We're Open",
-    "notes": [
-      "Kitchen closes at 9pm daily",
-      "Brunch: Daily until 2pm"
-    ]
+    "heading": "Miss B's Mission Beach Hours",
+    "notes": ["Kitchen closes at 9pm daily", "Brunch: Daily until 2pm"]
   },
   "social": {
     "eyebrow": "Follow Along",
     "heading": "@MissBsCoconutClub",
-    "body": "Daily specials, events, and a behind-the-scenes look at Mission Beach's favorite bar.",
+    "body": "Follow Miss B's Coconut Club for current food, drinks, events and updates from Mission Beach, San Diego.",
     "links": [
-      {
-        "label": "Instagram",
-        "network": "instagram"
-      },
-      {
-        "label": "Facebook",
-        "network": "facebook"
-      }
+      { "label": "Instagram", "network": "instagram" },
+      { "label": "Facebook", "network": "facebook" }
     ]
   }
 }

@@ -1,34 +1,16 @@
 {
   "main": [
-    {
-      "label": "Menu",
-      "href": "/menu"
-    },
-    {
-      "label": "Brunch",
-      "href": "/brunch"
-    },
-    {
-      "label": "Space",
-      "href": "/space"
-    },
-    {
-      "label": "Private Events",
-      "href": "/private-events"
-    },
-    {
-      "label": "Blog",
-      "href": "/blog"
-    },
-    {
-      "label": "Contact",
-      "href": "/contact"
-    }
+    { "label": "Menu", "href": "/menu" },
+    { "label": "Brunch", "href": "/brunch" },
+    { "label": "Space", "href": "/space" },
+    { "label": "Private Events", "href": "/private-events" },
+    { "label": "Blog", "href": "/blog" },
+    { "label": "Contact", "href": "/contact" }
   ],
   "ctas": [
     {
       "label": "Reserve",
-      "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link&utm_source=undefined&utm_content=home&utm_medium=toast_sites&utm_term=nav&partySize=2&date=2026-09-03&time=now",
+      "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link",
       "external": true,
       "style": "primary"
     },

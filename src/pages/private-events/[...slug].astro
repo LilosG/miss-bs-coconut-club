@@ -12,24 +12,48 @@ export async function getStaticPaths() {
 
 const { event } = Astro.props;
 const page = (await getEntry('privateEventsIndexPage', 'private-events'))!.data;
+const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
+
+const searchHeadings: Record<string, string> = {
+  'birthday-parties': 'Birthday Party Venue in Mission Beach',
+  'corporate-events': 'Corporate Event Venue in Mission Beach',
+  'bachelorette-parties': 'Bachelorette Party Venue in San Diego',
+  'full-venue-buyouts': 'Full Venue Buyout in Mission Beach',
+  'rehearsal-dinners': 'Rehearsal Dinner Venue in Mission Beach',
+  'milestone-celebrations': 'Celebration Venue in Mission Beach',
+};
+const searchHeading = searchHeadings[event.slug] ?? `${event.title} in Mission Beach`;
+const canonical = `${siteProfile.domain}/private-events/${event.slug}`;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteProfile.domain}/` },
+    { '@type': 'ListItem', position: 2, name: 'Private Events', item: `${siteProfile.domain}/private-events` },
+    { '@type': 'ListItem', position: 3, name: event.title, item: canonical },
+  ],
+};
 ---
 
 <Layout
   title={event.metaTitle}
   description={event.description}
+  canonical={canonical}
 >
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
 
   <PageHero
     imageSrc={page.detail.heroImage}
     imageAlt={"Miss B's Coconut Club " + event.title + " Mission Beach San Diego"}
     eyebrow={event.eyebrow}
-    heading={event.title}
+    heading={searchHeading}
     subheading={event.description}
     minHeight="70vh"
     imagePosition="top"
   />
 
-  <!-- ─── EVENT DETAIL SPLIT ────────────────────────────────────────────── -->
   <SplitSection
     imageSrc={page.detail.splitImage}
     imageAlt={"Miss B's Coconut Club " + event.title + " venue space Mission Beach"}
@@ -44,7 +68,6 @@ const page = (await getEntry('privateEventsIndexPage', 'private-events'))!.data;
     <a href={page.detail.submitHref} class="self-start mt-2 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.detail.submitLabel}\n`} />
   </SplitSection>
 
-  <!-- ─── WHAT'S INCLUDED ───────────────────────────────────────────────── -->
   <section class="bg-coastal-bg-sand py-24 px-6">
     <div class="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
       <div class="flex flex-col gap-4">
@@ -57,17 +80,16 @@ const page = (await getEntry('privateEventsIndexPage', 'private-events'))!.data;
     </div>
   </section>
 
-  <!-- ─── EVENT INQUIRY FORM ──────────────────────────────────────────────── -->
   <section class="bg-coastal-bg-sand py-24 px-6" id="inquiry">
     <div class="mx-auto max-w-4xl">
       <div class="flex flex-col gap-4 mb-10">
         <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral">{page.detail.bookPrefix}{event.title}</p>
-        <h2 class="font-serif text-5xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.detail.submitLabel}\n`} />
+        <h2 class="font-serif text-5xl font-light italic text-coastal-text-main leading-[1.0]">Check {event.title} Availability</h2>
         <div class="h-px w-16 bg-coastal-coral"></div>
         <p class="text-coastal-text-muted text-base leading-relaxed max-w-lg" set:html={`\n${page.detail.inquiryBody}\n`} />
       </div>
       <iframe
-        src="https://www.toasttab.com/invoice/lead?rx=e5c781b0-3ef7-4e6e-acaa-f50c55b15f70&ot=555d2efd-aea1-4bef-ac04-17793cda7ded&form=1"
+        src={page.inquiry.iframeSrc}
         style="margin:auto;display:block;border:0;width:100%;height:800px"
         title={page.inquiry.iframeTitle}
         loading="lazy"
@@ -75,7 +97,6 @@ const page = (await getEntry('privateEventsIndexPage', 'private-events'))!.data;
     </div>
   </section>
 
-  <!-- ─── BACK + CTA ────────────────────────────────────────────────────── -->
   <section class="bg-coastal-text-main py-20 px-6">
     <div class="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-8">
       <a href={page.detail.allEventsHref} class="text-xs font-bold tracking-[0.2em] uppercase text-coastal-text-muted hover:text-coastal-bg-pure transition-colors duration-200" set:html={`\n${page.detail.allEventsLabel}\n`} />
