@@ -28,13 +28,13 @@
   "ctas": [
     {
       "label": "Reserve",
-      "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_ss=645fd193-d64d-44ec-9f2e-0fb6b0df119e&toast_src=website_link&utm_medium=toast_sites",
+      "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link&utm_source=undefined&utm_content=home&utm_medium=toast_sites&utm_term=nav&partySize=2&date=2026-09-03&time=now",
       "external": true,
       "style": "primary"
     },
     {
       "label": "Order Online",
-      "href": "https://order.toasttab.com/online/miss-bs-coconut-club",
+      "href": "https://missbcoconutclub.com/order",
       "external": false,
       "style": "secondary"
     }
