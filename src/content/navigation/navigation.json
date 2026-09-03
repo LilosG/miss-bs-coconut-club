@@ -16,8 +16,8 @@
     },
     {
       "label": "Order Online",
-      "href": "https://missbcoconutclub.com/order",
-      "external": false,
+      "href": "https://order.toasttab.com/online/miss-bs-coconut-club",
+      "external": true,
       "style": "secondary"
     }
   ]

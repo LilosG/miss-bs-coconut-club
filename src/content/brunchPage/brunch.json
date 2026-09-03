@@ -30,13 +30,13 @@
         "label": "Make a Reservation",
         "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link"
       },
-      { "label": "View Full Menu", "href": "/menu" }
+      { "label": "View Full Menu", "href": "https://order.toasttab.com/online/miss-bs-coconut-club" }
     ]
   },
   "food": {
     "eyebrow": "Brunch Menu",
     "heading": "Breakfast &amp; Brunch<br />Favorites in Mission Beach",
-    "cta": { "label": "View Full Menu", "href": "/menu" },
+    "cta": { "label": "View Full Menu", "href": "https://order.toasttab.com/online/miss-bs-coconut-club" },
     "grid": [
       { "src": "/images/keystatic/brunch-page-food-grid/food/grid/0/src.webp", "name": "Coco Açaí Bowl", "alt": "Miss B's Coconut Club Coco Açaí Bowl brunch Mission Beach San Diego" },
       { "src": "/images/keystatic/brunch-page-food-grid/food/grid/1/src.webp", "name": "Easy B's Breakfast", "alt": "Miss B's Coconut Club Easy B's Breakfast brunch Mission Beach San Diego" },
@@ -75,7 +75,7 @@
         "label": "Reserve a Table",
         "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link"
       },
-      { "label": "View Full Menu", "href": "/menu" }
+      { "label": "View Full Menu", "href": "https://order.toasttab.com/online/miss-bs-coconut-club" }
     ]
   }
 }

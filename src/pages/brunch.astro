@@ -8,6 +8,10 @@ import StatBar from '../components/ui/StatBar.astro';
 import { getCollection, getEntry } from 'astro:content';
 
 const page = (await getEntry('brunchPage', 'brunch'))!.data;
+const navData = (await getEntry('navigation', 'navigation'))!.data;
+const orderCta = (navData.ctas ?? []).find((cta: { style?: string }) => cta.style === 'secondary');
+const orderUrl = orderCta?.href ?? page.experience.ctas?.[1]?.href ?? page.food.cta?.href ?? '/menu';
+const orderIsExternal = /^https?:\/\//.test(orderUrl);
 const brunchFaqs = (await getCollection('brunchFaqs')).map((entry) => entry.data);
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -47,7 +51,7 @@ const faqSchema = {
     {page.experience.body?.[1] && <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.experience.body[1]}\n`} />}
     <div class="flex flex-wrap gap-4 mt-2">
       {page.experience.ctas?.[0] && <a href={page.experience.ctas[0].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200" set:html={`\n${page.experience.ctas[0].label}\n`} />}
-      {page.experience.ctas?.[1] && <a href={page.experience.ctas[1].href} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.experience.ctas[1].label}\n`} />}
+      {page.experience.ctas?.[1] && <a href={orderUrl} target={orderIsExternal ? '_blank' : undefined} rel={orderIsExternal ? 'noopener noreferrer' : undefined} class="px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.experience.ctas[1].label}\n`} />}
     </div>
   </SplitSection>
 
@@ -59,7 +63,7 @@ const faqSchema = {
           <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-text-main leading-[1.0]" set:html={`\n${page.food.heading.replaceAll('<br />', '<br>')}\n`} />
           <div class="h-px w-16 bg-coastal-coral"></div>
         </div>
-        {page.food.cta && <a href={page.food.cta.href} class="shrink-0 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.food.cta.label}\n`} />}
+        {page.food.cta && <a href={orderUrl} target={orderIsExternal ? '_blank' : undefined} rel={orderIsExternal ? 'noopener noreferrer' : undefined} class="shrink-0 px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-text-main/30 text-coastal-text-main hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.food.cta.label}\n`} />}
       </div>
       <HoverImageGrid cols="2x3" gap={true} items={page.food.grid ?? []} />
     </div>
@@ -103,6 +107,6 @@ const faqSchema = {
 
   <CtaBand imageSrc={page.cta.imageSrc} imageAlt={page.cta.imageAlt} imagePosition="top" eyebrow={page.cta.eyebrow} heading={page.cta.heading} body={page.cta.body}>
     {page.cta.links?.[0] && <a href={page.cta.links[0].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.cta.links[0].label}\n`} />}
-    {page.cta.links?.[1] && <a href={page.cta.links[1].href} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300" set:html={`\n${page.cta.links[1].label}\n`} />}
+    {page.cta.links?.[1] && <a href={orderUrl} target={orderIsExternal ? '_blank' : undefined} rel={orderIsExternal ? 'noopener noreferrer' : undefined} class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300" set:html={`\n${page.cta.links[1].label}\n`} />}
   </CtaBand>
 </Layout>
