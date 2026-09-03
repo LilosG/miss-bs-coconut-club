@@ -12,7 +12,7 @@
     "subheading": "San Diego's open-air bar and brunch destination. Steps from the Pacific on Mission Blvd.",
     "ctas": [
       {
-        "label": "View the Menu",
+        "label": "View Menu",
         "href": "/menu"
       },
       {
@@ -51,7 +51,7 @@
     ],
     "ctas": [
       {
-        "label": "Full Menu",
+        "label": "View Menu",
         "href": "/menu"
       },
       {
@@ -67,7 +67,7 @@
     "heading": "Signature<br />Cocktails in<br />Mission Beach",
     "body": "From the flamingo vessel to the frozen mojito, every drink at Miss B's is built for the San Diego sun. Tropical, bold, and entirely unforgettable.",
     "cta": {
-      "label": "Full Drink Menu",
+      "label": "View Menu",
       "href": "/menu"
     }
   },
@@ -106,7 +106,7 @@
     "offDaysPrefix": "Not running ",
     "ctas": [
       {
-        "label": "View Drink Menu",
+        "label": "View Menu",
         "href": "/menu"
       },
       {
@@ -127,7 +127,7 @@
         "href": "/brunch"
       },
       {
-        "label": "Brunch Menu",
+        "label": "View Menu",
         "href": "/menu"
       }
     ]
@@ -136,7 +136,7 @@
     "eyebrow": "The Kitchen",
     "heading": "Food Worth<br />Staying For",
     "cta": {
-      "label": "View Full Menu",
+      "label": "View Menu",
       "href": "/menu"
     },
     "featured": {
