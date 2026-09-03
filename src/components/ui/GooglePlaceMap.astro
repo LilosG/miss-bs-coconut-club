@@ -1,0 +1,25 @@
+---
+import { getEntry } from 'astro:content';
+import { getGoogleMapsPlace } from '../../lib/googleMaps';
+
+interface Props {
+  heightClass?: 'h-[360px]' | 'h-[420px]' | 'h-[500px]';
+}
+
+const { heightClass = 'h-[420px]' } = Astro.props;
+const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
+const googleMaps = await getGoogleMapsPlace(siteProfile);
+---
+
+{googleMaps.embedUrl && (
+  <section class="bg-coastal-bg-sand" aria-label={`Map showing ${siteProfile.venueName}`}>
+    <iframe
+      src={googleMaps.embedUrl}
+      title={`${siteProfile.venueName} on Google Maps`}
+      class={`block w-full ${heightClass} border-0`}
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>
+  </section>
+)}

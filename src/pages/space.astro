@@ -4,10 +4,12 @@ import { getEntry } from 'astro:content';
 import PageHero from '../components/ui/PageHero.astro';
 import SplitSection from '../components/ui/SplitSection.astro';
 import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
+import { getGoogleMapsPlace } from '../lib/googleMaps';
 
 const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
 const page = (await getEntry('spacePage', 'space'))!.data;
-const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.address.streetAddress + " " + siteProfile.address.addressLocality + " " + siteProfile.address.addressRegion;
+const googleMaps = await getGoogleMapsPlace(siteProfile);
+const mapsURL = googleMaps.directionsUrl;
 ---
 
 <Layout

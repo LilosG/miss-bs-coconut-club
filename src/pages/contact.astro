@@ -3,12 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import { getEntry } from 'astro:content';
 import PageHero from '../components/ui/PageHero.astro';
 import SplitSection from '../components/ui/SplitSection.astro';
+import GooglePlaceMap from '../components/ui/GooglePlaceMap.astro';
+import { getGoogleMapsPlace } from '../lib/googleMaps';
 
 const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
 const page = (await getEntry('contactPage', 'contact'))!.data;
 const navData = (await getEntry('navigation', 'navigation'))!.data;
 const reservationCta = (navData.ctas ?? []).find((cta: { style?: string }) => cta.style === 'primary');
-const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.address.streetAddress + " " + siteProfile.address.addressLocality + " " + siteProfile.address.addressRegion;
+const googleMaps = await getGoogleMapsPlace(siteProfile);
+const mapsURL = googleMaps.directionsUrl;
 ---
 
 <Layout
@@ -62,6 +65,8 @@ const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile
 
     </div>
   </section>
+
+  <GooglePlaceMap heightClass="h-[420px]" />
 
   <!-- ─── EVENT INQUIRY FORM ──────────────────────────────────────────────── -->
   <section class="bg-coastal-bg-sand py-24 px-6" id="inquiry">

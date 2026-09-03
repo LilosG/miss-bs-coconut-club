@@ -4,10 +4,13 @@ import { getEntry } from 'astro:content';
 import SplitSection from '../components/ui/SplitSection.astro';
 import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
 import ChecklistItems from '../components/ui/ChecklistItems.astro';
+import GooglePlaceMap from '../components/ui/GooglePlaceMap.astro';
+import { getGoogleMapsPlace } from '../lib/googleMaps';
 
 const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
 const page = (await getEntry('home', 'home'))!.data;
-const mapsURL = "https://www.google.com/maps/search/?api=1&query=" + siteProfile.address.streetAddress + " " + siteProfile.address.addressLocality + " " + siteProfile.address.addressRegion;
+const googleMaps = await getGoogleMapsPlace(siteProfile);
+const mapsURL = googleMaps.directionsUrl;
 
 const cocktailGrid = page.cocktailGrid ?? [];
 const foodRight    = page.food?.grid ?? [];
@@ -209,6 +212,8 @@ const happyHourOffDays = siteProfile.hours?.happyHour?.find((h: { closed?: boole
     <ChecklistItems items={page.privateEvents.items ?? []} />
     {page.privateEvents.cta && <a href={page.privateEvents.cta.href} class="self-start mt-4 px-7 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300" set:html={`\n${page.privateEvents.cta.label}\n`} />}
   </SplitSection>
+
+  <GooglePlaceMap heightClass="h-[420px]" />
 
   <!-- ─── LOCATION BAR ──────────────────────────────────────────────────── -->
   <section class="bg-coastal-text-main py-20 px-6">

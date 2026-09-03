@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content';
+import { getGoogleMapsPlace } from '../../lib/googleMaps';
 
 interface Props {
   title: string;
@@ -14,6 +15,7 @@ const {
 } = Astro.props;
 
 const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
+const googleMaps = await getGoogleMapsPlace(siteProfile);
 
 const openingHoursSpecification = (siteProfile.hours?.general ?? []).map((h: { days?: string[]; open?: string; close?: string }) => ({
   "@type": "OpeningHoursSpecification",
@@ -44,7 +46,7 @@ const jsonLD = {
     "latitude": siteProfile.coordinates.latitude,
     "longitude": siteProfile.coordinates.longitude
   },
-  "hasMap": "https://www.google.com/maps/search/?api=1&query=" + siteProfile.coordinates.latitude + "," + siteProfile.coordinates.longitude,
+  "hasMap": googleMaps.placeUrl,
   "openingHoursSpecification": openingHoursSpecification,
   "sameAs": [
     siteProfile.social.instagram,
