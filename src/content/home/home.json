@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Mission Beach Bar, Brunch & Cocktails",
-    "description": "Miss B's Coconut Club is an open-air bar and restaurant in Mission Beach, San Diego serving daily brunch, tropical cocktails, happy hour and private events on Mission Blvd."
+    "description": "Miss B's Coconut Club is a coastal, open-air bar and restaurant in Mission Beach, San Diego serving daily brunch, tropical cocktails, happy hour and private events on Mission Blvd."
   },
   "hero": {
     "imageSrc": "/images/keystatic/home-hero/miss-bs-coconut-club-mission-beach-venue-15.webp",
@@ -9,7 +9,7 @@
     "eyebrow": "3704 Mission Blvd · Mission Beach, San Diego",
     "heading": "Miss B's",
     "headingAccent": "Coconut Club",
-    "subheading": "Open-air bar, restaurant and daily brunch in Mission Beach, San Diego — steps from the Pacific on Mission Blvd.",
+    "subheading": "Coastal open-air bar, restaurant and daily brunch in Mission Beach, San Diego — steps from the Pacific on Mission Blvd.",
     "ctas": [
       { "label": "View Menu", "href": "/menu" },
       { "label": "Brunch", "href": "/brunch" }
@@ -27,12 +27,12 @@
   },
   "intro": {
     "imageSrc": "/images/keystatic/home-intro/miss-bs-coconut-club-mission-beach-venue-07.webp",
-    "imageAlt": "Miss B's Coconut Club tropical dining room with mural Mission Beach San Diego",
+    "imageAlt": "Miss B's Coconut Club coastal dining room with mural Mission Beach San Diego",
     "eyebrow": "Mission Beach, San Diego",
-    "heading": "Open-Air Bar &amp;<br />Restaurant in Mission Beach",
+    "heading": "Coastal Open-Air Bar &amp;<br />Restaurant in Mission Beach",
     "body": [
-      "Miss B's Coconut Club is an open-air Mission Beach restaurant and bar built for long afternoons, tropical cocktails, daily brunch, and relaxed meals steps from the Pacific.",
-      "Find us at 3704 Mission Blvd for Caribbean-inspired food, a full cocktail program, happy hour, brunch, and group gatherings in the tropical dining room and outdoor patio."
+      "Miss B's Coconut Club is a coastal, open-air Mission Beach restaurant and bar built for long afternoons, tropical cocktails, daily brunch, and relaxed meals steps from the Pacific.",
+      "Find us at 3704 Mission Blvd for coastal-inspired food, a full cocktail program, happy hour, brunch, and group gatherings in the coastal dining room and outdoor patio."
     ],
     "ctas": [
       { "label": "View Menu", "href": "/menu" },
@@ -80,7 +80,7 @@
   },
   "food": {
     "eyebrow": "The Kitchen",
-    "heading": "Caribbean-Inspired<br />Food in Mission Beach",
+    "heading": "Coastal-Inspired<br />Food in Mission Beach",
     "cta": { "label": "View Menu", "href": "/menu" },
     "featured": {
       "src": "/images/keystatic/home-food-featured/miss-bs-coconut-club-food-mission-beach-09.webp",
