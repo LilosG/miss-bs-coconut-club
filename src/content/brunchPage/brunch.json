@@ -11,10 +11,22 @@
     "subheading": "Brunch is served every day at Miss B's Coconut Club — from 9am on Saturday and Sunday, 10am Monday through Friday, until 2pm at 3704 Mission Blvd."
   },
   "stats": [
-    { "value": "9/10am", "label": "Doors Open" },
-    { "value": "2pm", "label": "Brunch Ends" },
-    { "value": "Daily", "label": "Every Day" },
-    { "value": "24 Taps", "label": "Flamingo Bar" }
+    {
+      "value": "9/10am",
+      "label": "Doors Open"
+    },
+    {
+      "value": "2pm",
+      "label": "Brunch Ends"
+    },
+    {
+      "value": "Daily",
+      "label": "Every Day"
+    },
+    {
+      "value": "24 Taps",
+      "label": "Flamingo Bar"
+    }
   ],
   "experience": {
     "imageSrc": "/images/keystatic/brunch-page-experience/experience/imageSrc.jpg",
@@ -30,20 +42,50 @@
         "label": "Make a Reservation",
         "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link"
       },
-      { "label": "View Full Menu", "href": "https://order.toasttab.com/online/miss-bs-coconut-club" }
+      {
+        "label": "View Full Menu",
+        "href": "https://order.toasttab.com/online/miss-bs-coconut-club"
+      }
     ]
   },
   "food": {
     "eyebrow": "Brunch Menu",
     "heading": "Breakfast &amp; Brunch<br />Favorites in Mission Beach",
-    "cta": { "label": "View Full Menu", "href": "https://order.toasttab.com/online/miss-bs-coconut-club" },
+    "cta": {
+      "label": "View Full Menu",
+      "href": "https://order.toasttab.com/online/miss-bs-coconut-club"
+    },
     "grid": [
-      { "src": "/images/keystatic/brunch-page-food-grid/food/grid/0/src.webp", "name": "Coco Açaí Bowl", "alt": "Miss B's Coconut Club Coco Açaí Bowl brunch Mission Beach San Diego" },
-      { "src": "/images/keystatic/brunch-page-food-grid/food/grid/1/src.webp", "name": "Easy B's Breakfast", "alt": "Miss B's Coconut Club Easy B's Breakfast brunch Mission Beach San Diego" },
-      { "src": "/images/keystatic/brunch-page-food-grid/food/grid/2/src.webp", "name": "Pete's Biscuits and Gravy", "alt": "Miss B's Coconut Club Pete's Biscuits and Gravy brunch Mission Beach San Diego" },
-      { "src": "/images/keystatic/brunch-page-food-grid/food/grid/3/src.jpg", "name": "The B's Muffin", "alt": "Miss B's Coconut Club The B's Muffin brunch sandwich Mission Beach San Diego" },
-      { "src": "/images/keystatic/brunch-page-food-grid/food/grid/4/src.webp", "name": "French Toast", "alt": "Miss B's Coconut Club French Toast brunch Mission Beach San Diego" },
-      { "src": "/images/keystatic/brunch-page-food-grid/food/grid/5/src.webp", "name": "Egg Sandwich", "alt": "Miss B's Coconut Club Egg Sandwich brunch Mission Beach San Diego" }
+      {
+        "src": "/images/keystatic/brunch-page-food-grid/food/grid/0/src.webp",
+        "name": "Coco Açaí Bowl",
+        "alt": "Miss B's Coconut Club Coco Açaí Bowl brunch Mission Beach San Diego"
+      },
+      {
+        "src": "/images/keystatic/brunch-page-food-grid/food/grid/1/src.webp",
+        "name": "Easy B's Breakfast",
+        "alt": "Miss B's Coconut Club Easy B's Breakfast brunch Mission Beach San Diego"
+      },
+      {
+        "src": "/images/keystatic/brunch-page-food-grid/food/grid/2/src.webp",
+        "name": "Pete's Biscuits and Gravy",
+        "alt": "Miss B's Coconut Club Pete's Biscuits and Gravy brunch Mission Beach San Diego"
+      },
+      {
+        "src": "/images/keystatic/brunch-page-food-grid/food/grid/3/src.jpg",
+        "name": "The B's Muffin",
+        "alt": "Miss B's Coconut Club The B's Muffin brunch sandwich Mission Beach San Diego"
+      },
+      {
+        "src": "/images/keystatic/brunch-page-food-grid/food/grid/4/src.webp",
+        "name": "French Toast",
+        "alt": "Miss B's Coconut Club French Toast brunch Mission Beach San Diego"
+      },
+      {
+        "src": "/images/keystatic/brunch-page-food-grid/food/grid/5/src.jpg",
+        "name": "Breakfast Sandwich",
+        "alt": "Miss B's Coconut Club Egg Sandwich brunch Mission Beach San Diego"
+      }
     ]
   },
   "cocktails": {
@@ -53,10 +95,22 @@
     "heading": "Mimosas &amp; Morning<br />Cocktails in Mission Beach",
     "body": "Mimosas, Bloody Marys, tropical morning cocktails and the full Miss B&apos;s bar program are available during daily brunch service.",
     "grid": [
-      { "src": "/images/keystatic/brunch-page-cocktails-grid/cocktails/grid/0/src.jpg", "alt": "Miss B's Coconut Club brunch cocktail Mission Beach San Diego" },
-      { "src": "/images/keystatic/brunch-page-cocktails-grid/cocktails/grid/1/src.jpg", "alt": "Miss B's Coconut Club morning cocktail Mission Beach San Diego" },
-      { "src": "/images/keystatic/brunch-page-cocktails-grid/cocktails/grid/2/src.webp", "alt": "Miss B's Coconut Club rosé and champagne brunch drinks Mission Beach San Diego" },
-      { "src": "/images/keystatic/brunch-page-cocktails-grid/cocktails/grid/3/src.jpg", "alt": "Miss B's Coconut Club brunch cocktail at the Mission Beach bar" }
+      {
+        "src": "/images/keystatic/brunch-page-cocktails-grid/cocktails/grid/0/src.jpg",
+        "alt": "Miss B's Coconut Club brunch cocktail Mission Beach San Diego"
+      },
+      {
+        "src": "/images/keystatic/brunch-page-cocktails-grid/cocktails/grid/1/src.jpg",
+        "alt": "Miss B's Coconut Club morning cocktail Mission Beach San Diego"
+      },
+      {
+        "src": "/images/keystatic/brunch-page-cocktails-grid/cocktails/grid/2/src.webp",
+        "alt": "Miss B's Coconut Club rosé and champagne brunch drinks Mission Beach San Diego"
+      },
+      {
+        "src": "/images/keystatic/brunch-page-cocktails-grid/cocktails/grid/3/src.jpg",
+        "alt": "Miss B's Coconut Club brunch cocktail at the Mission Beach bar"
+      }
     ]
   },
   "faq": {
@@ -75,7 +129,10 @@
         "label": "Reserve a Table",
         "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link"
       },
-      { "label": "View Full Menu", "href": "https://order.toasttab.com/online/miss-bs-coconut-club" }
+      {
+        "label": "View Full Menu",
+        "href": "https://order.toasttab.com/online/miss-bs-coconut-club"
+      }
     ]
   }
 }
