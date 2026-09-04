@@ -89,9 +89,9 @@
     },
     "grid": [
       { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-food-mission-beach-13.webp", "name": "Cubano" },
-      { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-mission-beach-favorites-tacos.webp", "name": "Miss B's Favorites Tacos", "alt": "Miss B's Favorites tacos at Miss B's Coconut Club in Mission Beach San Diego" },
-      { "src": "https://popmenucloud.com/cdn-cgi/image/width%3D1920%2Cheight%3D1920%2Cformat%3Dauto%2Cfit%3Dscale-down/qvhjpmne/e31bb19d-eb77-47d9-8b4f-4d4ee5b85683.jpg", "name": "Poke Bowl", "alt": "Poke bowl at Miss B's Coconut Club in Mission Beach San Diego" },
-      { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-mission-beach-caribbean-bbq-chicken-salad.webp", "name": "Caribbean BBQ Chicken Salad", "alt": "Caribbean BBQ chicken salad at Miss B's Coconut Club in Mission Beach San Diego" }
+      { "src": "/images/food/miss-bs-coconut-club-favorites-tacos.webp", "name": "Miss B's Favorites Tacos", "alt": "Miss B's Favorites Tacos at Miss B's Coconut Club in Mission Beach San Diego" },
+      { "src": "/images/food/miss-bs-coconut-club-polar-bowl-poke.webp", "name": "Poke Bowl", "alt": "Poke bowl at Miss B's Coconut Club in Mission Beach San Diego" },
+      { "src": "/images/food/miss-bs-coconut-club-caribbean-bbq-chicken-salad.webp", "name": "Caribbean BBQ Chicken Salad", "alt": "Caribbean BBQ chicken salad at Miss B's Coconut Club in Mission Beach San Diego" }
     ]
   },
   "privateEvents": {
