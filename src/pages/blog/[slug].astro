@@ -2,6 +2,7 @@
 import { getCollection, getEntry, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import CtaBand from '../../components/ui/CtaBand.astro';
+import { Picture } from 'astro:assets';
 import TrustBar from '../../components/ui/TrustBar.astro';
 import { resolveBlogImage } from '../../lib/blog-images';
 
@@ -86,7 +87,20 @@ const relatedPosts = allPosts.filter((candidate) => candidate.id !== post.id && 
   {faqSchema && <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} slot="head" />}
 
   <section class="relative min-h-[60vh] flex flex-col justify-end overflow-hidden">
-    <img src={image} alt={imageAlt} class="absolute inset-0 w-full h-full object-cover object-center" loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0">
+      <Picture
+        src={image}
+        alt={imageAlt}
+        widths={[640, 1080, 1920]}
+        sizes="100vw"
+        width={1920}
+        height={1080}
+        quality={85}
+        loading="eager"
+        fetchpriority="high"
+        class="w-full h-full object-cover object-center"
+      />
+    </div>
     <div class="absolute inset-0 bg-gradient-to-t from-coastal-text-main/95 via-coastal-text-main/50 to-coastal-text-main/10"></div>
     <div class="relative z-10 max-w-4xl mx-auto px-6 pb-16 pt-32 w-full">
       <div class="flex flex-col gap-4">

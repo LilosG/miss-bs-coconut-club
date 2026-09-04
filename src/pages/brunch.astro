@@ -4,6 +4,7 @@ import PageHero from '../components/ui/PageHero.astro';
 import SplitSection from '../components/ui/SplitSection.astro';
 import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
 import CtaBand from '../components/ui/CtaBand.astro';
+import { Picture } from 'astro:assets';
 import StatBar from '../components/ui/StatBar.astro';
 import { getCollection, getEntry } from 'astro:content';
 
@@ -70,7 +71,20 @@ const faqSchema = {
   </section>
 
   <section class="relative overflow-hidden min-h-[600px] flex items-center">
-    <img src={page.cocktails.imageSrc} alt={page.cocktails.imageAlt} class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy" />
+    <div class="absolute inset-0">
+      <Picture
+        src={page.cocktails.imageSrc}
+        alt={page.cocktails.imageAlt}
+        widths={[640, 1080, 1920]}
+        sizes="100vw"
+        width={1920}
+        height={1080}
+        quality={85}
+        loading="lazy"
+        decoding="async"
+        class="w-full h-full object-cover object-center"
+      />
+    </div>
     <div class="absolute inset-0 bg-gradient-to-r from-coastal-text-main/88 via-coastal-text-main/55 to-transparent"></div>
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
       <div class="max-w-lg flex flex-col gap-6">

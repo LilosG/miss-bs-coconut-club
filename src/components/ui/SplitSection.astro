@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+
 interface Props {
   imageSrc: string
   imageAlt: string
@@ -58,12 +60,20 @@ const contentOrder = imageLeft ? 'order-1 lg:order-2' : '';
       <>
         <!-- Image column (left on desktop) -->
         <div class={`relative min-h-[460px] lg:min-h-full ${imageOrder}`}>
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            class={`absolute inset-0 w-full h-full object-cover ${imgPositionClass}`}
-            loading="lazy"
-          />
+          <div class="absolute inset-0">
+            <Picture
+              src={imageSrc}
+              alt={imageAlt}
+              widths={[640, 828, 1080, 1200]}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              width={1200}
+              height={900}
+              quality={85}
+              loading="lazy"
+              decoding="async"
+              class={`w-full h-full object-cover ${imgPositionClass}`}
+            />
+          </div>
           {imageOverlay && (
             <div class="absolute inset-0 bg-coastal-text-main/20"></div>
           )}
@@ -89,12 +99,20 @@ const contentOrder = imageLeft ? 'order-1 lg:order-2' : '';
         </div>
         <!-- Image column (right on desktop) -->
         <div class="relative min-h-[460px] lg:min-h-full">
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            class={`absolute inset-0 w-full h-full object-cover ${imgPositionClass}`}
-            loading="lazy"
-          />
+          <div class="absolute inset-0">
+            <Picture
+              src={imageSrc}
+              alt={imageAlt}
+              widths={[640, 828, 1080, 1200]}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              width={1200}
+              height={900}
+              quality={85}
+              loading="lazy"
+              decoding="async"
+              class={`w-full h-full object-cover ${imgPositionClass}`}
+            />
+          </div>
           {imageOverlay && (
             <div class="absolute inset-0 bg-coastal-text-main/20"></div>
           )}

@@ -15,5 +15,15 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  adapter: vercel()
+  adapter: vercel({
+    imageService: true,
+    imagesConfig: {
+      sizes: [640, 828, 1080, 1200, 1920],
+      formats: ['image/avif', 'image/webp'],
+    },
+  }),
+
+  image: {
+    domains: ['missbcoconutclub.com', 'popmenucloud.com'],
+  },
 });

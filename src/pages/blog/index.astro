@@ -3,6 +3,7 @@ import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import PageHero from '../../components/ui/PageHero.astro';
 import { resolveBlogImage } from '../../lib/blog-images';
+import { Picture } from 'astro:assets';
 
 const allPosts = await getCollection('blog');
 const posts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
@@ -31,11 +32,17 @@ const page = (await getEntry('blogIndexPage', 'blog'))!.data;
           return (
           <a href={"/blog/" + post.id} class="group bg-coastal-bg-pure flex flex-col hover:bg-coastal-bg-card transition-colors duration-200">
             <div class="overflow-hidden aspect-[16/10]">
-              <img
+              <Picture
                 src={image}
                 alt={imageAlt}
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                widths={[400, 640, 800]}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                width={800}
+                height={500}
+                quality={85}
                 loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
             <div class="flex flex-col gap-3 p-7 flex-1">

@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+
 interface Props {
   imageSrc: string
   imageAlt: string
@@ -38,12 +40,20 @@ const headingSizeClass  = headingSizeMap[headingSize];
 ---
 
 <section class="relative overflow-hidden">
-  <img
-    src={imageSrc}
-    alt={imageAlt}
-    class={`absolute inset-0 w-full h-full object-cover ${imgPositionClass}`}
-    loading="lazy"
-  />
+  <div class="absolute inset-0">
+    <Picture
+      src={imageSrc}
+      alt={imageAlt}
+      widths={[640, 1080, 1920]}
+      sizes="100vw"
+      width={1920}
+      height={1080}
+      quality={85}
+      loading="lazy"
+      decoding="async"
+      class={`w-full h-full object-cover ${imgPositionClass}`}
+    />
+  </div>
   <div class="absolute inset-0 bg-coastal-text-main/70"></div>
   <div class={`relative z-10 mx-auto max-w-7xl px-6 ${py} text-center flex flex-col items-center ${gap}`}>
     {eyebrow && (

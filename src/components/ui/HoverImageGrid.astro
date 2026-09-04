@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets';
+
 interface Item {
   src: string
   alt: string
@@ -48,11 +50,17 @@ const aspectClass = aspectMap[aspect];
 <div class={`grid ${colsClass}${gap ? ' gap-2' : ''}`}>
   {items.map((item) => (
     <div class={`group relative overflow-hidden${aspectClass ? ` ${aspectClass}` : ''}`}>
-      <img
+      <Picture
         src={item.src}
         alt={item.alt}
-        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        widths={[400, 640, 800]}
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        width={800}
+        height={800}
+        quality={85}
         loading="lazy"
+        decoding="async"
+        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
       <div class={`absolute inset-0 bg-gradient-to-t ${gradientFrom} via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
       {showLabel && item.name && (
