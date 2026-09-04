@@ -1,71 +1,83 @@
 ---
 const GA_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+const GA_SRC = GA_ID
+  ? `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID)}`
+  : '';
 ---
+
 {GA_ID && (
-  <script is:inline define:vars={{ GA_ID }}>
-    (function () {
-      var NEW_KEY = 'lilos-privacy-v1';
-      var OLD_KEY = 'lilos-consent-v1';
+  <>
+    <script is:inline async src={GA_SRC}></script>
+    <script is:inline define:vars={{ GA_ID }}>
+      (function () {
+        var NEW_KEY = 'lilos-privacy-v1';
+        var OLD_KEY = 'lilos-consent-v1';
 
-      function readOptOut() {
-        try {
-          var raw = localStorage.getItem(NEW_KEY);
-          if (raw) {
-            var parsed = JSON.parse(raw);
-            if (parsed && typeof parsed.optOut === 'boolean') return parsed.optOut;
-          }
-
-          var oldRaw = localStorage.getItem(OLD_KEY);
-          if (oldRaw) {
-            var old = JSON.parse(oldRaw);
-            if (old && old.analytics === false) {
-              localStorage.setItem(NEW_KEY, JSON.stringify({ optOut: true, ts: Date.now() }));
-              return true;
+        function readOptOut() {
+          try {
+            var raw = localStorage.getItem(NEW_KEY);
+            if (raw) {
+              var parsed = JSON.parse(raw);
+              if (parsed && typeof parsed.optOut === 'boolean') return parsed.optOut;
             }
-          }
-        } catch (e) {}
-        return false;
-      }
 
-      function writeOptOut(value) {
-        try {
-          localStorage.setItem(NEW_KEY, JSON.stringify({ optOut: value, ts: Date.now() }));
-        } catch (e) {}
-      }
+            var oldRaw = localStorage.getItem(OLD_KEY);
+            if (oldRaw) {
+              var old = JSON.parse(oldRaw);
+              if (old && old.analytics === false) {
+                localStorage.setItem(NEW_KEY, JSON.stringify({ optOut: true, ts: Date.now() }));
+                return true;
+              }
+            }
+          } catch (e) {}
+          return false;
+        }
 
-      function initAnalytics() {
-        if (window.__lilosGA4Loaded) return;
-        window.__lilosGA4Loaded = true;
+        function writeOptOut(value) {
+          try {
+            localStorage.setItem(NEW_KEY, JSON.stringify({ optOut: value, ts: Date.now() }));
+          } catch (e) {}
+        }
+
+        var privacyDisabled = navigator.globalPrivacyControl === true || readOptOut();
+        window['ga-disable-' + GA_ID] = privacyDisabled;
 
         window.dataLayer = window.dataLayer || [];
-        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
         window.gtag('js', new Date());
-        window.gtag('consent', 'default', {
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-          analytics_storage: 'granted'
-        });
-        window.gtag('config', GA_ID, {
-          allow_google_signals: false,
-          allow_ad_personalization_signals: false
-        });
+        window.gtag('config', GA_ID);
 
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
-        document.head.appendChild(s);
+        window.lilosPrivacy = {
+          isOptedOut: function () {
+            return readOptOut();
+          },
+          optOut: function () {
+            writeOptOut(true);
+            window['ga-disable-' + GA_ID] = true;
+          },
+          optIn: function () {
+            writeOptOut(false);
+            window['ga-disable-' + GA_ID] = false;
+            if (typeof window.gtag === 'function') {
+              window.gtag('config', GA_ID);
+            }
+          }
+        };
 
         document.addEventListener('click', function (e) {
-          const link = e.target.closest('a[href*="toasttab.com"], a[href*="toast.app"], a[href^="tel:"]');
+          var target = e.target;
+          if (!(target instanceof Element)) return;
+
+          var link = target.closest('a[href*="toasttab.com"], a[href*="toast.app"], a[href^="tel:"]');
           if (!link) return;
 
-          let eventName = 'toast_link_click';
+          var eventName = 'toast_link_click';
+
           if (link.href.startsWith('tel:')) {
             eventName = 'phone_click';
           } else {
             try {
-              const host = new URL(link.href).hostname;
+              var host = new URL(link.href).hostname;
               if (host === 'toast.app' || host.endsWith('.toast.app') || host.includes('tables.toasttab.com')) {
                 eventName = 'reservation_click';
               } else if (host.includes('order.toasttab.com')) {
@@ -85,31 +97,7 @@ const GA_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
             });
           }
         }, { passive: true });
-      }
-
-      window.lilosPrivacy = {
-        isOptedOut: function () {
-          return readOptOut();
-        },
-        optOut: function () {
-          writeOptOut(true);
-          window['ga-disable-' + GA_ID] = true;
-        },
-        optIn: function () {
-          writeOptOut(false);
-          window['ga-disable-' + GA_ID] = false;
-          initAnalytics();
-        }
-      };
-
-      if (navigator.globalPrivacyControl === true) return;
-
-      if (readOptOut()) {
-        window['ga-disable-' + GA_ID] = true;
-        return;
-      }
-
-      initAnalytics();
-    })();
-  </script>
+      })();
+    </script>
+  </>
 )}
