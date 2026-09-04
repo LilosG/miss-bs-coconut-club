@@ -89,9 +89,9 @@
     },
     "grid": [
       { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-food-mission-beach-13.webp", "name": "Cubano" },
-      { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-food-mission-beach-17.webp", "name": "Table Spread" },
-      { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-food-mission-beach-26.webp", "name": "Jerk Plate" },
-      { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-food-mission-beach-32.webp", "name": "Nachos" }
+      { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-mission-beach-favorites-tacos.webp", "name": "Miss B's Favorites Tacos" },
+      { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-mission-beach-poke-bowl.webp", "name": "Poke Bowl" },
+      { "src": "/images/keystatic/home-food-grid/miss-bs-coconut-club-mission-beach-caribbean-bbq-chicken-salad.webp", "name": "Caribbean BBQ Chicken Salad" }
     ]
   },
   "privateEvents": {
