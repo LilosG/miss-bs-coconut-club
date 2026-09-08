@@ -1,0 +1,207 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/ui/PageHero.astro';
+import SplitSection from '../components/ui/SplitSection.astro';
+import CtaBand from '../components/ui/CtaBand.astro';
+import { Picture } from 'astro:assets';
+import { getEntry } from 'astro:content';
+
+const page = (await getEntry('sportsPage', 'sports'))!.data;
+const navData = (await getEntry('navigation', 'navigation'))!.data;
+const reservationCta = (navData.ctas ?? []).find((cta: { style?: string }) => cta.style === 'primary');
+const reservationUrl = reservationCta?.href ?? page.intro.cta.href;
+---
+
+<Layout title={page.seo.title} description={page.seo.description}>
+
+  <PageHero
+    imageSrc={page.hero.imageSrc}
+    imageAlt={page.hero.imageAlt}
+    eyebrow={page.hero.eyebrow}
+    heading={page.hero.heading}
+    subheading={page.hero.subheading}
+  />
+
+  <!-- ─── INTRO SPLIT ──────────────────────────────────────────────────────── -->
+  <SplitSection
+    imageSrc={page.intro.imageSrc}
+    imageAlt={page.intro.imageAlt}
+    eyebrow={page.intro.eyebrow}
+    heading={page.intro.heading}
+    imageLeft={false}
+    sectionBg="bg-coastal-bg-pure"
+    minHeight="600px"
+  >
+    {page.intro.body?.[0] && <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.intro.body[0]}\n`} />}
+    {page.intro.body?.[1] && <p class="text-coastal-text-muted text-base leading-relaxed" set:html={`\n${page.intro.body[1]}\n`} />}
+    <a
+      href={reservationUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-text-main text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200"
+    >
+      Reserve a Table
+    </a>
+  </SplitSection>
+
+  <!-- ─── FULL-BLEED FEATURE ───────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden min-h-[600px] flex items-center">
+    <div class="absolute inset-0">
+      <Picture
+        src={page.feature.imageSrc}
+        alt={page.feature.imageAlt}
+        widths={[640, 1080, 1920]}
+        sizes="100vw"
+        width={1920}
+        height={1080}
+        quality={85}
+        loading="lazy"
+        decoding="async"
+        class="w-full h-full object-cover object-center"
+      />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-coastal-text-main/88 via-coastal-text-main/55 to-transparent"></div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
+      <div class="max-w-lg flex flex-col gap-6">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral" set:html={`\n${page.feature.eyebrow}\n`} />
+        <h2 class="font-serif text-5xl md:text-6xl font-light italic text-coastal-bg-pure leading-[1.0]" set:html={`\n${page.feature.heading.replaceAll('<br />', '<br>')}\n`} />
+        <div class="h-px w-16 bg-coastal-coral"></div>
+        <p class="text-coastal-bg-card/85 text-base leading-relaxed" set:html={`\n${page.feature.body}\n`} />
+        <a
+          href="#schedule"
+          class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/30 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200"
+        >
+          Game Day Details
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SCHEDULES ────────────────────────────────────────────────────────── -->
+  <div id="schedule"></div>
+
+  <!-- Green Bay Packers -->
+  <SplitSection
+    imageSrc={page.packersSchedule.imageSrc}
+    imageAlt={page.packersSchedule.imageAlt}
+    eyebrow={page.packersSchedule.eyebrow}
+    heading={page.packersSchedule.heading}
+    imageLeft={true}
+    sectionBg="bg-coastal-bg-sand"
+    minHeight="700px"
+    headingSize="medium"
+  >
+    {page.packersSchedule.note && (
+      <p class="text-xs text-coastal-text-muted/70 -mt-2">{page.packersSchedule.note}</p>
+    )}
+    <div class="overflow-x-auto -mx-1">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b border-coastal-text-muted/20">
+            <th class="text-left py-2 pr-4 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Date</th>
+            <th class="text-left py-2 pr-4 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Opponent</th>
+            <th class="text-left py-2 pr-4 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral hidden sm:table-cell">H/A</th>
+            <th class="text-right py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Kickoff (PT)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {page.packersSchedule.games.map((g: { week: number; date: string; opponent: string; homeAway: string; time: string }) => (
+            <tr class="border-b border-coastal-text-muted/10 hover:bg-coastal-coral/5 transition-colors duration-150">
+              <td class="py-2.5 pr-4 text-coastal-text-muted whitespace-nowrap">{g.date}</td>
+              <td class="py-2.5 pr-4 text-coastal-text-main font-medium">{g.opponent}</td>
+              <td class="py-2.5 pr-4 hidden sm:table-cell">
+                <span class={`text-[9px] font-bold tracking-[0.15em] uppercase px-1.5 py-0.5 rounded-sm ${g.homeAway === 'home' ? 'bg-coastal-coral/15 text-coastal-coral' : 'bg-coastal-text-muted/15 text-coastal-text-muted'}`}>
+                  {g.homeAway === 'home' ? 'Home' : 'Away'}
+                </span>
+              </td>
+              <td class="py-2.5 text-right text-coastal-text-muted whitespace-nowrap">{g.time}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <a
+      href={page.packersSchedule.reserveCta.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200 mt-2"
+    >
+      {page.packersSchedule.reserveCta.label}
+    </a>
+  </SplitSection>
+
+  <!-- Oregon Ducks -->
+  <SplitSection
+    imageSrc={page.ducksSchedule.imageSrc}
+    imageAlt={page.ducksSchedule.imageAlt}
+    eyebrow={page.ducksSchedule.eyebrow}
+    heading={page.ducksSchedule.heading}
+    imageLeft={false}
+    sectionBg="bg-coastal-bg-pure"
+    minHeight="700px"
+    headingSize="medium"
+  >
+    {page.ducksSchedule.note && (
+      <p class="text-xs text-coastal-text-muted/70 -mt-2">{page.ducksSchedule.note}</p>
+    )}
+    <div class="overflow-x-auto -mx-1">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b border-coastal-text-muted/20">
+            <th class="text-left py-2 pr-4 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Date</th>
+            <th class="text-left py-2 pr-4 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Opponent</th>
+            <th class="text-left py-2 pr-4 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral hidden sm:table-cell">H/A</th>
+            <th class="text-right py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Kickoff (PT)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {page.ducksSchedule.games.map((g: { week: number; date: string; opponent: string; homeAway: string; time: string }) => (
+            <tr class="border-b border-coastal-text-muted/10 hover:bg-coastal-coral/5 transition-colors duration-150">
+              <td class="py-2.5 pr-4 text-coastal-text-muted whitespace-nowrap">{g.date}</td>
+              <td class="py-2.5 pr-4 text-coastal-text-main font-medium">{g.opponent}</td>
+              <td class="py-2.5 pr-4 hidden sm:table-cell">
+                <span class={`text-[9px] font-bold tracking-[0.15em] uppercase px-1.5 py-0.5 rounded-sm ${g.homeAway === 'home' ? 'bg-coastal-coral/15 text-coastal-coral' : 'bg-coastal-text-muted/15 text-coastal-text-muted'}`}>
+                  {g.homeAway === 'home' ? 'Home' : 'Away'}
+                </span>
+              </td>
+              <td class="py-2.5 text-right text-coastal-text-muted whitespace-nowrap">{g.time}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <a
+      href={page.ducksSchedule.reserveCta.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-200 mt-2"
+    >
+      {page.ducksSchedule.reserveCta.label}
+    </a>
+  </SplitSection>
+
+  <!-- ─── CLOSING CTA ──────────────────────────────────────────────────────── -->
+  <CtaBand
+    imageSrc={page.cta.imageSrc}
+    imageAlt={page.cta.imageAlt}
+    eyebrow={page.cta.eyebrow}
+    heading={page.cta.heading}
+    body={page.cta.body}
+  >
+    <a
+      href={reservationUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure hover:bg-coastal-gold-accent transition-all duration-300"
+    >
+      Reserve Now
+    </a>
+    <a
+      href="/contact"
+      class="px-10 py-4 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/50 text-coastal-bg-pure hover:bg-coastal-bg-pure hover:text-coastal-text-main transition-all duration-300"
+    >
+      View Hours &amp; Location
+    </a>
+  </CtaBand>
+
+</Layout>
