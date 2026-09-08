@@ -40,12 +40,26 @@ const portfolio = GPH_NETWORK.filter((v) => v.url !== siteProfile.domain);
           <span class="text-sm text-coastal-bg-sand">{siteProfile.address.streetAddress}</span>
           <span class="text-sm text-coastal-text-muted">{siteProfile.address.addressLocality}, {siteProfile.address.addressRegion} {siteProfile.address.postalCode}</span>
         </address>
-        <div class="flex flex-col gap-1 mt-2">
-          {(siteProfile.hours?.general ?? []).map((h: { label: string; display: string }) => (
-            <span class="text-sm text-coastal-text-muted">{h.label}: {h.display}</span>
+        <div id="footer-hours" class="flex flex-col gap-1 mt-2">
+          {(siteProfile.hours?.general ?? []).map((h: { label: string; display: string; days: string[] }) => (
+            <span
+              class="footer-hour-row text-sm text-coastal-text-muted transition-colors duration-200"
+              data-days={h.days.join(',')}
+            >
+              {h.label}: {h.display}
+            </span>
           ))}
           <span class="text-xs text-coastal-coral/80 mt-1">{footer.brunchHours}</span>
         </div>
+
+        <script>
+          const today = new Date().toLocaleDateString('en-US', { weekday: 'long', timeZone: 'America/Los_Angeles' });
+          document.querySelectorAll<HTMLElement>('#footer-hours .footer-hour-row').forEach((row) => {
+            if ((row.dataset.days ?? '').split(',').includes(today)) {
+              row.classList.add('!text-coastal-gold-accent', 'font-semibold');
+            }
+          });
+        </script>
       </div>
     </div>
 
