@@ -152,6 +152,35 @@ const happyHourOffDays = siteProfile.hours?.happyHour?.find((h: { closed?: boole
     </div>
   </SplitSection>
 
+  <!-- ─── SPORTS BANNER ───────────────────────────────────────────────────── -->
+  <section class="relative overflow-hidden min-h-[680px] flex items-center">
+    <div class="absolute inset-0">
+      <Picture
+        src={page.sportsBanner.imageSrc}
+        alt={page.sportsBanner.imageAlt}
+        widths={[640, 1080, 1920]}
+        sizes="100vw"
+        width={1920}
+        height={1080}
+        quality={85}
+        loading="lazy"
+        decoding="async"
+        class="w-full h-full object-cover object-center"
+      />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-coastal-text-main/85 via-coastal-text-main/55 to-transparent"></div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24">
+      <div class="max-w-lg flex flex-col gap-6">
+        <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral" set:html={`\n${page.sportsBanner.eyebrow}\n`} />
+        <h2 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95]" set:html={`\n${page.sportsBanner.heading.replaceAll('<br />', '<br>')}\n`} />
+        <div class="h-px w-16 bg-coastal-coral"></div>
+        <p class="text-coastal-bg-card/85 text-base leading-relaxed" set:html={`\n${page.sportsBanner.body}\n`} />
+        {page.sportsBanner.cta && <a href={page.sportsBanner.cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/30 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.sportsBanner.cta.label}\n`} />}
+      </div>
+    </div>
+  </section>
+
   <!-- ─── BRUNCH FEATURE ────────────────────────────────────────────────── -->
   <SplitSection
     imageSrc={page.brunch.imageSrc}
