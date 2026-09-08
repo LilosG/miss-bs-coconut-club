@@ -1,0 +1,58 @@
+---
+interface HourRow {
+  label: string;
+  days: string[];
+  display: string;
+  closed?: boolean;
+}
+
+interface Props {
+  hours: HourRow[];
+  notes?: (string | undefined)[];
+}
+
+const { hours, notes = [] } = Astro.props;
+---
+
+<dl id="hours-widget" class="flex flex-col divide-y divide-coastal-text-muted/10">
+  {hours.map((item) => (
+    <div
+      class="hours-row flex justify-between items-center py-4 gap-8 transition-colors duration-200"
+      data-days={item.days.join(',')}
+    >
+      <dt class="text-sm text-coastal-text-muted flex items-center gap-2">
+        {item.label}
+        <span class="today-badge hidden text-[9px] font-bold tracking-[0.2em] uppercase bg-coastal-coral text-coastal-bg-pure px-2 py-0.5 rounded-sm">
+          Today
+        </span>
+      </dt>
+      <dd class="text-sm font-semibold text-coastal-text-main">
+        {item.closed ? 'Closed' : item.display}
+      </dd>
+    </div>
+  ))}
+</dl>
+
+{notes.filter(Boolean).length > 0 && (
+  <div class="pt-2 flex flex-col gap-1">
+    {notes.filter(Boolean).map((note) => (
+      <p class="text-xs text-coastal-coral font-semibold tracking-wide">{note}</p>
+    ))}
+  </div>
+)}
+
+<script>
+  function highlightToday() {
+    const today = new Date().toLocaleDateString('en-US', { weekday: 'long', timeZone: 'America/Los_Angeles' });
+    const rows = document.querySelectorAll<HTMLElement>('#hours-widget .hours-row');
+    rows.forEach((row) => {
+      const days = (row.dataset.days ?? '').split(',');
+      if (days.includes(today)) {
+        row.classList.add('bg-coastal-coral/5', 'rounded');
+        const badge = row.querySelector<HTMLElement>('.today-badge');
+        if (badge) badge.classList.remove('hidden');
+      }
+    });
+  }
+  highlightToday();
+</script>

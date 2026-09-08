@@ -21,19 +21,27 @@
           "Thursday",
           "Friday"
         ],
+        "open": "11:00",
+        "close": "22:00",
+        "display": "11am – 10pm"
+      },
+      {
+        "label": "Saturday",
+        "days": [
+          "Saturday"
+        ],
         "open": "10:00",
         "close": "22:00",
         "display": "10am – 10pm"
       },
       {
-        "label": "Saturday – Sunday",
+        "label": "Sunday",
         "days": [
-          "Saturday",
           "Sunday"
         ],
-        "open": "09:00",
+        "open": "09:30",
         "close": "22:00",
-        "display": "9am – 10pm"
+        "display": "9:30am – 10pm"
       }
     ],
     "kitchen": [

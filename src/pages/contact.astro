@@ -4,6 +4,7 @@ import { getEntry } from 'astro:content';
 import PageHero from '../components/ui/PageHero.astro';
 import SplitSection from '../components/ui/SplitSection.astro';
 import GooglePlaceMap from '../components/ui/GooglePlaceMap.astro';
+import HoursWidget from '../components/ui/HoursWidget.astro';
 import { getGoogleMapsPlace } from '../lib/googleMaps';
 
 const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
@@ -96,18 +97,7 @@ const mapsURL = googleMaps.directionsUrl;
     minHeight="500px"
     headingSize="medium"
   >
-    <dl class="flex flex-col divide-y divide-coastal-text-muted/10">
-      {(siteProfile.hours?.general ?? []).map((item: { label: string; display: string }) => (
-        <div class="flex justify-between items-center py-4 gap-8">
-          <dt class="text-sm text-coastal-text-muted">{item.label}</dt>
-          <dd class="text-sm font-semibold text-coastal-text-main">{item.display}</dd>
-        </div>
-      ))}
-    </dl>
-    <div class="pt-2 flex flex-col gap-1">
-      {page.hours.notes?.[0] && <p class="text-xs text-coastal-coral font-semibold tracking-wide">{page.hours.notes[0]}</p>}
-      {page.hours.notes?.[1] && <p class="text-xs text-coastal-coral font-semibold tracking-wide">{page.hours.notes[1]}</p>}
-    </div>
+    <HoursWidget hours={siteProfile.hours?.general ?? []} notes={page.hours.notes ?? []} />
   </SplitSection>
 
   <!-- ─── SOCIAL ────────────────────────────────────────────────────────── -->
