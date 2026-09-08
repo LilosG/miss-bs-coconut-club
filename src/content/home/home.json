@@ -67,6 +67,14 @@
       { "label": "Happy Hour FAQ", "href": "/faq" }
     ]
   },
+  "sportsBanner": {
+    "imageSrc": "/images/sports/miss-bs-packers-game-day.webp",
+    "imageAlt": "Green Bay Packers fans watching the game at Miss B's Coconut Club Mission Beach San Diego",
+    "eyebrow": "Watch Party Headquarters",
+    "heading": "Home of the<br />Green Bay Packers<br />&amp; Oregon Ducks",
+    "body": "Catch every game on our outdoor screens steps from the Pacific. Game day specials, cold drinks, and the best seats in Mission Beach.",
+    "cta": { "label": "Game Day Details", "href": "/sports" }
+  },
   "brunch": {
     "imageSrc": "/images/keystatic/home-brunch/miss-bs-coconut-club-mission-beach-venue-17.webp",
     "imageAlt": "Miss B's Coconut Club copper flamingo draft tap handles Mission Beach",
