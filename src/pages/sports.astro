@@ -10,9 +10,37 @@ const page = (await getEntry('sportsPage', 'sports'))!.data;
 const navData = (await getEntry('navigation', 'navigation'))!.data;
 const reservationCta = (navData.ctas ?? []).find((cta: { style?: string }) => cta.style === 'primary');
 const reservationUrl = reservationCta?.href ?? page.intro.cta.href;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Where can I watch Green Bay Packers games in Mission Beach?',
+      acceptedAnswer: { '@type': 'Answer', text: "Miss B's Coconut Club at 3704 Mission Blvd shows every Packers game on outdoor screens with game day specials and cold drinks steps from the Pacific." },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where can I watch Oregon Ducks games in San Diego?',
+      acceptedAnswer: { '@type': 'Answer', text: "Miss B's Coconut Club in Mission Beach is San Diego's home for Oregon Ducks watch parties — outdoor screens, game day specials, open daily." },
+    },
+    {
+      '@type': 'Question',
+      name: "Does Miss B's Coconut Club show NFL games?",
+      acceptedAnswer: { '@type': 'Answer', text: "Yes. Miss B's shows NFL games including all Green Bay Packers games on outdoor screens at 3704 Mission Blvd, Mission Beach, San Diego." },
+    },
+    {
+      '@type': 'Question',
+      name: "Do I need a reservation to watch a game at Miss B's?",
+      acceptedAnswer: { '@type': 'Answer', text: "Walk-ins are always welcome. Reservations are recommended for busy game days — especially Packers and Ducks kickoffs. Book via the Reserve link." },
+    },
+  ],
+};
 ---
 
 <Layout title={page.seo.title} description={page.seo.description}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} slot="head" />
 
   <PageHero
     imageSrc={page.hero.imageSrc}
