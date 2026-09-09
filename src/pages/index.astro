@@ -173,7 +173,7 @@ const happyHourOffDays = siteProfile.hours?.happyHour?.find((h: { closed?: boole
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 py-24">
       <div class="max-w-lg flex flex-col gap-6">
         <p class="text-[10px] font-bold tracking-[0.35em] uppercase text-coastal-coral" set:html={`\n${page.sportsBanner.eyebrow}\n`} />
-        <h2 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95]" set:html={`\n${page.sportsBanner.heading.replaceAll('<br />', '<br>')}\n`} />
+        <h2 class="font-serif text-5xl md:text-7xl font-light italic text-coastal-bg-pure leading-[0.95] text-center" set:html={`\n${page.sportsBanner.heading.replaceAll('<br />', '<br>')}\n`} />
         <div class="h-px w-16 bg-coastal-coral"></div>
         <p class="text-coastal-bg-card/85 text-base leading-relaxed" set:html={`\n${page.sportsBanner.body}\n`} />
         {page.sportsBanner.cta && <a href={page.sportsBanner.cta.href} class="self-start px-7 py-3.5 text-xs font-bold tracking-[0.2em] uppercase border border-coastal-bg-pure/30 text-coastal-bg-pure hover:border-coastal-coral hover:text-coastal-coral transition-all duration-200" set:html={`\n${page.sportsBanner.cta.label}\n`} />}

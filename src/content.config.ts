@@ -107,6 +107,7 @@ export const collections = {
   footer: singleton('footer'),
   home: singleton('home'),
   brunchPage: singleton('brunchPage'),
+  sportsPage: singleton('sportsPage'),
   menuPage: singleton('menuPage'),
   contactPage: singleton('contactPage'),
   faqPage: singleton('faqPage'),

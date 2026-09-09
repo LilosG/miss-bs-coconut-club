@@ -1,0 +1,97 @@
+{
+  "seo": {
+    "title": "Watch Party Headquarters — Green Bay Packers & Oregon Ducks | Miss B's Coconut Club",
+    "description": "Catch every Green Bay Packers and Oregon Ducks game at Miss B's Coconut Club in Mission Beach, San Diego. Outdoor screens, game day specials, and the best seats steps from the Pacific."
+  },
+  "hero": {
+    "imageSrc": "/images/sports/miss-bs-packers-rooftop.webp",
+    "imageAlt": "Green Bay Packers fans celebrating at Miss B's Coconut Club rooftop Mission Beach San Diego",
+    "eyebrow": "Mission Beach, San Diego",
+    "heading": "Watch Party<br />Headquarters",
+    "subheading": "Miss B's Coconut Club is Mission Beach's home bar for Green Bay Packers and Oregon Ducks fans — outdoor screens, game day specials, and cold drinks steps from the Pacific."
+  },
+  "intro": {
+    "imageSrc": "/images/sports/miss-bs-packers-entrance.webp",
+    "imageAlt": "Green Bay Packers fans toasting at Miss B's Coconut Club entrance Mission Beach San Diego",
+    "eyebrow": "Green Bay Packers & Oregon Ducks",
+    "heading": "Mission Beach's Home<br />for Game Day",
+    "body": [
+      "Miss B's Coconut Club is Mission Beach's official watch party headquarters for Green Bay Packers and Oregon Ducks fans. Catch every game on our outdoor screens just steps from the Pacific on Mission Blvd.",
+      "Game day specials, tropical cocktails, cold beer, and the open-air vibe that makes every kickoff feel like a celebration. Walk-ins welcome — reservations recommended for big games."
+    ],
+    "cta": {
+      "label": "Reserve a Table",
+      "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link"
+    }
+  },
+  "feature": {
+    "imageSrc": "/images/sports/miss-bs-packers-toast.webp",
+    "imageAlt": "Green Bay Packers fans cheering at Miss B's Coconut Club Mission Beach San Diego",
+    "eyebrow": "Watch Party Headquarters",
+    "heading": "Every Game,<br />Every Season",
+    "body": "We show every Green Bay Packers and Oregon Ducks game — regular season, playoffs, and championship runs. Come early, grab your spot, and celebrate every play with the Mission Beach crowd."
+  },
+  "packersSchedule": {
+    "imageSrc": "/images/sports/miss-bs-packers-group.webp",
+    "imageAlt": "Green Bay Packers fans posing at Miss B's Coconut Club Mission Beach San Diego",
+    "eyebrow": "NFL · 2026 Season",
+    "heading": "Green Bay Packers",
+    "note": "All times Pacific. Schedule subject to flex scheduling changes — verify at nfl.com.",
+    "reserveCta": {
+      "label": "Reserve for Game Day",
+      "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link"
+    },
+    "games": [
+      { "week": 1,  "date": "Sun Sep 6",   "opponent": "Philadelphia Eagles",  "homeAway": "away", "time": "10:00 AM PT" },
+      { "week": 2,  "date": "Sun Sep 13",  "opponent": "Minnesota Vikings",    "homeAway": "home", "time": "12:00 PM PT" },
+      { "week": 3,  "date": "Sun Sep 20",  "opponent": "Houston Texans",       "homeAway": "away", "time": "10:00 AM PT" },
+      { "week": 4,  "date": "Sun Sep 27",  "opponent": "Chicago Bears",        "homeAway": "home", "time": "12:00 PM PT" },
+      { "week": 5,  "date": "Sun Oct 4",   "opponent": "Detroit Lions",        "homeAway": "away", "time": "10:00 AM PT" },
+      { "week": 6,  "date": "Sun Oct 11",  "opponent": "Los Angeles Rams",     "homeAway": "home", "time": "1:25 PM PT"  },
+      { "week": 7,  "date": "Thu Oct 16",  "opponent": "Pittsburgh Steelers",  "homeAway": "away", "time": "5:15 PM PT"  },
+      { "week": 8,  "date": "Sun Oct 25",  "opponent": "Baltimore Ravens",     "homeAway": "home", "time": "12:00 PM PT" },
+      { "week": 9,  "date": "Sun Nov 1",   "opponent": "Arizona Cardinals",    "homeAway": "away", "time": "1:25 PM PT"  },
+      { "week": 10, "date": "Sun Nov 8",   "opponent": "Minnesota Vikings",    "homeAway": "away", "time": "10:00 AM PT" },
+      { "week": 11, "date": "Sun Nov 15",  "opponent": "New York Giants",      "homeAway": "home", "time": "12:00 PM PT" },
+      { "week": 13, "date": "Sun Nov 29",  "opponent": "Chicago Bears",        "homeAway": "away", "time": "10:00 AM PT" },
+      { "week": 14, "date": "Mon Dec 7",   "opponent": "Dallas Cowboys",       "homeAway": "home", "time": "5:15 PM PT"  },
+      { "week": 15, "date": "Sun Dec 13",  "opponent": "Detroit Lions",        "homeAway": "home", "time": "5:20 PM PT"  },
+      { "week": 16, "date": "Sun Dec 20",  "opponent": "Seattle Seahawks",     "homeAway": "away", "time": "1:25 PM PT"  },
+      { "week": 17, "date": "Sun Dec 27",  "opponent": "Washington Commanders","homeAway": "home", "time": "12:00 PM PT" },
+      { "week": 18, "date": "Sun Jan 3",   "opponent": "San Francisco 49ers",  "homeAway": "away", "time": "1:25 PM PT"  }
+    ]
+  },
+  "ducksSchedule": {
+    "imageSrc": "/images/sports/miss-bs-packers-go-pack-go.webp",
+    "imageAlt": "Green Bay Packers fan in helmet at Miss B's Coconut Club Mission Beach San Diego",
+    "eyebrow": "College Football · 2026 Season",
+    "heading": "Oregon Ducks",
+    "note": "All times Pacific. Schedule subject to change — verify at goducks.com.",
+    "reserveCta": {
+      "label": "Reserve for Game Day",
+      "href": "https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link"
+    },
+    "games": [
+      { "week": 1,  "date": "Sat Aug 29",  "opponent": "Idaho Vandals",        "homeAway": "home", "time": "6:00 PM PT"  },
+      { "week": 2,  "date": "Sat Sep 5",   "opponent": "Boise State Broncos",  "homeAway": "home", "time": "12:30 PM PT" },
+      { "week": 3,  "date": "Sat Sep 12",  "opponent": "UCLA Bruins",          "homeAway": "away", "time": "7:30 PM PT"  },
+      { "week": 4,  "date": "Sat Sep 19",  "opponent": "Michigan State",       "homeAway": "home", "time": "12:30 PM PT" },
+      { "week": 5,  "date": "Sat Sep 26",  "opponent": "Michigan Wolverines",  "homeAway": "away", "time": "9:00 AM PT"  },
+      { "week": 6,  "date": "Sat Oct 3",   "opponent": "Illinois Fighting Illini","homeAway": "home","time": "3:30 PM PT" },
+      { "week": 7,  "date": "Sat Oct 10",  "opponent": "Penn State Nittany Lions","homeAway": "away","time": "9:00 AM PT"},
+      { "week": 8,  "date": "Sat Oct 17",  "opponent": "Indiana Hoosiers",     "homeAway": "home", "time": "12:30 PM PT" },
+      { "week": 9,  "date": "Sat Oct 24",  "opponent": "Ohio State Buckeyes",  "homeAway": "home", "time": "3:30 PM PT"  },
+      { "week": 10, "date": "Sat Nov 7",   "opponent": "Rutgers Scarlet Knights","homeAway": "away","time": "9:00 AM PT" },
+      { "week": 11, "date": "Sat Nov 14",  "opponent": "Nebraska Cornhuskers", "homeAway": "home", "time": "12:30 PM PT" },
+      { "week": 12, "date": "Sat Nov 21",  "opponent": "Wisconsin Badgers",    "homeAway": "away", "time": "9:00 AM PT"  },
+      { "week": 13, "date": "Sat Nov 28",  "opponent": "Washington Huskies",   "homeAway": "home", "time": "12:30 PM PT" }
+    ]
+  },
+  "cta": {
+    "imageSrc": "/images/sports/miss-bs-packers-game-day.webp",
+    "imageAlt": "Green Bay Packers fans watching the game at Miss B's Coconut Club Mission Beach San Diego",
+    "eyebrow": "Miss B's Coconut Club",
+    "heading": "Book Your<br />Game Day Table",
+    "body": "Walk-ins always welcome. Reservations recommended for busy game days — especially Packers and Ducks kickoffs."
+  }
+}

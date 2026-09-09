@@ -2,6 +2,7 @@
   "main": [
     { "label": "Menu", "href": "/menu" },
     { "label": "Brunch", "href": "/brunch" },
+    { "label": "Sports", "href": "/sports" },
     { "label": "Space", "href": "/space" },
     { "label": "Private Events", "href": "/private-events" },
     { "label": "Blog", "href": "/blog" },
