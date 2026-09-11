@@ -7,6 +7,8 @@ import HoverImageGrid from '../components/ui/HoverImageGrid.astro';
 import ChecklistItems from '../components/ui/ChecklistItems.astro';
 import GooglePlaceMap from '../components/ui/GooglePlaceMap.astro';
 import { getGoogleMapsPlace } from '../lib/googleMaps';
+import PromotionModal from '../components/core/PromotionModal.astro';
+import { PROMOTION_CONFIG } from '../config/promotion';
 
 const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
 const page = (await getEntry('home', 'home'))!.data;
@@ -24,6 +26,7 @@ const happyHourOffDays = siteProfile.hours?.happyHour?.find((h: { closed?: boole
   title={page.seo.title}
   description={page.seo.description}
 >
+  <PromotionModal siteSlug={PROMOTION_CONFIG.venueSlug} />
 
   <!-- ─── HERO ──────────────────────────────────────────────────────────── -->
   <section class="relative h-screen min-h-[680px] flex flex-col items-center justify-center overflow-hidden">

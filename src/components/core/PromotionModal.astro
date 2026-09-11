@@ -1,0 +1,509 @@
+---
+import { getPromotionFeedUrl } from '../../config/promotion';
+
+interface Props {
+  /** Venue identifier understood by the public promotion API. */
+  siteSlug: string;
+}
+
+const { siteSlug } = Astro.props;
+const feedUrl = getPromotionFeedUrl(siteSlug);
+const idSlug = siteSlug.replace(/[^a-z0-9_-]/gi, '-');
+const titleId = `promotion-title-${idSlug}`;
+const bodyId = `promotion-body-${idSlug}`;
+---
+
+<dialog
+  class="promotion-dialog"
+  data-promotion-dialog
+  data-feed-url={feedUrl}
+  aria-labelledby={titleId}
+  aria-describedby={bodyId}
+>
+  <article class="promotion-card" data-promotion-card>
+    <button
+      class="promotion-close"
+      type="button"
+      data-promotion-close
+      aria-label="Close promotion"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 6l12 12M18 6 6 18"></path>
+      </svg>
+    </button>
+
+    <div class="promotion-media" data-promotion-media hidden>
+      <img data-promotion-image alt="" />
+    </div>
+
+    <div class="promotion-content">
+      <h2 id={titleId} class="promotion-title" data-promotion-title></h2>
+      <p id={bodyId} class="promotion-body" data-promotion-body></p>
+      <a
+        class="promotion-cta"
+        data-promotion-cta
+        target="_blank"
+        rel="noopener noreferrer"
+        hidden
+      ></a>
+    </div>
+  </article>
+</dialog>
+
+<style>
+  .promotion-dialog {
+    width: min(calc(100vw - 2rem), 60rem);
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100dvh - 2rem);
+    margin: auto;
+    padding: 0;
+    overflow: visible;
+    color: var(--color-coastal-text-main);
+    background: transparent;
+    border: 0;
+  }
+
+  .promotion-dialog::backdrop {
+    background: rgb(28 41 38 / 82%);
+    backdrop-filter: blur(4px);
+  }
+
+  .promotion-card {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-height: calc(100dvh - 2rem);
+    overflow: hidden auto;
+    flex-direction: column;
+    background: var(--color-coastal-bg-sand);
+    border: 1px solid rgb(242 161 145 / 45%);
+    box-shadow: 0 24px 70px rgb(28 41 38 / 42%);
+  }
+
+  .promotion-media {
+    position: relative;
+    display: grid;
+    overflow: hidden;
+    background: var(--color-coastal-text-main);
+    place-items: center;
+  }
+
+  .promotion-media[hidden],
+  .promotion-cta[hidden] {
+    display: none;
+  }
+
+  .promotion-media img {
+    display: block;
+    width: 100%;
+  }
+
+  .promotion-card--photo .promotion-media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .promotion-card--photo .promotion-media img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .promotion-card--flyer .promotion-media img {
+    width: auto;
+    max-width: 100%;
+    max-height: min(60dvh, 44rem);
+    height: auto;
+    object-fit: contain;
+  }
+
+  .promotion-card--flyer {
+    width: min(100%, 42rem);
+    margin-inline: auto;
+  }
+
+  .promotion-card--text .promotion-content {
+    order: 1;
+  }
+
+  .promotion-card--text .promotion-media {
+    order: 2;
+    max-height: 15rem;
+  }
+
+  .promotion-card--text .promotion-media img {
+    max-height: 15rem;
+    object-fit: cover;
+  }
+
+  .promotion-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5rem 2rem 2rem;
+  }
+
+  .promotion-title {
+    margin: 0;
+    padding-right: 2rem;
+    color: var(--color-coastal-text-main);
+    font-family: var(--font-family-serif);
+    font-size: clamp(2.5rem, 9vw, 4.25rem);
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+  }
+
+  .promotion-body {
+    margin: 1.25rem 0 0;
+    color: var(--color-coastal-text-muted);
+    font-family: var(--font-family-sans);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    white-space: pre-line;
+  }
+
+  .promotion-body:empty {
+    display: none;
+  }
+
+  .promotion-cta {
+    align-self: flex-start;
+    margin-top: 1.75rem;
+    padding: 0.9rem 1.75rem;
+    color: var(--color-coastal-bg-pure);
+    background: var(--color-coastal-coral);
+    border: 1px solid var(--color-coastal-coral);
+    font-family: var(--font-family-sans);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    line-height: 1.2;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      color 0.2s,
+      background-color 0.2s,
+      border-color 0.2s;
+  }
+
+  .promotion-cta:hover {
+    background: var(--color-coastal-gold-accent);
+    border-color: var(--color-coastal-gold-accent);
+  }
+
+  .promotion-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 2;
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.7rem;
+    color: var(--color-coastal-bg-pure);
+    cursor: pointer;
+    background: rgb(28 41 38 / 88%);
+    border: 1px solid rgb(255 255 255 / 25%);
+    border-radius: 50%;
+    place-items: center;
+    transition: background-color 0.2s;
+  }
+
+  .promotion-close:hover {
+    background: var(--color-coastal-coral);
+  }
+
+  .promotion-close:focus-visible,
+  .promotion-cta:focus-visible {
+    outline: 3px solid var(--color-coastal-sky);
+    outline-offset: 3px;
+  }
+
+  .promotion-close svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-width: 2;
+  }
+
+  @media (min-width: 48rem) {
+    .promotion-card--photo,
+    .promotion-card--text.promotion-card--with-image {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr);
+    }
+
+    .promotion-card--photo .promotion-media {
+      min-height: 31rem;
+      aspect-ratio: auto;
+    }
+
+    .promotion-card--photo .promotion-media img {
+      position: absolute;
+      inset: 0;
+    }
+
+    .promotion-card--text.promotion-card--with-image {
+      grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1.1fr);
+    }
+
+    .promotion-card--text .promotion-content {
+      grid-column: 1;
+      order: initial;
+    }
+
+    .promotion-card--text .promotion-media {
+      grid-column: 2;
+      grid-row: 1;
+      max-height: none;
+      order: initial;
+    }
+
+    .promotion-card--text .promotion-media img {
+      height: 100%;
+      max-height: none;
+    }
+
+    .promotion-content {
+      min-height: 20rem;
+      padding: 3rem;
+    }
+
+    .promotion-card--flyer .promotion-content {
+      min-height: 0;
+      padding-block: 2rem;
+    }
+  }
+
+  @media (max-width: 30rem) {
+    .promotion-dialog {
+      width: min(calc(100vw - 1rem), 60rem);
+      max-width: calc(100vw - 1rem);
+      max-height: calc(100dvh - 1rem);
+    }
+
+    .promotion-card {
+      max-height: calc(100dvh - 1rem);
+    }
+
+    .promotion-content {
+      padding: 2rem 1.5rem 1.5rem;
+    }
+
+    .promotion-card--flyer .promotion-media img {
+      max-height: 55dvh;
+    }
+  }
+</style>
+
+<script>
+  const PROMOTION_CTA_TYPES = [
+    'none',
+    'reservations',
+    'order_online',
+    'menu',
+    'private_events',
+    'tickets',
+    'custom',
+  ] as const;
+  const PROMOTION_DISPLAY_STYLES = ['photo', 'flyer', 'text'] as const;
+
+  type PromotionCtaType = (typeof PROMOTION_CTA_TYPES)[number];
+  type PromotionDisplayStyle = (typeof PROMOTION_DISPLAY_STYLES)[number];
+
+  type PublicPromotion = {
+    id: string;
+    headline: string;
+    body: string;
+    imageUrl: string | null;
+    imageAlt: string | null;
+    displayStyle: PromotionDisplayStyle;
+    ctaType: PromotionCtaType;
+    ctaLabel: string | null;
+    /** Final destination resolved by the public API for every CTA type. */
+    customCtaUrl: string | null;
+    startsAt: string;
+    endsAt: string | null;
+  };
+
+  type PromotionFeedResponse = {
+    promotion: PublicPromotion | null;
+  };
+
+  const isNullableString = (value: unknown): value is string | null =>
+    value === null || typeof value === 'string';
+
+  const isPromotionCtaType = (value: unknown): value is PromotionCtaType =>
+    typeof value === 'string' &&
+    PROMOTION_CTA_TYPES.includes(value as PromotionCtaType);
+
+  const isPromotionDisplayStyle = (
+    value: unknown,
+  ): value is PromotionDisplayStyle =>
+    typeof value === 'string' &&
+    PROMOTION_DISPLAY_STYLES.includes(value as PromotionDisplayStyle);
+
+  function readPromotion(payload: unknown): PublicPromotion | null {
+    if (!payload || typeof payload !== 'object' || !('promotion' in payload)) {
+      return null;
+    }
+
+    const promotion = (payload as PromotionFeedResponse).promotion;
+    if (promotion === null || typeof promotion !== 'object') return null;
+
+    if (
+      typeof promotion.id !== 'string' ||
+      promotion.id.trim() === '' ||
+      typeof promotion.headline !== 'string' ||
+      promotion.headline.trim() === '' ||
+      typeof promotion.body !== 'string' ||
+      !isNullableString(promotion.imageUrl) ||
+      !isNullableString(promotion.imageAlt) ||
+      !isPromotionDisplayStyle(promotion.displayStyle) ||
+      !isPromotionCtaType(promotion.ctaType) ||
+      !isNullableString(promotion.ctaLabel) ||
+      !isNullableString(promotion.customCtaUrl) ||
+      typeof promotion.startsAt !== 'string' ||
+      !isNullableString(promotion.endsAt)
+    ) {
+      return null;
+    }
+
+    return promotion;
+  }
+
+  function safeHttpUrl(value: string | null): string | null {
+    if (!value) return null;
+
+    try {
+      const url = new URL(value);
+      return url.protocol === 'https:' || url.protocol === 'http:'
+        ? url.href
+        : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function wasDismissed(promotionId: string): boolean {
+    try {
+      return sessionStorage.getItem(`gph-promotion-dismissed:${promotionId}`) === 'true';
+    } catch {
+      return false;
+    }
+  }
+
+  function rememberDismissal(promotionId: string): void {
+    try {
+      sessionStorage.setItem(`gph-promotion-dismissed:${promotionId}`, 'true');
+    } catch {
+      // Storage can be unavailable in privacy-restricted browser contexts.
+    }
+  }
+
+  async function initializePromotion(dialog: HTMLDialogElement): Promise<void> {
+    const feedUrl = dialog.dataset.feedUrl;
+    if (!feedUrl || typeof dialog.showModal !== 'function') return;
+
+    try {
+      const response = await fetch(feedUrl, {
+        credentials: 'omit',
+        headers: { Accept: 'application/json' },
+      });
+      if (!response.ok) return;
+
+      // A null promotion is authoritative. Scheduling and status are owned by
+      // the manager and are intentionally not re-evaluated in this client.
+      const promotion = readPromotion(await response.json());
+      if (!promotion || wasDismissed(promotion.id)) return;
+
+      const card = dialog.querySelector<HTMLElement>('[data-promotion-card]');
+      const title = dialog.querySelector<HTMLElement>('[data-promotion-title]');
+      const body = dialog.querySelector<HTMLElement>('[data-promotion-body]');
+      const media = dialog.querySelector<HTMLElement>('[data-promotion-media]');
+      const image = dialog.querySelector<HTMLImageElement>('[data-promotion-image]');
+      const cta = dialog.querySelector<HTMLAnchorElement>('[data-promotion-cta]');
+      const closeButton = dialog.querySelector<HTMLButtonElement>('[data-promotion-close]');
+
+      if (!card || !title || !body || !media || !image || !cta || !closeButton) {
+        return;
+      }
+
+      const imageUrl = safeHttpUrl(promotion.imageUrl);
+      if (promotion.displayStyle !== 'text' && !imageUrl) return;
+
+      card.classList.add(
+        `promotion-card--${promotion.displayStyle}`,
+      );
+      card.dataset.promotionStyle = promotion.displayStyle;
+      title.textContent = promotion.headline;
+      body.textContent = promotion.body;
+
+      if (imageUrl) {
+        image.src = imageUrl;
+        image.alt = promotion.imageAlt ?? '';
+        media.hidden = false;
+        card.classList.add('promotion-card--with-image');
+      }
+
+      // The manager owns CTA resolution. Predefined and custom destinations
+      // arrive in customCtaUrl; this site never maps CTA types to venue URLs.
+      const ctaUrl = safeHttpUrl(promotion.customCtaUrl);
+      if (promotion.ctaType !== 'none' && ctaUrl && promotion.ctaLabel) {
+        cta.href = ctaUrl;
+        cta.textContent = promotion.ctaLabel;
+        cta.hidden = false;
+      }
+
+      const previouslyFocused =
+        document.activeElement instanceof HTMLElement
+          ? document.activeElement
+          : null;
+      const previousHtmlOverflow = document.documentElement.style.overflow;
+      const previousBodyOverflow = document.body.style.overflow;
+
+      const dismiss = () => {
+        rememberDismissal(promotion.id);
+        if (dialog.open) dialog.close();
+      };
+
+      const unlockPage = () => {
+        document.documentElement.style.overflow = previousHtmlOverflow;
+        document.body.style.overflow = previousBodyOverflow;
+      };
+
+      closeButton.addEventListener('click', dismiss, { once: true });
+      cta.addEventListener(
+        'click',
+        () => rememberDismissal(promotion.id),
+        { once: true },
+      );
+      dialog.addEventListener(
+        'close',
+        () => {
+          rememberDismissal(promotion.id);
+          unlockPage();
+          previouslyFocused?.focus();
+        },
+        { once: true },
+      );
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) dismiss();
+      });
+
+      dialog.showModal();
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      closeButton.focus();
+    } catch {
+      // Promotions are progressive enhancement; site content must remain usable
+      // when the public feed is unavailable or malformed.
+    }
+  }
+
+  document
+    .querySelectorAll<HTMLDialogElement>('[data-promotion-dialog]')
+    .forEach((dialog) => void initializePromotion(dialog));
+</script>
