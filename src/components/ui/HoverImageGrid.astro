@@ -1,5 +1,5 @@
 ---
-import { Picture } from 'astro:assets';
+import OptimizedPicture from './OptimizedPicture.astro';
 
 interface Item {
   src: string
@@ -50,19 +50,19 @@ const aspectClass = aspectMap[aspect];
 <div class={`grid ${colsClass}${gap ? ' gap-2' : ''}`}>
   {items.map((item) => (
     <div class={`group relative overflow-hidden${aspectClass ? ` ${aspectClass}` : ''}`}>
-      <Picture
+      <OptimizedPicture
         src={item.src}
         alt={item.alt}
         widths={[400, 640, 800]}
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
         width={800}
         height={800}
-        quality={85}
+        quality={78}
         loading="lazy"
         decoding="async"
         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
-      <div class={`absolute inset-0 bg-gradient-to-t ${gradientFrom} via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+      <div class={`absolute inset-0 bg-gradient-to-t ${gradientFrom} via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300`}></div>
       {showLabel && item.name && (
         <div class={`absolute bottom-0 left-0 right-0 ${labelPadding} translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300`}>
           <p class={`text-xs font-bold ${labelTracking} uppercase text-coastal-bg-pure`}>{item.name}</p>
