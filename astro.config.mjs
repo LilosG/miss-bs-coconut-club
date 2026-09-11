@@ -15,13 +15,11 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  adapter: vercel({
-    imageService: true,
-    imagesConfig: {
-      sizes: [640, 828, 1080, 1200, 1920],
-      formats: ['image/avif', 'image/webp'],
-    },
-  }),
+  // Keystatic still requires the Vercel adapter for its server-side admin/API
+  // routes. Public site pages remain prerendered, and local image transforms are
+  // handled by Astro/Sharp during the build instead of Vercel's runtime image
+  // service.
+  adapter: vercel(),
 
   image: {
     domains: ['missbcoconutclub.com', 'popmenucloud.com'],
