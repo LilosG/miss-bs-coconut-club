@@ -1,5 +1,5 @@
 ---
-import { Picture } from 'astro:assets';
+import OptimizedPicture from './OptimizedPicture.astro';
 
 interface Props {
   imageSrc: string
@@ -61,14 +61,14 @@ const contentOrder = imageLeft ? 'order-1 lg:order-2' : '';
         <!-- Image column (left on desktop) -->
         <div class={`relative min-h-[460px] lg:min-h-full ${imageOrder}`}>
           <div class="absolute inset-0">
-            <Picture
+            <OptimizedPicture
               src={imageSrc}
               alt={imageAlt}
               widths={[640, 828, 1080, 1200]}
               sizes="(max-width: 1024px) 100vw, 50vw"
               width={1200}
               height={900}
-              quality={85}
+              quality={80}
               loading="lazy"
               decoding="async"
               class={`w-full h-full object-cover ${imgPositionClass}`}
@@ -100,14 +100,14 @@ const contentOrder = imageLeft ? 'order-1 lg:order-2' : '';
         <!-- Image column (right on desktop) -->
         <div class="relative min-h-[460px] lg:min-h-full">
           <div class="absolute inset-0">
-            <Picture
+            <OptimizedPicture
               src={imageSrc}
               alt={imageAlt}
               widths={[640, 828, 1080, 1200]}
               sizes="(max-width: 1024px) 100vw, 50vw"
               width={1200}
               height={900}
-              quality={85}
+              quality={80}
               loading="lazy"
               decoding="async"
               class={`w-full h-full object-cover ${imgPositionClass}`}

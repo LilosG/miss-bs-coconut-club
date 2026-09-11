@@ -1,5 +1,5 @@
 ---
-import { Picture } from 'astro:assets';
+import OptimizedPicture from './OptimizedPicture.astro';
 
 interface Props {
   imageSrc: string
@@ -41,14 +41,14 @@ const headingSizeClass  = headingSizeMap[headingSize];
 
 <section class="relative overflow-hidden">
   <div class="absolute inset-0">
-    <Picture
+    <OptimizedPicture
       src={imageSrc}
       alt={imageAlt}
-      widths={[640, 1080, 1920]}
+      widths={[640, 1080, 1600, 1920]}
       sizes="100vw"
       width={1920}
       height={1080}
-      quality={85}
+      quality={80}
       loading="lazy"
       decoding="async"
       class={`w-full h-full object-cover ${imgPositionClass}`}
