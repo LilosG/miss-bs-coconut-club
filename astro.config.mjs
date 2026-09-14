@@ -10,6 +10,7 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://missbcoconutclub.com',
+  trailingSlash: 'never',
   integrations: [mdx(), sitemap(), react(), keystatic()],
   vite: {
     plugins: [tailwindcss()]
