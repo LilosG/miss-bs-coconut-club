@@ -1,0 +1,29 @@
+{
+  "redirects": [
+    {
+      "source": "/order/miss-bs-coconut-club/:path*",
+      "destination": "https://order.toasttab.com/online/miss-bs-coconut-club",
+      "permanent": true
+    },
+    {
+      "source": "/menu/miss-bs-coconut-club/:path*",
+      "destination": "/menu",
+      "permanent": true
+    },
+    {
+      "source": "/tracking/gallery",
+      "destination": "/space",
+      "permanent": true
+    },
+    {
+      "source": "/tracking/order/miss-bs-coconut-club/:path*",
+      "destination": "https://order.toasttab.com/online/miss-bs-coconut-club",
+      "permanent": true
+    },
+    {
+      "source": "/tracking/menu/:path*",
+      "destination": "/menu",
+      "permanent": true
+    }
+  ]
+}

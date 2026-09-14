@@ -11,6 +11,12 @@ import react from '@astrojs/react';
 export default defineConfig({
   site: 'https://missbcoconutclub.com',
   trailingSlash: 'never',
+
+  redirects: {
+    '/specials': '/blog/mission-beach-happy-hour-guide',
+    '/gallery': '/space',
+    '/cocktails': '/menu',
+  },
   integrations: [mdx(), sitemap(), react(), keystatic()],
   vite: {
     plugins: [tailwindcss()]
