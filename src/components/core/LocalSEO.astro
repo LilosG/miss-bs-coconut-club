@@ -1,6 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import { getGoogleMapsPlace } from '../../lib/googleMaps';
+import { CANONICAL_SITE_ORIGIN, getCanonicalUrl } from '../../lib/urls';
 
 interface Props {
   title: string;
@@ -21,13 +22,12 @@ const {
   noindex = false,
 } = Astro.props;
 
-const siteUrl = siteProfile.domain.replace(/\/$/, '');
-const canonicalUrl = canonical
-  ? canonical.toString()
-  : new URL(Astro.url.pathname, `${siteUrl}/`).href;
+const siteUrl = CANONICAL_SITE_ORIGIN;
+const canonicalUrl = getCanonicalUrl(canonical ?? Astro.url.pathname);
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
-const businessId = `${siteUrl}/#restaurant`;
-const websiteId = `${siteUrl}/#website`;
+const siteRootUrl = getCanonicalUrl('/');
+const businessId = `${siteRootUrl}#restaurant`;
+const websiteId = `${siteRootUrl}#website`;
 const isHomePage = Astro.url.pathname === '/';
 
 const normalizedTitle = title.toLowerCase();
@@ -58,14 +58,14 @@ const businessSchema = {
   name: siteProfile.venueName,
   legalName: siteProfile.legalName,
   description: businessDescription,
-  url: siteUrl,
+  url: siteRootUrl,
   image: `${siteUrl}/og-image.jpg`,
   telephone: siteProfile.phone,
   email: siteProfile.email,
   priceRange: siteProfile.priceRange,
   servesCuisine,
   acceptsReservations: reservationsUrl,
-  hasMenu: `${siteUrl}/menu`,
+  hasMenu: getCanonicalUrl('/menu'),
   address: {
     '@type': 'PostalAddress',
     streetAddress: siteProfile.address.streetAddress,
@@ -98,7 +98,7 @@ const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   '@id': websiteId,
-  url: `${siteUrl}/`,
+  url: siteRootUrl,
   name: siteProfile.venueName,
   alternateName: "Miss B's",
   publisher: { '@id': businessId },

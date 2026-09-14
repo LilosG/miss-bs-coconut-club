@@ -5,6 +5,7 @@ import CtaBand from '../../components/ui/CtaBand.astro';
 import { Picture } from 'astro:assets';
 import TrustBar from '../../components/ui/TrustBar.astro';
 import { resolveBlogImage } from '../../lib/blog-images';
+import { CANONICAL_SITE_ORIGIN, getCanonicalUrl } from '../../lib/urls';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -28,10 +29,10 @@ const formattedUpdated = post.data.updatedDate
   ? new Date(post.data.updatedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
   : null;
 
-const siteUrl = siteProfile.domain.replace(/\/$/, '');
-const canonical = `${siteUrl}/blog/${post.id}`;
+const siteUrl = CANONICAL_SITE_ORIGIN;
+const canonical = getCanonicalUrl(`/blog/${post.id}`);
 const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
-const businessId = `${siteUrl}/#restaurant`;
+const businessId = `${getCanonicalUrl('/')}#restaurant`;
 const seoTitle = post.data.metaTitle ?? post.data.title;
 
 const articleSchema = {
@@ -54,8 +55,8 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
-    { '@type': 'ListItem', position: 2, name: 'Mission Beach Guides', item: `${siteUrl}/blog` },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: getCanonicalUrl('/') },
+    { '@type': 'ListItem', position: 2, name: 'Mission Beach Guides', item: getCanonicalUrl('/blog') },
     { '@type': 'ListItem', position: 3, name: post.data.title, item: canonical },
   ],
 };

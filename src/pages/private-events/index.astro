@@ -4,9 +4,9 @@ import PageHero from '../../components/ui/PageHero.astro';
 import SplitSection from '../../components/ui/SplitSection.astro';
 import StatBar from '../../components/ui/StatBar.astro';
 import { getCollection, getEntry } from 'astro:content';
+import { getCanonicalUrl } from '../../lib/urls';
 
 const page = (await getEntry('privateEventsIndexPage', 'private-events'))!.data;
-const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
 const eventTypeOrder = page.types?.order ?? [];
 const eventTypes = (await getCollection('privateEventTypes'))
   .map((entry) => entry.data)
@@ -16,8 +16,8 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteProfile.domain}/` },
-    { '@type': 'ListItem', position: 2, name: 'Private Events', item: `${siteProfile.domain}/private-events` },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: getCanonicalUrl('/') },
+    { '@type': 'ListItem', position: 2, name: 'Private Events', item: getCanonicalUrl('/private-events') },
   ],
 };
 ---
