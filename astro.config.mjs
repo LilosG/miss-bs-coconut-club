@@ -16,6 +16,8 @@ export default defineConfig({
     '/specials': '/blog/mission-beach-happy-hour-guide',
     '/gallery': '/space',
     '/cocktails': '/menu',
+    '/events': '/private-events',
+    '/merch': '/contact',
   },
   integrations: [mdx(), sitemap(), react(), keystatic()],
   vite: {
