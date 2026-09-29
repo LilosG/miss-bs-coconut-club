@@ -1,7 +1,7 @@
 {
   "seo": {
-    "title": "Mission Beach Bar & Brunch FAQ",
-    "description": "Answers about Miss B's Coconut Club in Mission Beach, San Diego, including hours, daily brunch, happy hour, reservations, parking, private events and visiting 3704 Mission Blvd."
+    "title": "Mission Beach Restaurant, Bar & Brunch FAQ | Miss B's",
+    "description": "Get direct answers about Miss B's Coconut Club in Mission Beach: brunch, happy hour, patio seating, Packers and Ducks games, reservations, private events and directions."
   },
   "hero": {
     "imageSrc": "/images/keystatic/faq-page-hero/miss-bs-coconut-club-mission-beach-venue-15.webp",
@@ -25,8 +25,14 @@
     "eyebrow": "Still Have Questions?",
     "heading": "Plan Your Visit to Mission Beach",
     "links": [
-      { "label": "Contact Us", "href": "/contact" },
-      { "label": "Private Events", "href": "/private-events" }
+      {
+        "label": "Contact Us",
+        "href": "/contact"
+      },
+      {
+        "label": "Private Events",
+        "href": "/private-events"
+      }
     ]
   }
 }

@@ -13,6 +13,7 @@ const page = (await getEntry('blogIndexPage', 'blog'))!.data;
 <Layout
   title={page.seo.title}
   description={page.seo.description}
+  ogImage={page.seo.ogImage || page.hero.imageSrc}
 >
 
   <PageHero

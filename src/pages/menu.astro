@@ -18,6 +18,7 @@ const categories = (await getCollection('menuCategoryCards'))
 <Layout
   title={page.seo.title}
   description={page.seo.description}
+  ogImage={page.seo.ogImage || page.hero.imageSrc}
 >
 
   <PageHero

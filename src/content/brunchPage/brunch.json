@@ -8,12 +8,12 @@
     "imageAlt": "Miss B's Coconut Club brunch Mission Beach San Diego",
     "eyebrow": "Served Daily · Until 2pm",
     "heading": "Brunch<br />in Mission Beach",
-    "subheading": "Brunch is served every day at Miss B's Coconut Club — from 9am on Saturday and Sunday, 10am Monday through Friday, until 2pm at 3704 Mission Blvd."
+    "subheading": "Brunch is served daily until 2pm at Miss B's Coconut Club, 3704 Mission Blvd in Mission Beach. Browse breakfast favorites, mimosas and morning cocktails."
   },
   "stats": [
     {
-      "value": "9/10am",
-      "label": "Doors Open"
+      "value": "Daily",
+      "label": "Brunch Served"
     },
     {
       "value": "2pm",
@@ -24,7 +24,7 @@
       "label": "Every Day"
     },
     {
-      "value": "24 Taps",
+      "value": "20 Taps",
       "label": "Flamingo Bar"
     }
   ],

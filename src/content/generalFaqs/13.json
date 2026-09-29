@@ -1,4 +1,6 @@
 {
   "q": "What kind of food does Miss B's serve?",
-  "a": "Miss B's serves Caribbean-inspired food including tacos, burgers, salads, and brunch plates. The kitchen is open from the start of service through close."
+  "a": "Miss B's serves Caribbean-inspired dishes alongside burgers, tacos, salads and daily brunch in Mission Beach. See the current food and drink menu before visiting.",
+  "href": "/menu",
+  "linkLabel": "Browse the menu"
 }

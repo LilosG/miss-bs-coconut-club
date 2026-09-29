@@ -40,6 +40,7 @@ const breadcrumbSchema = {
   title={event.metaTitle}
   description={event.description}
   canonical={canonical}
+  ogImage={page.seo.ogImage || page.detail.heroImage}
 >
 
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} slot="head" />

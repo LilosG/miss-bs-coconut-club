@@ -7,40 +7,14 @@ import { Picture } from 'astro:assets';
 import { getEntry } from 'astro:content';
 
 const page = (await getEntry('sportsPage', 'sports'))!.data;
+const schedules = (await import('../data/football-schedules.json')).default;
 const navData = (await getEntry('navigation', 'navigation'))!.data;
 const reservationCta = (navData.ctas ?? []).find((cta: { style?: string }) => cta.style === 'primary');
 const reservationUrl = reservationCta?.href ?? page.intro.cta.href;
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'Where can I watch Green Bay Packers games in Mission Beach?',
-      acceptedAnswer: { '@type': 'Answer', text: "Miss B's Coconut Club at 3704 Mission Blvd shows every Packers game on outdoor screens with game day specials and cold drinks steps from the Pacific." },
-    },
-    {
-      '@type': 'Question',
-      name: 'Where can I watch Oregon Ducks games in San Diego?',
-      acceptedAnswer: { '@type': 'Answer', text: "Miss B's Coconut Club in Mission Beach is San Diego's home for Oregon Ducks watch parties — outdoor screens, game day specials, open daily." },
-    },
-    {
-      '@type': 'Question',
-      name: "Does Miss B's Coconut Club show NFL games?",
-      acceptedAnswer: { '@type': 'Answer', text: "Yes. Miss B's shows NFL games including all Green Bay Packers games on outdoor screens at 3704 Mission Blvd, Mission Beach, San Diego." },
-    },
-    {
-      '@type': 'Question',
-      name: "Do I need a reservation to watch a game at Miss B's?",
-      acceptedAnswer: { '@type': 'Answer', text: "Walk-ins are always welcome. Reservations are recommended for busy game days — especially Packers and Ducks kickoffs. Book via the Reserve link." },
-    },
-  ],
-};
 ---
 
-<Layout title={page.seo.title} description={page.seo.description}>
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} slot="head" />
+<Layout title={page.seo.title} description={page.seo.description} ogImage={page.seo.ogImage || page.hero.imageSrc}>
 
   <PageHero
     imageSrc={page.hero.imageSrc}
@@ -122,6 +96,7 @@ const faqSchema = {
     {page.packersSchedule.note && (
       <p class="text-xs text-coastal-text-muted/70 -mt-2">{page.packersSchedule.note}</p>
     )}
+    <a href={schedules.packers.source} class="text-xs underline text-coastal-text-main" target="_blank" rel="noopener noreferrer">Official Packers schedule</a>
     <div class="overflow-x-auto -mx-1">
       <table class="w-full text-sm border-collapse">
         <thead>
@@ -129,11 +104,11 @@ const faqSchema = {
             <th class="text-left py-2 pr-4 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Date</th>
             <th class="text-left py-2 pr-4 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Opponent</th>
             <th class="text-left py-2 pr-4 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral hidden sm:table-cell">H/A</th>
-            <th class="text-right py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Kickoff (PT)</th>
+            <th class="text-right py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Kickoff (PT) / Result</th>
           </tr>
         </thead>
         <tbody>
-          {page.packersSchedule.games.map((g: { week: number; date: string; opponent: string; homeAway: string; time: string }) => (
+          {schedules.packers.games.map((g) => (
             <tr class="border-b border-coastal-text-muted/10 hover:bg-coastal-coral/5 transition-colors duration-150">
               <td class="py-2.5 pr-4 text-coastal-text-muted whitespace-nowrap">{g.date}</td>
               <td class="py-2.5 pr-4 text-coastal-text-main font-medium">{g.opponent}</td>
@@ -142,7 +117,7 @@ const faqSchema = {
                   {g.homeAway === 'home' ? 'Home' : 'Away'}
                 </span>
               </td>
-              <td class="py-2.5 text-right text-coastal-text-muted whitespace-nowrap">{g.time}</td>
+              <td class="py-2.5 text-right text-coastal-text-muted whitespace-nowrap">{g.result ?? g.time}</td>
             </tr>
           ))}
         </tbody>
@@ -172,6 +147,7 @@ const faqSchema = {
     {page.ducksSchedule.note && (
       <p class="text-xs text-coastal-text-muted/70 -mt-2">{page.ducksSchedule.note}</p>
     )}
+    <a href={schedules.ducks.source} class="text-xs underline text-coastal-text-main" target="_blank" rel="noopener noreferrer">Official Oregon Ducks schedule</a>
     <div class="overflow-x-auto -mx-1">
       <table class="w-full text-sm border-collapse">
         <thead>
@@ -179,11 +155,11 @@ const faqSchema = {
             <th class="text-left py-2 pr-4 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Date</th>
             <th class="text-left py-2 pr-4 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Opponent</th>
             <th class="text-left py-2 pr-4 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral hidden sm:table-cell">H/A</th>
-            <th class="text-right py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Kickoff (PT)</th>
+            <th class="text-right py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-coastal-coral">Kickoff (PT) / Result</th>
           </tr>
         </thead>
         <tbody>
-          {page.ducksSchedule.games.map((g: { week: number; date: string; opponent: string; homeAway: string; time: string }) => (
+          {schedules.ducks.games.map((g) => (
             <tr class="border-b border-coastal-text-muted/10 hover:bg-coastal-coral/5 transition-colors duration-150">
               <td class="py-2.5 pr-4 text-coastal-text-muted whitespace-nowrap">{g.date}</td>
               <td class="py-2.5 pr-4 text-coastal-text-main font-medium">{g.opponent}</td>
@@ -192,7 +168,7 @@ const faqSchema = {
                   {g.homeAway === 'home' ? 'Home' : 'Away'}
                 </span>
               </td>
-              <td class="py-2.5 text-right text-coastal-text-muted whitespace-nowrap">{g.time}</td>
+              <td class="py-2.5 text-right text-coastal-text-muted whitespace-nowrap">{g.result ?? g.time}</td>
             </tr>
           ))}
         </tbody>
@@ -209,6 +185,9 @@ const faqSchema = {
   </SplitSection>
 
   <!-- ─── CLOSING CTA ──────────────────────────────────────────────────────── -->
+  <nav aria-label="Plan your game day" class="bg-coastal-bg-sand px-6 py-8 text-center text-sm text-coastal-text-main">
+    Plan your visit: <a href="/menu" class="underline decoration-coastal-coral underline-offset-4">browse the food and drink menu</a> or <a href="/contact" class="underline decoration-coastal-coral underline-offset-4">check hours and reservations</a>.
+  </nav>
   <CtaBand
     imageSrc={page.cta.imageSrc}
     imageAlt={page.cta.imageAlt}

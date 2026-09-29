@@ -34,6 +34,7 @@ const faqSchema = {
 <Layout
   title={page.seo.title}
   description={page.seo.description}
+  ogImage={page.seo.ogImage || page.hero.imageSrc}
 >
 
   <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema, null, 2)} slot="head" />
@@ -56,13 +57,14 @@ const faqSchema = {
       </div>
 
       <div class="divide-y divide-coastal-bg-card">
-        {faqs.map(({ q, a }) => (
+        {faqs.map(({ q, a, href, linkLabel }) => (
           <details class="group py-6">
             <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
               <h3 class="font-sans text-base font-semibold text-coastal-text-main leading-snug pr-4">{q}</h3>
               <span class="shrink-0 text-coastal-coral text-xl font-light transition-transform duration-200 group-open:rotate-45">+</span>
             </summary>
             <p class="mt-4 text-coastal-text-muted text-sm leading-relaxed max-w-2xl">{a}</p>
+            {href && linkLabel && <a href={href} class="mt-3 inline-block text-sm font-semibold text-coastal-text-main underline decoration-coastal-coral underline-offset-4">{linkLabel}</a>}
           </details>
         ))}
       </div>

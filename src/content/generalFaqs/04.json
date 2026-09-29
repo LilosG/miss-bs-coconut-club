@@ -1,4 +1,6 @@
 {
   "q": "Does Miss B's have a happy hour?",
-  "a": "Yes. Happy hour runs 3 – 5pm, Monday – Friday, on the full open-air bar and patio. It does not run Saturday – Sunday."
+  "a": "Yes. Miss B's has weekday happy hour at its Mission Beach bar and patio. See the current days and hours here and explore the food and drink menu.",
+  "href": "/menu",
+  "linkLabel": "Browse the food and drink menu"
 }

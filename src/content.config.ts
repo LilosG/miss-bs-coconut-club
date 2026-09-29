@@ -97,7 +97,7 @@ const processStep = defineCollection({
 
 const faq = (name: string) => defineCollection({
   loader: glob({ pattern: '**/*.json', base: `./src/content/${name}` }),
-  schema: z.object({ q: z.string(), a: z.string() }),
+  schema: z.object({ q: z.string(), a: z.string(), href: z.string().optional(), linkLabel: z.string().optional() }),
 });
 
 export const collections = {

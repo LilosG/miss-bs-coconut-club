@@ -12,6 +12,7 @@ interface Props {
 }
 
 const siteProfile = (await getEntry('siteSettings', 'site'))!.data;
+const navigation = (await getEntry('navigation', 'navigation'))!.data;
 const googleMaps = await getGoogleMapsPlace(siteProfile);
 
 const {
@@ -38,9 +39,9 @@ const includesBrand =
 const fullTitle = includesBrand ? title : `${title} | Miss B's`;
 
 const businessDescription = "Coastal, open-air restaurant and bar in Mission Beach, San Diego serving daily brunch, coastal-inspired food, tropical cocktails, happy hour, and private events steps from the Pacific.";
-const reservationsUrl = 'https://toast.app/r/miss-bs-coconut-club?toast_sg=eb2e43b8-de9b-4830-9b6c-73a07efcca16&toast_src=website_link';
-const servesCuisine = ['Coastal American', 'American'];
-const amenities = ['Outdoor Seating', 'Full Bar', 'Private Event Space'];
+const reservationsUrl = navigation.ctas?.find((cta: { style?: string }) => cta.style === 'primary')?.href;
+const servesCuisine = ['American', 'Caribbean-inspired'];
+const amenities = ['Outdoor seating', 'Full bar', 'Private event space', 'Fire-pit seating', 'Indoor and outdoor TVs'];
 
 const openingHoursSpecification = (siteProfile.hours?.general ?? []).map(
   (h: { days?: string[]; open?: string; close?: string }) => ({
@@ -64,7 +65,7 @@ const businessSchema = {
   email: siteProfile.email,
   priceRange: siteProfile.priceRange,
   servesCuisine,
-  acceptsReservations: reservationsUrl,
+  ...(reservationsUrl ? { acceptsReservations: reservationsUrl } : {}),
   hasMenu: getCanonicalUrl('/menu'),
   address: {
     '@type': 'PostalAddress',
@@ -129,8 +130,6 @@ const websiteSchema = {
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImageUrl} />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
 <meta property="og:site_name" content={siteProfile.venueName} />
 <meta property="og:locale" content="en_US" />
 

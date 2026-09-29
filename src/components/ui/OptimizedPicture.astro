@@ -6,10 +6,10 @@ import { resolveSiteImage } from '../../lib/site-images';
 interface Props {
   src: string | ImageMetadata;
   alt: string;
-  widths?: number[];
+  widths: number[];
   sizes?: string;
-  width?: number;
-  height?: number;
+  width: number;
+  height: number;
   quality?: number;
   loading?: 'eager' | 'lazy';
   decoding?: 'async' | 'sync' | 'auto';
@@ -28,10 +28,6 @@ const {
 const resolvedSrc = await resolveSiteImage(src);
 ---
 
-<Picture
-  src={resolvedSrc}
-  alt={alt}
-  formats={['avif', 'webp']}
-  quality={quality}
-  {...attributes}
-/>
+{typeof resolvedSrc === 'string'
+  ? <Picture src={resolvedSrc} alt={alt} formats={['avif', 'webp']} quality={quality} {...attributes} />
+  : <Picture src={resolvedSrc} alt={alt} formats={['avif', 'webp']} quality={quality} {...attributes} />}

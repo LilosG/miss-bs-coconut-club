@@ -1,0 +1,42 @@
+{
+  "verifiedOn": "2026-09-29",
+  "packers": {
+    "source": "https://www.packers.com/schedule/",
+    "games": [
+      {"week":1,"date":"Sun Sep 13","opponent":"Minnesota Vikings","homeAway":"away","time":"Final","result":"L 22–39"},
+      {"week":2,"date":"Sun Sep 20","opponent":"New York Jets","homeAway":"away","time":"Final/OT","result":"W 20–17 (OT)"},
+      {"week":3,"date":"Thu Sep 24","opponent":"Atlanta Falcons","homeAway":"home","time":"Final","result":"L 14–35"},
+      {"week":4,"date":"Sun Oct 4","opponent":"Tampa Bay Buccaneers","homeAway":"away","time":"10:00 AM PT"},
+      {"week":5,"date":"Sun Oct 11","opponent":"Chicago Bears","homeAway":"home","time":"10:00 AM PT"},
+      {"week":6,"date":"Sun Oct 18","opponent":"Dallas Cowboys","homeAway":"home","time":"5:20 PM PT"},
+      {"week":7,"date":"Sun Oct 25","opponent":"Detroit Lions","homeAway":"away","time":"1:25 PM PT"},
+      {"week":8,"date":"Thu Oct 29","opponent":"Carolina Panthers","homeAway":"home","time":"5:15 PM PT"},
+      {"week":9,"date":"Sun Nov 8","opponent":"New England Patriots","homeAway":"away","time":"1:25 PM PT"},
+      {"week":10,"date":"Sun Nov 15","opponent":"Minnesota Vikings","homeAway":"home","time":"10:00 AM PT"},
+      {"week":12,"date":"Wed Nov 25","opponent":"Los Angeles Rams","homeAway":"away","time":"5:00 PM PT"},
+      {"week":13,"date":"Sun Dec 6","opponent":"New Orleans Saints","homeAway":"away","time":"10:00 AM PT"},
+      {"week":14,"date":"Sun Dec 13","opponent":"Buffalo Bills","homeAway":"home","time":"5:20 PM PT"},
+      {"week":15,"date":"Sun Dec 20","opponent":"Miami Dolphins","homeAway":"home","time":"10:00 AM PT"},
+      {"week":16,"date":"Fri Dec 25","opponent":"Chicago Bears","homeAway":"away","time":"10:00 AM PT"},
+      {"week":17,"date":"Mon Jan 4","opponent":"Houston Texans","homeAway":"home","time":"5:15 PM PT"},
+      {"week":18,"date":"TBD","opponent":"Detroit Lions","homeAway":"home","time":"TBD"}
+    ]
+  },
+  "ducks": {
+    "source": "https://goducks.com/sports/football/schedule",
+    "games": [
+      {"date":"Sat Sep 5","opponent":"Boise State","homeAway":"home","time":"Final","result":"W 34–27"},
+      {"date":"Sat Sep 12","opponent":"Oklahoma State","homeAway":"away","time":"Final","result":"L 31–39"},
+      {"date":"Fri Sep 18","opponent":"Portland State","homeAway":"home","time":"Final","result":"W 84–0"},
+      {"date":"Sat Sep 26","opponent":"USC","homeAway":"away","time":"Final","result":"W 41–27"},
+      {"date":"Sat Oct 10","opponent":"UCLA","homeAway":"home","time":"12:30 PM PT"},
+      {"date":"Sat Oct 17","opponent":"Nebraska","homeAway":"home","time":"TBD"},
+      {"date":"Sat Oct 24","opponent":"Illinois","homeAway":"away","time":"TBD"},
+      {"date":"Sat Oct 31","opponent":"Northwestern","homeAway":"home","time":"TBD"},
+      {"date":"Sat Nov 7","opponent":"Ohio State","homeAway":"away","time":"TBD"},
+      {"date":"Sat Nov 14","opponent":"Michigan","homeAway":"home","time":"TBD"},
+      {"date":"Fri Nov 20","opponent":"Michigan State","homeAway":"away","time":"5:00 PM PT"},
+      {"date":"Sat Nov 28","opponent":"Washington","homeAway":"home","time":"TBD"}
+    ]
+  }
+}

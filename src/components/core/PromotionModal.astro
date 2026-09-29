@@ -37,7 +37,7 @@ const bodyId = `promotion-body-${idSlug}`;
     </div>
 
     <div class="promotion-content">
-      <h2 id={titleId} class="promotion-title" data-promotion-title></h2>
+      <span id={titleId} class="promotion-title" data-promotion-title></span>
       <p id={bodyId} class="promotion-body" data-promotion-body></p>
       <a
         class="promotion-cta"
@@ -438,7 +438,11 @@ const bodyId = `promotion-body-${idSlug}`;
         `promotion-card--${promotion.displayStyle}`,
       );
       card.dataset.promotionStyle = promotion.displayStyle;
-      title.textContent = promotion.headline;
+      const heading = document.createElement('h2');
+      heading.id = title.id;
+      heading.className = title.className;
+      heading.textContent = promotion.headline;
+      title.replaceWith(heading);
       body.textContent = promotion.body;
 
       if (imageUrl) {

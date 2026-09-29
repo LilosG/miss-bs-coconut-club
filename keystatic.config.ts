@@ -81,6 +81,7 @@ const seo = () =>
         true,
         "Summary shown in search results. Use one clear sentence about this page.",
       ),
+      ogImage: optionalText("Social Sharing Image Path", false, "Optional public image path; leave blank to use this page's hero image."),
     },
     { label: "Search Engine Settings" },
   );
@@ -294,6 +295,7 @@ export default config({
             eyebrow: text("Small Section Label"),
             heading: text("Heading"),
             headingAccent: text("Heading Accent"),
+            headingSuffix: text("Heading Location and Business Type"),
             subheading: text("Supporting Text", true),
             ctas: fields.array(link("Hero Link"), { label: "Calls to Action" }),
             stats: fields.array(
@@ -348,6 +350,17 @@ export default config({
           },
           { label: "Happy Hour" },
         ),
+        sportsBanner: fields.object(
+          {
+            imageSrc: imageField("home-sports-banner", { label: "Image" }),
+            imageAlt: text("Image Description for Accessibility"),
+            eyebrow: text("Small Section Label"),
+            heading: text("Heading"),
+            body: text("Body", true),
+            cta: link("Call to Action"),
+          },
+          { label: "Sports Banner" },
+        ),
         brunch: fields.object(
           {
             imageSrc: imageField("home-brunch", { label: "Image" }),
@@ -369,6 +382,7 @@ export default config({
               fields.object({
                 src: imageField("home-food-grid", { label: "Image" }),
                 name: text("Name"),
+                alt: optionalText("Image Description for Accessibility"),
               }),
               { label: "Food Grid" },
             ),
@@ -864,6 +878,8 @@ export default config({
           name: { label: "Question", validation: { isRequired: true } },
         }),
         a: text("Answer", true),
+        href: optionalText("Related Page Path"),
+        linkLabel: optionalText("Related Link Text"),
       },
     }),
     generalFaqs: collection({
@@ -877,6 +893,8 @@ export default config({
           name: { label: "Question", validation: { isRequired: true } },
         }),
         a: text("Answer", true),
+        href: optionalText("Related Page Path"),
+        linkLabel: optionalText("Related Link Text"),
       },
     }),
   },

@@ -19,7 +19,7 @@ export default defineConfig({
     '/events': '/private-events',
     '/merch': '/contact',
   },
-  integrations: [mdx(), sitemap(), react(), keystatic()],
+  integrations: [mdx(), sitemap({ filter: (page) => new URL(page).pathname !== '/order' }), react(), keystatic()],
   vite: {
     plugins: [tailwindcss()]
   },

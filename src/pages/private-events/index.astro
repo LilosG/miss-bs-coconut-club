@@ -22,7 +22,8 @@ const breadcrumbSchema = {
 };
 ---
 
-<Layout title={page.seo.title} description={page.seo.description}>
+<Layout title={page.seo.title} description={page.seo.description}
+  ogImage={page.seo.ogImage || page.hero.imageSrc}>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
 
   <PageHero

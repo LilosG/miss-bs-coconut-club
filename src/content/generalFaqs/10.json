@@ -1,4 +1,6 @@
 {
   "q": "How do I book a private event?",
-  "a": "Submit an inquiry through our contact page. Our events team responds within 24 hours with availability and a custom proposal tailored to your date, headcount, and event type."
+  "a": "Send your date, guest count and event type through our private event inquiry form. Our events team will follow up about availability and options.",
+  "href": "/private-events",
+  "linkLabel": "Send a private event inquiry"
 }
